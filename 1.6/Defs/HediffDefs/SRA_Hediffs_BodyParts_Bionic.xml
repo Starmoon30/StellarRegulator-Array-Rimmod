@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HediffDef>
+		<defName>SRA_Hidra_EyeHediff</defName>
+		<label>希德拉</label>
+		<description>狞桀邪祟</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(255, 130, 130)</defaultLabelColor>
+		<initialSeverity>1</initialSeverity>
+		 <isBad>false</isBad>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Sight</capacity>
+						<offset>0.1</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<renderNodeProperties>
+			<li Class="PawnRenderNodeProperties_Eye">
+				<workerClass>PawnRenderNodeWorker_HediffEye</workerClass>
+				<texPath>SRA/Pawn/Humanlike/Eyes/Hidra_Eye</texPath>
+				<parentTagDef>Head</parentTagDef>
+				<drawSize>1</drawSize>
+				<drawData>
+					<defaultData>
+						<layer>56</layer>
+						<offset>(0, 0, 0)</offset>
+					</defaultData>
+					<dataWest>
+						<flip>true</flip>
+					</dataWest>
+				</drawData>
+			</li>
+		</renderNodeProperties>
+	</HediffDef>
+
+
+  <!-- 健康状态 -->
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>SRA_Energy_Injection</defName>
+    <label>星规-星辉注能</label>
+    <labelNoun>星规-星辉注能</labelNoun>
+    <description>大量的星辉分形被注入到这个个体之中，极度强化了其各项能力，并提供强有力的保护。</description>
+	<defaultLabelColor>(111, 172, 172)</defaultLabelColor>
+    <priceImpact>false</priceImpact>
+	<stages>
+		<li>
+			<capMods>
+				<li>
+					<capacity>Consciousness</capacity>
+					<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ArmorRating_Sharp>2</ArmorRating_Sharp>
+				<ArmorRating_Blunt>2</ArmorRating_Blunt>
+				<ArmorRating_Heat>2</ArmorRating_Heat>
+				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
+				<ComfyTemperatureMax>200</ComfyTemperatureMax>
+				<AimingDelayFactor>-0.5</AimingDelayFactor>
+				<ShootingAccuracyPawn>20</ShootingAccuracyPawn>
+          		<MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
+				<RangedCooldownFactor>-0.5</RangedCooldownFactor>
+				<StaggerDurationFactor>-1</StaggerDurationFactor>
+				<MoveSpeed>4</MoveSpeed>
+				<DecompressionResistance MayRequire="kentington.saveourship2">1</DecompressionResistance>
+				<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">10</VacuumSpeedMultiplier>
+			</statOffsets>
+		</li>
+	</stages>
+    <tags><li>ArmorGland</li></tags>
+  </HediffDef>
+
+
+	<!-- 手术 -->
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+	<defName>Install_SRA_Energy_Injection</defName>
+	<label>进行 星规-星辉注能</label>
+	<description>将大量的星辉分形注入到这个个体之中，极度强化其各项能力，并提供强有力的保护。</description>
+	<descriptionHyperlinks>
+	  <HediffDef>SRA_Energy_Injection</HediffDef>
+	</descriptionHyperlinks>
+	<jobString>进行 星规-星辉注能</jobString>
+	<ingredients>
+		<li>
+		<filter>
+			<thingDefs>
+				<li>SRA_Core</li>
+			</thingDefs>
+		</filter>
+			<count>200</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>SRA_Core</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<appliedOnFixedBodyParts>
+		<li>Torso</li>
+	</appliedOnFixedBodyParts>
+	<addsHediff>SRA_Energy_Injection</addsHediff>
+	<incompatibleWithHediffTags>
+		<li>ArmorGland</li>
+	</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<!-- 手术 -->
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+	<defName>Install_SRA_Little_Regeneration</defName>
+	<label>注入 星规-顽强生机</label>
+	<description>将大量的星辉分形注入到这个个体之中，使其显现出顽强的生命力，能逐渐愈合看似永久的损伤。</description>
+	<descriptionHyperlinks>
+	  <HediffDef>SRA_Little_Regeneration</HediffDef>
+	</descriptionHyperlinks>
+	<jobString>注入 星规-顽强生机</jobString>
+	<ingredients>
+		<li>
+		<filter>
+			<thingDefs>
+				<li>SRA_Core</li>
+			</thingDefs>
+		</filter>
+			<count>200</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>SRA_Core</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<appliedOnFixedBodyParts>
+		<li>Torso</li>
+	</appliedOnFixedBodyParts>
+	<addsHediff>SRA_Little_Regeneration</addsHediff>
+    <incompatibleWithHediffTags>
+		<li>SRA_Little_Regeneration</li>
+	</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<!-- 手术 -->
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+	<defName>Install_SRA_MechBandwidth</defName>
+	<label>注入 星规-延展意志</label>
+	<description>将大量的星辉分形注入到这个个体之中，使其意识得到大幅度扩展，得以控制更大规模的机械体。</description>
+	<descriptionHyperlinks>
+	  <HediffDef>SRA_MechBandwidth</HediffDef>
+	</descriptionHyperlinks>
+	<jobString>注入 星规-延展意志</jobString>
+	<ingredients>
+		<li>
+		<filter>
+			<thingDefs>
+				<li>SRA_Core</li>
+			</thingDefs>
+		</filter>
+			<count>200</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>SRA_Core</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<appliedOnFixedBodyParts>
+		<li>Brain</li>
+	</appliedOnFixedBodyParts>
+	<addsHediff>SRA_MechBandwidth</addsHediff>
+    <incompatibleWithHediffTags>
+		<li>SRA_MechBandwidth</li>
+	</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>SRA_MechBandwidth</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>星规-延展意志</label>
+    <description>大量的星辉分形被注入到这个个体之中，其意识得到大幅度扩展，得以控制更大规模的机械体。</description>
+    <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+    <priceImpact>false</priceImpact>
+    <stages>
+      <li>
+        <statOffsets>
+          <MechBandwidth>120</MechBandwidth>
+          <WorkSpeedGlobalOffsetMech>0.4</WorkSpeedGlobalOffsetMech>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+  <ThingDef Name="SRA_WeaponBase" ParentName="BaseGunWithQuality" Abstract="True">
+	<graphicData>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+    <recipeMaker>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+	</recipeMaker>
+	<weaponTags>
+		<li>SRA_Weapon</li>
+	</weaponTags>
+	<thingCategories>
+		<li>SRA_Weapon</li>
+	</thingCategories>
+	</ThingDef>
+
+  <ThingDef Name="SRA_WeaponMeleeBase" ParentName="BaseMeleeWeapon_Sharp_Quality" Abstract="True">
+	<graphicData>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+		<techLevel>Spacer</techLevel>
+    <recipeMaker>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+	</recipeMaker>
+	<weaponTags>
+		<li>SRA_Weapon</li>
+	</weaponTags>
+	<thingCategories>
+		<li>SRA_Weapon</li>
+	</thingCategories>
+	</ThingDef>
+
+	<ThingDef Name="SRA_WeaponBase_Spacer" ParentName="SRA_WeaponBase" Abstract="True">
+		<techLevel>Spacer</techLevel>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<statBases>
+			<MaxHitPoints>1600</MaxHitPoints>
+		</statBases>
+		<recipeMaker>
+		<researchPrerequisite>SRA_tech_30_7411</researchPrerequisite>
+		<recipeUsers>
+			<li>SRA_WorkTable</li>
+		</recipeUsers>
+		<unfinishedThingDef>UnfinishedSRAItem</unfinishedThingDef>
+		</recipeMaker>
+	</ThingDef>
+
+  <ThingDef ParentName="SRA_WeaponBase_Spacer">
+    <defName>SRA_Spear_of_SRA</defName>
+    <label>星规-星辉律揽</label>
+    <description>路希维亚所使用的武器的仿制品，能释放庞大的能量束，也能作为长枪使用。</description>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Spear_of_SRA</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.5</drawSize>
+    </graphicData>
+		<equippedAngleOffset>45</equippedAngleOffset>
+    <statBases>
+      <MarketValue>32000</MarketValue>
+      <WorkToMake>200000</WorkToMake>
+      <MaxHitPoints>6400</MaxHitPoints>
+      <Mass>1</Mass>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+      <Flammability>0</Flammability>
+    </statBases>
+	  <tradeability>None</tradeability>
+	  <generateAllowChance>0</generateAllowChance>
+	  <generateCommonality>0</generateCommonality>
+    <weaponTags>
+      <li>SRA_Spear_of_SRA</li>
+    </weaponTags>
+		<costList>
+      		<SRA_Core>800</SRA_Core>
+		</costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_ShootBeam</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0.1</warmupTime>
+        <range>120</range>
+        <minRange>0</minRange>
+		    <requireLineOfSight>false</requireLineOfSight>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+		
+        <beamStartOffset>1</beamStartOffset><!--枪口处偏移 0.75-->
+        <beamFullWidthRange>2</beamFullWidthRange><!--原版 6.9-->
+        <beamWidth>-2</beamWidth><!--原版 6-->
+        <beamMaxDeviation>0.1</beamMaxDeviation><!--原版 1.5-->
+        <beamCurvature>0.1</beamCurvature><!--原版 0.6-->
+        <burstShotCount>32</burstShotCount><!--攻击判定次数-->
+        <ticksBetweenBurstShots>3</ticksBetweenBurstShots><!--原版 22-->
+        <beamFleckChancePerTick>1</beamFleckChancePerTick><!--原版 0.32-->
+		
+        <beamDamageDef>SRA_Spear_of_SRA_burn</beamDamageDef><!--伤害-->
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef><!--地面特效-->
+        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef><!--n-->
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef><!--n-->
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef><!--蓝色火花-->
+		
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+		
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li><!--原版 (0, 0)-->
+            <li>(0.2, 0.1)</li><!--原版 (0.65, 0.4)-->
+            <li>(0.4, 0.2)</li><!--原版 (1, 0.75)-->
+          </points>
+        </beamLineFleckChanceCurve>
+		
+		<targetParams>
+			<canTargetLocations>true</canTargetLocations>
+		</targetParams>
+      </li>
+    </verbs>
+    <equippedStatOffsets> 
+		<MoveSpeed>0.2</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>星辉律揽之锋</label>
+        <capacities>
+          <li>Cut</li>
+          <li>Stab</li>
+        </capacities>
+        <power>160</power>
+        <cooldownTime>0.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <ThingDef ParentName="SRA_WeaponBase_Spacer">
+		<defName>SRA_SML_Mass_Drivers</defName>
+		<label>星规-星弧破碎</label>
+		<description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。手持版本极大幅度压缩了体积，并削减了各项性能以适配单兵承载能力。</description>
+		<graphicData>
+      <texPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+	    <drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<statBases>
+      <MarketValue>3200</MarketValue>
+			<WorkToMake>32000</WorkToMake>
+      <MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>	
+			<AccuracyShort>1</AccuracyShort>	
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+      <Flammability>0</Flammability>
+		</statBases>
+	  <tradeability>None</tradeability>
+	  <generateAllowChance>0</generateAllowChance>
+	  <generateCommonality>0</generateCommonality>
+    <weaponTags>
+      <li>SRA_SML_Mass_Drivers</li>
+    </weaponTags>
+		<costList>
+      	<SRA_Core>40</SRA_Core>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>SRABullet_SML_Mass_Drivers</defaultProjectile>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>0.1</warmupTime>
+				<range>64</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+				<soundCast>SRA_SML_Mass_Drivers</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+			<label>炮身</label>
+			<capacities>
+			<li>Blunt</li>
+			</capacities>
+			<power>32</power>
+			<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_SML_Mass_Drivers</defName>
+    <label>星规-星弧破碎能量束</label>
+    <thingClass>Bullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>2.4</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>40</damageAmountBase>
+      <armorPenetrationBase>4</armorPenetrationBase>
+      <stoppingPower>4</stoppingPower>
+      <speed>240</speed>
+      <extraDamages>
+        <li>
+          <def>Stun</def>
+          <amount>8</amount>
+        </li>
+      </extraDamages>
+    </projectile>
+  </ThingDef>
+
+	
+  <ThingDef ParentName="SRA_WeaponBase_Spacer">
+		<defName>SRA_Weapon_P</defName>
+		<label>星规-光辉之冠</label>
+		<description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。手持版本极大幅度压缩了体积，并削减了各项性能以适配单兵承载能力。</description>
+		<graphicData>
+      <texPath>SRA/Building/Security/SRA_Weapon_P</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+	    <drawSize>0.5</drawSize>
+		</graphicData>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<statBases>
+      <MarketValue>1600</MarketValue>
+			<WorkToMake>3200</WorkToMake>
+      <MaxHitPoints>640</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>	
+			<AccuracyShort>1</AccuracyShort>	
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+      <Flammability>0</Flammability>
+		</statBases>
+	  <tradeability>None</tradeability>
+    <relicChance>0</relicChance>
+    <weaponTags>
+      <li>SRA_Weapon_P</li>
+    </weaponTags>
+		<costList>
+      	<SRA_Core>5</SRA_Core>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>SRABullet_Weapon_P</defaultProjectile>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>0.1</warmupTime>
+				<range>16</range>
+       			<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        		<burstShotCount>4</burstShotCount>
+				<soundCast>SRA_Weapon_P</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+			<label>炮身</label>
+			<capacities>
+			<li>Blunt</li>
+			</capacities>
+			<power>32</power>
+			<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+	
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_Weapon_P</defName>
+    <label>星规-光辉之冠脉冲束</label>
+    <thingClass>Bullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>2.4</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>240</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="SRA_WeaponMeleeBase">
+    <defName>SRA_Sword_of_Hidra</defName>
+    <label>Sacrilence</label>
+    <description>Mercy Ancient Nefera</description>
+	  <useHitPoints>false</useHitPoints>
+	  <tradeability>None</tradeability>
+    <statBases>
+      <MarketValue>32000</MarketValue>
+      <Mass>1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+	  <generateAllowChance>0</generateAllowChance>
+	  <generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Sword_of_Hidra>1</SRA_Sword_of_Hidra>
+		</costList>
+    <soundInteract>Interact_BladelinkPlasmaSword</soundInteract>
+    <meleeHitSound>MeleeHit_BladelinkPlasmaSword</meleeHitSound>
+    <smeltable>false</smeltable>
+    <equippedAngleOffset>0</equippedAngleOffset>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>SRA/Weapon/SRA_Sword_of_Hidra</texPath>
+      <color>(255,200,200)</color>
+    </graphicData>
+    <tools>
+      <li>
+        <label>刃</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>160</power>
+        <cooldownTime>0.5</cooldownTime>
+        <extraMeleeDamages>
+          <li>
+            <def>Stun</def>
+            <amount>4</amount>
+          </li>
+					<li>
+						<def>SRA_Frostbite</def>
+						<amount>16</amount>
+					</li>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>32</amount>
+					</li>
+        </extraMeleeDamages>
+      </li>
+    </tools>
+  </ThingDef>
+
+</Defs>

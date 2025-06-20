@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <HediffDef>
+    <defName>SRA_Power_Overwhelming</defName>
+    <label>顷刻新生</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人显现出坚不可摧的身躯与不可思议的再生能力，一切损伤都无法在其身上驻留片刻。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>0.1</IncomingDamageFactor>
+        </statFactors>
+        <regeneration>60000</regeneration>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Little_Regeneration</defName>
+    <label>星规-顽强生机</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人显现出顽强的生命力，能逐渐愈合看似永久的损伤。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <stages>
+      <li>
+        <regeneration>50</regeneration>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Chosen_One</defName>
+    <label>星规-深渊召选</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人被某种神秘的超凡力量选定，背离了自我。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <disablesNeeds>
+      <li>Food</li>
+      <li>Rest</li>
+      <li>Comfort</li>
+			<li>Joy</li>
+			<li>Outdoors</li>
+    </disablesNeeds>
+    <stages>
+    </stages>
+  </HediffDef>
+
+</Defs>

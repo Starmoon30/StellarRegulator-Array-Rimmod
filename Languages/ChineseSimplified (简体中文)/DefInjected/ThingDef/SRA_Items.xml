@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <SRA_Mech_WarUnit_S.label>星规-「尖蜂」微型战争单元</SRA_Mech_WarUnit_S.label>
+  <SRA_Mech_WarUnit_S.description>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这种无人机原本设计用于采矿和维护作业，但由于结构简单，在替换模块后也作为安保单位使用。\n一些旅行家会为这种小机器改装大量成本高昂的组件，并将其当做宠物和伙伴，毕竟一个看似不起眼的小方块有时候能帮上大忙。</SRA_Mech_WarUnit_S.description>
+  
+  <SRA_MetabyssHalo_A.label>深源-诡异光环-A</SRA_MetabyssHalo_A.label>
+  <SRA_MetabyssHalo_A.description>骇人之物正在活动。\n\n免疫所有高于32点的伤害，免疫近战伤害。</SRA_MetabyssHalo_A.description>
+  <SRA_MetabyssHalo_A.comps.CompDamageFactors.popOutString>免疫</SRA_MetabyssHalo_A.comps.CompDamageFactors.popOutString>
+  <SRA_MetabyssHalo_B.label>深源-诡异光环-B</SRA_MetabyssHalo_B.label>
+  <SRA_MetabyssHalo_B.description>骇人之物正在活动。\n\n免疫所有高于32点的伤害，免疫远程伤害。</SRA_MetabyssHalo_B.description>
+  <SRA_MetabyssHalo_B.comps.CompDamageFactors.popOutString>免疫</SRA_MetabyssHalo_B.comps.CompDamageFactors.popOutString>
+  <SRA_MetabyssHalo_Y.label>深源-诡异光环-Y</SRA_MetabyssHalo_Y.label>
+  <SRA_MetabyssHalo_Y.description>骇人之物正在活动。\n\n免疫所有高于32点的伤害，免疫所有非箭矢伤害。</SRA_MetabyssHalo_Y.description>
+  <SRA_MetabyssHalo_Y.comps.CompDamageFactors.popOutString>免疫</SRA_MetabyssHalo_Y.comps.CompDamageFactors.popOutString>
+
+  <SRA_Sword_of_Hidra.label>「息声」</SRA_Sword_of_Hidra.label>
+  <SRA_Sword_of_Hidra.description>这件武器由大小不一的红黑色细长晶体组成，这些悬浮着而互相保持着一定距离的晶体组成了类似于剑的外形。当注视着这柄剑时，你会感觉到一种难以描述的模糊感和不协调感，似乎那些晶体不应该那样排列。\n\n这件可怖之物的攻击会造成诡异的眩晕，冻伤与烧伤。</SRA_Sword_of_Hidra.description>
+  <SRA_Sword_of_Hidra.tools.0.label>刃</SRA_Sword_of_Hidra.tools.0.label>
+</LanguageData>

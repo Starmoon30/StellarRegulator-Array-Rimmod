@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <SRA_Power_Overwhelming.label>顷刻新生</SRA_Power_Overwhelming.label>
+  <SRA_Power_Overwhelming.description>此人显现出坚不可摧的身躯与不可思议的再生能力，一切损伤都无法在其身上驻留片刻。</SRA_Power_Overwhelming.description>
+
+  <SRA_Little_Regeneration.label>星规-顽强生机</SRA_Little_Regeneration.label>
+  <SRA_Little_Regeneration.description>此人显现出顽强的生命力，能逐渐愈合看似永久的损伤。</SRA_Little_Regeneration.description>
+
+  <SRA_Chosen_One.label>星规-深渊召选</SRA_Chosen_One.label>
+  <SRA_Chosen_One.description>此人被某种神秘的超凡力量选定，背离了自我。</SRA_Chosen_One.description>
+
+  <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>深渊召选</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>
+  <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>我如于万物之中！</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>
+  
+</LanguageData>

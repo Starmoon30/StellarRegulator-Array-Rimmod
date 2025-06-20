@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>SRA_Weapon</defName>
+		<label>星规远程武器</label>
+		<parent>WeaponsRanged</parent>
+    </ThingCategoryDef>
+  
+	
+</Defs>

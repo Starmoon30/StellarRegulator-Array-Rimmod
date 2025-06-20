@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <SRA.CommunicatorTitle>星规通讯台：操作页</SRA.CommunicatorTitle>
+  <SRA.CommunicatorDescription>测试中</SRA.CommunicatorDescription>
+  <SRA.CommunicateWithRocivia>与路希维亚联系...</SRA.CommunicateWithRocivia>
+  <SRA.WaitForDiscover>（无信号）</SRA.WaitForDiscover>
+  <SRA.Back>返回上一级</SRA.Back>
+
+  <SRA.RociviaEventTreeEnd>与路希维亚闲聊</SRA.RociviaEventTreeEnd>
+  <SRA.RociviaEventTree>与路希维亚交谈</SRA.RociviaEventTree>
+  <SRA.RociviaEventTree2>与路希维亚交谈2</SRA.RociviaEventTree2>
+  <SRA.Rocivia>路希维亚</SRA.Rocivia>
+  <SRA.WaitForDiscover>（无信号）</SRA.WaitForDiscover>
+  <SRA.WaitForDiscover>（无信号）</SRA.WaitForDiscover>
+</LanguageData>

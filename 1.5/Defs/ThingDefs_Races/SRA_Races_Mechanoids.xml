@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef Name="SRA_LightMechanoid" ParentName="BaseMechanoid" Abstract="True">
+      <statBases>
+        <MarketValue>2</MarketValue>
+        <MoveSpeed>8</MoveSpeed>
+        <ArmorRating_Blunt>1</ArmorRating_Blunt>
+        <ArmorRating_Sharp>1</ArmorRating_Sharp>
+        <ArmorRating_Heat>4</ArmorRating_Heat>
+        <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
+      </statBases>
+      <race>
+        <hasCorpse>false</hasCorpse>
+        <body>Mech_Light</body>
+        <intelligence>ToolUser</intelligence>
+        <thinkTreeMain>Mechanoid</thinkTreeMain>
+        <bulletStaggerDelayTicks>1</bulletStaggerDelayTicks>
+        <baseBodySize>0.5</baseBodySize>
+        <baseHealthScale>4</baseHealthScale>
+        <mechWeightClass>Light</mechWeightClass>
+      </race>
+      <butcherProducts>
+        <Steel>10</Steel>
+      </butcherProducts>
+      <tools>
+        <li>
+          <label>撞击</label>
+          <capacities>
+            <li>Blunt</li>
+          </capacities>
+          <power>32</power>
+          <cooldownTime>0.5</cooldownTime>
+          <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+          <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        </li>
+      </tools>
+    </ThingDef>
+    
+  <ThingDef Abstract="True" Name="SRASuperHeavyMechanoid" ParentName="HeavyMechanoid">
+    <statBases>
+      <MoveSpeed>4</MoveSpeed>
+      <MarketValue>3200</MarketValue>
+      <ControlTakingTime>30</ControlTakingTime>
+      <BandwidthCost>5</BandwidthCost>
+      <ArmorRating_Blunt>4</ArmorRating_Blunt>
+      <ArmorRating_Sharp>4</ArmorRating_Sharp>
+      <ArmorRating_Heat>4</ArmorRating_Heat>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <MechEnergyLossPerHP>0.15</MechEnergyLossPerHP>
+    </statBases>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <baseHealthScale>1</baseHealthScale>
+      <mechWeightClass>UltraHeavy</mechWeightClass>
+    </race>
+    <butcherProducts Inherit="False">
+      <Steel>50</Steel>
+      <Plasteel>20</Plasteel>
+    </butcherProducts>
+  </ThingDef>
+
+  <PawnKindDef Name="SRA_LightMechanoidKind" Abstract="True">
+    <defaultFactionType>Mechanoid</defaultFactionType>
+    <aiAvoidCover>false</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+    <canStrip>false</canStrip>
+    <minGenerationAge>100</minGenerationAge>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
+	
+    <combatPower>10</combatPower>
+    <techHediffsChance>1</techHediffsChance>
+    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <weaponMoney>9999~9999</weaponMoney>
+  </PawnKindDef>
+
+  <PawnKindDef Name="SRAHeavyMechanoidKind" Abstract="True">
+    <defaultFactionType>Mechanoid</defaultFactionType>
+    <aiAvoidCover>false</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+    <canStrip>false</canStrip>
+    <minGenerationAge>100</minGenerationAge>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
+	
+    <weaponMoney>9999~9999</weaponMoney>
+    <combatPower>400</combatPower>
+    <techHediffsChance>1</techHediffsChance>
+    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
+  </PawnKindDef>
+  
+    <!-- WarUrchin -->  
+    <ThingDef ParentName="SRA_LightMechanoid">
+      <defName>SRA_Mech_WarUnit_S</defName>
+      <label>星规-「尖蜂」微型战争单元</label>
+      <description>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</description>
+      <statBases>
+        <MoveSpeed>16</MoveSpeed>
+      </statBases>
+      <race>
+        <lifeStageAges>
+          <li>
+            <def>MechanoidFullyFormed</def>
+          </li>
+        </lifeStageAges>
+        <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant>
+        <baseHealthScale>4</baseHealthScale>
+      </race>
+      <comps Inherit="False">
+        <li Class="CompProperties_CanBeDormant" />
+        <li Class="CompProperties_WakeUpDormant">
+          <wakeUpOnDamage>true</wakeUpOnDamage>
+          <wakeUpCheckRadius>30</wakeUpCheckRadius>
+          <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+        </li>
+        <li Class="CompProperties_MechPowerCell">
+          <totalPowerTicks>30000</totalPowerTicks>
+        </li>
+      </comps>
+    </ThingDef>
+    
+    <PawnKindDef ParentName="SRA_LightMechanoidKind">
+      <defName>SRA_Mech_WarUnit_S</defName>
+      <label>星规-「尖蜂」微型战争单元</label>
+      <labelPlural>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</labelPlural>
+      <race>SRA_Mech_WarUnit_S</race>
+      <allowInMechClusters>false</allowInMechClusters>
+      <forceNoDeathNotification>true</forceNoDeathNotification>
+      <forceDeathOnDowned>true</forceDeathOnDowned>
+      <lifeStages>
+        <li>
+          <bodyGraphicData>
+            <texPath>SRA/Pawn/Mechanoid/SRA_Mech_WarUnit_S</texPath>
+            <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+            <shaderType>CutoutWithOverlay</shaderType>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>1.1</drawSize>
+            <shadowData>
+              <volume>(0.2, 0.3, 0.2)</volume>
+            </shadowData>
+          </bodyGraphicData>
+        </li>
+      </lifeStages>      
+      <weaponTags>
+        <li>SRA_Weapon_P</li>
+      </weaponTags>
+    </PawnKindDef>
+
+
+<!--
+    <ThingDef Name="SRA_Hidra" ParentName="SRASuperHeavyMechanoid">
+      <defName>SRA_Hidra</defName>
+      <label>希德拉</label>
+      <description>一个诡异超自然实体创造的化身。</description>
+      <race>
+        <body>Apocriton</body>
+        <baseBodySize>1</baseBodySize>
+        <lifeStageAges>
+          <li>
+            <def>MechanoidFullyFormed</def>
+            <minAge>0</minAge>
+          </li>
+        </lifeStageAges>
+        <baseHealthScale>16</baseHealthScale>
+      </race>
+      <statBases>
+        <BandwidthCost>1</BandwidthCost>
+        <EMPResistance>4</EMPResistance>
+        <MoveSpeed>4</MoveSpeed>
+      </statBases>
+      <tools>
+        <li>
+          <label>touch</label>
+          <capacities>
+            <li>Blunt</li>
+          </capacities>
+          <power>100</power>
+          <cooldownTime>0.5</cooldownTime>
+          <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+          <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        </li>
+      </tools>
+      <comps>
+      </comps>
+    </ThingDef>
+    
+    <PawnKindDef Name="SRA_HidraKind" ParentName="SRAHeavyMechanoidKind">
+      <defName>SRA_Hidra</defName>
+      <label>希德拉</label>
+      <race>SRA_Hidra</race>
+      <combatPower>500</combatPower>
+      <maxPerGroup>0</maxPerGroup>
+      <isBoss>true</isBoss>
+      <allowInMechClusters>false</allowInMechClusters>
+      <lifeStages>
+        <li>
+          <bodyGraphicData>
+            <texPath>Things/Pawn/Mechanoid/Apocriton</texPath>
+            <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+            <shaderType>CutoutWithOverlay</shaderType>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>2</drawSize>
+        </bodyGraphicData>
+        </li>
+      </lifeStages>      
+      <weaponTags>
+        <li>SRA_SML_Mass_Drivers</li>
+      </weaponTags>
+      <abilities>
+        <li>SRAPsychicSlaughter</li>
+        <li>SRAEntitySkip</li>
+        <li>SRABerserkPulse</li>
+        <li>SRAReleaseDeadlifeDust</li>
+      </abilities>
+    </PawnKindDef>
+--> 
+
+</Defs>

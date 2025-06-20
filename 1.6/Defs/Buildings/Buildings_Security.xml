@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+
+  <!--星弧破碎炮塔======================================================================================-->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_SML_Mass_Drivers</defName>
+    <label>星规-星弧破碎炮塔</label>
+    <description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <drawOffset>(0,0,-0.16)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>6400</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>80</Mass>
+      <Beauty>0</Beauty>
+      <ShootingAccuracyTurret>1.00</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <SRA_Core>200</SRA_Core>
+    </costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>EMP</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+    </damageMultipliers>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_Initiatable" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <combatPower>640</combatPower>
+      <!--<buildingTags>
+        <li>SRAClusterMember</li>
+        <li>SRAClusterCombatThreat</li>
+        <li>SRA_SmallCluster_SingleTurret</li>
+      </buildingTags>-->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SRATurretGun_SML_Mass_Drivers</turretGunDef>
+      <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <turretTopDrawSize>2.0</turretTopDrawSize>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_SML_Mass_Drivers</defName>
+    <label>星规-星弧破碎</label>
+    <description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。</description>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_SML_Mass_Drivers</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <range>120</range>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+        <soundCast>SRA_SML_Mass_Drivers</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+      </li>
+    </verbs>
+  </ThingDef>
+
+
+
+  <!-- 迫击炮（迫真） -->
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_L_Particle_Launcher</defName>
+    <label>星规-虚空撕裂炮塔</label>
+    <description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3, 3)</drawSize>
+      <drawOffset>(0,0,-0.16)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+      <shadowData>
+        <offset>(-0.13,-0.87,-0.1)</offset>
+        <volume>(0.5,0.4,1.05)</volume>
+      </shadowData>
+    </graphicData>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <size>(3,3)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>4.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+	  <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>EMP</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+    </damageMultipliers>
+    <statBases>
+      <MaxHitPoints>12800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>30</Mass>
+      <ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+      <Beauty>20</Beauty>
+    </statBases>
+    <building>
+      <combatPower>1280</combatPower>
+      <turretGunDef>SRATurretGun_L_Particle_Launcher</turretGunDef>
+	  	<turretTopDrawSize>3.5</turretTopDrawSize>
+      <turretTopOffset>(0, 0.5)</turretTopOffset>
+      <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>
+	  <costList>
+      <SRA_Core>800</SRA_Core>
+    </costList>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	  <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>SRATurretGun_L_Particle_Launcher</defName>
+    <label>星规-虚空撕裂</label>
+    <description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。</description>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top</texPath>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_L_Particle_Launcher</defaultProjectile>
+        <forcedMissRadius>1</forcedMissRadius>
+        <ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
+        <warmupTime>4</warmupTime>
+        <minRange>4</minRange>
+        <range>500</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>SRA_SML_Mass_Drivers</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <requireLineOfSight>false</requireLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Particle_Launcher</defName>
+    <label>星规-虚空撕裂粒子团</label>
+    <graphicData>
+      <texPath>Things/Projectile/HellsphereCannon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>3.5</drawSize>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <speed>240</speed>
+      <damageAmountBase>640</damageAmountBase>
+      <explosionRadius>8</explosionRadius>
+      <explosionChanceToStartFire>0</explosionChanceToStartFire>
+      <explosionDamageFalloff>true</explosionDamageFalloff>
+      <explosionEffect>GiantExplosion</explosionEffect>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_GiantBomb</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+  
+  <!--光辉之冠炮塔======================================================================================-->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_Weapon_P</defName>
+    <label>星规-光辉之冠炮塔</label>
+    <description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawOffset>(0,0,-0.16)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRA_Weapon_P</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>3200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>1600</WorkToBuild>
+      <Mass>40</Mass>
+      <Beauty>0</Beauty>
+      <ShootingAccuracyTurret>1.00</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <SRA_Core>25</SRA_Core>
+    </costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+      <li>
+        <damageDef>EMP</damageDef>
+        <multiplier>0.5</multiplier>
+      </li>
+    </damageMultipliers>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_Initiatable" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <combatPower>160</combatPower>
+      <!--<buildingTags>
+        <li>SRAClusterMember</li>
+        <li>SRAClusterCombatThreat</li>
+        <li>SRA_SmallCluster_SingleTurret</li>
+      </buildingTags>-->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SRATurretGun_Weapon_P</turretGunDef>
+      <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <turretTopDrawSize>2.0</turretTopDrawSize>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_Weapon_P</defName>
+    <label>星规-光辉之冠</label>
+    <description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。</description>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRA_Weapon_P</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_Weapon_P</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <range>48</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>8</burstShotCount>
+        <soundCast>SRA_Weapon_P</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+      </li>
+    </verbs>
+  </ThingDef>
+
+
+</Defs>
+
