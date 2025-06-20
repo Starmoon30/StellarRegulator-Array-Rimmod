@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRA", "StellarRegulator_Array\SRA.csproj", "{C1FB607E-E314-42C7-B6EE-D7849E96E82A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{D1F4B762-9424-4D99-853D-DB713E1F4E65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
+		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C1FB607E-E314-42C7-B6EE-D7849E96E82A}.Release|ARM64.Build.0 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A969F738-2536-45C6-82B8-BDA92685A0A0}
+	EndGlobalSection
+EndGlobal
