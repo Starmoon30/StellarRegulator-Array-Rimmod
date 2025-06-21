@@ -205,6 +205,11 @@
       </li>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+        <!--<glowColor>(105,204,204,0)</glowColor>-->
+        <glowColor>(0, 255, 255, 0)</glowColor>
+      </li>
     </comps>
     <building>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -342,6 +347,9 @@
     <placeWorkers>
       <li>PlaceWorker_Heater</li>
     </placeWorkers>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <comps>
       <li Class="CompProperties_TempControl"/>
