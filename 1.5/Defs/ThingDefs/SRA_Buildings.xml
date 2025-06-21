@@ -154,7 +154,7 @@
       <texPath>SRA/Building/SRA_WorkTable</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <drawSize>(2.2, 2.2)</drawSize>
+      <drawSize>(2.5, 1.1)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -162,7 +162,7 @@
         <cornerBR>Damage/Corner</cornerBR>
       </damageData>
     </graphicData>
-    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <castEdgeShadows>false</castEdgeShadows>
     <costList>
       <Plasteel>500</Plasteel>
     </costList>
@@ -176,12 +176,12 @@
       <Mass>20</Mass>
       <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
     </statBases>
-    <size>(2,1)</size>
+    <size>(3,1)</size> 
     <designationCategory>SRA_Building</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(1,0,-1)</interactionCellOffset>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
     <recipes>
