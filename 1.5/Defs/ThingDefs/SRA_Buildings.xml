@@ -11,7 +11,7 @@
     <graphicData>
       <texPath>SRA/Building/SRARepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(7.5,9)</drawSize>
+      <drawSize>(6,7.2)</drawSize>
       <drawOffset>(0,0,2)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
@@ -22,7 +22,7 @@
     </graphicData>
     <castEdgeShadows>false</castEdgeShadows>
     <size>(5,5)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>PawnUnused</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <canOverlapZones>false</canOverlapZones>
@@ -85,7 +85,7 @@
       <texPath>SRA/Building/SRARepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2.5,3)</drawSize>
-      <drawOffset>(0,0,1)</drawOffset>
+      <drawOffset>(0,0,1.5)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -95,7 +95,7 @@
     </graphicData>
     <castEdgeShadows>false</castEdgeShadows>
     <size>(2,2)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>PawnUnused</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <canOverlapZones>false</canOverlapZones>
