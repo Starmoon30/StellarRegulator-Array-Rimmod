@@ -63,7 +63,6 @@
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
-    <castEdgeShadows>True</castEdgeShadows>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>
@@ -85,7 +84,7 @@
       <texPath>SRA/Building/SRARepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2.5,3)</drawSize>
-      <drawOffset>(0,0,1.5)</drawOffset>
+      <drawOffset>(0,0,0.5)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -136,7 +135,6 @@
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
-    <castEdgeShadows>True</castEdgeShadows>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>

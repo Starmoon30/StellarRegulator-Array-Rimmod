@@ -20,6 +20,7 @@
         <baseHealthScale>4</baseHealthScale>
         <mechWeightClass>Light</mechWeightClass>
       </race>
+      <mechFixedSkillLevel>20</mechFixedSkillLevel>
       <butcherProducts>
         <Steel>10</Steel>
       </butcherProducts>
@@ -55,6 +56,7 @@
       <baseHealthScale>1</baseHealthScale>
       <mechWeightClass>UltraHeavy</mechWeightClass>
     </race>
+    <mechFixedSkillLevel>20</mechFixedSkillLevel>
     <butcherProducts Inherit="False">
       <Steel>50</Steel>
       <Plasteel>20</Plasteel>

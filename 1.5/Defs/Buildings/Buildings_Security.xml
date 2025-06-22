@@ -14,7 +14,7 @@
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,2)</drawSize>
-      <drawOffset>(0,0,-0.16)</drawOffset>
+      <drawOffset>(0,0,0)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
@@ -94,7 +94,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_SML_Mass_Drivers</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <turretTopOffset>(0.05, 0.1)</turretTopOffset>
       <turretTopDrawSize>2.0</turretTopDrawSize>
       <soundAmbient>MechTurretBig_Call</soundAmbient>
     </building>
@@ -151,7 +151,7 @@
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3, 3)</drawSize>
-      <drawOffset>(0,0,-0.16)</drawOffset>
+      <drawOffset>(0,0,0)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
@@ -209,7 +209,7 @@
       <combatPower>1280</combatPower>
       <turretGunDef>SRATurretGun_L_Particle_Launcher</turretGunDef>
 	  	<turretTopDrawSize>3.5</turretTopDrawSize>
-      <turretTopOffset>(0, 0.5)</turretTopOffset>
+      <turretTopOffset>(0.075, 0.15)</turretTopOffset>
       <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
       <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
       <soundAmbient>MechTurretBig_Call</soundAmbient>
@@ -295,7 +295,7 @@
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1,1)</drawSize>
-      <drawOffset>(0,0,-0.16)</drawOffset>
+      <drawOffset>(0,0,0)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
@@ -375,7 +375,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_Weapon_P</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <turretTopOffset>(0.027, 0.05)</turretTopOffset>
       <turretTopDrawSize>2.0</turretTopDrawSize>
       <soundAmbient>MechTurretBig_Call</soundAmbient>
     </building>
