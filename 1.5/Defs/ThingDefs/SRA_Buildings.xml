@@ -12,7 +12,7 @@
       <texPath>SRA/Building/SRARepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(6,7.2)</drawSize>
-      <drawOffset>(0,0,2)</drawOffset>
+      <drawOffset>(0,0,1.5)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
