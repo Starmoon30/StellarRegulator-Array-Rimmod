@@ -234,7 +234,7 @@
 		<graphicData>
       <texPath>SRA/Building/Security/SRA_Weapon_P</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-	    <drawSize>0.5</drawSize>
+	    <drawSize>1</drawSize>
 		</graphicData>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
@@ -327,6 +327,9 @@
       <texPath>SRA/Weapon/SRA_Sword_of_Hidra</texPath>
       <color>(255,200,200)</color>
     </graphicData>
+    <weaponTags>
+      <li>SRA_Sword_of_Hidra</li>
+    </weaponTags>
     <tools>
       <li>
         <label>刃</label>

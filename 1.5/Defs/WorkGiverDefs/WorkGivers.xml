@@ -3,7 +3,7 @@
 
   <WorkGiverDef>
     <defName>SRA_WorkTableBill</defName>
-    <label>在星规-中继尖塔制作物品</label>
+    <label>在星规-构建机组制作物品</label>
     <giverClass>WorkGiver_DoBill</giverClass>
     <workType>Crafting</workType>
     <priorityInType>100</priorityInType>

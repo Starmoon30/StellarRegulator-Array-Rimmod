@@ -19,8 +19,8 @@
         <baseBodySize>0.5</baseBodySize>
         <baseHealthScale>4</baseHealthScale>
         <mechWeightClass>Light</mechWeightClass>
+        <mechFixedSkillLevel>20</mechFixedSkillLevel>
       </race>
-      <mechFixedSkillLevel>20</mechFixedSkillLevel>
       <butcherProducts>
         <Steel>10</Steel>
       </butcherProducts>
@@ -55,8 +55,8 @@
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <baseHealthScale>1</baseHealthScale>
       <mechWeightClass>UltraHeavy</mechWeightClass>
+      <mechFixedSkillLevel>20</mechFixedSkillLevel>
     </race>
-    <mechFixedSkillLevel>20</mechFixedSkillLevel>
     <butcherProducts Inherit="False">
       <Steel>50</Steel>
       <Plasteel>20</Plasteel>
@@ -87,10 +87,10 @@
     <forceNormalGearQuality>true</forceNormalGearQuality>
     <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
 	
-    <weaponMoney>9999~9999</weaponMoney>
+    <weaponMoney>99999~99999</weaponMoney>
     <combatPower>400</combatPower>
     <techHediffsChance>1</techHediffsChance>
-    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <techHediffsMoney>99999~99999</techHediffsMoney>
     <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
   </PawnKindDef>
   
@@ -151,7 +151,6 @@
       </weaponTags>
     </PawnKindDef>
 
-
 <!--
     <ThingDef Name="SRA_Hidra" ParentName="SRASuperHeavyMechanoid">
       <defName>SRA_Hidra</defName>
@@ -209,15 +208,15 @@
         </li>
       </lifeStages>      
       <weaponTags>
-        <li>SRA_SML_Mass_Drivers</li>
+        <li>SRA_Sword_of_Hidra</li>
       </weaponTags>
       <abilities>
-        <li>SRAPsychicSlaughter</li>
-        <li>SRAEntitySkip</li>
-        <li>SRABerserkPulse</li>
-        <li>SRAReleaseDeadlifeDust</li>
+        <li>SRA_PsychicSlaughter</li>
+        <li>SRA_EntitySkip</li>
+        <li>SRA_ReleaseDeadlifeDust</li>
+        <li>SRA_ControlPulse</li>
+        <li>SRA_AnnihilateStorm</li>
       </abilities>
     </PawnKindDef>
---> 
-
+-->
 </Defs>
