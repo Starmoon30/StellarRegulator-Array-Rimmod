@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<SRA_Setting>星规阵列-设置</SRA_Setting>
+	<SRA_SRParm.firstName>星规</SRA_SRParm.firstName>
+	<SRA_SRParm.lastname>星规</SRA_SRParm.lastname>
+	<SRA_SRParm.nickname>星规</SRA_SRParm.nickname>
+	<SRA_SRParm.title>星规</SRA_SRParm.title>
+
+	<SRA_NoseScar_Title>鼻梁伤疤</SRA_NoseScar_Title>
+
+	<SRA_NoseScar_Desc>给星规的鼻子增加一小道伤疤。虽然这样更加符合原作，但是如果没有合适的模组，这会极大的影响她的社交关系。</SRA_NoseScar_Desc>
+
+	<SRA_EyeRender_Title>眼睛贴图</SRA_EyeRender_Title>
+
+	<SRA_EyeRender_Desc>增加眼睛贴图，如果有动态表情将会自动关闭。</SRA_EyeRender_Desc>
+
+	<SRA_AllowDuplicateSRA_SR_Title>允许重复生成星规</SRA_AllowDuplicateSRA_SR_Title>
+
+	<SRA_AllowDuplicateSRA_SR_Desc>允许在检测到已经生成过星规的情况下再次生成。\n\n请注意：这个模组的部分功能需要检测星规的状态，只有最后一次生成的星规会被程序追踪。</SRA_AllowDuplicateSRA_SR_Desc>
+
+	<SRA_SRTracked>目前模组追踪的星规为：{0} ({1}) \n\n如果这是错误的人物，请使用"redesignate SRA_SR"开发者工具来替换追踪的人物。</SRA_SRTracked>
+	
+	<SRA_SRNotTracked>目前模组没有追踪任何人。\n\n如果模组应该追踪某人，请使用"redesignate SRA_SR"来指定人物。</SRA_SRNotTracked>
+
+</LanguageData>

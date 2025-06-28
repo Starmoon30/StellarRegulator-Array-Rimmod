@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using HarmonyLib;
+using RimWorld;
 using System;
 using UnityEngine;
 using Verse;
@@ -13,7 +14,6 @@ namespace SRA
             EyeRender = true,
             AllowDuplicateSRA_SR = false;
 
-        public SpawnMode spawnMode = SpawnMode.disabled;
 
         public override void ExposeData()
         {
@@ -24,14 +24,9 @@ namespace SRA
         }
     }
 
-    public enum SpawnMode
-    {
-        disabled, hostile, friendly
-    }
-
     public class SRAMod : Mod
     {
-        public static SRAMod settings;
+        public static Setting settings;
 
         public static GameComponent_SRA_SRUtilTracker Tracker => Current.Game?.GetComponent<GameComponent_SRA_SRUtilTracker>();
 
@@ -39,10 +34,11 @@ namespace SRA
         public static bool EyeRender => ModLister.GetActiveModWithIdentifier("nals.facialanimation") == null && settings.EyeRender;
         public static bool AllowDuplicateSRA_SR => settings.AllowDuplicateSRA_SR;
 
-        public BDFNEMod(ModContentPack content)
+        public SRAMod(ModContentPack content)
             : base(content)
         {
-            settings = GetSettings<SRAMod>();
+            settings = GetSettings<Setting>();
+            new Harmony("DiZhuan.StellarRegulatorArray").PatchAll();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

@@ -151,14 +151,31 @@
       </weaponTags>
     </PawnKindDef>
 
-<!--
-    <ThingDef Name="SRA_Hidra" ParentName="SRASuperHeavyMechanoid">
-      <defName>SRA_Hidra</defName>
-      <label>希德拉</label>
-      <description>一个诡异超自然实体创造的化身。</description>
+    
+    <ThingDef Name="SRA_SR_Mech" ParentName="SRASuperHeavyMechanoid">
+      <defName>SRA_SR_Mech</defName>
+      <label>星规</label>
+      <description>本地化等会补（。</description>
       <race>
         <body>Apocriton</body>
         <baseBodySize>1</baseBodySize>
+        <mechEnabledWorkTypes>
+         <li>Hauling</li>
+         <li>BasicWorker</li>
+         <!-- <li>Handling</li> -->
+         <li>Hunting</li>
+         <li>Cleaning</li>
+         <li>Construction</li>
+         <li>Firefighter</li>
+         <li>PlantCutting</li>
+         <li>Growing</li>
+         <li>Crafting</li>
+         <li>Smithing</li>
+         <li>Tailoring</li>
+         <li>Cooking</li>
+         <li>Mining</li>
+         <li>Doctor</li>
+        </mechEnabledWorkTypes>
         <lifeStageAges>
           <li>
             <def>MechanoidFullyFormed</def>
@@ -188,10 +205,10 @@
       </comps>
     </ThingDef>
     
-    <PawnKindDef Name="SRA_HidraKind" ParentName="SRAHeavyMechanoidKind">
-      <defName>SRA_Hidra</defName>
-      <label>希德拉</label>
-      <race>SRA_Hidra</race>
+    <PawnKindDef Name="SRA_SR_MechKind" ParentName="SRAHeavyMechanoidKind">
+      <defName>SRA_SR_Mech</defName>
+      <label>星规</label>
+      <race>SRA_SR_Mech</race>
       <combatPower>500</combatPower>
       <maxPerGroup>0</maxPerGroup>
       <isBoss>true</isBoss>
@@ -218,5 +235,4 @@
         <li>SRA_AnnihilateStorm</li>
       </abilities>
     </PawnKindDef>
--->
 </Defs>
