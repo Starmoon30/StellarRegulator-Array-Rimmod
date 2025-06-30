@@ -47,8 +47,15 @@
       <ArmorRating_Blunt>4</ArmorRating_Blunt>
       <ArmorRating_Sharp>4</ArmorRating_Sharp>
       <ArmorRating_Heat>4</ArmorRating_Heat>
+			<ComfyTemperatureMin>-200</ComfyTemperatureMin>
+			<ComfyTemperatureMax>2000</ComfyTemperatureMax>
+			<AimingDelayFactor>-0.5</AimingDelayFactor>
+			<ShootingAccuracyPawn>20</ShootingAccuracyPawn>
+      <MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
+			<RangedCooldownFactor>-0.5</RangedCooldownFactor>
+			<StaggerDurationFactor>-1</StaggerDurationFactor>
       <PsychicSensitivity>0</PsychicSensitivity>
-      <MechEnergyLossPerHP>0.15</MechEnergyLossPerHP>
+      <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
     </statBases>
     <race>
       <intelligence>ToolUser</intelligence>
@@ -87,10 +94,10 @@
     <forceNormalGearQuality>true</forceNormalGearQuality>
     <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
 	
-    <weaponMoney>99999~99999</weaponMoney>
+    <weaponMoney>40000~40000</weaponMoney>
     <combatPower>400</combatPower>
     <techHediffsChance>1</techHediffsChance>
-    <techHediffsMoney>99999~99999</techHediffsMoney>
+    <techHediffsMoney>80000~80000</techHediffsMoney>
     <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
   </PawnKindDef>
   
@@ -154,10 +161,10 @@
     
     <ThingDef Name="SRA_SR_Mech" ParentName="SRASuperHeavyMechanoid">
       <defName>SRA_SR_Mech</defName>
-      <label>星规</label>
-      <description>本地化等会补（。</description>
+      <label>星规阵列五类行动单元</label>
+      <description>一个星规阵列五类行动单元的类人素体，完全使用星辉分形构建，借助其内置的星辉水晶能量网络端口，这一机械体能够调度近乎无限的能源。</description>
       <race>
-        <body>Apocriton</body>
+        <body>Lancer</body>
         <baseBodySize>1</baseBodySize>
         <mechEnabledWorkTypes>
          <li>Hauling</li>
@@ -182,12 +189,19 @@
             <minAge>0</minAge>
           </li>
         </lifeStageAges>
-        <baseHealthScale>16</baseHealthScale>
+        <baseHealthScale>8</baseHealthScale>
       </race>
       <statBases>
         <BandwidthCost>1</BandwidthCost>
         <EMPResistance>4</EMPResistance>
         <MoveSpeed>4</MoveSpeed>
+		    <WorkSpeedGlobal>4</WorkSpeedGlobal>
+	      <CarryingCapacity>800</CarryingCapacity>
+        <FoodPoisonChance>0</FoodPoisonChance>
+        <IncomingDamageFactor>0.1</IncomingDamageFactor>
+        <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
+        <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
+        <WastepacksPerRecharge>0</WastepacksPerRecharge>
       </statBases>
       <tools>
         <li>
@@ -202,6 +216,53 @@
         </li>
       </tools>
       <comps>
+        <li Class="CompProperties_ProjectileInterceptor">
+          <radius>1</radius>
+          <interceptGroundProjectiles>true</interceptGroundProjectiles>
+          <color>(0.4, 0.4, 0.4)</color>
+          <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+          <activeSound>BulletShield_Ambience</activeSound>
+          <hitPoints>8000</hitPoints>
+          <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+          <chargeDurationTicks>1800</chargeDurationTicks><!-- 30s -->
+          <rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
+          <minIdleAlpha>0.2</minIdleAlpha>
+          <drawWithNoSelection>True</drawWithNoSelection>
+          <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+          <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+        </li>
+        <li Class="AutoBlink.CompProperties_AutoBlink" MayRequire="rabiosus.autoblink">
+          <!-- <gizmoIconPath></gizmoIconPath> -->
+          <blinkIntervalTicks>60</blinkIntervalTicks>
+          <delayAfterEligibleTicks>4</delayAfterEligibleTicks>
+          <cellsBeforeTarget>3</cellsBeforeTarget>
+          <maxDistanceToBlink>400</maxDistanceToBlink>
+          <minDistanceToBlink>10</minDistanceToBlink>
+          <postBlinkStanceTicks>0</postBlinkStanceTicks>
+          <excludedJobDefs>
+            <li>GotoWander</li>
+            <li>Carried</li>
+          </excludedJobDefs>
+
+          <preBlinkSoundDefs>
+            <li>AutoBlink_Skip_Small</li>
+          </preBlinkSoundDefs>
+          <postBlinkSoundDefs>
+            <li>AutoBlink_Skip_Exit_Small</li>
+          </postBlinkSoundDefs>
+
+          <preBlinkEffecterDefs>
+            <li>Skip_Entry</li>
+          </preBlinkEffecterDefs>
+
+          <postBlinkEffecterDefs>
+            <li>Skip_ExitNoDelay</li>
+          </postBlinkEffecterDefs>
+
+          <preBlinkMoteDefs/>
+          <postBlinkMoteDefs/>
+
+        </li>
       </comps>
     </ThingDef>
     
@@ -213,19 +274,21 @@
       <maxPerGroup>0</maxPerGroup>
       <isBoss>true</isBoss>
       <allowInMechClusters>false</allowInMechClusters>
+      <startingHediffs>
+      </startingHediffs>
       <lifeStages>
         <li>
           <bodyGraphicData>
-            <texPath>Things/Pawn/Mechanoid/Apocriton</texPath>
-            <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+            <texPath>SRA/Pawn/Mechanoid/SRA_SR_Mech</texPath>
+            <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
             <shaderType>CutoutWithOverlay</shaderType>
             <graphicClass>Graphic_Multi</graphicClass>
-            <drawSize>2</drawSize>
+            <drawSize>1.5</drawSize>
         </bodyGraphicData>
         </li>
       </lifeStages>      
       <weaponTags>
-        <li>SRA_Sword_of_Hidra</li>
+        <li>SRA_Spear_of_SRA</li>
       </weaponTags>
       <abilities>
         <li>SRA_PsychicSlaughter</li>

@@ -76,8 +76,7 @@
       <Flammability>0</Flammability>
     </statBases>
 	  <tradeability>None</tradeability>
-	  <generateAllowChance>0</generateAllowChance>
-	  <generateCommonality>0</generateCommonality>
+    <relicChance>0</relicChance>
     <weaponTags>
       <li>SRA_Spear_of_SRA</li>
     </weaponTags>

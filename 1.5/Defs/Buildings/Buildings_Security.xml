@@ -83,7 +83,7 @@
     <fillPercent>0.5</fillPercent>
     <hasTooltip>true</hasTooltip>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
+    <designationCategory>SRA_Building</designationCategory>
     <building>
       <combatPower>640</combatPower>
       <!--<buildingTags>
@@ -217,7 +217,7 @@
 	  <costList>
       <SRA_Core>800</SRA_Core>
     </costList>
-    <designationCategory>Security</designationCategory>
+    <designationCategory>SRA_Building</designationCategory>
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
 	  <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -364,7 +364,7 @@
     <fillPercent>0.5</fillPercent>
     <hasTooltip>true</hasTooltip>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
+    <designationCategory>SRA_Building</designationCategory>
     <building>
       <combatPower>160</combatPower>
       <!--<buildingTags>

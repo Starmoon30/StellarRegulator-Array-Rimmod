@@ -342,6 +342,9 @@
     <placeWorkers>
       <li>PlaceWorker_Heater</li>
     </placeWorkers>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <comps>
       <li Class="CompProperties_TempControl"/>
