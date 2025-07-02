@@ -77,6 +77,9 @@
           <li>EMP</li>
         </affectedDamageDefs>
       </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -96,7 +99,6 @@
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
       <turretTopDrawSize>2.0</turretTopDrawSize>
-      <soundAmbient>MechTurretBig_Call</soundAmbient>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -182,6 +184,9 @@
           <li>EMP</li>
         </affectedDamageDefs>
       </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
     </comps>
     <damageMultipliers>
       <li>
@@ -212,7 +217,6 @@
       <turretTopOffset>(0, 0.5)</turretTopOffset>
       <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
       <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
-      <soundAmbient>MechTurretBig_Call</soundAmbient>
     </building>
 	  <costList>
       <SRA_Core>800</SRA_Core>
@@ -358,6 +362,9 @@
           <li>EMP</li>
         </affectedDamageDefs>
       </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -377,7 +384,6 @@
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
       <turretTopDrawSize>2.0</turretTopDrawSize>
-      <soundAmbient>MechTurretBig_Call</soundAmbient>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>

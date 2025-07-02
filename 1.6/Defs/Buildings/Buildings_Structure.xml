@@ -49,7 +49,7 @@
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>1</fillPercent>
     <coversFloor>true</coversFloor>
-    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <drawStyleCategory>Walls</drawStyleCategory>
     <tickerType>Never</tickerType>
     <rotatable>false</rotatable>
     <selectable>true</selectable>
@@ -64,6 +64,7 @@
     <building>
       <paintable>true</paintable>
       <isInert>true</isInert>
+      <isWall>true</isWall>
       <isPlaceOverableWall>true</isPlaceOverableWall>
       <ai_chillDestination>false</ai_chillDestination>
       <supportsWallAttachments>true</supportsWallAttachments>
@@ -73,7 +74,11 @@
       <relatedBuildCommands>
         <li>Door</li>
         <li>Autodoor</li>
-        <li>SRA_SRAAutodoor</li>
+        <li>OrnateDoor</li>
+        <li MayRequire="Ludeon.RimWorld.Anomaly">SecurityDoor</li>
+        <li MayRequire="Ludeon.RimWorld.Odyssey">VacBarrier</li>
+        <li>Cooler</li>
+        <li>Vent</li>
       </relatedBuildCommands>
     </building>
     <uiOrder>3000</uiOrder>
@@ -133,7 +138,6 @@
 	<costList>
 		<SRA_Core>1</SRA_Core>
 	</costList>
-    <costStuffCount>60</costStuffCount>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <selectable>true</selectable>
     <tickerType>Normal</tickerType>

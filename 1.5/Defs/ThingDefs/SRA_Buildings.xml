@@ -36,7 +36,6 @@
     <building>
       <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
       <destroySound>BuildingDestroyed_Metal_Big</destroySound>
-      <soundAmbient>GeothermalPlant_Ambience</soundAmbient>
       <ai_chillDestination>false</ai_chillDestination>
     </building>
     <comps>
@@ -108,7 +107,6 @@
     <building>
       <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
       <destroySound>BuildingDestroyed_Metal_Big</destroySound>
-      <soundAmbient>GeothermalPlant_Ambience</soundAmbient>
       <ai_chillDestination>false</ai_chillDestination>
     </building>
     <comps>
@@ -156,7 +154,7 @@
       <texPath>SRA/Building/SRA_WorkTable</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <drawSize>(2.5, 1.1)</drawSize>
+      <drawSize>(3, 1)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>

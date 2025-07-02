@@ -39,14 +39,16 @@
     <description>此人被某种神秘的超凡力量选定，背离了自我。</description>
     <isBad>false</isBad>
     <priceImpact>false</priceImpact>
-    <disablesNeeds>
-      <li>Food</li>
-      <li>Rest</li>
-      <li>Comfort</li>
-			<li>Joy</li>
-			<li>Outdoors</li>
-    </disablesNeeds>
     <stages>
+      <li>
+        <disablesNeeds>
+          <li>Food</li>
+          <li>Rest</li>
+          <li>Comfort</li>
+			    <li>Joy</li>
+			    <li>Outdoors</li>
+        </disablesNeeds>
+      </li>
     </stages>
   </HediffDef>
 

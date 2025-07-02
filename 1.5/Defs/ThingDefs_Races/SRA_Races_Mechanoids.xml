@@ -41,7 +41,7 @@
   <ThingDef Abstract="True" Name="SRASuperHeavyMechanoid" ParentName="HeavyMechanoid">
     <statBases>
       <MoveSpeed>4</MoveSpeed>
-      <MarketValue>3200</MarketValue>
+      <MarketValue>32000</MarketValue>
       <ControlTakingTime>30</ControlTakingTime>
       <BandwidthCost>5</BandwidthCost>
       <ArmorRating_Blunt>4</ArmorRating_Blunt>
@@ -49,10 +49,10 @@
       <ArmorRating_Heat>4</ArmorRating_Heat>
 			<ComfyTemperatureMin>-200</ComfyTemperatureMin>
 			<ComfyTemperatureMax>2000</ComfyTemperatureMax>
-			<AimingDelayFactor>-0.5</AimingDelayFactor>
+			<AimingDelayFactor>0.5</AimingDelayFactor>
 			<ShootingAccuracyPawn>20</ShootingAccuracyPawn>
-      <MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
-			<RangedCooldownFactor>-0.5</RangedCooldownFactor>
+      <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+			<RangedCooldownFactor>0.5</RangedCooldownFactor>
 			<StaggerDurationFactor>-1</StaggerDurationFactor>
       <PsychicSensitivity>0</PsychicSensitivity>
       <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
@@ -202,6 +202,8 @@
         <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
         <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
         <WastepacksPerRecharge>0</WastepacksPerRecharge>
+			  <EnergyShieldRechargeRate>4</EnergyShieldRechargeRate>
+			  <EnergyShieldEnergyMax>64</EnergyShieldEnergyMax>
       </statBases>
       <tools>
         <li>
@@ -216,26 +218,19 @@
         </li>
       </tools>
       <comps>
-        <li Class="CompProperties_ProjectileInterceptor">
-          <radius>1</radius>
-          <interceptGroundProjectiles>true</interceptGroundProjectiles>
-          <color>(0.4, 0.4, 0.4)</color>
-          <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
-          <activeSound>BulletShield_Ambience</activeSound>
-          <hitPoints>8000</hitPoints>
-          <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
-          <chargeDurationTicks>1800</chargeDurationTicks><!-- 30s -->
-          <rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
-          <minIdleAlpha>0.2</minIdleAlpha>
-          <drawWithNoSelection>True</drawWithNoSelection>
-          <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
-          <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+        <li Class="CompProperties_Shield">
+          <startingTicksToReset>1800</startingTicksToReset>
+          <minDrawSize>1.8</minDrawSize>
+          <maxDrawSize>2.2</maxDrawSize>
+          <energyLossPerDamage>0.05</energyLossPerDamage>
+          <energyOnReset>6400</energyOnReset>
+          <blocksRangedWeapons>false</blocksRangedWeapons>
         </li>
         <li Class="AutoBlink.CompProperties_AutoBlink" MayRequire="rabiosus.autoblink">
           <!-- <gizmoIconPath></gizmoIconPath> -->
           <blinkIntervalTicks>60</blinkIntervalTicks>
           <delayAfterEligibleTicks>4</delayAfterEligibleTicks>
-          <cellsBeforeTarget>3</cellsBeforeTarget>
+          <cellsBeforeTarget>1</cellsBeforeTarget>
           <maxDistanceToBlink>400</maxDistanceToBlink>
           <minDistanceToBlink>10</minDistanceToBlink>
           <postBlinkStanceTicks>0</postBlinkStanceTicks>
