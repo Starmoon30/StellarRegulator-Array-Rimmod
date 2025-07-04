@@ -84,6 +84,8 @@
     <Compile Include="EventWindow_Rocivia.cs" />
     <Compile Include="CompUseEffect_ActivateMech.cs" />
     <Compile Include="CompProperties_UseEffect_ActivateMech.cs" />
+    <Compile Include="Comp_SRAWarUnitSpawner.cs" />
+    <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
     <Compile Include="PredefinedCharacterParmDef.cs" />
     <Compile Include="HediffComp_StatusFlag.cs" />
     <Compile Include="GameComponent_SRA_SRUtilTracker.cs" />

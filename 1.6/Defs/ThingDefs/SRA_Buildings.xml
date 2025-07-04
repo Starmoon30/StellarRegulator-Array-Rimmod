@@ -77,7 +77,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>SRA-DefenseDroneTower</defName>
     <label>星规-哨戒尖塔</label>
-    <description>特殊的星规地面防御设施，它持续部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每20秒能部署一个防御单元，而每个防御单元能持续运行500秒。</description>
+    <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每50秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
     <graphicData>
       <texPath>SRA/Building/SRARepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>

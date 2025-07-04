@@ -23,4 +23,12 @@
 	
 	<SRA_SRNotTracked>目前模组没有追踪任何人。\n\n如果模组应该追踪某人，请使用"redesignate SRA_SR"来指定人物。</SRA_SRNotTracked>
 
+  
+	<SRAWarUnitSpawnerAutoMode>自动迎击模式</SRAWarUnitSpawnerAutoMode>
+	<ChangeSRAWarUnit>切换战争单元</ChangeSRAWarUnit>
+	<SRAWarUnitSpawnerAutoModeDesc>哨戒尖塔在检测到敌对目标时会自动部署微型战争单元。</SRAWarUnitSpawnerAutoModeDesc>
+	<SRAWarUnitSpawnerNoAuto>部署战争单元</SRAWarUnitSpawnerNoAuto>
+	<SRAWarUnitSpawnerNoAutoDesc>立即部署一只储备的战争单元。</SRAWarUnitSpawnerNoAutoDesc>
+	<SRAWarUnitSpawnerHaveSRAWarUnit>当前可用战争单元:{0}/{1}</SRAWarUnitSpawnerHaveSRAWarUnit>
+
 </LanguageData>
