@@ -68,6 +68,7 @@
 				<MoveSpeed>4</MoveSpeed>
 				<DecompressionResistance MayRequire="kentington.saveourship2">1</DecompressionResistance>
 				<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">10</VacuumSpeedMultiplier>
+				<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance>
 			</statOffsets>
 		</li>
 	</stages>
