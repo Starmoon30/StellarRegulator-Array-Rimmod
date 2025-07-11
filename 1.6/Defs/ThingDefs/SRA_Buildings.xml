@@ -3,13 +3,12 @@
   <!--<ThingDef ParentName="BuildingBase"><defName>PolarisLyraeCurer</defName><label>lyrae curer</label><thingClass>Polarisbloc.Building_Curer</thingClass><graphicData><texPath>Polarisbloc/Building/Curer</texPath><graphicClass>Graphic_Single</graphicClass><shadowData><volume>(0.8, 0.3, 0.3)</volume><offset>(0,0,-0.25)</offset></shadowData><drawSize>(2.7,2.7)</drawSize></graphicData><altitudeLayer>Building</altitudeLayer><minifiedDef>MinifiedThing</minifiedDef><statBases><MaxHitPoints>80</MaxHitPoints><WorkToBuild>2500</WorkToBuild><Flammability>1.0</Flammability><Mass>8</Mass><Beauty>6</Beauty></statBases><description>The lyrae curer will tend wounds to nearby creatures but the quality won't be good.</description><drawerType>MapMeshAndRealTime</drawerType><drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected><fillPercent>0.15</fillPercent><costList><Steel>50</Steel><ComponentIndustrial>4</ComponentIndustrial></costList><comps><li Class="CompProperties_Power"><compClass>CompPowerTrader</compClass><basePowerConsumption>400</basePowerConsumption><shortCircuitInRain>false</shortCircuitInRain></li><li Class="CompProperties_Flickable" /><li Class="CompProperties_Refuelable"><fuelConsumptionRate>8.0</fuelConsumptionRate><fuelCapacity>24.0</fuelCapacity><fuelFilter><thingDefs><li>MedicineHerbal</li></thingDefs></fuelFilter></li><li Class="CompProperties_Glower"><glowRadius>10</glowRadius><glowColor>(217,217,240,0)</glowColor></li></comps><leaveResourcesWhenKilled>false</leaveResourcesWhenKilled><pathCost>8</pathCost><designationCategory>Misc</designationCategory><rotatable>false</rotatable><specialDisplayRadius>4.9</specialDisplayRadius><tickerType>Normal</tickerType><researchPrerequisites><li>PolarisLyraeCurer</li></researchPrerequisites><constructionSkillPrerequisite>7</constructionSkillPrerequisite><thingCategories><li>BuildingsMisc</li></thingCategories></ThingDef>-->
   <!--SRA_Relay_Pylon-->
   
-    <!--拟修改为SRA_RepairTower-->
   <ThingDef ParentName="BuildingBase">
-    <defName>SRARepairTower</defName>
+    <defName>SRA_RepairTower</defName>
     <label>星规-流转尖塔</label>
     <description>一个神必的星规设施，总而言之，它能在一个庞大范围内持续修复你的装备和物品，并持续增加你建筑的耐久度，直到抵达上限的两倍再额外多出800耐久度，来省去修理的烦恼。至于发电量的问题……唉别想那么多了，用就是了。</description>
     <graphicData>
-      <texPath>SRA/Building/SRARepairTower</texPath>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(6,6)</drawSize>
       <damageData>
@@ -48,7 +47,7 @@
         <glowColor>(0, 255, 255, 0)</glowColor>
       </li>
       <li>
-	      <compClass>SRA_SRARepairTower</compClass>
+	      <compClass>SRA_SRA_RepairTower</compClass>
 	    </li>
     </comps>
     <damageMultipliers>
@@ -68,18 +67,17 @@
       <SRA_Core>800</SRA_Core>
     </costList>
     <researchPrerequisites>
-      <li>SRARepairTower</li>
+      <li>SRA_RepairTower</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
   </ThingDef>
 
-    <!--拟修改为SRA_DefenseDroneTower-->
   <ThingDef ParentName="BuildingBase">
-    <defName>SRA-DefenseDroneTower</defName>
+    <defName>SRA_DefenseDroneTower</defName>
     <label>星规-哨戒尖塔</label>
     <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每50秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
     <graphicData>
-      <texPath>SRA/Building/SRARepairTower</texPath>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,2)</drawSize>
       <damageData>
@@ -107,18 +105,17 @@
       <ai_chillDestination>false</ai_chillDestination>
     </building>
     <comps>
-      <li Class="CompProperties_SpawnerPawn">
-        <spawnablePawnKinds>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="SRA.CompProperties_SRAWarUnitSpawner">
+        <pawnKindDef>
           <li>SRA_Mech_WarUnit_S</li>
-        </spawnablePawnKinds>
-        <chooseSingleTypeToSpawn>True</chooseSingleTypeToSpawn>
-        <pawnsLeftToSpawnKey>MessageSRAMechanoidsLeftToAssemble</pawnsLeftToSpawnKey>
-        <nextSpawnInspectStringKey>MechAssemblyCompleteIn</nextSpawnInspectStringKey>
-        <nextSpawnInspectStringKeyDormant>MechAssemblyNextType</nextSpawnInspectStringKeyDormant>
-        <showNextSpawnInInspect>true</showNextSpawnInInspect>
-        <lordJob>LordJob_MechanoidsDefend</lordJob>
-        <pawnSpawnIntervalDays>0.02</pawnSpawnIntervalDays>
-        <shouldJoinParentLord>True</shouldJoinParentLord>
+        </pawnKindDef>
+        <maxWarUnits>20</maxWarUnits> <!-- 自定义最大单位数 -->
       </li>
     </comps>
     <damageMultipliers>
@@ -138,7 +135,7 @@
       <SRA_Core>100</SRA_Core>
     </costList>
     <researchPrerequisites>
-      <li>SRARepairTower</li>
+      <li>SRA_RepairTower</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
   </ThingDef>

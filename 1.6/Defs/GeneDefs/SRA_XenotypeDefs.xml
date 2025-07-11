@@ -22,7 +22,7 @@
 			<li>MoveSpeed_VeryQuick</li>
 			<li>Mood_Sanguine</li>
 			<li>ToxResist_Total</li>
-			<li>ToxicEnvironmentResistance_Total</li>
+			<li>VacuumResistance_Total</li>
 			<li>Aggression_DeadCalm</li>
 			<li>MeleeDamage_Strong</li>
 			<li>SRA_Neversleep</li>
@@ -31,6 +31,7 @@
 			<li>StrongStomach</li>
 			<li>RobustDigestion</li>
 			<li>Learning_Fast</li>
+			<li>CaveDweller</li>
 			<li>DarkVision</li>
 			<li>Hair_Grayless</li>
 			<li>ElongatedFingers</li>

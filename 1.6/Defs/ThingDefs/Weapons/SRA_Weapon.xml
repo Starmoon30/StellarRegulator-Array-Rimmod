@@ -88,7 +88,7 @@
       <li>
         <verbClass>Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <warmupTime>0.1</warmupTime>
+        <warmupTime>0.0</warmupTime>
         <range>120</range>
         <minRange>0</minRange>
 		    <requireLineOfSight>false</requireLineOfSight>
@@ -96,9 +96,9 @@
         <soundCastTail>GunTail_Medium</soundCastTail>
         <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
 		
-        <beamStartOffset>1</beamStartOffset><!--枪口处偏移 0.75-->
-        <beamFullWidthRange>2</beamFullWidthRange><!--原版 6.9-->
-        <beamWidth>-2</beamWidth><!--原版 6-->
+        <beamStartOffset>0</beamStartOffset><!--枪口处偏移 0.75-->
+        <beamFullWidthRange>3</beamFullWidthRange><!--原版 6.9-->
+        <beamWidth>1</beamWidth><!--原版 6-->
         <beamMaxDeviation>0.1</beamMaxDeviation><!--原版 1.5-->
         <beamCurvature>0.1</beamCurvature><!--原版 0.6-->
         <burstShotCount>32</burstShotCount><!--攻击判定次数-->

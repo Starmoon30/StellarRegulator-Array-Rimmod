@@ -16,7 +16,7 @@
   </ResearchProjectDef>
   <ResearchProjectDef>
     <tab>SRA</tab>
-    <defName>SRARepairTower</defName>
+    <defName>SRA_RepairTower</defName>
     <label>星规-流转尖塔</label>
     <description>一个神必的星规设施，总而言之，它能在一个庞大范围内持续修复你的装备和物品，是不是很美妙？</description>
     <baseCost>3200</baseCost>

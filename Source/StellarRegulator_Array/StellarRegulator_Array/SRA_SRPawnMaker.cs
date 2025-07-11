@@ -394,14 +394,5 @@ namespace SRA
             Log.Message(stb.ToString());
         }
 
-        [DebugAction("SRAMod", "Generate missing faction", false, false, false, false, actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap, displayPriority = 1000)]
-        public static void DebugGenFaction()
-        {
-            if (parm.fixedFaction != null && FactionUtility.DefaultFactionFrom(parm.fixedFaction) == null)
-            {
-                Messages.Message("SRA_FactionGenerated".Translate(), MessageTypeDefOf.RejectInput, false);
-                FactionGenerator.GenerateFactionsIntoWorld(new List<FactionDef>() { parm.fixedFaction });
-            }
-        }
     }
 }

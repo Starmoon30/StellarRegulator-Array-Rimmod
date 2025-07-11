@@ -165,9 +165,5 @@ namespace SRA
         }
         #endregion
 
-        public override void LoadedGame()
-        {
-            SRA_SRPawnMaker.DebugGenFaction();
-        }
     }
 }

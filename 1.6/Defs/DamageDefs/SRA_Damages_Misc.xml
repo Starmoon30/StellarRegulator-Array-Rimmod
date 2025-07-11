@@ -32,6 +32,7 @@
     <defaultArmorPenetration>4</defaultArmorPenetration>
     <buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
     <buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+    <ignoreShields>true</ignoreShields>
   </DamageDef>
 
 </Defs>

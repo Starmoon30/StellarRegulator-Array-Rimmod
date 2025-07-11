@@ -32,21 +32,6 @@ namespace SRA
 			}
         }
 
-        public override void FinalizeInit()
-        {
-            base.FinalizeInit();
-			List<EventWindow> list = DefDatabase<EventWindow>.AllDefs.ToList();
-			for (int j = 0; j < list.Count; j++)
-            {
-                EventWindow def = list[j];
-				if (def.priceKind == "None" && !script_Allowed.Contains(def.ID))
-                {
-					script_Allowed.Add(def.ID);
-                }
-            }
-        }
-
-
 		public override void ExposeData()
 		{
 			Scribe_Values.Look<bool>(ref blackMechDiscoverd, "blackMechDiscoverd", false, false);

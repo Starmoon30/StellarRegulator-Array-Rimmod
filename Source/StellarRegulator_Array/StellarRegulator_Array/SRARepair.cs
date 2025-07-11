@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 namespace RimWorld
 {
-    public class SRA_SRARepairTower : ThingComp
+    public class SRA_SRA_RepairTower : ThingComp
     {
         private int SRArepairTick;
         public override void CompTick()
