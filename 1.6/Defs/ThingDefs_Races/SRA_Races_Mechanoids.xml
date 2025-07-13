@@ -228,7 +228,7 @@
         </li>
         <li Class="AutoBlink.CompProperties_AutoBlink" MayRequire="rabiosus.autoblink">
           <!-- <gizmoIconPath></gizmoIconPath> -->
-          <blinkIntervalTicks>60</blinkIntervalTicks>
+          <blinkIntervalTicks>12</blinkIntervalTicks>
           <delayAfterEligibleTicks>4</delayAfterEligibleTicks>
           <cellsBeforeTarget>1</cellsBeforeTarget>
           <maxDistanceToBlink>400</maxDistanceToBlink>

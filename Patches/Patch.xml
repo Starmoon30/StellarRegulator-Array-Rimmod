@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationAdd">
+                <xpath>*/ThingDef[defName = "GravEngine"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+                <value>
+                    <li>SRA_RepairTower</li>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+</Patch>

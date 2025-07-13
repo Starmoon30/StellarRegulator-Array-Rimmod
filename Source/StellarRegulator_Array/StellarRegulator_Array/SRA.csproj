@@ -90,6 +90,7 @@
     <Compile Include="PredefinedCharacterParmDef.cs" />
     <Compile Include="HediffComp_StatusFlag.cs" />
     <Compile Include="GameComponent_SRA_SRUtilTracker.cs" />
+    <Compile Include="CompRefuelable_OncePerBill.cs" />
     <Compile Include="ThingDefOf.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Mortar_Patch.cs" />

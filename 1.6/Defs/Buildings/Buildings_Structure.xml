@@ -74,12 +74,14 @@
       <relatedBuildCommands>
         <li>Door</li>
         <li>Autodoor</li>
+        <li>SRA_SRAAutodoor</li>
         <li>OrnateDoor</li>
         <li MayRequire="Ludeon.RimWorld.Anomaly">SecurityDoor</li>
         <li MayRequire="Ludeon.RimWorld.Odyssey">VacBarrier</li>
         <li>Cooler</li>
         <li>Vent</li>
       </relatedBuildCommands>
+      <isAirtight>true</isAirtight>
     </building>
     <uiOrder>3000</uiOrder>
     <comps>
@@ -185,6 +187,7 @@
         <texPath>SRA/Building/Door/SRAAutodoor_BluePrint</texPath>
       </blueprintGraphicData>
       <ai_chillDestination>false</ai_chillDestination>
+      <isAirtight>true</isAirtight>
     </building>
     <uiOrder>2505</uiOrder>
     <uiIconPath>SRA/Building/Door/SRAAutodoor</uiIconPath>

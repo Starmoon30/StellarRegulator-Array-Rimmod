@@ -49,6 +49,18 @@
       <li>
 	      <compClass>SRA_SRA_RepairTower</compClass>
 	    </li>
+      <li Class="CompProperties_SubstructureFootprint" MayRequire="Ludeon.RimWorld.Odyssey">
+        <radius>48</radius>
+      </li>
+      <li Class="CompProperties_GravshipFacility" MayRequire="Ludeon.RimWorld.Odyssey">
+        <statOffsets>
+          <SubstructureSupport>6400</SubstructureSupport>
+          <GravshipRange>6400</GravshipRange>
+        </statOffsets>
+        <requiresLOS>false</requiresLOS>
+        <maxSimultaneous>1</maxSimultaneous>
+        <maxDistance>48</maxDistance>
+      </li>
     </comps>
     <damageMultipliers>
       <li>
@@ -176,7 +188,7 @@
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(1,0,-1)</interactionCellOffset>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
     <recipes>
