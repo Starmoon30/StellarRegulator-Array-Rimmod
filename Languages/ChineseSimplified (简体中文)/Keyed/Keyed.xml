@@ -7,6 +7,8 @@
 	<SRA_SRParm.nickname>星规</SRA_SRParm.nickname>
 	<SRA_SRParm.title>星规</SRA_SRParm.title>
 
+	<SRA_CompGenerator_SRA_Core_Percentage>距离下一</SRA_CompGenerator_SRA_Core_Percentage>
+
 	<SRA_NoseScar_Title>测试伤疤</SRA_NoseScar_Title>
 
 	<SRA_NoseScar_Desc>测试性伤疤。此菜单内现有的设置都是只是代码探索，在实际游戏中没有任何作用。</SRA_NoseScar_Desc>

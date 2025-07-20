@@ -10,5 +10,7 @@ namespace SRA
         public static PredefinedCharacterParmDef SRA_SRParm;
 
         public static PawnKindDef SRA_Mech_WarUnit_S;
+
+        public static ThingDef SRA_Core;
     }
 }

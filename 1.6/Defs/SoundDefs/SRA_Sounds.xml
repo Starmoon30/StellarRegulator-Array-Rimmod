@@ -23,6 +23,51 @@
     </subSounds>
   </SoundDef>
   <SoundDef>
+    <defName>SRA_Minipulser</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SRA/SRA_Minipulser</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>99</min>        
+          <max>100</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>1.0</min>        
+          <max>1.5</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  <SoundDef>
+    <defName>SRABulle_Railgun_Explosion</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SRA/SRABulle_Railgun_Explosion</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>99</min>        
+          <max>100</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>1.0</min>        
+          <max>1.5</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
     <defName>SRA_Weapon_P</defName>  
     <context>MapOnly</context>
     <eventNames />  

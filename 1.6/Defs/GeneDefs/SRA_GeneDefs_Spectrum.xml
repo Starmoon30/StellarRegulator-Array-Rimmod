@@ -3,11 +3,11 @@
 
   <GeneDef ParentName="GeneSleepBase">
     <defName>SRA_Neversleep</defName>
-    <label>星规-无限活力</label>
-    <description>流淌在这些生物体内的星辉分形几乎免除了睡眠需求，此外，还提供了一系列额外的加成。</description>
-    <iconPath>UI/Icons/Genes/Gene_Neversleep</iconPath>
+    <label>树海-无限活力</label>
+    <description>流淌在这些生物体内的神秘力量几乎免除了睡眠需求，此外，还提供了一系列额外的加成。</description>
+    <iconPath>SRA/Icons/Genes/SRA_Gene_Neversleep</iconPath>
+    <displayCategory>Archite</displayCategory>
     <marketValueFactor>1.25</marketValueFactor>
-    <displayOrderInCategory>66</displayOrderInCategory>
     <statFactors>
       <RestFallRateFactor>0</RestFallRateFactor>
       <Flammability>0</Flammability>
@@ -22,12 +22,7 @@
     </damageFactors>
     <biostatMet>666</biostatMet>
     <biostatCpx>6</biostatCpx>
-    <symbolPack>
-      <prefixSymbols>
-        <li><symbol>wake</symbol></li>
-        <li><symbol>night</symbol></li>
-      </prefixSymbols>
-    </symbolPack>
+    <biostatArc>6</biostatArc>
   </GeneDef>
 
 </Defs>
