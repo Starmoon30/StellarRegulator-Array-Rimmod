@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BenchBase">
+    <defName>SRA_WorkTable</defName>
+    <label>星规-构建机组</label>
+    <description>编织星辉分形并将其演化为各种物品的工作台，小规模使用的打印装置，一般由旅行家使用。</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>SRA/Building/SRA_WorkTable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3, 1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <Plasteel>500</Plasteel>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>80</WorkToBuild>
+      <MaxHitPoints>3200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Mass>20</Mass>
+      <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(3,1)</size>
+    <designationCategory>SRA_Building</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <recipes>
+      <li>SRA_Make_SRA_Core_By_Plasteel</li>
+      <li>SRA_Make_SRA_Core_By_Chemfuel</li>
+      <li>SRA_Make_Plasteel_By_SRA_Core</li>
+      <li>SRA_Make_Hyperweave_By_SRA_Core</li>
+      <li>SRA_Make_Gold_By_SRA_Core</li>
+      <li>SRA_Make_MedicineUltratech_By_SRA_Core</li>
+      <li>SRA_Make_Neutroamine_By_SRA_Core</li>
+      <li>SRA_Make_Steel_By_SRA_Core</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <placeWorkers>
+    </placeWorkers>
+  </ThingDef>
+  
+  <!-- 铸星神械-轴突 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_Astronomical_Fabrications_Main</defName>
+    <label>铸星神械-轴突</label>
+    <description>铸星神械-轴突</description>
+    <graphicData>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6,6)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(5,5)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.8</fillPercent>
+    <statBases>
+      <MaxHitPoints>32000</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>12000</WorkToBuild>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <building>
+      <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <specialDisplayRadius>48</specialDisplayRadius>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="SRA.CompProperties_Generator_SRA_Core">
+        <product>SRA_Core</product>
+        <productPerGenBase>5</productPerGenBase>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <!--<glowColor>(105,204,204,0)</glowColor>-->
+        <glowColor>(0, 255, 255, 128)</glowColor>
+      </li>
+      <li Class="CompProperties_ThingContainer">
+        <compClass>CompThingContainer</compClass>
+        <stackLimit>4000</stackLimit>
+        <drawContainedThing>false</drawContainedThing>
+        <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>SRA_Astronomical_Fabrications_Sub</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-3200</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
+    <castEdgeShadows>True</castEdgeShadows>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <designationCategory>SRA_Building</designationCategory>
+    <costList>
+      <SRA_Core>800</SRA_Core>
+    </costList>
+    <researchPrerequisites>
+      <li>SRA_RepairTower</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+  </ThingDef>
+
+
+
+  <!-- 铸星神械-树突 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_Astronomical_Fabrications_Sub</defName>
+    <label>铸星神械-树突</label>
+    <description>铸星神械-树突</description>
+    <graphicData>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.8</fillPercent>
+    <statBases>
+      <MaxHitPoints>6400</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>1200</WorkToBuild>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <building>
+      <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>200</maxSimultaneous>
+        <maxDistance>48</maxDistance>
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
+    <castEdgeShadows>True</castEdgeShadows>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <designationCategory>SRA_Building</designationCategory>
+    <costList>
+      <SRA_Core>80</SRA_Core>
+    </costList>
+    <researchPrerequisites>
+      <li>SRA_RepairTower</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <placeWorkers>
+      <li>PlaceWorker_BandNode</li>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_HydroponicsBasin</defName>
+    <label>SRA_HydroponicsBasin</label>
+    <description>SRA_HydroponicsBasin</description>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <thingClass>Building_PlantGrower</thingClass>
+    <graphicData>
+      <texPath>SRA/Building/SRA_HydroponicsBasin</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(5, 5)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>2</pathCost>
+    <constructEffect>ConstructMetal</constructEffect>
+    <fillPercent>0.30</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <statBases>
+      <WorkToBuild>3200</WorkToBuild>
+      <MaxHitPoints>3200</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Cleanliness>4</Cleanliness>
+    </statBases>
+    <size>(5,5)</size>
+    <costList>
+      <SRA_Core>5</SRA_Core>
+    </costList>
+    <fertility>8</fertility>
+    <building>
+      <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+      <sowTag>Ground</sowTag>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <overlightRadius>3</overlightRadius>
+        <glowRadius>3</glowRadius>
+        <glowColor>(255,255,255,0)</glowColor>
+        <colorPickerEnabled>true</colorPickerEnabled>
+        <darklightToggle>true</darklightToggle>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
+  </ThingDef>
+</Defs>

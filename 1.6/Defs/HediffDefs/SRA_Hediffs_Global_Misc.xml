@@ -19,6 +19,81 @@
   </HediffDef>
 
   <HediffDef>
+    <defName>SRA_Barrier_SR_Mech</defName>
+    <label>星规-超然构造</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>星辉分形在精妙的构筑下流转，维系着一道一体化的防御场。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>640</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>16</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Barrier_test</defName>
+    <label>护盾超载</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>为战士们提供护盾</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>1000</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>35</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>10</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>20</regenRate>
+        <regenDelay>30</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>SRA_Barrier_test2</defName>
+    <label>护盾超载2</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>为战士们提供护盾</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>10</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>2</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>1</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>1</regenRate>
+        <regenDelay>1</regenDelay>
+        <rechargeCooldown>1</rechargeCooldown>
+        <RemoveWhenDestroy>true</RemoveWhenDestroy>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
     <defName>SRA_Little_Regeneration</defName>
     <label>星规-顽强生机</label>
     <hediffClass>HediffWithComps</hediffClass>

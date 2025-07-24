@@ -16,7 +16,7 @@
         <intelligence>ToolUser</intelligence>
         <thinkTreeMain>Mechanoid</thinkTreeMain>
         <bulletStaggerDelayTicks>1</bulletStaggerDelayTicks>
-        <baseBodySize>0.5</baseBodySize>
+        <baseBodySize>0.4</baseBodySize>
         <baseHealthScale>4</baseHealthScale>
         <mechWeightClass>Light</mechWeightClass>
         <mechFixedSkillLevel>20</mechFixedSkillLevel>
@@ -270,6 +270,9 @@
       <isBoss>true</isBoss>
       <allowInMechClusters>false</allowInMechClusters>
       <startingHediffs>
+      <li>
+        <def>SRA_Barrier_SR_Mech</def>
+      </li>
       </startingHediffs>
       <lifeStages>
         <li>

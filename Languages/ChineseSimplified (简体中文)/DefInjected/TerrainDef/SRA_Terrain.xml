@@ -4,5 +4,11 @@
   <SRA_Floor.label>星规-星辉分形地板</SRA_Floor.label>
   <SRA_Floor.description>星辉分形组成的地板，清洁美观，建造快捷。\n\n这并非是正规的舱体结构板，而只是对简易建筑特化的铺装地板，用于隔绝原始地表并方便清洁。</SRA_Floor.description>
 
+  <SRA_Floor_Road.label>星规-设施地基</SRA_Floor_Road.label>
+  <SRA_Floor_Road.description>星辉分形组成的路面，用于作为大型星规设备的地基，或者基地室外铺设的路面。</SRA_Floor_Road.description>
+
+  <SRA_Floor_Platform.label>星规-技术平台</SRA_Floor_Platform.label>
+  <SRA_Floor_Platform.description>星辉分形组成的网格平台，使用了具有科技感的透明轻质平板，这种地板一般铺设在主干道中间，起到标明路线的作用，或者作为装饰。</SRA_Floor_Platform.description>
+
 
 </LanguageData>

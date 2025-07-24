@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="LampBase">
+    <defName>SRA_WallLamp</defName>
+    <label>SRA_WallLamp</label>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <description>A wall lamp with oxygen.</description>
+    <thingClass>Building_LifeSupportUnit</thingClass>
+    <tickerType>Rare</tickerType>
+    <rotatable>true</rotatable>
+    <uiIconPath>Things/Building/Furniture/WallLamp/WallLamp_MenuIcon</uiIconPath>
+    <graphicData>
+      <texPath>Things/Building/Furniture/WallLamp/WallLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <costList>
+      <SRA_Core>1</SRA_Core>
+    </costList>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <MaxHitPoints>1600</MaxHitPoints>
+      <Mass>2</Mass>
+      <Beauty>32</Beauty>
+    </statBases>
+    <uiOrder>2991</uiOrder>
+    <passability>Standable</passability>
+    <terrainAffordanceNeeded IsNull="True" />
+    <pathCost>0</pathCost>
+    <overrideMinifiedRot>North</overrideMinifiedRot>
+    <minifiedDrawOffset>(0, 0, 0.2)</minifiedDrawOffset>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <designationCategory>SRA_Building</designationCategory>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Styleable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>16</glowRadius>
+        <glowColor>(255,255,255,0)</glowColor>
+        <colorPickerEnabled>true</colorPickerEnabled>
+        <darklightToggle>true</darklightToggle>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="LampBase">
+    <defName>SRA_SunLamp</defName>
+    <label>SRA_SunLamp</label>
+    <description>SRA_SunLamp</description>
+    <thingClass>Building_SunLamp</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Furniture/FloodLight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>2.5</drawSize>
+      <addTopAltitudeBias>true</addTopAltitudeBias>
+      <shadowData>
+        <volume>(0.2, 0.7, 0.2)</volume>
+        <offset>(0, 0, -0.2)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconScale>0.75</uiIconScale>
+    <blockWind>true</blockWind>
+    <tickerType>Rare</tickerType>
+    <statBases>
+      <WorkToBuild>160</WorkToBuild>
+      <MarketValue>20</MarketValue>
+      <MaxHitPoints>1600</MaxHitPoints>
+      <Mass>2</Mass>
+      <Beauty>32</Beauty>
+    </statBases>
+    <costList>
+      <SRA_Core>1</SRA_Core>
+    </costList>
+    <uiOrder>2995</uiOrder>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <overlightRadius>24</overlightRadius>
+        <glowRadius>32</glowRadius>
+        <glowColor>(255,255,255,0)</glowColor>
+        <colorPickerEnabled>true</colorPickerEnabled>
+        <darklightToggle>true</darklightToggle>
+      </li>
+    </comps>
+    <specialDisplayRadius>22</specialDisplayRadius>
+    <designationCategory>SRA_Building</designationCategory>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+  </ThingDef>
+  
+  <ThingDef ParentName="FurnitureWithQualityBase">
+    <defName>SRA_Chair</defName>
+    <label>SRA_Chair</label>
+    <description>SRA_Chair</description>
+    <replaceTags>
+      <li>Chair</li>
+    </replaceTags>
+    <graphicData>
+      <texPath>Things/Building/Furniture/Armchair</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.33, 0.3)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconScale>0.9</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>640</MaxHitPoints>
+      <WorkToBuild>1600</WorkToBuild>
+      <Mass>35</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>16</Beauty>
+      <Comfort>1.2</Comfort>
+    </statBases>
+    <costList>
+      <SRA_Core>1</SRA_Core>
+    </costList>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <pathCost>0</pathCost>
+    <fillPercent>0.40</fillPercent>
+    <designationHotKey>Misc8</designationHotKey>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <uiOrder>2420</uiOrder>
+    <building>
+      <isSittable>true</isSittable>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <designationCategory>SRA_Building</designationCategory>
+  </ThingDef>
+
+</Defs>

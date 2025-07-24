@@ -43,7 +43,7 @@
     </costList>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <researchPrerequisites>
-      <li>SRA_tech_30_7411</li>
+      <li>SRA_BaseTurret</li>
     </researchPrerequisites>
     <damageMultipliers>
       <li>
@@ -228,7 +228,7 @@
     </placeWorkers>
     <designationHotKey>Misc2</designationHotKey>
     <researchPrerequisites>
-      <li>SRA_tech_30_7411</li>
+      <li>SRA_BaseTurret</li>
     </researchPrerequisites>
   </ThingDef>
 
@@ -328,7 +328,7 @@
     </costList>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <researchPrerequisites>
-      <li>SRA_tech_30_7411</li>
+      <li>SRA_BaseTurret</li>
     </researchPrerequisites>
     <damageMultipliers>
       <li>

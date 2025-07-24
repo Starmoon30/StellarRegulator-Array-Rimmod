@@ -4,6 +4,19 @@
   <SRA_SRAWall.description>星辉分形组成的墙体，坚固耐用。抵抗爆炸和破墙伤害。\n\n对于缺乏充能环境的简陋建筑来说，会使用这种略加修改的材料，在不依赖外部供能情况下保证相当程度的物理强度。在需要节约成本，又没有太高结构强度需求的环境中，这样的墙体较为常用。</SRA_SRAWall.description>
   <SRA_SRAAutodoor.label>星规-星辉分形自动门</SRA_SRAAutodoor.label>
   <SRA_SRAAutodoor.description>星辉分形组成的自动门，坚固耐用。抵抗爆炸和破墙伤害。</SRA_SRAAutodoor.description>
+  
+  <SRA_WallLamp.label>星规-生态照明装置</SRA_WallLamp.label>
+  <SRA_WallLamp.description>一个星规式壁灯，明亮，稳定，美观，如有必要还提供氧气。\n\n组成它的星辉分形内部储存的能量足以驱动它运转数千年，因而它并不需要供电。</SRA_WallLamp.description>
+  <SRA_SunLamp.label>星规-广域照明塔</SRA_SunLamp.label>
+  <SRA_SunLamp.description>一个星规式路灯，或者随便某种大型照明设施。它提供广域而明亮的光照，甚至足够让植物生长。\n\n组成它的星辉分形内部储存的能量足以驱动它运转数千年，因而它并不需要供电。</SRA_SunLamp.description>
+
+  <SRA_Chair.label>星规-扶手椅</SRA_Chair.label>
+  <SRA_Chair.description>一个星规式椅子，会按照你的需求变形并提供完美的支撑，非常的舒适，很适合用来休闲放松。可以在餐桌和工作台或者别的什么附近使用。</SRA_Chair.description>
+  
+
+  <SRA_HydroponicsBasin.label>星规-定向催化农业</SRA_HydroponicsBasin.label>
+  <SRA_HydroponicsBasin.description>经由自适应的植物管理系统，通过对作物生理过程的编辑来优化其产出效率。运行时需要消耗电力，断电后作物会死亡。</SRA_HydroponicsBasin.description>
+  
 
   <SRA_RepairTower.label>星规-流转尖塔</SRA_RepairTower.label>
   <SRA_RepairTower.description>一个重要的星规设施，它投射一个极为庞大的能量场，并尽可能识别你的物品，将其修复。它还会持续增加你建筑的耐久度，直到抵达上限的两倍再额外多出800耐久度，来省去修理的烦恼。\n至于发电功能……咳咳，先假装这不算作弊吧。\n\n非常诡异的建筑，显然有人为了图方便擅自修改了它的功能，加入了一些跨时期的技术，甚至对接了能量传输网络。不过，也没什么不好的不是吗？</SRA_RepairTower.description>

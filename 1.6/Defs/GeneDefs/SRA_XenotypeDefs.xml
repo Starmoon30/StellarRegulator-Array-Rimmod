@@ -10,7 +10,6 @@
     <displayPriority>-1000</displayPriority>
     <factionlessGenerationWeight>0</factionlessGenerationWeight>
     <genes>
-			<li>Deathless</li>
 			<li>Ageless</li>
 			<li>DiseaseFree</li>
 			<li>XenogermReimplanter</li>

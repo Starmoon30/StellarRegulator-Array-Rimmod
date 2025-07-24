@@ -56,7 +56,7 @@
     <neverMultiSelect>true</neverMultiSelect>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded> <!-- Best affordance needed for stone -->
     <holdsRoof>true</holdsRoof>
-    <designationCategory>Structure</designationCategory>
+    <designationCategory>SRA_Building</designationCategory>
     <staticSunShadowHeight>1.0</staticSunShadowHeight>
     <blockLight>true</blockLight>
     <canOverlapZones>false</canOverlapZones>
@@ -109,6 +109,9 @@
     <researchPrerequisites>
       <li>SRA_tech_30_7411</li>
     </researchPrerequisites>
+    <replaceTags>
+      <li>Wall</li>
+    </replaceTags>
   </ThingDef>
 
   <ThingDef>
@@ -147,7 +150,7 @@
     <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <designationCategory>Structure</designationCategory>
+    <designationCategory>SRA_Building</designationCategory>
     <holdsRoof>true</holdsRoof>
     <staticSunShadowHeight>1.0</staticSunShadowHeight>
     <blockLight>true</blockLight>
@@ -196,19 +199,95 @@
       <li>SRA_tech_30_7411</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <replaceTags>
+      <li>Door</li>
+    </replaceTags>
   </ThingDef>
   
   <TerrainDef ParentName="FloorBase">
     <defName>SRA_Floor</defName>
     <label>星规-星辉分形地板</label>
     <renderPrecedence>200</renderPrecedence>
-    <description>星辉分形组成的地板，清洁美观（确信），建造快捷.</description>
+    <description>星辉分形组成的地板，清洁美观（确信），建造快捷。</description>
     <texturePath>SRA/Building/SRA_Floor</texturePath>
     <color>(0.67, 0.67, 0.67)</color>
     <pollutionTintColor>(0.95, 0.95, 0.93, 1)</pollutionTintColor>
     <isPaintable>true</isPaintable>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
 	  <uiIconPath>SRA/Building/SRA_Floor_UI</uiIconPath>
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <WorkToBuild>200</WorkToBuild>
+      <Cleanliness>1</Cleanliness>
+      <FilthMultiplier>0.05</FilthMultiplier>
+      <CleaningTimeFactor>0.1</CleaningTimeFactor>
+      <Beauty>16</Beauty>
+    </statBases>
+    <costList>
+		  <SRA_Core>1</SRA_Core>
+    </costList>
+    <tags>
+      <li>Floor</li>
+      <li>FineFloor</li>
+    </tags>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <uiOrder>2115</uiOrder>
+  </TerrainDef>
+
+  <TerrainDef ParentName="FloorBase">
+    <defName>SRA_Floor_Road</defName>
+    <label>星规-设施地基</label>
+    <renderPrecedence>200</renderPrecedence>
+    <description>星辉分形组成的路面，用于作为大型星规设备的地基，或者基地室外铺设的路面。</description>
+    <texturePath>SRA/Building/SRA_Floor_Road</texturePath>
+    <color>(0.67, 0.67, 0.67)</color>
+    <pollutionTintColor>(0.95, 0.95, 0.93, 1)</pollutionTintColor>
+    <isPaintable>true</isPaintable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
+	  <!--<uiIconPath>SRA/Building/SRA_Floor_UI</uiIconPath>-->
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <WorkToBuild>200</WorkToBuild>
+      <Cleanliness>1</Cleanliness>
+      <FilthMultiplier>0.05</FilthMultiplier>
+      <CleaningTimeFactor>0.1</CleaningTimeFactor>
+      <Beauty>16</Beauty>
+    </statBases>
+    <costList>
+		  <SRA_Core>1</SRA_Core>
+    </costList>
+    <tags>
+      <li>Floor</li>
+      <li>FineFloor</li>
+    </tags>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <uiOrder>2115</uiOrder>
+  </TerrainDef>
+
+  <TerrainDef ParentName="FloorBase">
+    <defName>SRA_Floor_Platform</defName>
+    <label>星规-技术平台</label>
+    <renderPrecedence>200</renderPrecedence>
+    <description>星辉分形组成的网格平台，使用了具有科技感的透明轻质平板，这种地板一般铺设在主干道中间，起到标明路线的作用，或者作为装饰。</description>
+    <texturePath>SRA/Building/SRA_Floor_Platform</texturePath>
+    <color>(0.67, 0.67, 0.67)</color>
+    <pollutionTintColor>(0.95, 0.95, 0.93, 1)</pollutionTintColor>
+    <isPaintable>true</isPaintable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
+	  <!--<uiIconPath>SRA/Building/SRA_Floor_UI</uiIconPath>-->
     <statBases>
       <MarketValue>2</MarketValue>
       <WorkToBuild>200</WorkToBuild>

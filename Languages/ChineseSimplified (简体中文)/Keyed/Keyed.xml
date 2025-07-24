@@ -33,4 +33,13 @@
 	<SRAWarUnitSpawnerNoAutoDesc>立即部署一只储备的战争单元。</SRAWarUnitSpawnerNoAutoDesc>
 	<SRAWarUnitSpawnerHaveSRAWarUnit>当前可用战争单元:{0}/{1}</SRAWarUnitSpawnerHaveSRAWarUnit>
 
+	<SRA_BarrierTipExtra>屏障上限：{0}\n回复速度：{1}\n回复延迟：{2}\n充能冷却：{3}\n屏障效率：{4}\n损伤上限：{5}\n损伤降低：{6}</SRA_BarrierTipExtra>
+
+	<SRABarrierTitle>屏障</SRABarrierTitle>
+  	<SRA_BarrierStatus>屏障状态</SRA_BarrierStatus>
+  	<SRA_BarrierValue>{0}/{1}</SRA_BarrierValue>
+  	<SRA_BarrierRecharging>充能中: {0}秒</SRA_BarrierRecharging>
+  	<SRA_BarrierRegen>回复: {0}/秒</SRA_BarrierRegen>
+	<SRABarrierTooltip>屏障可以阻挡受到的伤害。\n屏障具有屏障效率，所受到的伤害会在与屏障效率相乘后再用于计算损失的屏障值。\n某些屏障具有充能冷却。如果屏障被完全摧毁，就会进入充能冷却。\n某些屏障具有损伤上限，受到的伤害不会高于这个上限。仅当此值大于0时才生效。\n某些屏障具有损伤降低，受到的伤害会降低对应的值。仅当此值大于0时才生效。\n\n回复延迟：{0}\n充能冷却：{1}\n屏障效率：{2}\n损伤上限：{3}\n损伤降低：{4}</SRABarrierTooltip>
+
 </LanguageData>

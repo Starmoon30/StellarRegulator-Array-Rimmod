@@ -89,6 +89,9 @@
     <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
+    <Compile Include="SRABarrierHarmonyPatches.cs" />
+    <Compile Include="SRABarrierGizmo.cs" />
+    <Compile Include="HediffComp_SRABarrier.cs" />
     <Compile Include="PredefinedCharacterParmDef.cs" />
     <Compile Include="HediffComp_StatusFlag.cs" />
     <Compile Include="GameComponent_SRA_SRUtilTracker.cs" />

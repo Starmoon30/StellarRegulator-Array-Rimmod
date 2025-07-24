@@ -77,14 +77,14 @@
           <li Class="AudioGrain_Clip">
             <clipPath>SRA/SRA_Weapon_P</clipPath>
           </li>
-        </grains>      
+        </grains>
         <volumeRange>
-          <min>99</min>        
-          <max>100</max>
-        </volumeRange>      
+          <min>50</min>
+          <max>80</max>
+        </volumeRange>
         <pitchRange>
-          <min>1.0</min>        
-          <max>1.5</max>
+          <min>0.8</min>
+          <max>1.0</max>
         </pitchRange>
       </li>
     </subSounds>
