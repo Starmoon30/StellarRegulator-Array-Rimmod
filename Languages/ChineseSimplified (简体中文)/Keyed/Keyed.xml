@@ -9,15 +9,16 @@
 
 	<SRA_CompGenerator_SRA_Core_Percentage>距离下一</SRA_CompGenerator_SRA_Core_Percentage>
 
-	<SRA_NoseScar_Title>测试伤疤</SRA_NoseScar_Title>
+	<SRA_AngledSRAWall_Title>渲染斜角墙</SRA_AngledSRAWall_Title>
+	<SRA_AngledSRAWall_Desc>星规的墙壁可以渲染斜角，这是一个纯视觉效果。由于着色器问题，目前的斜角渲染会有异常黑边，尚待修复。</SRA_AngledSRAWall_Desc>
 
-	<SRA_NoseScar_Desc>测试性伤疤。此菜单内现有的设置都是只是代码探索，在实际游戏中没有任何作用。</SRA_NoseScar_Desc>
+	<SRA_NoseScar_Title>占位符</SRA_NoseScar_Title>
+	<SRA_NoseScar_Desc>占位符</SRA_NoseScar_Desc>
 
-	<SRA_EyeRender_Title>眼睛贴图</SRA_EyeRender_Title>
+	<SRA_EyeRender_Title>占位符</SRA_EyeRender_Title>
+	<SRA_EyeRender_Desc>占位符</SRA_EyeRender_Desc>
 
-	<SRA_EyeRender_Desc>增加眼睛贴图，如果有动态表情将会自动关闭。</SRA_EyeRender_Desc>
-
-	<SRA_AllowDuplicateSRA_SR_Title>允许重复生成星规</SRA_AllowDuplicateSRA_SR_Title>
+	<SRA_AllowDuplicateSRA_SR_Title>（占位符）允许重复生成星规</SRA_AllowDuplicateSRA_SR_Title>
 
 	<SRA_AllowDuplicateSRA_SR_Desc>允许在检测到已经生成过星规的情况下再次生成。\n\n请注意：这个模组的部分功能需要检测星规的状态，只有最后一次生成的星规会被程序追踪。</SRA_AllowDuplicateSRA_SR_Desc>
 

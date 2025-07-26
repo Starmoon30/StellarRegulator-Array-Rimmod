@@ -43,7 +43,7 @@
     <defName>SRA_Energy_Injection</defName>
     <label>星规-星辉注能</label>
     <labelNoun>星规-星辉注能</labelNoun>
-    <description>大量的星辉分形被注入到这个个体之中，极度强化了其各项能力，并提供强有力的保护。</description>
+    <description>星辉分形流转在这个个体之中，极度强化了其各项能力，并提供强有力的保护。</description>
 	<defaultLabelColor>(111, 172, 172)</defaultLabelColor>
     <priceImpact>false</priceImpact>
 	<stages>
@@ -54,6 +54,7 @@
 					<offset>0.2</offset>
 				</li>
 			</capMods>
+			<totalBleedFactor>0</totalBleedFactor>
 			<statOffsets>
 				<ArmorRating_Sharp>2</ArmorRating_Sharp>
 				<ArmorRating_Blunt>2</ArmorRating_Blunt>
@@ -72,6 +73,18 @@
 			</statOffsets>
 		</li>
 	</stages>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>320</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>64</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>4</regenDelay>
+        <rechargeCooldown>30</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+      </li>
+    </comps>
     <tags><li>ArmorGland</li></tags>
   </HediffDef>
 

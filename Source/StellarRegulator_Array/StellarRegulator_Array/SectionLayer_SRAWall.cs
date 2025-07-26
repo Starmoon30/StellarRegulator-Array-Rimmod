@@ -74,6 +74,8 @@ namespace SRA
         // 游戏引擎会定期调用这个方法来更新和重绘我们的图层。
         public override void Regenerate()
         {
+            if (!SRAMod.AngledSRAWall)
+            {return;}
             ClearSubMeshes(MeshParts.All);
             Map map = base.Map;
             TerrainGrid terrGrid = map.terrainGrid;

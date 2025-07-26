@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- 深渊之龙 -->
+  <TraitDef>
+    <defName>SRA_Hidra</defName>
+		<commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>深渊之龙</label>
+        <description>{PAWN_nameDef}是一条恣意妄为，玩弄命运的恶龙，但却不被掠夺，不被讨伐，不被击败，不被屠戮。</description>
+        <hungerRateFactor>1.5</hungerRateFactor>
+        <statOffsets>
+          <SocialImpact>0.2</SocialImpact>
+          <MoveSpeed>2</MoveSpeed>
+          <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+        </statOffsets>
+        <statFactors>
+          <PainShockThreshold>0</PainShockThreshold>
+          <MentalBreakThreshold>0</MentalBreakThreshold>
+          <RestFallRateFactor>0</RestFallRateFactor>
+          <IncomingDamageFactor>0.1</IncomingDamageFactor>
+        </statFactors>
+        <skillGains>
+          <Cooking>-1</Cooking>
+        </skillGains>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+
+</Defs>

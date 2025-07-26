@@ -12,7 +12,8 @@ namespace SRA
         public bool
             NoseScar = false,
             EyeRender = true,
-            AllowDuplicateSRA_SR = false;
+            AllowDuplicateSRA_SR = false,
+            AngledSRAWall = false;
 
 
         public override void ExposeData()
@@ -21,6 +22,7 @@ namespace SRA
             Scribe_Values.Look(ref NoseScar, "NoseScar", defaultValue: false);
             Scribe_Values.Look(ref EyeRender, "EyeRender", defaultValue: true);
             Scribe_Values.Look(ref AllowDuplicateSRA_SR, "AllowDuplicateSRA_SR", defaultValue: false);
+            Scribe_Values.Look(ref AngledSRAWall, "AngledSRAWall", defaultValue: false);
         }
     }
 
@@ -33,6 +35,8 @@ namespace SRA
         public static bool NoseScar => settings.NoseScar;
         public static bool EyeRender => ModLister.GetActiveModWithIdentifier("nals.facialanimation") == null && settings.EyeRender;
         public static bool AllowDuplicateSRA_SR => settings.AllowDuplicateSRA_SR;
+
+        public static bool AngledSRAWall => settings.AngledSRAWall;
 
         public SRAMod(ModContentPack content)
             : base(content)
@@ -49,6 +53,7 @@ namespace SRA
             listing_Standard.Begin(inRect);
             Text.Font = GameFont.Small;
             listing_Standard.GapLine();
+            listing_Standard.CheckboxLabeled("SRA_AngledSRAWall_Title".Translate(), ref settings.AngledSRAWall, "SRA_AngledSRAWall_Desc".Translate());
             listing_Standard.CheckboxLabeled("SRA_NoseScar_Title".Translate(), ref settings.NoseScar, "SRA_NoseScar_Desc".Translate());
             if (ModLister.GetActiveModWithIdentifier("nals.facialanimation") == null)
             {

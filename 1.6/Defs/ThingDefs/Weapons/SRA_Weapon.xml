@@ -319,6 +319,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>2</drawSize>
 		</graphicData>
+		<uiIconScale>1.0</uiIconScale>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
 			<MarketValue>3200</MarketValue>
@@ -345,8 +346,6 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<defaultProjectile>SRABulle_Railgun</defaultProjectile>
-				<forcedMissRadius>0.1</forcedMissRadius>
-				<ai_AvoidFriendlyFireRadius>1</ai_AvoidFriendlyFireRadius>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>1</warmupTime>
 				<range>56</range>
@@ -368,7 +367,6 @@
 			</li>
 		</tools>
 	</ThingDef>
-
 	<ThingDef ParentName="BaseBullet">
 		<defName>SRABulle_Railgun</defName>
 		<label>星规-呼啸雷霆能量束</label>
@@ -378,42 +376,45 @@
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2.4</drawSize>
 		</graphicData>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>SRA.Projectile_SRA_Railgun</thingClass>
+		<modExtensions>
+			<li Class="SRA.SRA_RailgunProjectileExtension">
+				<!-- 穿透设置 -->
+				<maxPenetrations>99</maxPenetrations>
+				<penetrationDelayTicks>1</penetrationDelayTicks>
+				<!-- 爆炸设置 -->
+				<explosionRadius>1</explosionRadius>
+				<explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
+				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
+				<damageDef>Bullet</damageDef>
+				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+			</li>
+		</modExtensions>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<speed>240</speed>
 			<damageAmountBase>64</damageAmountBase>
 			<armorPenetrationBase>4</armorPenetrationBase>
-			<stoppingPower>4</stoppingPower>
+			<stoppingPower>8</stoppingPower>
+			<speed>240</speed>
 			<extraDamages>
 				<li>
-					<def>Stun</def>
+					<def>EMP</def>
 					<amount>8</amount>
 				</li>
-				<li>
-					<def>EMP</def>
-					<amount>30</amount>
-				</li>
 			</extraDamages>
-			<explosionRadius>1</explosionRadius>
-			<explosionChanceToStartFire>0</explosionChanceToStartFire>
-			<explosionDamageFalloff>true</explosionDamageFalloff>
-			<explosionEffect>ExtinguisherExplosion</explosionEffect>
-			<flyOverhead>false</flyOverhead>
-			<soundExplode>SRABulle_Railgun_Explosion</soundExplode>
 		</projectile>
 	</ThingDef>
 
 	<ThingDef ParentName="SRA_WeaponBase_Spacer">
 		<defName>SRA_Minipulser</defName>
 		<label>星规-风雪骤灭</label>
-		<description>
-			风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。</description>
+		<description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。</description>
 		<graphicData>
 			<texPath>SRA/Weapon/SRA_Minipulser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>2</drawSize>
 		</graphicData>
+		<uiIconScale>1.0</uiIconScale>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
 			<MarketValue>3200</MarketValue>

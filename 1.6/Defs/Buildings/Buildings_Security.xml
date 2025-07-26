@@ -97,7 +97,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_SML_Mass_Drivers</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <turretTopOffset>(0.07, 0)</turretTopOffset>
       <turretTopDrawSize>2.0</turretTopDrawSize>
     </building>
     <placeWorkers>
@@ -214,7 +214,7 @@
       <combatPower>1280</combatPower>
       <turretGunDef>SRATurretGun_L_Particle_Launcher</turretGunDef>
 	  	<turretTopDrawSize>3.5</turretTopDrawSize>
-      <turretTopOffset>(0, 0.5)</turretTopOffset>
+      <turretTopOffset>(0.08, 0)</turretTopOffset>
       <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
       <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
     </building>
@@ -425,4 +425,3 @@
 
 
 </Defs>
-

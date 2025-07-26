@@ -12,5 +12,8 @@ namespace SRA
         public static PawnKindDef SRA_Mech_WarUnit_S;
 
         public static ThingDef SRA_Core;
+
+        public static SoundDef SRABulle_Railgun_Explosion;
+
     }
 }
