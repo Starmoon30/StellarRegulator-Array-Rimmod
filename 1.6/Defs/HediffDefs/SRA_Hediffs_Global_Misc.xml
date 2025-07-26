@@ -127,4 +127,74 @@
     </stages>
   </HediffDef>
 
+  
+  <HediffDef ParentName="DiseaseBase">
+    <defName>SRA_Railgun_debuff</defName>
+    <label>SRA_Railgun_debuff</label>
+    <description>SRA_Railgun_debuff_description</description>
+    <hediffClass>SRA.HediffWithSeverityLabel</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(255, 0, 0)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerSecond">
+        <severityPerSecond>-0.01</severityPerSecond>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsetsBySeverity>
+          <li>
+            <stat>IncomingDamageFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>AimingDelayFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>RangedCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>MeleeCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statOffsetsBySeverity>
+        <statFactorsBySeverity>
+          <li>
+            <stat>MoveSpeed</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statFactorsBySeverity>
+      </li>
+    </stages>
+  </HediffDef>
+
 </Defs>

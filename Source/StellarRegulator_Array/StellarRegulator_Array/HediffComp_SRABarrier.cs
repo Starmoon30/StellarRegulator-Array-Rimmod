@@ -1,8 +1,10 @@
 ﻿using RimWorld;
+using RimWorld.BaseGen;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace SRA
 {
@@ -68,14 +70,14 @@ namespace SRA
             if (Pawn.IsHashIntervalTick(GenTicks.TicksPerRealSecond))
             {
 
-                if (InCooldown)
+                if (isActive == false)
                 {
                     // 冷却结束后重新激活屏障
-                    if (Find.TickManager.TicksGame > brokenTick +
-                        (Props.rechargeCooldown * GenTicks.TicksPerRealSecond))
+                    if (GetCooldownSeconds() <= 0)
                     {
+                        CurrentBarrier = Props.maxBarrier;
                         isActive = true;
-                        brokenTick = -1;
+                        SRA_DefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(Pawn.Position, Pawn.Map, false));
                     }
                     return;
                 }
@@ -131,6 +133,8 @@ namespace SRA
                 CurrentBarrier = 0;
                 brokenTick = Find.TickManager.TicksGame;
                 isActive = false;
+                SRA_DefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(Pawn.Position, Pawn.Map, false));
+
             }
         }
 

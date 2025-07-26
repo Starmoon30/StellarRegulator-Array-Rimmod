@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+
+  <SRATurret_Weapon_P.label>星规-光辉之冠炮塔</SRATurret_Weapon_P.label>
+  <SRATurret_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRATurret_Weapon_P.description>
+  <SRATurretGun_Weapon_P.label>星规-光辉之冠</SRATurretGun_Weapon_P.label>
+  <SRATurretGun_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRATurretGun_Weapon_P.description>
+  <SRA_Weapon_P.label>星规-光辉之冠</SRA_Weapon_P.label>
+  <SRA_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRA_Weapon_P.description>
+  
+
+
   <SRA_Railgun.label>星规-呼啸雷霆</SRA_Railgun.label>
-  <SRA_Railgun.description>呼啸雷霆原本是一种中规模舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并制造大量破坏性能量弧，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其长距离压制和突破的定位。\n\n-这件武器的射弹会穿透路径上的所有目标并在其位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同。</SRA_Railgun.description>
+  <SRA_Railgun.description>呼啸雷霆原本是一种中规模舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并产生破坏性相位能量，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其长距离压制和突破的定位。\n\n-这件武器的射弹会穿透路径上的所有目标并在其位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。</SRA_Railgun.description>
   
   <SRA_Minipulser.label>星规-风雪骤灭</SRA_Minipulser.label>
-  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。</SRA_Minipulser.description>
+  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。\n\n-这件武器的射弹带有EMP效果。</SRA_Minipulser.description>
 
 </LanguageData>

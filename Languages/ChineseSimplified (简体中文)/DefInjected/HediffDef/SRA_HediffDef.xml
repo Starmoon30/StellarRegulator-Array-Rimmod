@@ -15,4 +15,7 @@
   <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>深渊召选</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>
   <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>我如于万物之中！</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>
   
+  <SRA_Railgun_debuff.label>星规-相位崩解</SRA_Railgun_debuff.label>
+  <SRA_Railgun_debuff.description>混乱的相位能量会撕扯物质乃至现实。</SRA_Railgun_debuff.description>
+
 </LanguageData>

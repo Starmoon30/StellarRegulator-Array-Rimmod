@@ -313,7 +313,10 @@
 	<ThingDef ParentName="SRA_WeaponBase_Spacer">
 		<defName>SRA_Railgun</defName>
 		<label>星规-呼啸雷霆</label>
-		<description>呼啸雷霆原本是一种中等大小的舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并制造大量破坏性电弧，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。</description>
+		<description>呼啸雷霆原本是一种中等大小的舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并产生破坏性相位能量，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。</description>
+    	<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
 		<graphicData>
 			<texPath>SRA/Weapon/SRA_Railgun</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -330,7 +333,7 @@
 			<AccuracyShort>1</AccuracyShort>
 			<AccuracyMedium>1</AccuracyMedium>
 			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 			<Flammability>0</Flammability>
 		</statBases>
 		<tradeability>None</tradeability>
@@ -383,16 +386,18 @@
 				<maxPenetrations>99</maxPenetrations>
 				<penetrationDelayTicks>1</penetrationDelayTicks>
 				<!-- 爆炸设置 -->
-				<explosionRadius>1</explosionRadius>
+				<explosionRadius>1.5</explosionRadius>
 				<explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
 				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
 				<damageDef>Bullet</damageDef>
 				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+      			<explosionHediff>SRA_Railgun_debuff</explosionHediff>
+      			<explosionHediffSeverity>0.05</explosionHediffSeverity>
 			</li>
 		</modExtensions>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>64</damageAmountBase>
+			<damageAmountBase>96</damageAmountBase>
 			<armorPenetrationBase>4</armorPenetrationBase>
 			<stoppingPower>8</stoppingPower>
 			<speed>240</speed>

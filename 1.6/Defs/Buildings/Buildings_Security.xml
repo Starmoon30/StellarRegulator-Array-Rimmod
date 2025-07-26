@@ -13,7 +13,7 @@
     <graphicData>
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(3,3)</drawSize>
       <drawOffset>(0,0,-0.16)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
@@ -29,7 +29,7 @@
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-    <size>(2,2)</size>
+    <size>(3,3)</size>
     <statBases>
       <MaxHitPoints>6400</MaxHitPoints>
       <Flammability>0</Flammability>
@@ -97,8 +97,8 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_SML_Mass_Drivers</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0.07, 0)</turretTopOffset>
-      <turretTopDrawSize>2.0</turretTopDrawSize>
+      <turretTopOffset>(0.08, 0)</turretTopOffset>
+      <turretTopDrawSize>3.0</turretTopDrawSize>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>

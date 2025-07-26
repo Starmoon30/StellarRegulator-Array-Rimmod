@@ -15,5 +15,8 @@ namespace SRA
 
         public static SoundDef SRABulle_Railgun_Explosion;
 
+        public static SoundDef EnergyShield_Broken;
+        public static SoundDef EnergyShield_Reset;
+
     }
 }

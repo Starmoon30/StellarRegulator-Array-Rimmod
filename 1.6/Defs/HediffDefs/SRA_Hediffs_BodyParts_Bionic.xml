@@ -81,7 +81,7 @@
         <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
         <regenRate>8</regenRate>
         <regenDelay>4</regenDelay>
-        <rechargeCooldown>30</rechargeCooldown>
+        <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
       </li>
     </comps>
