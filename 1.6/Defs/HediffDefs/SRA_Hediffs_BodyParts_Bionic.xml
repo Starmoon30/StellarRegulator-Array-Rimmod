@@ -77,10 +77,10 @@
       <li Class="SRA.HediffCompProperties_SRABarrier">
         <maxBarrier>320</maxBarrier>
         <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
-        <DamageTakenMax>64</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
         <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
         <regenRate>8</regenRate>
-        <regenDelay>4</regenDelay>
+        <regenDelay>0</regenDelay>
         <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
       </li>

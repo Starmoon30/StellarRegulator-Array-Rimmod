@@ -192,6 +192,33 @@
               </points>
             </valueBySeverity>
           </li>
+          <li>
+            <stat>ArmorRating_Sharp</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Blunt</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Heat</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
         </statFactorsBySeverity>
       </li>
     </stages>

@@ -112,9 +112,9 @@
       <li>Chair</li>
     </replaceTags>
     <graphicData>
-      <texPath>Things/Building/Furniture/Armchair</texPath>
+      <texPath>SRA/Building/Furniture/SRA_Chair</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(1,1)</drawSize>
       <shadowData>
         <volume>(0.3, 0.33, 0.3)</volume>
       </shadowData>

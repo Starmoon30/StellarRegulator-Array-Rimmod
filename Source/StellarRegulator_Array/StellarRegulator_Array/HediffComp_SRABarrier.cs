@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using RimWorld.BaseGen;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -75,9 +76,12 @@ namespace SRA
                     // 冷却结束后重新激活屏障
                     if (GetCooldownSeconds() <= 0)
                     {
-                        CurrentBarrier = Props.maxBarrier;
+                        if (Props.regenDelay > 0)
+                        {
+                            CurrentBarrier = Props.maxBarrier;
+                            SRA_DefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(Pawn.Position, Pawn.Map, false));
+                        }
                         isActive = true;
-                        SRA_DefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(Pawn.Position, Pawn.Map, false));
                     }
                     return;
                 }
@@ -111,14 +115,16 @@ namespace SRA
             }
             float damageToAbsorb = dinfo.Amount;
             float absorbed;
-            if (Props.DamageTakenMult <= 0)
+            float IncomingDamageFactor = Math.Min(Pawn.GetStatValue(StatDefOf.IncomingDamageFactor, true, -1), 1f);
+            if (damageToAbsorb <= 0 || Props.DamageTakenMult <= 0 || IncomingDamageFactor <= 0)
             {
-                absorbed = damageToAbsorb;
+                return;
             }
             else
             {
-                absorbed = Mathf.Min(CurrentBarrier / Props.DamageTakenMult, damageToAbsorb);
-                CurrentBarrier -= absorbed * Props.DamageTakenMult;
+                absorbed = Mathf.Min(CurrentBarrier / Props.DamageTakenMult / IncomingDamageFactor, damageToAbsorb);
+
+                CurrentBarrier -= absorbed * Props.DamageTakenMult * IncomingDamageFactor;
             }
             if (Props.RemoveWhenDestroy)
             {

@@ -7,7 +7,6 @@
 	<SRA_SRParm.nickname>星规</SRA_SRParm.nickname>
 	<SRA_SRParm.title>星规</SRA_SRParm.title>
 
-	<SRA_CompGenerator_SRA_Core_Percentage>距离下一</SRA_CompGenerator_SRA_Core_Percentage>
 
 	<SRA_AngledSRAWall_Title>渲染斜角墙</SRA_AngledSRAWall_Title>
 	<SRA_AngledSRAWall_Desc>星规的墙壁可以渲染斜角，这是一个纯视觉效果。由于着色器问题，目前的斜角渲染会有异常黑边，尚待修复。</SRA_AngledSRAWall_Desc>
@@ -41,6 +40,12 @@
   	<SRA_BarrierValue>{0}/{1}</SRA_BarrierValue>
   	<SRA_BarrierRecharging>充能中: {0}秒</SRA_BarrierRecharging>
   	<SRA_BarrierRegen>回复: {0}/秒</SRA_BarrierRegen>
-	<SRABarrierTooltip>屏障可以阻挡受到的伤害。\n屏障具有屏障效率，所受到的伤害会在与屏障效率相乘后再用于计算损失的屏障值。\n某些屏障具有充能冷却。如果屏障被完全摧毁，就会进入充能冷却。\n某些屏障具有损伤上限，受到的伤害不会高于这个上限。仅当此值大于0时才生效。\n某些屏障具有损伤降低，受到的伤害会降低对应的值。仅当此值大于0时才生效。\n\n回复延迟：{0}\n充能冷却：{1}\n屏障效率：{2}\n损伤上限：{3}\n损伤降低：{4}</SRABarrierTooltip>
+	<SRABarrierTooltip>屏障可以阻挡受到的伤害。\n\n-屏障具有屏障效率，所受到的伤害会在与屏障效率相乘后再用于计算损失的屏障值。\n-屏障会计算单位的承伤乘数，并与屏障效率乘算。当承伤乘数高于100%时，则不会参与计算。\n-某些屏障具有充能冷却。如果屏障被完全摧毁，就会进入充能冷却。冷却时间大于0时，冷却完成会立即充满护盾。\n-某些屏障具有损伤上限，受到的伤害不会高于这个上限。仅当此值大于0时才生效。\n-某些屏障具有损伤降低，受到的伤害会降低对应的值。仅当此值大于0时才生效。\n\n回复延迟：{0}\n充能冷却：{1}\n屏障效率：{2}\n损伤上限：{3}\n损伤降低：{4}</SRABarrierTooltip>
+
+
+	
+	<SRA_ProductionProgress>每轮生产{0}个{1}\n当前进度{2}%</SRA_ProductionProgress>
+	<MustNotGenerator_SRA_Core>不能放置1个以上的铸星神械-轴突。</MustNotGenerator_SRA_Core>
+
 
 </LanguageData>

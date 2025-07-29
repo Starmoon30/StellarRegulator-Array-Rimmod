@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <SRA_WorkTableBill.label>在万用工作台制作物品</SRA_WorkTableBill.label>
+
+  <SRA_WorkTableBill.gerund>制作于</SRA_WorkTableBill.gerund>
+
+  <SRA_WorkTableBill.verb>制作于</SRA_WorkTableBill.verb>
+  
+
+  <SRA_EmptySRA_CoreContainer.label>清空铸星神械-轴突</SRA_EmptySRA_CoreContainer.label>
+
+  <SRA_EmptySRA_CoreContainer.gerund>提取于</SRA_EmptySRA_CoreContainer.gerund>
+
+  <SRA_EmptySRA_CoreContainer.verb>提取于</SRA_EmptySRA_CoreContainer.verb>
+  
+</LanguageData>

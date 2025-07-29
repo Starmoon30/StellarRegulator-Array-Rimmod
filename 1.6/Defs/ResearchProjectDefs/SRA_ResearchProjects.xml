@@ -6,12 +6,12 @@
     <defName>SRA_tech_30_7411</defName>
     <label>星规技术协议30-7411</label>
     <description>你大概没想到，来了边缘世界居然还会有机会签署这份熟悉的协议。\n你想必是不会犹豫的，让好戏开场吧。</description>
-    <baseCost>3200</baseCost>
+    <baseCost>6400</baseCost>
     <techLevel>Ultra</techLevel>
     <researchViewX>0</researchViewX>
     <researchViewY>3</researchViewY>
     <prerequisites>
-      <li>MicroelectronicsBasics</li>
+      <li>AdvancedFabrication</li>
     </prerequisites>
   </ResearchProjectDef>
   <ResearchProjectDef>
@@ -19,7 +19,7 @@
     <defName>SRA_BaseWeapon</defName>
     <label>星规-旅游工具</label>
     <description>共同体改组后，有一些人不愿把余生都托付给虚拟仓，他们之中的一部分成为了旅行家，带着自己的私人飞船亲自踏足核心星域内的各个星球。\n很多原本就不甚繁荣的世界被遗弃，便成为了这些旅行家的宝藏之地。\n这些世界各有风貌，却也各有凶险，一些自军用科技改造而来的新时代武器随即应运而生。</description>
-    <baseCost>3200</baseCost>
+    <baseCost>6400</baseCost>
     <techLevel>Ultra</techLevel>
     <researchViewX>1</researchViewX>
     <researchViewY>1</researchViewY>
@@ -32,7 +32,7 @@
     <defName>SRA_BaseTurret</defName>
     <label>星规-智能家居</label>
     <description>很显然，供有机体居住的区域不太适合军用的防御设施。\n这些自动炮塔是军用科技降级后的产物，尽可能控制了伤害范围。好吧，可能有些过分了。</description>
-    <baseCost>3200</baseCost>
+    <baseCost>6400</baseCost>
     <techLevel>Ultra</techLevel>
     <researchViewX>1</researchViewX>
     <researchViewY>2</researchViewY>
@@ -45,10 +45,23 @@
     <defName>SRA_RepairTower</defName>
     <label>星规-生态建设</label>
     <description>这些设备原本设计用于对运行环境进行普遍的控制和修改，在适当调整之后，也可以用来丰富居住区的生态环境。</description>
-    <baseCost>3200</baseCost>
+    <baseCost>6400</baseCost>
     <techLevel>Ultra</techLevel>
     <researchViewX>1</researchViewX>
     <researchViewY>3</researchViewY>
+    <prerequisites>
+      <li>SRA_tech_30_7411</li>
+    </prerequisites>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <tab>SRA</tab>
+    <defName>SRA_Astronomical_Fabrications</defName>
+    <label>星规-铸星神械</label>
+    <description>一些重塑了整片星海的事物的轻量化版本。\n用于提供稳定的分形演化核心产出。</description>
+    <baseCost>6400</baseCost>
+    <techLevel>Ultra</techLevel>
+    <researchViewX>1</researchViewX>
+    <researchViewY>4</researchViewY>
     <prerequisites>
       <li>SRA_tech_30_7411</li>
     </prerequisites>

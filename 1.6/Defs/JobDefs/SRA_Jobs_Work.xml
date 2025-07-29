@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>SRA_EmptySRA_CoreContainer</defName>
+    <driverClass>JobDriver_EmptyThingContainer</driverClass>
+    <reportString>extracting TargetB from TargetA.</reportString>
+    <containerReservationLayer>Empty</containerReservationLayer>
+  </JobDef>
+  
+</Defs>

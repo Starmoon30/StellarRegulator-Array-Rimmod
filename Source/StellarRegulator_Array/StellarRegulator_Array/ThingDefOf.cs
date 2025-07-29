@@ -18,5 +18,6 @@ namespace SRA
         public static SoundDef EnergyShield_Broken;
         public static SoundDef EnergyShield_Reset;
 
+        public static JobDef SRA_EmptySRA_CoreContainer;
     }
 }

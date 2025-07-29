@@ -20,7 +20,7 @@
     </graphicData>
     <staticSunShadowHeight>0.20</staticSunShadowHeight>
     <costList>
-      <Plasteel>500</Plasteel>
+      <Plasteel>200</Plasteel>
     </costList>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
@@ -35,7 +35,7 @@
     <size>(3,1)</size>
     <designationCategory>SRA_Building</designationCategory>
     <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
+    <pathCost>0</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
@@ -92,7 +92,7 @@
     <size>(5,5)</size>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
+    <pathCost>0</pathCost>
     <canOverlapZones>false</canOverlapZones>
     <fillPercent>0.8</fillPercent>
     <statBases>
@@ -105,13 +105,17 @@
       <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
       <destroySound>BuildingDestroyed_Metal_Big</destroySound>
       <ai_chillDestination>false</ai_chillDestination>
+      <relatedBuildCommands>
+        <li>SRA_Astronomical_Fabrications_Sub</li>
+      </relatedBuildCommands>
     </building>
-    <specialDisplayRadius>48</specialDisplayRadius>
     <comps>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="SRA.CompProperties_Generator_SRA_Core">
         <product>SRA_Core</product>
-        <productPerGenBase>5</productPerGenBase>
+        <itemsPerCycle>1</itemsPerCycle>
+        <baseProgressPerCycle>0.1</baseProgressPerCycle>
+        <progressPerFacilityPerCycle>0.2</progressPerFacilityPerCycle>
       </li>
       <li Class="CompProperties_Glower">
         <glowRadius>8</glowRadius>
@@ -149,12 +153,15 @@
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>
     <costList>
-      <SRA_Core>800</SRA_Core>
+      <SRA_Core>100</SRA_Core>
     </costList>
     <researchPrerequisites>
-      <li>SRA_RepairTower</li>
+      <li>SRA_Astronomical_Fabrications</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <placeWorkers>
+      <li>SRA.PlaceWorker_Generator_SRA_Core</li>
+    </placeWorkers>
   </ThingDef>
 
 
@@ -167,7 +174,7 @@
     <graphicData>
       <texPath>SRA/Building/SRA_RepairTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(3,3)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -175,10 +182,10 @@
         <cornerBR>Damage/Corner</cornerBR>
       </damageData>
     </graphicData>
-    <size>(2,2)</size>
+    <size>(3,3)</size>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
+    <pathCost>0</pathCost>
     <canOverlapZones>false</canOverlapZones>
     <fillPercent>0.8</fillPercent>
     <statBases>
@@ -195,8 +202,9 @@
     <comps>
       <li Class="CompProperties_Facility">
         <showMaxSimultaneous>false</showMaxSimultaneous>
-        <maxSimultaneous>200</maxSimultaneous>
-        <maxDistance>48</maxDistance>
+        <requiresLOS>false</requiresLOS>
+        <maxSimultaneous>640000</maxSimultaneous>
+        <maxDistance>500</maxDistance>
       </li>
     </comps>
     <damageMultipliers>
@@ -213,14 +221,13 @@
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>
     <costList>
-      <SRA_Core>80</SRA_Core>
+      <SRA_Core>50</SRA_Core>
     </costList>
     <researchPrerequisites>
-      <li>SRA_RepairTower</li>
+      <li>SRA_Astronomical_Fabrications</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
     <placeWorkers>
-      <li>PlaceWorker_BandNode</li>
       <li>PlaceWorker_ShowFacilitiesConnections</li>
     </placeWorkers>
   </ThingDef>
@@ -240,7 +247,7 @@
     <castEdgeShadows>true</castEdgeShadows>
     <altitudeLayer>LowPlant</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <pathCost>2</pathCost>
+    <pathCost>0</pathCost>
     <constructEffect>ConstructMetal</constructEffect>
     <fillPercent>0.30</fillPercent>
     <canOverlapZones>false</canOverlapZones>

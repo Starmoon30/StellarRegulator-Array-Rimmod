@@ -89,6 +89,7 @@
     <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
+    <Compile Include="WorkGiver_EmptySRA_CoreContainer.cs" />
     <Compile Include="HediffWithSeverityLabel.cs" />
     <Compile Include="Projectile_SRA_Railgun.cs" />
     <Compile Include="SRABarrierHarmonyPatches.cs" />

@@ -19,5 +19,17 @@
   </WorkGiverDef>
 
 
+  <WorkGiverDef>
+    <defName>SRA_EmptySRA_CoreContainer</defName>
+    <label>清空铸星神械-轴突</label>
+    <giverClass>SRA.WorkGiver_EmptySRA_CoreContainer</giverClass>
+    <workType>Hauling</workType>
+    <verb>提取于</verb>
+    <gerund>提取于</gerund>
+    <priorityInType>110</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
 
 </Defs>

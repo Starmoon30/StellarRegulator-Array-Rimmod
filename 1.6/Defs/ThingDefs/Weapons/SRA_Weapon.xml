@@ -427,8 +427,8 @@
 			<MaxHitPoints>6400</MaxHitPoints>
 			<Mass>1</Mass>
 			<AccuracyTouch>1</AccuracyTouch>
-			<AccuracyShort>0.8</AccuracyShort>
-			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
 			<AccuracyLong>0.3</AccuracyLong>
 			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
 			<Flammability>0</Flammability>
