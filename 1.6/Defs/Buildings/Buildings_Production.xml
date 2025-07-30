@@ -124,7 +124,7 @@
       </li>
       <li Class="CompProperties_ThingContainer">
         <compClass>CompThingContainer</compClass>
-        <stackLimit>4000</stackLimit>
+        <stackLimit>5000</stackLimit>
         <drawContainedThing>false</drawContainedThing>
         <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
       </li>
@@ -279,8 +279,8 @@
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Glower">
-        <overlightRadius>3</overlightRadius>
-        <glowRadius>3</glowRadius>
+        <overlightRadius>4</overlightRadius>
+        <glowRadius>4</glowRadius>
         <glowColor>(255,255,255,0)</glowColor>
         <colorPickerEnabled>true</colorPickerEnabled>
         <darklightToggle>true</darklightToggle>

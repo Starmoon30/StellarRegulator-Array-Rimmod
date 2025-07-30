@@ -67,15 +67,11 @@ namespace SRA
 
         private void ProduceItems(int amount)
         {
-            while (amount > 0)
+            Thing newItem = ProductPrototype;
+            newItem.stackCount = Math.Min(amount, newItem.def.stackLimit);
+            if (!ContainerComp.Full)
             {
-                Thing newItem = ProductPrototype;
-                newItem.stackCount = Math.Min(amount, newItem.def.stackLimit);
-
-                if (!this.parent.TryGetInnerInteractableThingOwner().TryAdd(newItem))
-                    break;
-
-                amount -= newItem.stackCount;
+                this.parent.TryGetInnerInteractableThingOwner().TryAdd(newItem);
             }
         }
 
