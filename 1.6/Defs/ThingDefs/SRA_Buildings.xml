@@ -72,7 +72,7 @@
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
-    <castEdgeShadows>True</castEdgeShadows>
+    <castEdgeShadows>false</castEdgeShadows>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>
@@ -140,7 +140,7 @@
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
-    <castEdgeShadows>True</castEdgeShadows>
+    <castEdgeShadows>false</castEdgeShadows>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <designationCategory>SRA_Building</designationCategory>

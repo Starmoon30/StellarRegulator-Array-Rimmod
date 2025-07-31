@@ -76,7 +76,7 @@ namespace SRA
                     // 冷却结束后重新激活屏障
                     if (GetCooldownSeconds() <= 0)
                     {
-                        if (Props.regenDelay > 0)
+                        if (Props.rechargeCooldown > 0)
                         {
                             CurrentBarrier = Props.maxBarrier;
                             SRA_DefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(Pawn.Position, Pawn.Map, false));

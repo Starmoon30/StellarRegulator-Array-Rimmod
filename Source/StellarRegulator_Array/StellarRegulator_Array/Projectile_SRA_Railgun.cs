@@ -61,6 +61,19 @@ namespace SRA
                 (Find.TickManager.TicksGame - lastPenetrationTick) >= ProjectileExt.penetrationDelayTicks;
             if (hitThing != LasthitThing)
             {
+                List<Thing> thingsIgnoredByExplosion = new List<Thing>();
+                foreach (IntVec3 cell in GenRadial.RadialCellsAround(position, ProjectileExt.explosionRadius, true))
+                {
+                    if (!cell.InBounds(map)) continue;
+                    foreach (Thing thing in map.thingGrid.ThingsListAt(cell))
+                    {
+                        // 敌我识别
+                        if (thing != hitThing && !GenHostility.HostileTo(thing, launcher))
+                        {
+                            thingsIgnoredByExplosion.Add(thing);
+                        }
+                    }
+                }
                 // 生成穿透爆炸
                 GenExplosion.DoExplosion(
                     center: position,
@@ -73,7 +86,8 @@ namespace SRA
                     explosionSound: ProjectileExt.explosionSound,
                     weapon: equipmentDef,
                     projectile: def,
-                    intendedTarget: intendedTarget.Thing
+                    intendedTarget: intendedTarget.Thing,
+                    ignoredThings: thingsIgnoredByExplosion
                 );
                 LasthitThing = hitThing;
 
@@ -161,12 +175,11 @@ namespace SRA
             foreach (IntVec3 cell in GenRadial.RadialCellsAround(center, ProjectileExt.explosionRadius, true))
             {
                 if (!cell.InBounds(map)) continue;
-
                 // 获取单元格内的所有 Pawn
                 List<Thing> things = cell.GetThingList(map);
                 foreach (Thing thing in things)
                 {
-                    if (thing is Pawn pawn && !IsFriendlyToLauncher(pawn, launcher?.Faction))
+                    if (thing is Pawn pawn && GenHostility.HostileTo(pawn, launcher))
                     {
                         ApplyHediffToTarget(pawn, ProjectileExt.explosionHediff, ProjectileExt.explosionHediffSeverity);
                     }
