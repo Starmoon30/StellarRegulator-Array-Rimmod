@@ -42,6 +42,7 @@
     <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
     <recipes>
       <li>SRA_Make_SRA_Core_By_Plasteel</li>
+      <li>SRA_Make_SRA_Core_By_Steel</li>
       <li>SRA_Make_SRA_Core_By_Chemfuel</li>
       <li>SRA_Make_Plasteel_By_SRA_Core</li>
       <li>SRA_Make_Hyperweave_By_SRA_Core</li>
@@ -113,9 +114,9 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="SRA.CompProperties_Generator_SRA_Core">
         <product>SRA_Core</product>
-        <itemsPerCycle>1</itemsPerCycle>
-        <baseProgressPerCycle>0.1</baseProgressPerCycle>
-        <progressPerFacilityPerCycle>0.2</progressPerFacilityPerCycle>
+        <itemsPerCycle>10</itemsPerCycle>
+        <baseProgressPerCycle>0.01</baseProgressPerCycle>
+        <progressPerFacilityPerCycle>0.02</progressPerFacilityPerCycle>
       </li>
       <li Class="CompProperties_Glower">
         <glowRadius>8</glowRadius>

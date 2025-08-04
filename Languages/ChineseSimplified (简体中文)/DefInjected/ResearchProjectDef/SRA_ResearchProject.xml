@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <SRA_tech_30_7411.label>星规技术协议30-7411</SRA_tech_30_7411.label>
+  <SRA_tech_30_7411.description>你大概没想到，来了边缘世界居然还会有机会签署这份熟悉的协议。\n你想必是不会犹豫的，让好戏开场吧。</SRA_tech_30_7411.description>
+  
+  <SRA_BaseWeapon.label>星规-旅游工具</SRA_BaseWeapon.label>
+  <SRA_BaseWeapon.description>共同体改组后，有一些人不愿把余生都托付给虚拟仓，他们之中的一部分成为了旅行家，带着自己的私人飞船亲自踏足核心星域内的各个星球。\n很多原本就不甚繁荣的世界被遗弃，便成为了这些旅行家的宝藏之地。\n这些世界各有风貌，却也各有凶险，一些自军用科技改造而来的新时代武器随即应运而生。</SRA_BaseWeapon.description>
+  
+  <SRA_BaseTurret.label>星规-智能家居</SRA_BaseTurret.label>
+  <SRA_BaseTurret.description>很显然，供有机体居住的区域不太适合军用的防御设施。\n这些自动炮塔是军用科技降级后的产物，尽可能控制了伤害范围。好吧，可能有些过分了。</SRA_BaseTurret.description>
+
+  <SRA_RepairTower.label>星规-生态建设</SRA_RepairTower.label>
+  <SRA_RepairTower.description>这些设备原本设计用于对运行环境进行普遍的控制和修改，在适当调整之后，也可以用来丰富居住区的生态环境。</SRA_RepairTower.description>
+  
+  <SRA_Astronomical_Fabrications.label>星规-铸星神械</SRA_Astronomical_Fabrications.label>
+  <SRA_Astronomical_Fabrications.description>一些重塑了整片星海的事物的轻量化版本。\n用于提供稳定的分形演化核心产出。</SRA_Astronomical_Fabrications.description>
+  
+</LanguageData>

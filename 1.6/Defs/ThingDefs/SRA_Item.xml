@@ -4,6 +4,7 @@
     <defName>SRA_Core</defName>
     <label>星规-分形演化核心</label>
     <description>这一核心用于生成和控制星辉分形，是几乎所有星规阵列造物的核心组件。\n\n星辉分形，经由超越维度的繁复建构而成，灌注了星辰般能量铸成的造物。这种拥有极高复杂度的可编程材料在质能之间流转，能够承受恒星崩塌般的力量，近乎在所有领域抵达登峰造极的地位。\n——冰冷的、苍白的材料，其悚骇与伟力几近超逾理解。</description>
+		<useHitPoints>false</useHitPoints>
     <graphicData>
       <texPath>SRA/Item/SRA_Core</texPath>
       <graphicClass>Graphic_Single</graphicClass>

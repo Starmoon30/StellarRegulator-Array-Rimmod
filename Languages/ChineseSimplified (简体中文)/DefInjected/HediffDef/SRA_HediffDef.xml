@@ -18,4 +18,10 @@
   <SRA_Railgun_debuff.label>星规-相位崩解</SRA_Railgun_debuff.label>
   <SRA_Railgun_debuff.description>混乱的相位能量会撕扯物质乃至现实。\n\n-这一效果会严重削弱战斗能力并增加受到的伤害。</SRA_Railgun_debuff.description>
 
+  <SRAResurrectionBound.label>星规-永生协议</SRAResurrectionBound.label>
+  <SRAResurrectionBound.description>这个单位已经与一座永生协议信标绑定，会在受到致命伤害时被传送回去并保护起来。</SRAResurrectionBound.description>
+
+  <SRAResurrectionAlready.label>星规-守护之壳</SRAResurrectionAlready.label>
+  <SRAResurrectionAlready.description>这个单位刚刚遭遇了足以致命的打击，眼下被保护场所笼罩，正在迅速恢复身上的损伤。</SRAResurrectionAlready.description>
+
 </LanguageData>

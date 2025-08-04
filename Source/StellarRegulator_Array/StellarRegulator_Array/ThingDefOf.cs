@@ -19,5 +19,9 @@ namespace SRA
         public static SoundDef EnergyShield_Reset;
 
         public static JobDef SRA_EmptySRA_CoreContainer;
+
+
+        public static HediffDef SRAResurrectionBound;
+        public static HediffDef SRAResurrectionAlready;
     }
 }

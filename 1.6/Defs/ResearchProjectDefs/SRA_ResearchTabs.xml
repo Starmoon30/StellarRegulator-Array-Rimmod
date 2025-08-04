@@ -4,5 +4,7 @@
   <ResearchTabDef>
     <defName>SRA</defName>
     <label>星规技术</label>
+    <generalTitle>星规技术</generalTitle>
+    <generalDescription>了解与运用自共同体改组后到灾疫战争开始这一时间段内的路希维亚帝国民用科技。\n这些技术属于30-7411协议规定内的四级及以下星辉水晶技术，并针对小规模非官方殖民地的需求做过改造和调整。</generalDescription>
   </ResearchTabDef>
 </Defs>

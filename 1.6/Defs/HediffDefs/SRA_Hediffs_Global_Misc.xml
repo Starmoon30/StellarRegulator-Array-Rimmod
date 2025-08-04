@@ -8,14 +8,22 @@
     <description>此人显现出坚不可摧的身躯与不可思议的再生能力，一切损伤都无法在其身上驻留片刻。</description>
     <isBad>false</isBad>
     <priceImpact>false</priceImpact>
+    <preventsDeath>true</preventsDeath>
+    <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
     <stages>
       <li>
+        <totalBleedFactor>0</totalBleedFactor>
         <statFactors>
           <IncomingDamageFactor>0.1</IncomingDamageFactor>
         </statFactors>
-        <regeneration>60000</regeneration>
       </li>
     </stages>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>100</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
   </HediffDef>
 
   <HediffDef>
@@ -26,6 +34,10 @@
     <isBad>false</isBad>
     <priceImpact>false</priceImpact>
     <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
       <li Class="SRA.HediffCompProperties_SRABarrier">
         <maxBarrier>640</maxBarrier>
         <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
@@ -67,7 +79,7 @@
       </li>
     </stages>
   </HediffDef>
-  
+
   <HediffDef>
     <defName>SRA_Barrier_test2</defName>
     <label>护盾超载2</label>
@@ -92,7 +104,7 @@
       </li>
     </stages>
   </HediffDef>
-  
+
   <HediffDef>
     <defName>SRA_Little_Regeneration</defName>
     <label>星规-顽强生机</label>
@@ -102,9 +114,15 @@
     <priceImpact>false</priceImpact>
     <stages>
       <li>
-        <regeneration>50</regeneration>
+        <totalBleedFactor>0</totalBleedFactor>
       </li>
     </stages>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>0.1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
   </HediffDef>
 
   <HediffDef>
@@ -120,14 +138,14 @@
           <li>Food</li>
           <li>Rest</li>
           <li>Comfort</li>
-			    <li>Joy</li>
-			    <li>Outdoors</li>
+          <li>Joy</li>
+          <li>Outdoors</li>
         </disablesNeeds>
       </li>
     </stages>
   </HediffDef>
 
-  
+
   <HediffDef ParentName="DiseaseBase">
     <defName>SRA_Railgun_debuff</defName>
     <label>SRA_Railgun_debuff</label>
@@ -223,5 +241,65 @@
       </li>
     </stages>
   </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRAResurrectionBound</defName>
+    <label>星规-永生协议</label>
+    <description>这个单位已经与一座永生协议信标绑定，会在受到致命伤害时被传送回去并保护起来。</description>
+    <isBad>false</isBad>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0,1,1)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRAResurrectionAlready</defName>
+    <label>星规-守护之壳</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位刚刚遭遇了足以致命的打击，眼下被保护场所笼罩，正在迅速恢复身上的损伤。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <preventsDeath>true</preventsDeath>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+        <totalBleedFactor>0</totalBleedFactor>
+        <statFactors>
+          <IncomingDamageFactor>0</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3600</disappearsAfterTicks>
+      </li>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>10000</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRATurretTest</defName>
+    <label>星规-防卫电弧</label>
+    <description>这个单位能够向周围的敌对目标释放防御性的电弧。</description>
+    <isBad>false</isBad>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0,1,1)</defaultLabelColor>
+    <comps>
+      <li Class="SRA.HediffCompProperties_TopTurret">
+        <turretDef>SRATurretGun_Weapon_P</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+      </li>
+    </comps>
+  </HediffDef>
+
 
 </Defs>

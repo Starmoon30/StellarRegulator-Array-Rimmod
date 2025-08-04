@@ -54,7 +54,9 @@
 					<offset>0.2</offset>
 				</li>
 			</capMods>
-			<totalBleedFactor>0</totalBleedFactor>
+			<statFactors>
+				<StaggerDurationFactor>0</StaggerDurationFactor>
+			</statFactors>
 			<statOffsets>
 				<ArmorRating_Sharp>2</ArmorRating_Sharp>
 				<ArmorRating_Blunt>2</ArmorRating_Blunt>
@@ -62,10 +64,8 @@
 				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
 				<ComfyTemperatureMax>200</ComfyTemperatureMax>
 				<AimingDelayFactor>-0.5</AimingDelayFactor>
-				<ShootingAccuracyPawn>20</ShootingAccuracyPawn>
           		<MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
 				<RangedCooldownFactor>-0.5</RangedCooldownFactor>
-				<StaggerDurationFactor>-1</StaggerDurationFactor>
 				<MoveSpeed>4</MoveSpeed>
 				<DecompressionResistance MayRequire="kentington.saveourship2">1</DecompressionResistance>
 				<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">10</VacuumSpeedMultiplier>

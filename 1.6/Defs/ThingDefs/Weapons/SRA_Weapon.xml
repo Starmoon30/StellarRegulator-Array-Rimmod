@@ -57,6 +57,7 @@
 		<defName>SRA_Spear_of_SRA</defName>
 		<label>星规-星辉律揽</label>
 		<description>路希维亚所使用的武器的仿制品，能释放庞大的能量束，也能作为长枪使用。</description>
+		<useHitPoints>false</useHitPoints>
 		<graphicData>
 			<texPath>SRA/Weapon/SRA_Spear_of_SRA</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -64,9 +65,9 @@
 		</graphicData>
 		<equippedAngleOffset>45</equippedAngleOffset>
 		<statBases>
+      		<DeteriorationRate>0</DeteriorationRate>
 			<MarketValue>32000</MarketValue>
 			<WorkToMake>200000</WorkToMake>
-			<MaxHitPoints>6400</MaxHitPoints>
 			<Mass>1</Mass>
 			<AccuracyTouch>1</AccuracyTouch>
 			<AccuracyShort>1</AccuracyShort>

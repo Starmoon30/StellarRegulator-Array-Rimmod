@@ -79,4 +79,36 @@
 		</comps>
 	</ThingDef>
 
+	<ThingDef ParentName="SRA_Beacon">
+		<defName>SRA_Beacon_Resurrection</defName>
+		<label>星规-永生协议信标</label>
+  		<thingClass>SRA.SRABuilding_ResurrectionBeacon</thingClass>
+		<description>一个致力于避免意外死亡的传送设施，它跟踪每个它绑定的单位，并在其即将受到致命损伤时将其传送回信标所在位置。传送完成后，它会生成一个短暂的保护场，快速修复目标身上的损伤并且避免其死亡，然而保护场也会限制单位的活动。\n\n绑定不手动解除就会持续存在，因而在信标存在时，其绑定的单位几乎是永生的。由于某些情况下单位的死亡可能不可避免，使用者也要考虑为无法拯救的单位解除绑定以免除折磨。</description>
+		<rotatable>true</rotatable>
+		<graphicData>
+      		<texPath>SRA/Building/SRA_Beacon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+      		<drawSize>(3,3)</drawSize>
+			<shadowData>
+				<volume>(1.1, 1.0, 1.1)</volume>
+			</shadowData>
+		</graphicData>
+		<uiIconPath>SRA/Building/SRA_Beacon</uiIconPath>
+		<uiIconScale>1.25</uiIconScale>
+		<size>(2,2)</size>
+		<costList>
+			<SRA_Core>2000</SRA_Core>
+		</costList>
+    	<researchPrerequisites>
+      		<li>SRA_tech_30_7411</li>
+   		</researchPrerequisites>
+		<statBases>
+		    <MarketValue>180</MarketValue>
+			<WorkToBuild>100</WorkToBuild>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>100</Mass>
+		</statBases>
+    	<designationCategory>SRA_Building</designationCategory>
+	</ThingDef>
+
 </Defs>
