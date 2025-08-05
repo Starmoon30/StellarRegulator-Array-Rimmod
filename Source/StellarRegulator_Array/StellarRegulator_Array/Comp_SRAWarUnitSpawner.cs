@@ -12,6 +12,7 @@ namespace SRA
         public bool AutoMode = true;
         public float Powerint = 0f;
         public int SRAWarUnitMax;
+        public float SRAperCyclePowerint;
         public PawnKindDef currPawn;
 
         public CompProperties_SRAWarUnitSpawner Props => 
@@ -22,7 +23,8 @@ namespace SRA
             base.PostPostMake();
             // 从XML属性初始化最大值
             SRAWarUnitMax = Props.maxWarUnits;
-            
+            SRAperCyclePowerint = Props.perCyclePowerint;
+
             // 确保当前pawn种类有效
             if (currPawn == null || !Props.pawnKindDef.Contains(currPawn))
             {
@@ -116,7 +118,7 @@ namespace SRA
                 // 充能逻辑
                 if (Powerint < SRAWarUnitMax)
                 {
-                    Powerint += 0.1f;
+                    Powerint += SRAperCyclePowerint;
                 }
             }
             else

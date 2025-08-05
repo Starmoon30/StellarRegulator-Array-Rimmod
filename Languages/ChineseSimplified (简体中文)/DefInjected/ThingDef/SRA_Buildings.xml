@@ -26,6 +26,8 @@
   <SRA_RepairTower.description>一个重要的星规设施，它投射一个极为庞大的能量场，并尽可能识别你的物品，将其修复。它还会持续增加你建筑的耐久度，直到抵达上限的两倍再额外多出800耐久度，来省去修理的烦恼。\n至于发电功能……咳咳，先假装这不算作弊吧。\n\n非常诡异的建筑，显然有人为了图方便擅自修改了它的功能，加入了一些跨时期的技术，甚至对接了能量传输网络。不过，也没什么不好的不是吗？</SRA_RepairTower.description>
   <SRA_DefenseDroneTower.label>星规-哨戒尖塔</SRA_DefenseDroneTower.label>
   <SRA_DefenseDroneTower.description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每50秒能储备一个防御单元，而每个防御单元能持续运行500秒。\n\n奇怪的设计，这一建筑几乎没有使用案例，某些人可能会为了看自己的机器和低技术敌对势力打的有来有回而部署这种设施，旁观微型战争单元和别人对射一整个下午。</SRA_DefenseDroneTower.description>
+  <SRA_Mech_WarUnit_M_Tower.label>星规-戍卫尖塔</SRA_Mech_WarUnit_M_Tower.label>
+  <SRA_Mech_WarUnit_M_Tower.description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署中型战争单元来作为防卫手段，这些中型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每500秒能储备一个防御单元，而每个防御单元能持续运行500秒。</SRA_Mech_WarUnit_M_Tower.description>
   <SRA_WorkTable.label>星规-构建机组</SRA_WorkTable.label>
   <SRA_WorkTable.description>编织星辉分形并将其演化为各种物品的工作台，仅在没有展开大规模生产设施的条件下使用的打印装置。\n\n许多旅行家会携带这种工作台来获取他们所需要的物件，毕竟他们几乎是孑然一身地在宇宙的某个角落里独自行走，需要有一种能解决绝大多数问题的便捷方案，而一个万能打印机显然是非常优秀的。\n在某些技术指导和隐秘的帮助下，这一工作台可以用常规材料组装起来，真是令人惊叹。</SRA_WorkTable.description>
   <SRA_TempControler.label>星规-温控终端</SRA_TempControler.label>

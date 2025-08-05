@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
+  <SRA_Spear_of_SRA.label>星规-星辉律揽</SRA_Spear_of_SRA.label>
+  <SRA_Spear_of_SRA.description>路希维亚所使用的武器的仿制品，能释放庞大的能量束，也能作为长枪使用。</SRA_Spear_of_SRA.description>
+
+  <SRATurret_SML_Mass_Drivers.label>星规-星弧破碎炮塔</SRATurret_SML_Mass_Drivers.label>
+  <SRATurret_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRATurret_SML_Mass_Drivers.description>
+  <SRATurretGun_SML_Mass_Drivers.label>星规-星弧破碎</SRATurretGun_SML_Mass_Drivers.label>
+  <SRATurretGun_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRATurretGun_SML_Mass_Drivers.description>
+  <SRA_SML_Mass_Drivers.label>星规-星弧破碎</SRA_SML_Mass_Drivers.label>
+  <SRA_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRA_SML_Mass_Drivers.description>
+  <SRABullet_SML_Mass_Drivers.label>星规-星弧破碎能量束</SRABullet_SML_Mass_Drivers.label>
+
 
   <SRATurret_Weapon_P.label>星规-光辉之冠炮塔</SRATurret_Weapon_P.label>
   <SRATurret_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRATurret_Weapon_P.description>
@@ -8,13 +19,20 @@
   <SRATurretGun_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRATurretGun_Weapon_P.description>
   <SRA_Weapon_P.label>星规-光辉之冠</SRA_Weapon_P.label>
   <SRA_Weapon_P.description>光辉之冠原本是一种小规模舰载点防御系统，它使用高频脉冲束作为防御手段，在尽可能降低消耗的情况下，通过优异的火控系统和充能式的射击方式保证了拦截能力。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其低成本速射武器的定位。</SRA_Weapon_P.description>
-  
+  <SRABullet_Weapon_P.label>星规-光辉之冠脉冲束</SRABullet_Weapon_P.label>
 
 
   <SRA_Railgun.label>星规-呼啸雷霆</SRA_Railgun.label>
   <SRA_Railgun.description>呼啸雷霆原本是一种中规模舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并产生破坏性相位能量，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其长距离压制和突破的定位。\n\n-这件武器的射弹会穿透路径上的所有目标并在其位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。</SRA_Railgun.description>
+  <SRABulle_Railgun.label>星规-呼啸雷霆能量束</SRABulle_Railgun.label>
   
   <SRA_Minipulser.label>星规-风雪骤灭</SRA_Minipulser.label>
   <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。\n\n-这件武器的射弹带有EMP效果。</SRA_Minipulser.description>
+  <SRABullet_Minipulser.label>星规-风雪骤灭能量束</SRABullet_Minipulser.label>
+
+  <SRA_Arc_Beam_Weapon.label>星规-相位奔流</SRA_Arc_Beam_Weapon.label>
+  <SRA_Arc_Beam_Weapon.description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。</SRA_Arc_Beam_Weapon.description>
+
+  <SRA_Bullet_Arc_Beam.label>星规-相位奔流能量弧</SRA_Bullet_Arc_Beam.label>
 
 </LanguageData>

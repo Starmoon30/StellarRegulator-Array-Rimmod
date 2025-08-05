@@ -1,43 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <ThingDef Name="SRA_LightMechanoid" ParentName="BaseMechanoid" Abstract="True">
-      <statBases>
-        <MarketValue>2</MarketValue>
-        <MoveSpeed>8</MoveSpeed>
-        <ArmorRating_Blunt>1</ArmorRating_Blunt>
-        <ArmorRating_Sharp>1</ArmorRating_Sharp>
-        <ArmorRating_Heat>4</ArmorRating_Heat>
-        <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
-      </statBases>
-      <race>
-        <hasCorpse>false</hasCorpse>
-        <body>Mech_Light</body>
-        <intelligence>ToolUser</intelligence>
-        <thinkTreeMain>Mechanoid</thinkTreeMain>
-        <bulletStaggerDelayTicks>1</bulletStaggerDelayTicks>
-        <baseBodySize>0.4</baseBodySize>
-        <baseHealthScale>4</baseHealthScale>
-        <mechWeightClass>Light</mechWeightClass>
-        <mechFixedSkillLevel>20</mechFixedSkillLevel>
-      </race>
-      <butcherProducts>
-        <Steel>10</Steel>
-      </butcherProducts>
-      <tools>
-        <li>
-          <label>撞击</label>
-          <capacities>
-            <li>Blunt</li>
-          </capacities>
-          <power>32</power>
-          <cooldownTime>0.5</cooldownTime>
-          <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-          <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-        </li>
-      </tools>
-    </ThingDef>
-    
+  <ThingDef Name="SRA_LightMechanoid" ParentName="BaseMechanoid" Abstract="True">
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <MoveSpeed>8</MoveSpeed>
+      <ArmorRating_Blunt>1</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1</ArmorRating_Sharp>
+      <ArmorRating_Heat>4</ArmorRating_Heat>
+      <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
+    </statBases>
+    <race>
+      <hasCorpse>false</hasCorpse>
+      <body>Mech_Light</body>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <bulletStaggerDelayTicks>1</bulletStaggerDelayTicks>
+      <baseBodySize>0.4</baseBodySize>
+      <baseHealthScale>4</baseHealthScale>
+      <mechWeightClass>Light</mechWeightClass>
+      <mechFixedSkillLevel>20</mechFixedSkillLevel>
+    </race>
+    <butcherProducts>
+      <Steel>10</Steel>
+    </butcherProducts>
+    <tools>
+      <li>
+        <label>撞击</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>0.5</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+  </ThingDef>
+
   <ThingDef Abstract="True" Name="SRASuperHeavyMechanoid" ParentName="HeavyMechanoid">
     <statBases>
       <MoveSpeed>4</MoveSpeed>
@@ -47,13 +47,9 @@
       <ArmorRating_Blunt>4</ArmorRating_Blunt>
       <ArmorRating_Sharp>4</ArmorRating_Sharp>
       <ArmorRating_Heat>4</ArmorRating_Heat>
-			<ComfyTemperatureMin>-200</ComfyTemperatureMin>
-			<ComfyTemperatureMax>2000</ComfyTemperatureMax>
-			<AimingDelayFactor>0.5</AimingDelayFactor>
-			<ShootingAccuracyPawn>20</ShootingAccuracyPawn>
-      <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
-			<RangedCooldownFactor>0.5</RangedCooldownFactor>
-			<StaggerDurationFactor>-1</StaggerDurationFactor>
+      <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+      <ComfyTemperatureMax>2000</ComfyTemperatureMax>
+      <StaggerDurationFactor>-1</StaggerDurationFactor>
       <PsychicSensitivity>0</PsychicSensitivity>
       <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
     </statBases>
@@ -78,7 +74,7 @@
     <minGenerationAge>100</minGenerationAge>
     <forceNormalGearQuality>true</forceNormalGearQuality>
     <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
-	
+
     <combatPower>10</combatPower>
     <techHediffsChance>1</techHediffsChance>
     <techHediffsMoney>9999~9999</techHediffsMoney>
@@ -93,207 +89,393 @@
     <minGenerationAge>100</minGenerationAge>
     <forceNormalGearQuality>true</forceNormalGearQuality>
     <allowInMechClusters>false</allowInMechClusters><!--机械集群-->
-	
+
     <weaponMoney>40000~40000</weaponMoney>
     <combatPower>400</combatPower>
     <techHediffsChance>1</techHediffsChance>
     <techHediffsMoney>80000~80000</techHediffsMoney>
     <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
   </PawnKindDef>
-  
-    <!-- WarUrchin -->  
-    <ThingDef ParentName="SRA_LightMechanoid">
-      <defName>SRA_Mech_WarUnit_S</defName>
-      <label>星规-「尖蜂」微型战争单元</label>
-      <description>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</description>
-      <statBases>
-        <MoveSpeed>16</MoveSpeed>
-      </statBases>
-      <race>
-        <lifeStageAges>
-          <li>
-            <def>MechanoidFullyFormed</def>
-          </li>
-        </lifeStageAges>
-        <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant>
-        <baseHealthScale>4</baseHealthScale>
-      </race>
-      <comps Inherit="False">
-        <li Class="CompProperties_CanBeDormant" />
-        <li Class="CompProperties_WakeUpDormant">
-          <wakeUpOnDamage>true</wakeUpOnDamage>
-          <wakeUpCheckRadius>30</wakeUpCheckRadius>
-          <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
-        </li>
-        <li Class="CompProperties_MechPowerCell">
-          <totalPowerTicks>30000</totalPowerTicks>
-        </li>
-      </comps>
-    </ThingDef>
-    
-    <PawnKindDef ParentName="SRA_LightMechanoidKind">
-      <defName>SRA_Mech_WarUnit_S</defName>
-      <label>星规-「尖蜂」微型战争单元</label>
-      <labelPlural>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</labelPlural>
-      <race>SRA_Mech_WarUnit_S</race>
-      <allowInMechClusters>false</allowInMechClusters>
-      <forceNoDeathNotification>true</forceNoDeathNotification>
-      <forceDeathOnDowned>true</forceDeathOnDowned>
-      <lifeStages>
+
+  <!-- WarUrchin -->
+  <ThingDef ParentName="SRA_LightMechanoid">
+    <defName>SRA_Mech_WarUnit_S</defName>
+    <label>星规-「尖蜂」微型战争单元</label>
+    <description>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</description>
+    <statBases>
+      <MoveSpeed>16</MoveSpeed>
+    </statBases>
+    <race>
+      <lifeStageAges>
         <li>
-          <bodyGraphicData>
-            <texPath>SRA/Pawn/Mechanoid/SRA_Mech_WarUnit_S</texPath>
-            <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
-            <shaderType>CutoutWithOverlay</shaderType>
-            <graphicClass>Graphic_Multi</graphicClass>
-            <drawSize>1.1</drawSize>
-            <shadowData>
-              <volume>(0.2, 0.3, 0.2)</volume>
-            </shadowData>
-          </bodyGraphicData>
+          <def>MechanoidFullyFormed</def>
         </li>
-      </lifeStages>      
-      <weaponTags>
-        <li>SRA_Weapon_P</li>
-      </weaponTags>
-    </PawnKindDef>
+      </lifeStageAges>
+      <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant>
+      <baseHealthScale>4</baseHealthScale>
+    </race>
+    <comps Inherit="False">
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_MechPowerCell">
+        <totalPowerTicks>30000</totalPowerTicks>
+      </li>
+    </comps>
+  </ThingDef>
+  <PawnKindDef ParentName="SRA_LightMechanoidKind">
+    <defName>SRA_Mech_WarUnit_S</defName>
+    <label>星规-「尖蜂」微型战争单元</label>
+    <labelPlural>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。</labelPlural>
+    <race>SRA_Mech_WarUnit_S</race>
+    <allowInMechClusters>false</allowInMechClusters>
+    <forceNoDeathNotification>true</forceNoDeathNotification>
+    <forceDeathOnDowned>true</forceDeathOnDowned>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>SRA/Pawn/Mechanoid/SRA_Mech_WarUnit_S</texPath>
+          <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.1</drawSize>
+          <shadowData>
+            <volume>(0.2, 0.3, 0.2)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponTags>
+      <li>SRA_Weapon_P</li>
+    </weaponTags>
+  </PawnKindDef>
 
-    
-    <ThingDef Name="SRA_SR_Mech" ParentName="SRASuperHeavyMechanoid">
-      <defName>SRA_SR_Mech</defName>
-      <label>星规阵列五类行动单元</label>
-      <description>一个星规阵列五类行动单元的类人素体，完全使用星辉分形构建，借助其内置的星辉水晶能量网络端口，这一机械体能够调度近乎无限的能源。</description>
-      <race>
-        <body>Lancer</body>
-        <baseBodySize>1</baseBodySize>
-        <mechEnabledWorkTypes>
-         <li>Hauling</li>
-         <li>BasicWorker</li>
-         <!-- <li>Handling</li> -->
-         <li>Hunting</li>
-         <li>Cleaning</li>
-         <li>Construction</li>
-         <li>Firefighter</li>
-         <li>PlantCutting</li>
-         <li>Growing</li>
-         <li>Crafting</li>
-         <li>Smithing</li>
-         <li>Tailoring</li>
-         <li>Cooking</li>
-         <li>Mining</li>
-         <li>Doctor</li>
-        </mechEnabledWorkTypes>
-        <lifeStageAges>
-          <li>
-            <def>MechanoidFullyFormed</def>
-            <minAge>0</minAge>
-          </li>
-        </lifeStageAges>
-        <baseHealthScale>8</baseHealthScale>
-      </race>
-      <statBases>
-        <BandwidthCost>1</BandwidthCost>
-        <EMPResistance>4</EMPResistance>
-        <MoveSpeed>4</MoveSpeed>
-		    <WorkSpeedGlobal>4</WorkSpeedGlobal>
-	      <CarryingCapacity>800</CarryingCapacity>
-        <FoodPoisonChance>0</FoodPoisonChance>
-        <IncomingDamageFactor>0.1</IncomingDamageFactor>
-        <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
-        <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
-        <WastepacksPerRecharge>0</WastepacksPerRecharge>
-			  <EnergyShieldRechargeRate>4</EnergyShieldRechargeRate>
-			  <EnergyShieldEnergyMax>64</EnergyShieldEnergyMax>
-      </statBases>
-      <tools>
+
+  <ThingDef Name="SRA_SR_Mech" ParentName="SRASuperHeavyMechanoid">
+    <defName>SRA_SR_Mech</defName>
+    <label>星规阵列五类行动单元</label>
+    <description>一个星规阵列五类行动单元的类人素体，完全使用星辉分形构建，借助其内置的星辉水晶能量网络端口，这一机械体能够调度近乎无限的能源。</description>
+    <race>
+      <body>Lancer</body>
+      <baseBodySize>1</baseBodySize>
+      <mechEnabledWorkTypes>
+        <li>Hauling</li>
+        <li>BasicWorker</li>
+        <!-- <li>Handling</li> -->
+        <li>Hunting</li>
+        <li>Cleaning</li>
+        <li>Construction</li>
+        <li>Firefighter</li>
+        <li>PlantCutting</li>
+        <li>Growing</li>
+        <li>Crafting</li>
+        <li>Smithing</li>
+        <li>Tailoring</li>
+        <li>Cooking</li>
+        <li>Mining</li>
+        <li>Doctor</li>
+      </mechEnabledWorkTypes>
+      <lifeStageAges>
         <li>
-          <label>touch</label>
-          <capacities>
-            <li>Blunt</li>
-          </capacities>
-          <power>100</power>
-          <cooldownTime>0.5</cooldownTime>
-          <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-          <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
         </li>
-      </tools>
-      <comps>
-        <li Class="CompProperties_Shield">
-          <startingTicksToReset>1800</startingTicksToReset>
-          <minDrawSize>1.8</minDrawSize>
-          <maxDrawSize>2.2</maxDrawSize>
-          <energyLossPerDamage>0.05</energyLossPerDamage>
-          <energyOnReset>6400</energyOnReset>
-          <blocksRangedWeapons>false</blocksRangedWeapons>
-        </li>
-        <li Class="AutoBlink.CompProperties_AutoBlink" MayRequire="rabiosus.autoblink">
-          <!-- <gizmoIconPath></gizmoIconPath> -->
-          <blinkIntervalTicks>12</blinkIntervalTicks>
-          <delayAfterEligibleTicks>4</delayAfterEligibleTicks>
-          <cellsBeforeTarget>1</cellsBeforeTarget>
-          <maxDistanceToBlink>400</maxDistanceToBlink>
-          <minDistanceToBlink>10</minDistanceToBlink>
-          <postBlinkStanceTicks>0</postBlinkStanceTicks>
-          <excludedJobDefs>
-            <li>GotoWander</li>
-            <li>Carried</li>
-          </excludedJobDefs>
+      </lifeStageAges>
+      <baseHealthScale>8</baseHealthScale>
+    </race>
+    <statBases>
+      <BandwidthCost>1</BandwidthCost>
+      <EMPResistance>4</EMPResistance>
+      <MoveSpeed>4</MoveSpeed>
+      <WorkSpeedGlobal>4</WorkSpeedGlobal>
+      <CarryingCapacity>800</CarryingCapacity>
+      <AimingDelayFactor>0.5</AimingDelayFactor>
+      <ShootingAccuracyPawn>20</ShootingAccuracyPawn>
+      <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+      <RangedCooldownFactor>0.5</RangedCooldownFactor>
+      <FoodPoisonChance>0</FoodPoisonChance>
+      <IncomingDamageFactor>0.1</IncomingDamageFactor>
+      <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
+      <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
+      <WastepacksPerRecharge>0</WastepacksPerRecharge>
+      <EnergyShieldRechargeRate>4</EnergyShieldRechargeRate>
+      <EnergyShieldEnergyMax>64</EnergyShieldEnergyMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>touch</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>100</power>
+        <cooldownTime>0.5</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <comps>
+      <li Class="CompProperties_Shield">
+        <startingTicksToReset>1800</startingTicksToReset>
+        <minDrawSize>1.8</minDrawSize>
+        <maxDrawSize>2.2</maxDrawSize>
+        <energyLossPerDamage>0.05</energyLossPerDamage>
+        <energyOnReset>6400</energyOnReset>
+        <blocksRangedWeapons>false</blocksRangedWeapons>
+      </li>
+      <li Class="AutoBlink.CompProperties_AutoBlink" MayRequire="rabiosus.autoblink">
+        <!-- <gizmoIconPath></gizmoIconPath> -->
+        <blinkIntervalTicks>12</blinkIntervalTicks>
+        <delayAfterEligibleTicks>4</delayAfterEligibleTicks>
+        <cellsBeforeTarget>1</cellsBeforeTarget>
+        <maxDistanceToBlink>400</maxDistanceToBlink>
+        <minDistanceToBlink>10</minDistanceToBlink>
+        <postBlinkStanceTicks>0</postBlinkStanceTicks>
+        <excludedJobDefs>
+          <li>GotoWander</li>
+          <li>Carried</li>
+        </excludedJobDefs>
 
-          <preBlinkSoundDefs>
-            <li>AutoBlink_Skip_Small</li>
-          </preBlinkSoundDefs>
-          <postBlinkSoundDefs>
-            <li>AutoBlink_Skip_Exit_Small</li>
-          </postBlinkSoundDefs>
+        <preBlinkSoundDefs>
+          <li>AutoBlink_Skip_Small</li>
+        </preBlinkSoundDefs>
+        <postBlinkSoundDefs>
+          <li>AutoBlink_Skip_Exit_Small</li>
+        </postBlinkSoundDefs>
 
-          <preBlinkEffecterDefs>
-            <li>Skip_Entry</li>
-          </preBlinkEffecterDefs>
+        <preBlinkEffecterDefs>
+          <li>Skip_Entry</li>
+        </preBlinkEffecterDefs>
 
-          <postBlinkEffecterDefs>
-            <li>Skip_ExitNoDelay</li>
-          </postBlinkEffecterDefs>
+        <postBlinkEffecterDefs>
+          <li>Skip_ExitNoDelay</li>
+        </postBlinkEffecterDefs>
 
-          <preBlinkMoteDefs/>
-          <postBlinkMoteDefs/>
+        <preBlinkMoteDefs />
+        <postBlinkMoteDefs />
 
-        </li>
-      </comps>
-    </ThingDef>
-    
-    <PawnKindDef Name="SRA_SR_MechKind" ParentName="SRAHeavyMechanoidKind">
-      <defName>SRA_SR_Mech</defName>
-      <label>星规</label>
-      <race>SRA_SR_Mech</race>
-      <combatPower>500</combatPower>
-      <maxPerGroup>0</maxPerGroup>
-      <isBoss>true</isBoss>
-      <allowInMechClusters>false</allowInMechClusters>
-      <startingHediffs>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef Name="SRA_SR_MechKind" ParentName="SRAHeavyMechanoidKind">
+    <defName>SRA_SR_Mech</defName>
+    <label>星规</label>
+    <race>SRA_SR_Mech</race>
+    <combatPower>500</combatPower>
+    <maxPerGroup>0</maxPerGroup>
+    <isBoss>true</isBoss>
+    <allowInMechClusters>false</allowInMechClusters>
+    <startingHediffs>
       <li>
         <def>SRA_Barrier_SR_Mech</def>
       </li>
-      </startingHediffs>
-      <lifeStages>
-        <li>
-          <bodyGraphicData>
-            <texPath>SRA/Pawn/Mechanoid/SRA_SR_Mech</texPath>
-            <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
-            <shaderType>CutoutWithOverlay</shaderType>
-            <graphicClass>Graphic_Multi</graphicClass>
-            <drawSize>1.5</drawSize>
+    </startingHediffs>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>SRA/Pawn/Mechanoid/SRA_SR_Mech</texPath>
+          <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.5</drawSize>
         </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponTags>
+      <li>SRA_Spear_of_SRA</li>
+    </weaponTags>
+    <abilities>
+      <li>SRA_PsychicSlaughter</li>
+      <li>SRA_EntitySkip</li>
+      <li>SRA_ReleaseDeadlifeDust</li>
+      <li>SRA_ControlPulse</li>
+      <li>SRA_AnnihilateStorm</li>
+    </abilities>
+  </PawnKindDef>
+
+
+  <ThingDef ParentName="SRASuperHeavyMechanoid">
+    <defName>SRA_Mech_WarUnit_M_D</defName>
+    <label>星规-「哨卫」战地压制单元</label>
+    <description>一种坚固的中型作战机械，使用能一次攻击多个目标的相位能量弧作为武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这是一种中型通用平台武装改造下的产物，装备了护盾场发生器和相位能量弧防卫系统。设计上用于提供阵线防御与群体压制，其武器系统擅长限制大量敌人与摧毁弱小目标。</description>
+    <statBases>
+      <MoveSpeed>8</MoveSpeed>
+      <IncomingDamageFactor>0.5</IncomingDamageFactor>
+    </statBases>
+    <race>
+      <body>Lancer</body>
+      <baseBodySize>4</baseBodySize>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
         </li>
-      </lifeStages>      
-      <weaponTags>
-        <li>SRA_Spear_of_SRA</li>
-      </weaponTags>
-      <abilities>
-        <li>SRA_PsychicSlaughter</li>
-        <li>SRA_EntitySkip</li>
-        <li>SRA_ReleaseDeadlifeDust</li>
-        <li>SRA_ControlPulse</li>
-        <li>SRA_AnnihilateStorm</li>
-      </abilities>
-    </PawnKindDef>
+      </lifeStageAges>
+      <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant>
+      <baseHealthScale>8</baseHealthScale>
+    </race>
+    <comps Inherit="False">
+      <li Class="CompProperties_ProjectileInterceptor">
+        <radius>6</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <color>(0.4, 0.4, 0.4)</color>
+        <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+        <activeSound>BulletShield_Ambience</activeSound>
+        <hitPoints>3200</hitPoints>
+        <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+        <chargeDurationTicks>1800</chargeDurationTicks><!-- 30s -->
+        <rechargeHitPointsIntervalTicks>90</rechargeHitPointsIntervalTicks>
+        <minIdleAlpha>0.2</minIdleAlpha>
+        <drawWithNoSelection>True</drawWithNoSelection>
+        <disarmedByEmpForTicks>900</disarmedByEmpForTicks>
+        <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_D</turretDef>
+        <angleOffset>-90</angleOffset>
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_MechPowerCell">
+        <totalPowerTicks>30000</totalPowerTicks>
+      </li>
+    </comps>
+    <tools>
+      <li>
+        <label>撞击</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>0.5</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <PawnKindDef ParentName="SRAHeavyMechanoidKind">
+    <defName>SRA_Mech_WarUnit_M_D</defName>
+    <label>星规-「哨卫」战地压制单元</label>
+    <race>SRA_Mech_WarUnit_M_D</race>
+    <combatPower>500</combatPower>
+    <maxPerGroup>0</maxPerGroup>
+    <allowInMechClusters>false</allowInMechClusters>
+    <forceNoDeathNotification>true</forceNoDeathNotification>
+    <forceDeathOnDowned>true</forceDeathOnDowned>
+    <startingHediffs>
+      <li>
+        <def>SRA_Barrier_Mech_WarUnit_M_D</def>
+      </li>
+    </startingHediffs>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>SRA/Pawn/Mechanoid/SRA_Mech_WarUnit_M_D</texPath>
+          <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.5</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponTags>
+      <li>SRA_Arc_Beam_Weapon</li>
+    </weaponTags>
+  </PawnKindDef>
+
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_Mech_WarUnit_M_D</defName>
+    <label>星规-「哨卫」压制脉冲炮塔</label>
+    <description>一种近距离脉冲束发射器，它发射一道相位能量束，在命中时产生大范围的爆炸并产生破坏性相位能量，这一爆炸不会伤害友方目标。</description>
+    <descriptionHyperlinks>
+      <HediffDef>SRA_Railgun_debuff</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>1</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABulle_Mech_WarUnit_M_D</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>8</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <defaultCooldownTime>4</defaultCooldownTime>
+        <soundCast>AgonyPulse_Cast</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABulle_Mech_WarUnit_M_D</defName>
+    <label>星规-「哨卫」压制脉冲束</label>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>2.4</drawSize>
+    </graphicData>
+    <thingClass>SRA.Projectile_SRA_Railgun</thingClass>
+    <modExtensions>
+      <li Class="SRA.SRA_RailgunProjectileExtension">
+        <!-- 穿透设置 -->
+        <maxPenetrations>1</maxPenetrations>
+        <penetrationDelayTicks>1</penetrationDelayTicks>
+        <!-- 爆炸设置 -->
+        <explosionRadius>3</explosionRadius>
+        <explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
+        <explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
+        <damageDef>Bullet</damageDef>
+        <explosionSound>AgonyPulse_Cast</explosionSound>
+        <explosionHediff>SRA_Railgun_debuff</explosionHediff>
+        <explosionHediffSeverity>0.05</explosionHediffSeverity>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <armorPenetrationBase>4</armorPenetrationBase>
+      <stoppingPower>8</stoppingPower>
+      <speed>240</speed>
+      <extraDamages>
+        <li>
+          <def>EMP</def>
+          <amount>8</amount>
+        </li>
+      </extraDamages>
+    </projectile>
+  </ThingDef>
+
 </Defs>

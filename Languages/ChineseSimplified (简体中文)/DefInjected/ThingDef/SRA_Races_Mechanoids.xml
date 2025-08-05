@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   <SRA_Mech_WarUnit_S.label>星规-「尖蜂」微型战争单元</SRA_Mech_WarUnit_S.label>
-  <SRA_Mech_WarUnit_S.description>一种小型的灵活作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这种无人机原本设计用于采矿和维护作业，但由于结构简单，在替换模块后也作为安保单位使用。\n一些旅行家会为这种小机器改装大量成本高昂的组件，并将其当做宠物和伙伴，毕竟一个看似不起眼的小方块有时候能帮上大忙。</SRA_Mech_WarUnit_S.description>
+  <SRA_Mech_WarUnit_S.description>一种灵活的小型作战机械，使用高射速的轻型武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这种无人机原本设计用于采矿和维护作业，但由于结构简单，在替换模块后也作为安保单位使用。\n一些旅行家会为这种小机器改装大量成本高昂的组件，并将其当做宠物和伙伴，毕竟一个看似不起眼的小方块有时候能帮上大忙。</SRA_Mech_WarUnit_S.description>
+  <SRA_Mech_WarUnit_M_D.label>星规-「哨卫」战地压制单元</SRA_Mech_WarUnit_M_D.label>
+  <SRA_Mech_WarUnit_M_D.description>一种坚固的中型作战机械，使用能一次攻击多个目标的相位能量弧作为武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这是一种中型通用平台武装改造下的产物，装备了护盾场发生器和相位能量弧防卫系统。设计上用于提供阵线防御与群体压制，其武器系统擅长限制大量敌人与摧毁弱小目标。</SRA_Mech_WarUnit_M_D.description>
+  <SRATurretGun_Mech_WarUnit_M_D.label>星规-「哨卫」压制脉冲炮塔</SRATurretGun_Mech_WarUnit_M_D.label>
+  <SRATurretGun_Mech_WarUnit_M_D.description>一种近距离脉冲束发射器，它发射一道相位能量束，在命中时产生大范围的爆炸并产生破坏性相位能量，这一爆炸不会伤害友方目标。</SRATurretGun_Mech_WarUnit_M_D.description>
+  <SRABulle_Mech_WarUnit_M_D.label>星规-「哨卫」压制脉冲束</SRABulle_Mech_WarUnit_M_D.label>
+  
+
 </LanguageData>
-
-

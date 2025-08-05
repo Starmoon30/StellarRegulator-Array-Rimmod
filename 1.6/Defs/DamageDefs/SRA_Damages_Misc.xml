@@ -33,6 +33,14 @@
     <buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
     <buildingDamageFactorPassable>2</buildingDamageFactorPassable>
     <ignoreShields>true</ignoreShields>
+    <additionalHediffs>
+      <li>
+        <hediff>SRA_Railgun_debuff</hediff>
+        <severityPerDamageDealt>0.005</severityPerDamageDealt>
+        <inverseStatScaling>true</inverseStatScaling>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
   </DamageDef>
 
 </Defs>

@@ -423,5 +423,143 @@
     </verbs>
   </ThingDef>
 
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_DefenseDroneTower</defName>
+    <label>星规-哨戒尖塔</label>
+    <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每50秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
+    <graphicData>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.8</fillPercent>
+    <statBases>
+      <MaxHitPoints>12800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>12000</WorkToBuild>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <building>
+      <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="SRA.CompProperties_SRAWarUnitSpawner">
+        <pawnKindDef>
+          <li>SRA_Mech_WarUnit_S</li>
+        </pawnKindDef>
+        <maxWarUnits>20</maxWarUnits> <!-- 自定义最大单位数 -->
+        <perCyclePowerint>0.1</perCyclePowerint> <!-- 自定义每5秒生成的单位数 -->
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
+    <castEdgeShadows>false</castEdgeShadows>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <designationCategory>SRA_Building</designationCategory>
+    <costList>
+      <SRA_Core>100</SRA_Core>
+    </costList>
+    <researchPrerequisites>
+      <li>SRA_RepairTower</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_Mech_WarUnit_M_Tower</defName>
+    <label>星规-戍卫尖塔</label>
+    <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署中型战争单元来作为防卫手段，这些中型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每500秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
+    <graphicData>
+      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.8</fillPercent>
+    <statBases>
+      <MaxHitPoints>12800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>12000</WorkToBuild>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <building>
+      <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="SRA.CompProperties_SRAWarUnitSpawner">
+        <pawnKindDef>
+          <li>SRA_Mech_WarUnit_M_D</li>
+        </pawnKindDef>
+        <maxWarUnits>2</maxWarUnits> <!-- 自定义最大单位数 -->
+        <perCyclePowerint>0.01</perCyclePowerint> <!-- 自定义每5秒生成的单位数 -->
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
+    <castEdgeShadows>false</castEdgeShadows>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <designationCategory>SRA_Building</designationCategory>
+    <costList>
+      <SRA_Core>100</SRA_Core>
+    </costList>
+    <researchPrerequisites>
+      <li>SRA_RepairTower</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+  </ThingDef>
+
 
 </Defs>

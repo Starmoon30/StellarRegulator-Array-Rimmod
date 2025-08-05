@@ -17,5 +17,7 @@ namespace SRA
         public List<PawnKindDef> pawnKindDef;
 
         public int maxWarUnits = 20; // 默认值20，可在XML中覆盖
+        public float perCyclePowerint = 0.1f; // 默认值0.1，可在XML中覆盖
+        
     }
 }
