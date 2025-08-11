@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <SRA_Spear_of_SRA_burn.label>相位崩解</SRA_Spear_of_SRA_burn.label>
+  <SRA_Spear_of_SRA_burn.deathMessage>{0}湮灭了。</SRA_Spear_of_SRA_burn.deathMessage>
+  
+  <SRA_Retardant.label>阻滞效应</SRA_Retardant.label>
+  <SRA_Retardant.deathMessage>{0}被阻滞而死。</SRA_Retardant.deathMessage>
+  
+</LanguageData>

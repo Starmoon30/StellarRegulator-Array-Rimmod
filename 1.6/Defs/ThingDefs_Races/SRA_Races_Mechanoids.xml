@@ -54,6 +54,7 @@
       <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
     </statBases>
     <race>
+      <hasCorpse>false</hasCorpse>
       <intelligence>ToolUser</intelligence>
       <thinkTreeMain>Mechanoid</thinkTreeMain>
       <baseHealthScale>1</baseHealthScale>
@@ -296,7 +297,6 @@
     </abilities>
   </PawnKindDef>
 
-
   <ThingDef ParentName="SRASuperHeavyMechanoid">
     <defName>SRA_Mech_WarUnit_M_D</defName>
     <label>星规-「哨卫」战地压制单元</label>
@@ -405,6 +405,99 @@
     </weaponTags>
   </PawnKindDef>
 
+	<ThingDef ParentName="SRA_WeaponBase">
+		<defName>SRA_Arc_Beam_Weapon</defName>
+		<label>星规-相位奔流</label>
+		<description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<uiIconScale>1.0</uiIconScale>
+		<equippedAngleOffset>0</equippedAngleOffset>
+    	<smeltable>false</smeltable>
+		<statBases>
+			<MarketValue>1600</MarketValue>
+			<MaxHitPoints>640</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<relicChance>0</relicChance>
+		<weaponTags>
+			<li>SRA_Arc_Beam_Weapon</li>
+		</weaponTags>
+		<verbs>
+			<li Class="SRA.VerbProperties_Arc">
+				<verbClass>SRA.Verb_ShootArc</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<damageDef>SRA_Spear_of_SRA_burn</damageDef>
+				<damageAmount>16</damageAmount>
+				<EMPDamageAmount>0</EMPDamageAmount>
+				<warmupTime>2</warmupTime>
+				<range>16</range>
+				<affectedAngle>25</affectedAngle>
+				<armorPenetration>4</armorPenetration>
+				<soundCast>AgonyPulse_Cast</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<isConductible>True</isConductible>
+				<conductFriendly>False</conductFriendly>
+				<conductNum>8</conductNum>
+				<beamMoteDef>SRA_Bullet_Arc_Beam</beamMoteDef>
+				<aimingChargeMote>Mote_HellsphereCannon_Charge</aimingChargeMote>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>相位冲击</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>64</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>SRA_Bullet_Arc_Beam</defName>
+		<thingClass>MoteDualAttached</thingClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0</fadeInTime>
+			<fadeOutTime>0.2</fadeOutTime>
+			<solidTime>0.2</solidTime>
+			<needsMaintenance>False</needsMaintenance>
+			<rotateTowardsTarget>True</rotateTowardsTarget>
+			<scaleToConnectTargets>True</scaleToConnectTargets>
+			<fadeOutUnmaintained>False</fadeOutUnmaintained>
+		</mote>
+		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<texPath>SRA/Mote/SRA_Bullet_Arc_Beam</texPath>
+			<color>(40, 200, 200, 255)</color>
+			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+			<shaderType>MoteBeam</shaderType>
+			<drawSize>(3,1)</drawSize>
+			<shaderParameters>
+				<_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+				<_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+				<_ScrollSpeedA>-8 </_ScrollSpeedA>
+				<_ScrollSpeedB>6</_ScrollSpeedB>
+				<_Intensity>20</_Intensity>
+			</shaderParameters>
+		</graphicData>
+	</ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>SRATurretGun_Mech_WarUnit_M_D</defName>
@@ -478,4 +571,270 @@
     </projectile>
   </ThingDef>
 
+  <ThingDef ParentName="SRASuperHeavyMechanoid">
+    <defName>SRA_Mech_WarUnit_M_A</defName>
+    <label>星规-「屠猎」火力歼灭单元</label>
+    <description>一种凶猛的中型作战机械，使用能对单个目标造成大量伤害的相位能量束作为武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这是一种中型通用平台武装改造下的产物，装备了护盾场发生器和相位能量弧防卫系统。设计上用于提供阵线防御与群体压制，其武器系统擅长限制大量敌人与摧毁弱小目标。</description>
+    <statBases>
+      <MoveSpeed>8</MoveSpeed>
+				<AimingDelayFactor>0.5</AimingDelayFactor>
+        <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+				<RangedCooldownFactor>0.5</RangedCooldownFactor>
+        <ShootingAccuracyPawn>32</ShootingAccuracyPawn>
+    </statBases>
+    <race>
+      <body>Lancer</body>
+      <baseBodySize>4</baseBodySize>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+        </li>
+      </lifeStageAges>
+      <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant>
+      <baseHealthScale>8</baseHealthScale>
+    </race>
+    <comps Inherit="False">
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_A</turretDef>
+        <angleOffset>-90</angleOffset>
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_MechPowerCell">
+        <totalPowerTicks>30000</totalPowerTicks>
+      </li>
+    </comps>
+    <tools>
+      <li>
+        <label>撞击</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>0.5</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <PawnKindDef ParentName="SRAHeavyMechanoidKind">
+    <defName>SRA_Mech_WarUnit_M_A</defName>
+    <label>星规-「屠猎」火力歼灭单元</label>
+    <race>SRA_Mech_WarUnit_M_A</race>
+    <combatPower>500</combatPower>
+    <maxPerGroup>0</maxPerGroup>
+    <allowInMechClusters>false</allowInMechClusters>
+    <forceNoDeathNotification>true</forceNoDeathNotification>
+    <forceDeathOnDowned>true</forceDeathOnDowned>
+    <startingHediffs>
+      <li>
+        <def>SRA_Barrier_Mech_WarUnit_M_D</def>
+      </li>
+    </startingHediffs>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>SRA/Pawn/Mechanoid/SRA_Mech_WarUnit_M_D</texPath>
+          <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.5</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponTags>
+      <li>SRA_Pulse_Beam_Weapon</li>
+    </weaponTags>
+  </PawnKindDef>
+
+	<ThingDef ParentName="SRA_WeaponBase">
+		<defName>SRA_Pulse_Beam_Weapon</defName>
+		<label>星规-命运之枪</label>
+		<description>这一型空间撕裂武器发射极为精准的死亡射线，在开火的瞬间破坏沿线的空间结构，即刻摧毁任何被命中的有序结构并制造耀眼的光爆。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<uiIconScale>1.0</uiIconScale>
+		<equippedAngleOffset>0</equippedAngleOffset>
+    	<smeltable>false</smeltable>
+		<statBases>
+			<MarketValue>1600</MarketValue>
+			<MaxHitPoints>640</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<relicChance>0</relicChance>
+		<weaponTags>
+			<li>SRA_Pulse_Beam_Weapon</li>
+		</weaponTags>
+		<verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_Pulse_Beam_Weapon</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0</warmupTime>
+        <range>24</range>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <aimingChargeMote>Mote_BeamRepeater_Charge</aimingChargeMote>
+        <aimingChargeMoteOffset>0</aimingChargeMoteOffset>
+      </li>
+		</verbs>
+		<tools>
+			<li>
+				<label>相位冲击</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>64</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_Pulse_Beam_Weapon</defName>
+    <label>SRABullet_Pulse_Beam_Weapon</label>
+    <thingClass>Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+      <damageAmountBase>64</damageAmountBase>
+      <beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
+      <beamStartOffset>0</beamStartOffset>
+      <armorPenetrationBase>4</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>SRAMote_Pulse_Beam_Weapon</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <fadeOutTime>0.1</fadeOutTime>
+      <solidTime>0.1</solidTime>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+    </mote>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Mote/GraserBeam</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>0</_ScrollSpeedA>
+        <_ScrollSpeedB>0</_ScrollSpeedB>
+        <_Intensity>2</_Intensity>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_Mech_WarUnit_M_A</defName>
+    <label>星规-「屠猎」轰炸脉冲炮塔</label>
+    <description>一种远距离脉冲束发射器，它以较长的周期一次性发射数道相位能量束，在命中时产生小范围的爆炸并产生破坏性相位能量，这一爆炸不会伤害友方目标。</description>
+    <descriptionHyperlinks>
+      <HediffDef>SRA_Railgun_debuff</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>0.5</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABulle_Mech_WarUnit_M_A</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>32</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <defaultCooldownTime>16</defaultCooldownTime>
+        <soundCast>AgonyPulse_Cast</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABulle_Mech_WarUnit_M_A</defName>
+    <label>星规-「屠猎」轰炸脉冲束</label>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>2.4</drawSize>
+    </graphicData>
+    <thingClass>SRA.Projectile_SRA_Railgun</thingClass>
+    <modExtensions>
+      <li Class="SRA.SRA_RailgunProjectileExtension">
+        <!-- 穿透设置 -->
+        <maxPenetrations>1</maxPenetrations>
+        <penetrationDelayTicks>1</penetrationDelayTicks>
+        <!-- 爆炸设置 -->
+        <explosionRadius>1.5</explosionRadius>
+        <explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
+        <explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
+        <damageDef>Bullet</damageDef>
+        <explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+        <explosionHediff>SRA_Railgun_debuff</explosionHediff>
+        <explosionHediffSeverity>0.05</explosionHediffSeverity>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>32</damageAmountBase>
+      <armorPenetrationBase>4</armorPenetrationBase>
+      <stoppingPower>8</stoppingPower>
+      <speed>240</speed>
+      <extraDamages>
+        <li>
+          <def>EMP</def>
+          <amount>8</amount>
+        </li>
+      </extraDamages>
+    </projectile>
+  </ThingDef>
 </Defs>

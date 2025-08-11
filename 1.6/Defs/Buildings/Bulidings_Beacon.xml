@@ -39,12 +39,10 @@
       		<texPath>SRA/Building/SRA_Beacon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
       		<drawSize>(3,3)</drawSize>
-			<shadowData>
-				<volume>(1.1, 1.0, 1.1)</volume>
-			</shadowData>
 		</graphicData>
 		<uiIconPath>SRA/Building/SRA_Beacon</uiIconPath>
 		<uiIconScale>1.25</uiIconScale>
+    	<castEdgeShadows>false</castEdgeShadows>
 		<size>(2,2)</size>
 		<costList>
 			<SRA_Core>2000</SRA_Core>
@@ -89,12 +87,10 @@
       		<texPath>SRA/Building/SRA_Beacon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
       		<drawSize>(3,3)</drawSize>
-			<shadowData>
-				<volume>(1.1, 1.0, 1.1)</volume>
-			</shadowData>
 		</graphicData>
 		<uiIconPath>SRA/Building/SRA_Beacon</uiIconPath>
 		<uiIconScale>1.25</uiIconScale>
+		<castEdgeShadows>false</castEdgeShadows>
 		<size>(2,2)</size>
 		<costList>
 			<SRA_Core>2000</SRA_Core>

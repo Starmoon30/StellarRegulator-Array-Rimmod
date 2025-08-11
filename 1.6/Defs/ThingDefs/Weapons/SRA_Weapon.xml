@@ -413,6 +413,9 @@
 		<defName>SRA_Minipulser</defName>
 		<label>星规-风雪骤灭</label>
 		<description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Retardant</HediffDef>
+		</descriptionHyperlinks>
 		<graphicData>
 			<texPath>SRA/Weapon/SRA_Minipulser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -485,6 +488,10 @@
 			<speed>120</speed>
 			<extraDamages>
 				<li>
+					<def>SRA_Retardant</def>
+					<amount>100</amount>
+				</li>
+				<li>
 					<def>EMP</def>
 					<amount>8</amount>
 				</li>
@@ -545,97 +552,4 @@
 		</tools>
 	</ThingDef>
 
-	<ThingDef ParentName="SRA_WeaponBase">
-		<defName>SRA_Arc_Beam_Weapon</defName>
-		<label>星规-相位奔流</label>
-		<description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。</description>
-		<descriptionHyperlinks>
-			<HediffDef>SRA_Railgun_debuff</HediffDef>
-		</descriptionHyperlinks>
-		<graphicData>
-			<texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1</drawSize>
-		</graphicData>
-		<uiIconScale>1.0</uiIconScale>
-		<equippedAngleOffset>0</equippedAngleOffset>
-    	<smeltable>false</smeltable>
-		<statBases>
-			<MarketValue>1600</MarketValue>
-			<MaxHitPoints>640</MaxHitPoints>
-			<Mass>1</Mass>
-			<AccuracyTouch>1</AccuracyTouch>
-			<AccuracyShort>1</AccuracyShort>
-			<AccuracyMedium>1</AccuracyMedium>
-			<AccuracyLong>1</AccuracyLong>
-			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
-			<Flammability>0</Flammability>
-		</statBases>
-		<tradeability>None</tradeability>
-		<relicChance>0</relicChance>
-		<weaponTags>
-			<li>SRA_Arc_Beam_Weapon</li>
-		</weaponTags>
-		<verbs>
-			<li Class="SRA.VerbProperties_Arc">
-				<verbClass>SRA.Verb_ShootArc</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<damageDef>SRA_Spear_of_SRA_burn</damageDef>
-				<damageAmount>16</damageAmount>
-				<EMPDamageAmount>0</EMPDamageAmount>
-				<warmupTime>2</warmupTime>
-				<range>16</range>
-				<affectedAngle>25</affectedAngle>
-				<armorPenetration>4</armorPenetration>
-				<soundCast>AgonyPulse_Cast</soundCast>
-				<soundCastTail>GunTail_Medium</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
-				<isConductible>True</isConductible>
-				<conductFriendly>False</conductFriendly>
-				<conductNum>8</conductNum>
-				<beamMoteDef>SRA_Bullet_Arc_Beam</beamMoteDef>
-				<aimingChargeMote>Mote_HellsphereCannon_Charge</aimingChargeMote>
-			</li>
-		</verbs>
-		<tools>
-			<li>
-				<label>相位冲击</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>64</power>
-				<cooldownTime>2</cooldownTime>
-			</li>
-		</tools>
-	</ThingDef>
-
-	<ThingDef ParentName="MoteBase">
-		<defName>SRA_Bullet_Arc_Beam</defName>
-		<thingClass>MoteDualAttached</thingClass>
-		<altitudeLayer>MoteOverhead</altitudeLayer>
-		<mote>
-			<fadeInTime>0</fadeInTime>
-			<fadeOutTime>0.2</fadeOutTime>
-			<solidTime>0.2</solidTime>
-			<needsMaintenance>False</needsMaintenance>
-			<rotateTowardsTarget>True</rotateTowardsTarget>
-			<scaleToConnectTargets>True</scaleToConnectTargets>
-			<fadeOutUnmaintained>False</fadeOutUnmaintained>
-		</mote>
-		<drawOffscreen>true</drawOffscreen>
-		<graphicData>
-			<texPath>SRA/Mote/SRA_Bullet_Arc_Beam</texPath>
-			<color>(40, 200, 200, 255)</color>
-			<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
-			<shaderType>MoteBeam</shaderType>
-			<drawSize>(3,1)</drawSize>
-			<shaderParameters>
-				<_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
-				<_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
-				<_ScrollSpeedA>-8 </_ScrollSpeedA>
-				<_ScrollSpeedB>6</_ScrollSpeedB>
-				<_Intensity>20</_Intensity>
-			</shaderParameters>
-		</graphicData>
-	</ThingDef>
 </Defs>

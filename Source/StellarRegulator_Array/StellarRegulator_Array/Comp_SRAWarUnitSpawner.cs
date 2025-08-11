@@ -48,6 +48,7 @@ namespace SRA
             Scribe_Values.Look(ref AutoMode, "AutoMode", true);
             Scribe_Values.Look(ref Powerint, "Powerint", 0f);
             Scribe_Values.Look(ref SRAWarUnitMax, "SRAWarUnitMax", Props.maxWarUnits);
+            Scribe_Values.Look(ref SRAperCyclePowerint, "SRAperCyclePowerint", Props.perCyclePowerint);
             Scribe_Defs.Look(ref currPawn, "currPawn");
         }
 

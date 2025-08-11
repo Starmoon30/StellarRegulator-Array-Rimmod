@@ -15,6 +15,8 @@
   <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>深渊召选</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.label>
   <SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>我如于万物之中！</SRA_Chosen_OneMoodOffset.stages.SRA_Chosen_OneMoodOffset.description>
   
+  <SRA_Retardant.label>星规-阻滞渗透</SRA_Retardant.label>
+  <SRA_Retardant.description>这个单位如堕泥潭，寸步难行。</SRA_Retardant.description>
   <SRA_Railgun_debuff.label>星规-相位崩解</SRA_Railgun_debuff.label>
   <SRA_Railgun_debuff.description>混乱的相位能量会撕扯物质乃至现实。\n\n-这一效果会严重削弱战斗能力并增加受到的伤害。</SRA_Railgun_debuff.description>
 

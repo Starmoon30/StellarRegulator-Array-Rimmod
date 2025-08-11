@@ -42,5 +42,25 @@
       </li>
     </additionalHediffs>
   </DamageDef>
+  
+    <DamageDef>
+      <defName>SRA_Retardant</defName>
+      <label>SRA_Retardant</label>
+      <harmsHealth>false</harmsHealth>
+      <makesBlood>false</makesBlood>
+      <externalViolence>true</externalViolence>
+      <deathMessage>{0} has been stunned to death.</deathMessage>
+      <defaultDamage>20</defaultDamage>
+      <defaultArmorPenetration>20</defaultArmorPenetration>
+      <additionalHediffs>
+        <li>
+          <hediff>SRA_Retardant</hediff>
+          <severityFixed>0.2</severityFixed>
+          <inverseStatScaling>true</inverseStatScaling>
+          <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+        </li>
+      </additionalHediffs>
+      <impactSoundType>Electric</impactSoundType>
+    </DamageDef>
 
 </Defs>

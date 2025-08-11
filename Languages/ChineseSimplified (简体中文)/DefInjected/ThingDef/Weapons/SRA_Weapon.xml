@@ -27,12 +27,7 @@
   <SRABulle_Railgun.label>星规-呼啸雷霆能量束</SRABulle_Railgun.label>
   
   <SRA_Minipulser.label>星规-风雪骤灭</SRA_Minipulser.label>
-  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。\n\n-这件武器的射弹带有EMP效果。</SRA_Minipulser.description>
+  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。\n\n-这件武器的射弹带有EMP效果。\n-这件武器的射弹会施加迅速衰减的减速状态，</SRA_Minipulser.description>
   <SRABullet_Minipulser.label>星规-风雪骤灭能量束</SRABullet_Minipulser.label>
-
-  <SRA_Arc_Beam_Weapon.label>星规-相位奔流</SRA_Arc_Beam_Weapon.label>
-  <SRA_Arc_Beam_Weapon.description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。</SRA_Arc_Beam_Weapon.description>
-
-  <SRA_Bullet_Arc_Beam.label>星规-相位奔流能量弧</SRA_Bullet_Arc_Beam.label>
 
 </LanguageData>

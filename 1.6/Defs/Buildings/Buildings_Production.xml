@@ -18,7 +18,7 @@
         <cornerBR>Damage/Corner</cornerBR>
       </damageData>
     </graphicData>
-    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <castEdgeShadows>false</castEdgeShadows>
     <costList>
       <Plasteel>200</Plasteel>
     </costList>

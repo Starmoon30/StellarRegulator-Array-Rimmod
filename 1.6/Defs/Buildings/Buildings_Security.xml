@@ -18,11 +18,8 @@
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
-      <shadowData>
-        <volume>(1.5,0.35,1.4)</volume>
-        <offset>(0,0,-0.05)</offset>
-      </shadowData>
     </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
     <uiIconPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
@@ -157,11 +154,8 @@
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
-      <shadowData>
-        <offset>(-0.13,-0.87,-0.1)</offset>
-        <volume>(0.5,0.4,1.05)</volume>
-      </shadowData>
     </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
     <uiIconPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
@@ -303,11 +297,8 @@
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
-      <shadowData>
-        <volume>(1.5,0.35,1.4)</volume>
-        <offset>(0,0,-0.05)</offset>
-      </shadowData>
     </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
     <uiIconPath>SRA/Building/Security/SRA_Weapon_P</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
@@ -534,6 +525,7 @@
       <li Class="SRA.CompProperties_SRAWarUnitSpawner">
         <pawnKindDef>
           <li>SRA_Mech_WarUnit_M_D</li>
+          <li>SRA_Mech_WarUnit_M_A</li>
         </pawnKindDef>
         <maxWarUnits>2</maxWarUnits> <!-- 自定义最大单位数 -->
         <perCyclePowerint>0.01</perCyclePowerint> <!-- 自定义每5秒生成的单位数 -->
