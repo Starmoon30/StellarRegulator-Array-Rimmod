@@ -8,6 +8,9 @@
     <defName>SRATurret_SML_Mass_Drivers</defName>
     <label>星规-星弧破碎炮塔</label>
     <description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。</description>
+    <descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
     <thingClass>Building_TurretGun</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
@@ -63,17 +66,6 @@
       <li Class="CompProperties_WakeUpDormant">
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
-      <li Class="CompProperties_Explosive">
-        <wickTicks>240</wickTicks>
-        <explosiveRadius>5.9</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
-      </li>
-      <li Class="CompProperties_Stunnable">
-        <affectedDamageDefs>
-          <li>EMP</li>
-        </affectedDamageDefs>
-      </li>
       <li Class="CompProperties_AmbientSound">
         <sound>MechTurretBig_Call</sound>
       </li>
@@ -107,6 +99,9 @@
     <defName>SRATurretGun_SML_Mass_Drivers</defName>
     <label>星规-星弧破碎</label>
     <description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。</description>
+    <descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
     <graphicData>
       <texPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -168,19 +163,10 @@
     <tickerType>Normal</tickerType>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <comps>
-      <li Class="CompProperties_Explosive">
-        <wickTicks>240</wickTicks>
-        <explosiveRadius>4.9</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-      </li>
-	  <li Class="CompProperties_Stunnable">
-        <affectedDamageDefs>
-          <li>EMP</li>
-        </affectedDamageDefs>
-      </li>
       <li Class="CompProperties_AmbientSound">
         <sound>MechTurretBig_Call</sound>
       </li>
+      <li Class="SRA.CompProperties_ForceTargetable" />
     </comps>
     <damageMultipliers>
       <li>
@@ -341,17 +327,6 @@
       <li Class="CompProperties_Initiatable" />
       <li Class="CompProperties_WakeUpDormant">
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
-      </li>
-      <li Class="CompProperties_Explosive">
-        <wickTicks>240</wickTicks>
-        <explosiveRadius>5.9</explosiveRadius>
-        <explosiveDamageType>Bomb</explosiveDamageType>
-        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
-      </li>
-      <li Class="CompProperties_Stunnable">
-        <affectedDamageDefs>
-          <li>EMP</li>
-        </affectedDamageDefs>
       </li>
       <li Class="CompProperties_AmbientSound">
         <sound>MechTurretBig_Call</sound>

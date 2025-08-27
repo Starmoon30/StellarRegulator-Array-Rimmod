@@ -5,7 +5,7 @@
   <SRA_Mech_WarUnit_M_D.label>星规-「哨卫」战地压制单元</SRA_Mech_WarUnit_M_D.label>
   <SRA_Mech_WarUnit_M_D.description>一种坚固的中型作战机械，使用能一次攻击多个目标的相位能量弧作为武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这是一种中型通用平台武装改造下的产物，装备了护盾场发生器和相位能量弧防卫系统。设计上用于提供阵线防御与群体压制，其武器系统擅长限制大量敌人与摧毁弱小目标。</SRA_Mech_WarUnit_M_D.description>
   <SRA_Arc_Beam_Weapon.label>星规-相位奔流</SRA_Arc_Beam_Weapon.label>
-  <SRA_Arc_Beam_Weapon.description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。</SRA_Arc_Beam_Weapon.description>
+  <SRA_Arc_Beam_Weapon.description>一种相位能量弧发生器，它投射一种独特的相位能量束，可以在多个敌人之间弹射，造成伤害和破坏性效应。\n\n&lt;color=#FFFF44&gt;此武器投射的能量弧可以在至多8个目标之间弹射，每次造成16点伤害。&lt;/color&gt;</SRA_Arc_Beam_Weapon.description>
   <SRA_Bullet_Arc_Beam.label>星规-相位奔流能量弧</SRA_Bullet_Arc_Beam.label>
   <SRATurretGun_Mech_WarUnit_M_D.label>星规-「哨卫」压制脉冲炮塔</SRATurretGun_Mech_WarUnit_M_D.label>
   <SRATurretGun_Mech_WarUnit_M_D.description>一种近距离脉冲束发射器，它发射一道相位能量束，在命中时产生大范围的爆炸并产生破坏性相位能量，这一爆炸不会伤害友方目标。</SRATurretGun_Mech_WarUnit_M_D.description>

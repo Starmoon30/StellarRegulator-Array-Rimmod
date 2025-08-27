@@ -5,11 +5,11 @@
   <SRA_Spear_of_SRA.description>路希维亚所使用的武器的仿制品，能释放庞大的能量束，也能作为长枪使用。</SRA_Spear_of_SRA.description>
 
   <SRATurret_SML_Mass_Drivers.label>星规-星弧破碎炮塔</SRATurret_SML_Mass_Drivers.label>
-  <SRATurret_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRATurret_SML_Mass_Drivers.description>
+  <SRATurret_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。\n\n-&lt;color=#FFFF44&gt;这件武器的射弹可以穿透一个目标，并在命中位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRATurret_SML_Mass_Drivers.description>
   <SRATurretGun_SML_Mass_Drivers.label>星规-星弧破碎</SRATurretGun_SML_Mass_Drivers.label>
-  <SRATurretGun_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRATurretGun_SML_Mass_Drivers.description>
+  <SRATurretGun_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。\n\n-&lt;color=#FFFF44&gt;这件武器的射弹可以穿透一个目标，并在命中位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRATurretGun_SML_Mass_Drivers.description>
   <SRA_SML_Mass_Drivers.label>星规-星弧破碎</SRA_SML_Mass_Drivers.label>
-  <SRA_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。</SRA_SML_Mass_Drivers.description>
+  <SRA_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。\n\n-&lt;color=#FFFF44&gt;这件武器的射弹可以穿透一个目标，并在命中位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRA_SML_Mass_Drivers.description>
   <SRABullet_SML_Mass_Drivers.label>星规-星弧破碎能量束</SRABullet_SML_Mass_Drivers.label>
 
 
@@ -23,11 +23,19 @@
 
 
   <SRA_Railgun.label>星规-呼啸雷霆</SRA_Railgun.label>
-  <SRA_Railgun.description>呼啸雷霆原本是一种中规模舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并产生破坏性相位能量，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其长距离压制和突破的定位。\n\n-这件武器的射弹会穿透路径上的所有目标并在其位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。</SRA_Railgun.description>
+  <SRA_Railgun.description>呼啸雷霆原本是一种中规模舰载长程多用途火炮，它的特化弹头可以在远距离上稳定命中敌人并产生破坏性相位能量，逼迫其在护盾过载和舰体瘫痪之间做出艰难的抉择。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其长距离压制和突破的定位。\n\n&lt;color=#FFFF44&gt;-这件武器的射弹会穿透路径上的所有目标并在其位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRA_Railgun.description>
   <SRABulle_Railgun.label>星规-呼啸雷霆能量束</SRABulle_Railgun.label>
   
   <SRA_Minipulser.label>星规-风雪骤灭</SRA_Minipulser.label>
-  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。\n\n-这件武器的射弹带有EMP效果。\n-这件武器的射弹会施加迅速衰减的减速状态，</SRA_Minipulser.description>
+  <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但也具有较高的泛用性。\n\n&lt;color=#FFFF44&gt;-这件武器的射弹带有EMP效果。\n-这件武器的射弹会施加迅速衰减的减速状态。&lt;/color&gt;</SRA_Minipulser.description>
   <SRABullet_Minipulser.label>星规-风雪骤灭能量束</SRABullet_Minipulser.label>
+
+  <SRA_Double_Blade.label>星规-寒渊惜别</SRA_Double_Blade.label>
+  <SRA_Double_Blade.description>一柄精巧的双刃，包含复杂的星辉水晶质能控制系统，它既能控制相位能量切割攻击到的目标，也能构建星辉分形来格挡攻击。\n\n&lt;color=#FFFF44&gt;-这件武器能够持续地抵挡伤害，除非被足够高伤害的攻击突破防御。\n-这件武器的攻击会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRA_Double_Blade.description>
+  <SRA_Double_Blade.tools.edge.label>刃</SRA_Double_Blade.tools.edge.label>
+  
+  <SRA_Sword_of_Hidra.label>「息声」</SRA_Sword_of_Hidra.label>
+  <SRA_Sword_of_Hidra.description>这件武器由大小不一的红黑色细长晶体组成，这些悬浮着而互相保持着一定距离的晶体组成了类似于剑的外形。当注视着这柄剑时，你会感觉到一种难以描述的模糊感和不协调感，似乎那些晶体不应该那样排列。\n\n&lt;color=#FFFF44&gt;这件可怖之物的攻击会造成诡异的眩晕，冻伤与烧伤。&lt;/color&gt;</SRA_Sword_of_Hidra.description>
+  <SRA_Sword_of_Hidra.tools.edge.label>刃</SRA_Sword_of_Hidra.tools.edge.label>
 
 </LanguageData>

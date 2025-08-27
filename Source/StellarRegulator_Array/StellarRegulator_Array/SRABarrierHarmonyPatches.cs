@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -30,13 +31,20 @@ namespace SRA
             {
                 if (__instance == null || __instance.Dead || __instance.health == null) return;
 
+                var barriers = new List<HediffComp_SRABarrier>();
                 foreach (Hediff hediff in __instance.health.hediffSet.hediffs)
                 {
-                    if (hediff.TryGetComp<HediffComp_SRABarrier>() is HediffComp_SRABarrier barrier)
+                    if (hediff.TryGetComp<HediffComp_SRABarrier>() is HediffComp_SRABarrier barrier &&
+                        barrier.CanAbsorb)
                     {
-                        barrier.AbsorbDamage(ref dinfo);
-                        if (dinfo.Amount <= 0.001f) return;
+                        barriers.Add(barrier);
                     }
+                }
+                barriers.Sort((a, b) => b.Props.priority.CompareTo(a.Props.priority));
+                foreach (var barrier in barriers)
+                {
+                    barrier.AbsorbDamage(ref dinfo);
+                    if (dinfo.Amount <= 0.001f) return;
                 }
             }
             catch (Exception ex)

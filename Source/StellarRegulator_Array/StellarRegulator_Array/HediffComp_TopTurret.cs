@@ -20,6 +20,7 @@ namespace SRA
 
         public bool autoAttack = true;
     }
+
     [StaticConstructorOnStartup]
     public class HediffComp_TopTurret : HediffComp, IAttackTargetSearcher
     {
@@ -106,7 +107,7 @@ namespace SRA
                     {
                         return false;
                     }
-                    if (pawn.CanTakeOrder && !this.fireAtWill)
+                    if (pawn.IsColonyMechPlayerControlled && !this.fireAtWill)
                     {
                         return false;
                     }

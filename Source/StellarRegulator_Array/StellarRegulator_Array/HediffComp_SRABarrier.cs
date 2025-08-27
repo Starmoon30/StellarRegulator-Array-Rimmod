@@ -20,6 +20,7 @@ namespace SRA
         public float regenDelay = 3f;
         public float rechargeCooldown = 10f;
         public bool RemoveWhenDestroy = false;
+        public int priority = 0; // 优先级，越大的越先承伤
 
         public HediffCompProperties_SRABarrier() => compClass = typeof(HediffComp_SRABarrier);
     }

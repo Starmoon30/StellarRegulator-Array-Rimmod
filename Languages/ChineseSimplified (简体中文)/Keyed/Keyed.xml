@@ -35,7 +35,7 @@
 
 	<SRA_BarrierTipExtra>-屏障上限：{0}\n-回复速度：{1}\n-回复延迟：{2}\n-充能冷却：{3}\n-屏障效率：{4}\n-损伤上限：{5}\n-损伤降低：{6}</SRA_BarrierTipExtra>
 
-	<SRABarrierTitle>屏障</SRABarrierTitle>
+	<SRABarrierTitle>-屏障</SRABarrierTitle>
   	<SRA_BarrierStatus>屏障状态</SRA_BarrierStatus>
   	<SRA_BarrierValue>{0}/{1}</SRA_BarrierValue>
   	<SRA_BarrierRecharging>充能中: {0}秒</SRA_BarrierRecharging>

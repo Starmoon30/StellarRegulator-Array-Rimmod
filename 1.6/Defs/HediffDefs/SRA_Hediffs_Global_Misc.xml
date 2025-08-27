@@ -47,6 +47,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>0</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
     </comps>
     <stages>
@@ -57,7 +58,7 @@
 
   <HediffDef>
     <defName>SRA_Barrier_Mech_WarUnit_M_D</defName>
-    <label>星规-强固屏障</label>
+    <label>星规-强固结构</label>
     <hediffClass>HediffWithComps</hediffClass>
     <description>组成这个单位的星辉分形维系着一道一体化的防御场。</description>
     <isBad>false</isBad>
@@ -76,6 +77,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
     </comps>
     <stages>
@@ -101,6 +103,7 @@
         <regenDelay>30</regenDelay>
         <rechargeCooldown>0</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1000</priority><!-- 承伤优先级，越大越先，int -->
       </li>
     </comps>
     <stages>
@@ -126,6 +129,7 @@
         <regenDelay>1</regenDelay>
         <rechargeCooldown>1</rechargeCooldown>
         <RemoveWhenDestroy>true</RemoveWhenDestroy>
+        <priority>1000</priority><!-- 承伤优先级，越大越先，int -->
       </li>
     </comps>
     <stages>
@@ -349,18 +353,44 @@
 
   <HediffDef Parent="HediffBase">
     <defName>SRATurretTest</defName>
-    <label>星规-防卫电弧</label>
-    <description>这个单位能够向周围的敌对目标释放防御性的电弧。</description>
+    <label>星规-防卫炮塔</label>
+    <description>这个单位携带了一台自动开火的风雪骤灭，太可怕了。</description>
     <isBad>false</isBad>
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0,1,1)</defaultLabelColor>
     <comps>
       <li Class="SRA.HediffCompProperties_TopTurret">
-        <turretDef>SRATurretGun_Weapon_P</turretDef>
+        <turretDef>SRATurretGun_SRATurretTest</turretDef>
         <angleOffset>-90</angleOffset>
         <autoAttack>true</autoAttack>
       </li>
     </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Double_Blade_Hediff</defName>
+    <label>星规-寒渊惜别</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位因为装备了寒渊惜别，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色格挡低于32点的伤害，并在遭到高额伤害时被迅速击破，然而，它也可以快速恢复并重新开始格挡。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>8</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>40</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>32</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>8</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>2000</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
   </HediffDef>
 
 

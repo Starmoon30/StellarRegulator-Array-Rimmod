@@ -28,7 +28,8 @@ namespace SRA
             // 标题
             Rect titleRect = new Rect(rect.x, rect.y, rect.width, 24f);
             Text.Anchor = TextAnchor.UpperCenter;
-            Widgets.Label(titleRect, "SRABarrierTitle".Translate());
+            string hediffName = barrier.parent.LabelCap;
+            Widgets.Label(titleRect, hediffName + "SRABarrierTitle".Translate());
             Text.Anchor = TextAnchor.UpperLeft;
 
             // 屏障条

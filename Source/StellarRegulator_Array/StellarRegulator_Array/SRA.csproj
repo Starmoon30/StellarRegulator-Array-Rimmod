@@ -7,7 +7,7 @@
     <ProjectGuid>{C1FB607E-E314-42C7-B6EE-D7849E96E82A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StellarRegulator_Array</RootNamespace>
+    <RootNamespace>SRA</RootNamespace>
     <AssemblyName>StellarRegulator_Array</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -89,6 +89,7 @@
     <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
+    <Compile Include="CompWeaponHediffGiver.cs" />
     <Compile Include="Verb_ShootArc.cs" />
     <Compile Include="HediffComp_TopTurret.cs" />
     <Compile Include="HediffComp_SRARegen.cs" />

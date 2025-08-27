@@ -38,13 +38,10 @@ namespace SRA
 
         protected override void Impact(Thing hitThing, bool blockedByShield = false)
         {
-            if (ProjectileExt.explosionDamage <= 0)
+            if (ProjectileExt == null)
             {
-                ProjectileExt.explosionDamage = def.projectile.GetDamageAmount(equipment);
-            }
-            if (ProjectileExt.explosionArmorPenetration <= 0)
-            {
-                ProjectileExt.explosionArmorPenetration = def.projectile.GetArmorPenetration(equipment);
+                base.Impact(hitThing, blockedByShield);
+                return;
             }
             Map map = base.Map;
             IntVec3 position = base.Position;
@@ -61,6 +58,10 @@ namespace SRA
                 (Find.TickManager.TicksGame - lastPenetrationTick) >= ProjectileExt.penetrationDelayTicks;
             if (hitThing != LasthitThing)
             {
+                BattleLogEntry_RangedImpact battleLogEntry_RangedImpact = new BattleLogEntry_RangedImpact(launcher, hitThing, intendedTarget.Thing, equipmentDef, def, targetCoverDef);
+                Find.BattleLog.Add(battleLogEntry_RangedImpact);
+                Pawn pawn;
+                bool instigatorGuilty = (pawn = (launcher as Pawn)) == null || !pawn.Drafted;
                 List<Thing> thingsIgnoredByExplosion = new List<Thing>();
                 foreach (IntVec3 cell in GenRadial.RadialCellsAround(position, ProjectileExt.explosionRadius, true))
                 {
@@ -72,7 +73,27 @@ namespace SRA
                         {
                             thingsIgnoredByExplosion.Add(thing);
                         }
+                        else
+                        {
+                            if (def.projectile.extraDamages != null)
+                            {
+                                foreach (ExtraDamage extraDamage in def.projectile.extraDamages)
+                                {
+                                    if (Rand.Chance(extraDamage.chance))
+                                    {
+                                        DamageInfo dinfo2 = new DamageInfo(extraDamage.def, extraDamage.amount, extraDamage.AdjustedArmorPenetration(), ExactRotation.eulerAngles.y, launcher, null, equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown, intendedTarget.Thing, instigatorGuilty);
+                                        thing.TakeDamage(dinfo2).AssociateWithLog(battleLogEntry_RangedImpact);
+                                    }
+                                }
+                            }
+
+                        }
                     }
+                }
+                // 施加爆炸范围内的 Hediff
+                if (ProjectileExt?.explosionHediff != null)
+                {
+                    ApplyHediffInExplosionRadius(position, map);
                 }
                 // 生成穿透爆炸
                 GenExplosion.DoExplosion(
@@ -91,11 +112,6 @@ namespace SRA
                 );
                 LasthitThing = hitThing;
 
-                // 施加爆炸范围内的 Hediff
-                if (ProjectileExt?.explosionHediff != null)
-                {
-                    ApplyHediffInExplosionRadius(position, map);
-                }
             }
             // 非目标且满足穿透条件
             if (!isIntendedTarget && canPenetrate)
@@ -138,6 +154,14 @@ namespace SRA
                 penetrationsLeft = ProjectileExt.maxPenetrations;
                 lastPenetrationTick = -ProjectileExt.penetrationDelayTicks; // 允许立即穿透
             }
+            if (ProjectileExt.explosionDamage <= 0)
+            {
+                ProjectileExt.explosionDamage = def.projectile.GetDamageAmount(equipment);
+            }
+            if (ProjectileExt.explosionArmorPenetration <= 0)
+            {
+                ProjectileExt.explosionArmorPenetration = def.projectile.GetArmorPenetration(equipment);
+            }
         }
 
         // 给单个目标施加 Hediff
@@ -149,20 +173,17 @@ namespace SRA
             {
                 hediff.Severity = Mathf.Clamp(severity, 0, hediffDef.maxSeverity);
             }
-            // 施加 Hediff
-            target.health.AddHediff(hediff);
-            // 检查 Pawn 是否已有该 Hediff
-            if (target.health.hediffSet.HasHediff(hediffDef))
+            Hediff existing = target.health.hediffSet.GetFirstHediffOfDef(hediffDef);
+            if (existing != null)
             {
                 // 增加现有 Hediff 的严重程度
-                Hediff existing = target.health.hediffSet.GetFirstHediffOfDef(hediffDef);
-                existing.Severity += ProjectileExt.explosionHediffSeverity;
+                existing.Severity += severity;
             }
             else
             {
                 // 施加新 Hediff
                 Hediff newHediff = HediffMaker.MakeHediff(hediffDef, target);
-                newHediff.Severity = ProjectileExt.explosionHediffSeverity;
+                newHediff.Severity = severity;
                 target.health.AddHediff(newHediff);
             }
         }
@@ -185,44 +206,6 @@ namespace SRA
                     }
                 }
             }
-        }
-        // 检查目标是否对发射者友好
-        private bool IsFriendlyToLauncher(Thing target, Faction launcherFaction)
-        {
-            if (target == null || launcherFaction == null) return false;
-
-            // 1. 检查动物和野生动物
-            if (target is Pawn pawn)
-            {
-                // 玩家动物视为友方
-                if (pawn.Faction.IsPlayer && pawn.RaceProps.Animal)
-                    return true;
-                else return false;
-            }
-            // 2. 检查派系关系
-            if (target.Faction == null) return false;
-
-            // 3. 同派系视为友方
-            if (target.Faction == launcherFaction) return true;
-
-            // 4. 检查盟友关系
-            FactionRelation relation = launcherFaction.RelationWith(target.Faction, false);
-            if (relation != null)
-            {
-                // 盟友
-                if (relation.kind == FactionRelationKind.Ally) return true;
-            }
-            // 5. 检查特殊关系（如奴隶、囚犯）
-            if (target is Pawn targetPawn)
-            {
-                // 奴隶视为友方
-                if (targetPawn.IsSlaveOfColony) return true;
-
-                // 囚犯视为敌方
-                if (targetPawn.IsPrisonerOfColony) return false;
-            }
-
-            return false;
         }
     }
 }

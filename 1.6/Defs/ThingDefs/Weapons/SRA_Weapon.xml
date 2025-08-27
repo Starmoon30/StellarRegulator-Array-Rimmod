@@ -13,24 +13,78 @@
 			<li>SRA_Weapon</li>
 		</thingCategories>
 	</ThingDef>
-
-	<ThingDef Name="SRA_WeaponMeleeBase" ParentName="BaseMeleeWeapon_Sharp_Quality" Abstract="True">
+	<ThingDef Name="SRA_WeaponMelee_Ultra" ParentName="BaseWeapon"
+		Abstract="True">
 		<techLevel>Ultra</techLevel>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
+		<statBases>
+			<MarketValue>20000</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
 		<recipeMaker>
 			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
+			<recipeUsers>
+				<li>SRA_WorkTable</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedSRAItem</unfinishedThingDef>
 		</recipeMaker>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+			<li Class="CompProperties_Biocodable" />
+		</comps>
 		<weaponTags>
 			<li>SRA_Weapon</li>
 		</weaponTags>
 		<thingCategories>
 			<li>SRA_Weapon</li>
 		</thingCategories>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>Ultratech</li>
+		</weaponClasses>
+	</ThingDef>
+	<ThingDef Name="SRA_WeaponMelee_Abyss" ParentName="BaseWeapon" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<MarketValue>20000</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+		</recipeMaker>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+			<li Class="CompProperties_Biocodable" />
+		</comps>
+		<weaponTags>
+			<li>SRA_Weapon</li>
+		</weaponTags>
+		<thingCategories>
+			<li>SRA_Weapon</li>
+		</thingCategories>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>Ultratech</li>
+		</weaponClasses>
 	</ThingDef>
 
 	<ThingDef Name="SRA_WeaponBase_Spacer" ParentName="SRA_WeaponBase" Abstract="True">
@@ -156,6 +210,9 @@
 		<defName>SRA_SML_Mass_Drivers</defName>
 		<label>星规-星弧破碎</label>
 		<description>这一型拥有高度泛用性的双联装速射炮灵活而精准，能够胜任几乎所有用途。其发射的短促能量束拥有强大的贯彻力，难以被阻挡。手持版本极大幅度压缩了体积，并削减了各项性能以适配单兵承载能力。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
 		<graphicData>
 			<texPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -212,18 +269,33 @@
 	<ThingDef ParentName="BaseBullet">
 		<defName>SRABullet_SML_Mass_Drivers</defName>
 		<label>星规-星弧破碎能量束</label>
-		<thingClass>Bullet</thingClass>
 		<graphicData>
 			<texPath>Things/Projectile/ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2.4</drawSize>
 		</graphicData>
+		<thingClass>SRA.Projectile_SRA_Railgun</thingClass>
+		<modExtensions>
+			<li Class="SRA.SRA_RailgunProjectileExtension">
+				<!-- 穿透设置 -->
+				<maxPenetrations>1</maxPenetrations>
+				<penetrationDelayTicks>1</penetrationDelayTicks>
+				<!-- 爆炸设置 -->
+				<explosionRadius>1.5</explosionRadius>
+				<explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
+				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
+				<damageDef>Bullet</damageDef>
+				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+				<explosionHediff>SRA_Railgun_debuff</explosionHediff>
+				<explosionHediffSeverity>0.05</explosionHediffSeverity>
+			</li>
+		</modExtensions>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>40</damageAmountBase>
+			<damageAmountBase>64</damageAmountBase>
 			<armorPenetrationBase>4</armorPenetrationBase>
-			<stoppingPower>4</stoppingPower>
+			<stoppingPower>8</stoppingPower>
 			<speed>240</speed>
 			<extraDamages>
 				<li>
@@ -412,7 +484,7 @@
 	<ThingDef ParentName="SRA_WeaponBase_Spacer">
 		<defName>SRA_Minipulser</defName>
 		<label>星规-风雪骤灭</label>
-		<description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但对陆军仍然有巨大的威胁。</description>
+		<description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但也具有较高的泛用性。</description>
 		<descriptionHyperlinks>
 			<HediffDef>SRA_Retardant</HediffDef>
 		</descriptionHyperlinks>
@@ -499,8 +571,65 @@
 		</projectile>
 	</ThingDef>
 
+	<ThingDef ParentName="SRA_WeaponMelee_Ultra">
+		<defName>SRA_Double_Blade</defName>
+		<label>SRA_Double_Blade</label>
+		<description>SRA_Double_Blade</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Double_Blade_Hediff</HediffDef>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<tradeability>None</tradeability>
+		<statBases>
+			<MarketValue>32000</MarketValue>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<soundInteract>Interact_BladelinkPlasmaSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkPlasmaSword</meleeHitSound>
+		<smeltable>false</smeltable>
+		<equippedAngleOffset>135</equippedAngleOffset>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>SRA/Weapon/SRA_Double_Blade</texPath>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<comps>
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Double_Blade_Hediff</hediff>
+        	</li>
+    	</comps>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>1</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>40</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>16</amount>
+        			</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
 
-	<ThingDef ParentName="SRA_WeaponMeleeBase">
+
+	<ThingDef ParentName="SRA_WeaponMelee_Abyss">
 		<defName>SRA_Sword_of_Hidra</defName>
 		<label>Sacrilence</label>
 		<description>Mercy Ancient Nefera</description>
@@ -524,11 +653,10 @@
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>SRA/Weapon/SRA_Sword_of_Hidra</texPath>
-			<color>(255,200,200)</color>
 		</graphicData>
 		<tools>
 			<li>
-				<label>刃</label>
+				<label>edge</label>
 				<capacities>
 					<li>Cut</li>
 				</capacities>
@@ -537,7 +665,7 @@
 				<extraMeleeDamages>
 					<li>
 						<def>Stun</def>
-						<amount>4</amount>
+						<amount>32</amount>
 					</li>
 					<li>
 						<def>SRA_Frostbite</def>
@@ -552,4 +680,39 @@
 		</tools>
 	</ThingDef>
 
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_SRATurretTest</defName>
+    <label>测试炮塔</label>
+    <description>测试炮塔</description>
+    <tradeability>None</tradeability>
+    <destroyOnDrop>true</destroyOnDrop>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>0.1</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.90</AccuracyMedium>
+      <AccuracyLong>0.85</AccuracyLong>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_Minipulser</defaultProjectile>
+        <range>32</range>
+		<soundCast>SRA_Minipulser</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <defaultCooldownTime>8</defaultCooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+        <burstShotCount>16</burstShotCount>
+      </li>
+    </verbs>
+  </ThingDef>
+  
 </Defs>

@@ -4,10 +4,14 @@
   <SRA_Power_Overwhelming.description>此人显现出坚不可摧的身躯与不可思议的再生能力，一切损伤都无法在其身上驻留片刻。</SRA_Power_Overwhelming.description>
 
   <SRA_Energy_Injection.label>星规-星辉注能</SRA_Energy_Injection.label>
-  <SRA_Energy_Injection.description>星辉分形流转在这个个体之中，极度强化了其各项能力，并提供强有力的保护。不可见的屏障遍覆其躯体，抵挡一切损伤。\n\n“我自苍白的门扉归来，我已超然物上。我的力气足以掌控他人，我的力量足以掌控自我。我的肢体强韧，它可驱使万物，它将塑造万物；我的身躯精妙，它已成为一体，它将永为一体。”</SRA_Energy_Injection.description>
-
+  <SRA_Energy_Injection.description>星辉分形流转在这个个体之中，极度强化了其各项能力，并提供强有力的保护。不可见的屏障遍覆其躯体，抵挡一切损伤。\n\n&lt;color=#00FFFF&gt;“我自苍白的门扉归来，我已超然物上。我的力气足以掌控他人，我的力量足以掌控自我。我的肢体强韧，它可驱使万物，它将塑造万物；我的身躯精妙，它已成为一体，它将永为一体。”&lt;/color&gt;</SRA_Energy_Injection.description>
   <SRA_Little_Regeneration.label>星规-顽强生机</SRA_Little_Regeneration.label>
   <SRA_Little_Regeneration.description>此人显现出顽强的生命力，能逐渐愈合看似永久的损伤。</SRA_Little_Regeneration.description>
+
+  <SRA_Barrier_SR_Mech.label>星规-超然构造</SRA_Barrier_SR_Mech.label>
+  <SRA_Barrier_SR_Mech.description>星辉分形在精妙的构筑下流转，维系着一道一体化的防御场。</SRA_Barrier_SR_Mech.description>
+  <SRA_Barrier_Mech_WarUnit_M_D.label>星规-强固结构</SRA_Barrier_Mech_WarUnit_M_D.label>
+  <SRA_Barrier_Mech_WarUnit_M_D.description>组成这个单位的星辉分形维系着一道一体化的防御场。</SRA_Barrier_Mech_WarUnit_M_D.description>
 
   <SRA_Chosen_One.label>星规-深渊召选</SRA_Chosen_One.label>
   <SRA_Chosen_One.description>此人被某种神秘的超凡力量选定，背离了自我。</SRA_Chosen_One.description>
@@ -18,7 +22,7 @@
   <SRA_Retardant.label>星规-阻滞渗透</SRA_Retardant.label>
   <SRA_Retardant.description>这个单位如堕泥潭，寸步难行。</SRA_Retardant.description>
   <SRA_Railgun_debuff.label>星规-相位崩解</SRA_Railgun_debuff.label>
-  <SRA_Railgun_debuff.description>混乱的相位能量会撕扯物质乃至现实。\n\n-这一效果会严重削弱战斗能力并增加受到的伤害。</SRA_Railgun_debuff.description>
+  <SRA_Railgun_debuff.description>混乱的相位能量会撕扯物质乃至现实。\n\n&lt;color=#FFFF44&gt;-这一效果会严重削弱战斗能力并增加受到的伤害。&lt;/color&gt;</SRA_Railgun_debuff.description>
 
   <SRAResurrectionBound.label>星规-永生协议</SRAResurrectionBound.label>
   <SRAResurrectionBound.description>这个单位已经与一座永生协议信标绑定，会在受到致命伤害时被传送回去并保护起来。</SRAResurrectionBound.description>

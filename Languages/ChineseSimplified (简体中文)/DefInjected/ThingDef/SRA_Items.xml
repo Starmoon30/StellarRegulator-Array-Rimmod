@@ -13,7 +13,4 @@
   <SRA_MetabyssHalo_Y.description>骇人之物正在活动。\n\n免疫所有高于32点的伤害，免疫所有非箭矢伤害。</SRA_MetabyssHalo_Y.description>
   <SRA_MetabyssHalo_Y.comps.CompDamageFactors.popOutString>免疫</SRA_MetabyssHalo_Y.comps.CompDamageFactors.popOutString>
 
-  <SRA_Sword_of_Hidra.label>「息声」</SRA_Sword_of_Hidra.label>
-  <SRA_Sword_of_Hidra.description>这件武器由大小不一的红黑色细长晶体组成，这些悬浮着而互相保持着一定距离的晶体组成了类似于剑的外形。当注视着这柄剑时，你会感觉到一种难以描述的模糊感和不协调感，似乎那些晶体不应该那样排列。\n\n这件可怖之物的攻击会造成诡异的眩晕，冻伤与烧伤。</SRA_Sword_of_Hidra.description>
-  <SRA_Sword_of_Hidra.tools.0.label>刃</SRA_Sword_of_Hidra.tools.0.label>
 </LanguageData>

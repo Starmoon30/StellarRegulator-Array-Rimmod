@@ -83,6 +83,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
     </comps>
     <tags><li>ArmorGland</li></tags>
