@@ -17,6 +17,7 @@ namespace SRA
 
         public static SoundDef EnergyShield_Broken;
         public static SoundDef EnergyShield_Reset;
+        public static SoundDef SRA_star_eater_weapon_hit_01;
 
         public static JobDef SRA_EmptySRA_CoreContainer;
 

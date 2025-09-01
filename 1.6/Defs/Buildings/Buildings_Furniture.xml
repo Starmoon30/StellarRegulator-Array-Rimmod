@@ -65,14 +65,11 @@
     <description>SRA_SunLamp</description>
     <thingClass>Building_SunLamp</thingClass>
     <graphicData>
-      <texPath>Things/Building/Furniture/FloodLight</texPath>
+      <texPath>SRA/Building/Furniture/SRA_SunLamp</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>2.5</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
       <addTopAltitudeBias>true</addTopAltitudeBias>
-      <shadowData>
-        <volume>(0.2, 0.7, 0.2)</volume>
-        <offset>(0, 0, -0.2)</offset>
-      </shadowData>
     </graphicData>
     <uiIconScale>0.75</uiIconScale>
     <blockWind>true</blockWind>
@@ -85,7 +82,7 @@
       <Beauty>32</Beauty>
     </statBases>
     <costList>
-      <SRA_Core>1</SRA_Core>
+      <SRA_Core>5</SRA_Core>
     </costList>
     <uiOrder>2995</uiOrder>
     <comps>
@@ -114,7 +111,7 @@
     <graphicData>
       <texPath>SRA/Building/Furniture/SRA_Chair</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(1,1)</drawSize>
+      <drawSize>(1.5,1.5)</drawSize>
       <shadowData>
         <volume>(0.3, 0.33, 0.3)</volume>
       </shadowData>
@@ -124,7 +121,7 @@
     <statBases>
       <MaxHitPoints>640</MaxHitPoints>
       <WorkToBuild>1600</WorkToBuild>
-      <Mass>35</Mass>
+      <Mass>2</Mass>
       <Flammability>1.0</Flammability>
       <Beauty>16</Beauty>
       <Comfort>1.2</Comfort>
@@ -149,4 +146,45 @@
     <designationCategory>SRA_Building</designationCategory>
   </ThingDef>
 
+  
+  <ThingDef ParentName="FurnitureWithQualityBase">
+    <defName>SRA_2X1Table</defName>
+    <label>SRA_2X1Table</label>
+    <description>SRA_2X1Table</description>
+    <graphicData>
+      <texPath>SRA/Building/Furniture/SRA_2X1Table</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.7,1.35)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.33, 0.3)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconScale>1</uiIconScale>
+    <uiIconPath>SRA/Building/Furniture/SRA_2X1Table_south</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>640</MaxHitPoints>
+      <WorkToBuild>1600</WorkToBuild>
+      <Mass>2</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>16</Beauty>
+      <Comfort>1.2</Comfort>
+    </statBases>
+    <size>(2,1)</size>
+    <costList>
+      <SRA_Core>1</SRA_Core>
+    </costList>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <pathCost>0</pathCost>
+    <fillPercent>0.40</fillPercent>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <building>
+    </building>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <designationCategory>SRA_Building</designationCategory>
+    <surfaceType>Eat</surfaceType>
+  </ThingDef>
 </Defs>

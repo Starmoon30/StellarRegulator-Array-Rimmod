@@ -166,7 +166,8 @@
         <li>Hauling</li>
         <li>BasicWorker</li>
         <!-- <li>Handling</li> -->
-        <li>Hunting</li>
+        <!-- <li>Hunting</li> -->
+        <li MayRequire="Ludeon.RimWorld.Odyssey">Fishing</li>
         <li>Cleaning</li>
         <li>Construction</li>
         <li>Firefighter</li>
@@ -211,13 +212,14 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>100</power>
+        <power>160</power>
         <cooldownTime>0.5</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
       </li>
     </tools>
     <comps>
+      <li Class="SRA.CompProperties_GlobalMechCommand" />
       <li Class="CompProperties_Shield">
         <startingTicksToReset>1800</startingTicksToReset>
         <minDrawSize>1.8</minDrawSize>

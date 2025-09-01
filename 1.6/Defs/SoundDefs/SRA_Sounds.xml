@@ -111,4 +111,26 @@
     </subSounds>
   </SoundDef>
 
+  <SoundDef>
+    <defName>SRA_star_eater_weapon_hit_01</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>SRA/SRA_star_eater_weapon_hit_01</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>99</min>        
+          <max>100</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>1.0</min>        
+          <max>1.5</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
 </Defs>

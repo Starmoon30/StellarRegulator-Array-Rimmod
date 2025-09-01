@@ -30,8 +30,8 @@
     <makesAnimalsFlee>true</makesAnimalsFlee>
     <defaultDamage>160</defaultDamage>
     <defaultArmorPenetration>4</defaultArmorPenetration>
-    <buildingDamageFactorImpassable>4</buildingDamageFactorImpassable>
-    <buildingDamageFactorPassable>2</buildingDamageFactorPassable>
+    <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
     <ignoreShields>true</ignoreShields>
     <additionalHediffs>
       <li>

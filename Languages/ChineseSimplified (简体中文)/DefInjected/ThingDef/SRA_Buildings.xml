@@ -12,6 +12,8 @@
 
   <SRA_Chair.label>星规-自适应椅</SRA_Chair.label>
   <SRA_Chair.description>一个星规式椅子，会按照你的需求变形并提供完美的支撑，非常的舒适，很适合用来休闲放松。可以在餐桌和工作台或者别的什么附近使用。</SRA_Chair.description>
+  <SRA_2X1Table.label>星规-自适应桌</SRA_2X1Table.label>
+  <SRA_2X1Table.description>一个星规式桌子，会按照你的需求调整并小规模变形。为双人使用设计，也经常被数个拼在一起来作为长桌使用。</SRA_2X1Table.description>
   
 
   <SRA_Astronomical_Fabrications_Main.label>铸星神械-轴突</SRA_Astronomical_Fabrications_Main.label>
@@ -20,7 +22,10 @@
   <SRA_Astronomical_Fabrications_Sub.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械-树突是相对较小的工业集群，它在深层与轴突相连并扩展它的规模，得益于轴突提供的一系列支持，树突的成本相对较小，效率也更高。\n\n&lt;color=#FFFF44&gt;铸星神械-轴突每链接一个树突，每天就能多生产2个星规-分形演化核心&lt;/color&gt;</SRA_Astronomical_Fabrications_Sub.description>
   <SRA_HydroponicsBasin.label>星规-定向催化农业</SRA_HydroponicsBasin.label>
   <SRA_HydroponicsBasin.description>经由自适应的植物管理系统，通过对作物生理过程的编辑来优化其产出效率。运行时需要消耗电力，断电后作物会死亡。</SRA_HydroponicsBasin.description>
+  <SRA_Battery.label>星规-储能水晶</SRA_Battery.label>
+  <SRA_Battery.description>一颗专为储存能量制作的星辉水晶被保存在这个基座内，尽管这个建筑更多时候扮演场景装饰的角色，但也能很好的完成它的本职工作。\n星规阵列受到科尔先驱的影响，在高密度储能方向上发展良多。许多星规阵列舰船不搭载反应堆而是直接携带储能阵列来满足全部能源需要。</SRA_Battery.description>
   
+
 
   <SRA_RepairTower.label>星规-流转尖塔</SRA_RepairTower.label>
   <SRA_RepairTower.description>一个重要的星规设施，它投射一个极为庞大的能量场，并尽可能识别你的物品，将其修复。它还会持续增加你建筑的耐久度，直到抵达上限的两倍再额外多出800耐久度，来省去修理的烦恼。\n至于发电功能……咳咳，先假装这不算作弊吧。\n\n非常诡异的建筑，显然有人为了图方便擅自修改了它的功能，加入了一些跨时期的技术，甚至对接了能量传输网络。不过，也没什么不好的不是吗？</SRA_RepairTower.description>
@@ -32,9 +37,6 @@
   <SRA_WorkTable.description>编织星辉分形并将其演化为各种物品的工作台，仅在没有展开大规模生产设施的条件下使用的打印装置。\n\n许多旅行家会携带这种工作台来获取他们所需要的物件，毕竟他们几乎是孑然一身地在宇宙的某个角落里独自行走，需要有一种能解决绝大多数问题的便捷方案，而一个万能打印机显然是非常优秀的。\n在某些技术指导和隐秘的帮助下，这一工作台可以用常规材料组装起来，真是令人惊叹。</SRA_WorkTable.description>
   <SRA_TempControler.label>星规-温控终端</SRA_TempControler.label>
   <SRA_TempControler.description>这一先进的温度控制系统使用一种奇妙的技术控制所在区域内的热运动情况，可以应对任意规模任意指标的温度需求。\n\n请不要把它放在室外，它会试图和整个地区的气温对抗。</SRA_TempControler.description>
-
-  <SRATurret_L_Particle_Launcher.label>星规-虚空撕裂炮塔</SRATurret_L_Particle_Launcher.label>
-  <SRATurret_L_Particle_Launcher.description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。\n\n&lt;color=#FFFF44&gt;这座炮塔的攻击方式类似迫击炮，可以越过障碍物，但需要在无天花板遮挡的地方才能使用。&lt;/color&gt;</SRATurret_L_Particle_Launcher.description>
 
   <SRA_Beacon_SRA_SR.label>星规-部署信标-星规阵列五类行动单元</SRA_Beacon_SRA_SR.label>
   <SRA_Beacon_SRA_SR.description>一个用于折跃机械体的部署信标。这个信标折跃一个星规阵列五类行动单元的类人素体。\n\n需要机械师来启动</SRA_Beacon_SRA_SR.description>

@@ -90,6 +90,10 @@
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
     <Compile Include="CompWeaponHediffGiver.cs" />
+    <Compile Include="CompAbilityEffect_ExcaliburBeam.cs" />
+    <Compile Include="CompGlobalMechCommand.cs" />
+    <Compile Include="Projectile_MultiExplosive.cs" />
+    <Compile Include="Thing_ExcaliburBeam.cs" />
     <Compile Include="Verb_ShootArc.cs" />
     <Compile Include="HediffComp_TopTurret.cs" />
     <Compile Include="HediffComp_SRARegen.cs" />

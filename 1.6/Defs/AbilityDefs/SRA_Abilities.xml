@@ -194,4 +194,40 @@
     </verbProperties>
   </AbilityDef>
 
+  <AbilityDef>
+    <defName>SRA_Excalibur</defName>
+    <label>超级咖喱棒</label>
+    <description>某种光炮的测试</description>
+	  <jobDef>CastAbilityOnThingWithoutWeapon</jobDef>
+    <iconPath>UI/Abilities/FireSpew</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange> <!-- 1 day per -->
+    <charges>6</charges>
+    <cooldownPerCharge>true</cooldownPerCharge>
+	  <aiCanUse>true</aiCanUse>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>-1</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <range>64</range>
+      <drawAimPie>false</drawAimPie>
+      <soundAiming>SRA_star_eater_weapon_hit_01</soundAiming>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="SRA.CompProperties_AbilityExcaliburBeam">
+        <beamDefName>SRA_ExcaliburBeam</beamDefName>
+        <damageAmount>640</damageAmount>
+        <armorPenetration>8</armorPenetration>
+        <pathWidth>1</pathWidth>
+        <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+
 </Defs>

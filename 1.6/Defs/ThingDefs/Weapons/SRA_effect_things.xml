@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="MoteBase">
+    <defName>SRA_ExcaliburBeam</defName>
+    <thingClass>SRA.Thing_ExcaliburBeam</thingClass>
+    <label>SRA_ExcaliburBeam</label>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>9.3</solidTime>
+      <fadeOutTime>1.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+</Defs>
