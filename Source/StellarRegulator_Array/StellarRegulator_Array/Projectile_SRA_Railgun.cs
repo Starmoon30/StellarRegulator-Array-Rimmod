@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -66,8 +67,15 @@ namespace SRA
                 foreach (IntVec3 cell in GenRadial.RadialCellsAround(position, ProjectileExt.explosionRadius, true))
                 {
                     if (!cell.InBounds(map)) continue;
-                    foreach (Thing thing in map.thingGrid.ThingsListAt(cell))
+
+                    // 创建事物列表的副本以避免枚举时修改集合
+                    List<Thing> thingsInCell = map.thingGrid.ThingsListAt(cell).ToList();
+
+                    foreach (Thing thing in thingsInCell)
                     {
+                        // 检查物体是否已被销毁
+                        if (thing.Destroyed) continue;
+
                         // 敌我识别
                         if (thing != hitThing && !GenHostility.HostileTo(thing, launcher))
                         {
@@ -86,7 +94,6 @@ namespace SRA
                                     }
                                 }
                             }
-
                         }
                     }
                 }
