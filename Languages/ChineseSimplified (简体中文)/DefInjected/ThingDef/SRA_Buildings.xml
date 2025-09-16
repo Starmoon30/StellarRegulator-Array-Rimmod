@@ -25,6 +25,10 @@
   <SRA_Battery.label>星规-储能水晶</SRA_Battery.label>
   <SRA_Battery.description>一颗专为储存能量制作的星辉水晶被保存在这个基座内，尽管这个建筑更多时候扮演场景装饰的角色，但也能很好的完成它的本职工作。\n星规阵列受到科尔先驱的影响，在高密度储能方向上发展良多。许多星规阵列舰船不搭载反应堆而是直接携带储能阵列来满足全部能源需要。</SRA_Battery.description>
   
+  <SRA_Database.label>星规-数据单元</SRA_Database.label>
+  <SRA_Database.description>一个具备大规模数据处理能力的计算单元，不过现在它只是一个用来联系星规，部署一些供你进行战斗测试的机械体的工具。\n\n&lt;color=#FFFF44&gt;这个建筑可以召唤敌对机械体，并且可以多次使用，不过它召唤来的机械体并不会带来什么报酬。&lt;/color&gt;</SRA_Database.description>
+  <SRA_Database.comps.CompUsable.useLabel>召唤战争单元集群</SRA_Database.comps.CompUsable.useLabel>
+  
 
 
   <SRA_RepairTower.label>星规-流转尖塔</SRA_RepairTower.label>

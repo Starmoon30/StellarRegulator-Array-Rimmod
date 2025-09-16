@@ -122,9 +122,6 @@
         <wakeUpCheckRadius>30</wakeUpCheckRadius>
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
-      <li Class="CompProperties_MechPowerCell">
-        <totalPowerTicks>30000</totalPowerTicks>
-      </li>
     </comps>
   </ThingDef>
   <PawnKindDef ParentName="SRA_LightMechanoidKind">
@@ -358,9 +355,6 @@
         <wakeUpOnDamage>true</wakeUpOnDamage>
         <wakeUpCheckRadius>30</wakeUpCheckRadius>
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
-      </li>
-      <li Class="CompProperties_MechPowerCell">
-        <totalPowerTicks>30000</totalPowerTicks>
       </li>
     </comps>
     <tools>
@@ -621,9 +615,6 @@
         <wakeUpCheckRadius>30</wakeUpCheckRadius>
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
-      <li Class="CompProperties_MechPowerCell">
-        <totalPowerTicks>30000</totalPowerTicks>
-      </li>
     </comps>
     <tools>
       <li>
@@ -838,5 +829,509 @@
         </li>
       </extraDamages>
     </projectile>
+  </ThingDef>
+
+  
+  <ThingDef Name="SRA_Mech_Tank_M_D" ParentName="SRASuperHeavyMechanoid">
+    <defName>SRA_Mech_Tank_M_D</defName> <!-- 修改了defName以避免冲突 -->
+    <label>星规-「合唱团」实验型火力平台</label>
+    <description>一种概念性的中型作战平台，装备了多个炮塔来提供不同类型的压制性火力。由于缺乏具体的应用场合，这一设计停留在了原型阶段。\n\n这是一种相对较大的作战平台，装备了护盾场发生器和爆炸性光束武器，以及数个炮塔用于大范围轰炸。设计上用于提供战场支点，其武器系统擅长制造大量的范围伤害和削弱对手。</description>
+    <statBases>
+      <BandwidthCost>14</BandwidthCost>
+      <MoveSpeed>1.5</MoveSpeed>
+      <EnergyShieldEnergyMax>5</EnergyShieldEnergyMax>
+    </statBases>
+    <race>
+      <body>Mech_Warqueen</body>
+      <baseBodySize>30</baseBodySize>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Warqueen_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Warqueen_Death</soundDeath>
+          <soundCall>Pawn_Mech_Warqueen_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <baseHealthScale>25</baseHealthScale>
+      <!-- <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant> -->
+    </race>
+    <tools>
+      <li>
+        <label>碾压</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>64</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Torso</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <comps>
+      <!--加上这个组件的机械体会直接跳过原版指挥范围判定-->
+      <li Class="SRA.CompProperties_GlobalMechCommand" />
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_D</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1, 0, -1.45)</offset>
+                <flip>true</flip>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>90</rotationOffset>
+                <layer>-5</layer>
+                <offset>(2.15, 0, -1)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1, 0, -1.45)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <offset>(-2.15, 0, -1)</offset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_D</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1, 0, -1.45)</offset>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(2.15, 0, -1)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1, 0, -1.45)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <offset>(-2.15, 0, -1)</offset>
+                <layer>-5</layer>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_A</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1.3, 0, -0.45)</offset>
+                <flip>true</flip>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>90</rotationOffset>
+                <layer>-5</layer>
+                <offset>(1.4, 0, -0.35)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1.3, 0, -0.45)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <offset>(-1.4, 0, -0.35)</offset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_Mech_WarUnit_M_A</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1.3, 0, -0.45)</offset>
+                <flip>true</flip>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1.4, 0, -0.35)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1.3, 0, -0.45)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <layer>-5</layer>
+                <offset>(-1.4, 0, -0.35)</offset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1.25, 0, 0.45)</offset>
+                <flip>true</flip>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>90</rotationOffset>
+                <layer>-5</layer>
+                <offset>(0.6, 0, 0.15)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1.25, 0, 0.65)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <offset>(-0.6, 0, 0.15)</offset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D</turretDef>
+        <!-- <angleOffset>-90</angleOffset> -->
+        <renderNodeProperties>
+          <li>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(1, 1)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <dataNorth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(-1.25, 0, 0.45)</offset>
+                <flip>true</flip>
+                <layer>-5</layer>
+              </dataNorth>
+              <dataEast>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(0.6, 0, 0.15)</offset>
+              </dataEast>
+              <dataSouth>
+                <rotationOffset>-90</rotationOffset>
+                <offset>(1.25, 0, 0.65)</offset>
+              </dataSouth>
+              <dataWest>
+                <rotationOffset>90</rotationOffset>
+                <layer>-5</layer>
+                <offset>(-0.6, 0, 0.15)</offset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <li Class="CompProperties_ProjectileInterceptor">
+        <radius>6</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <color>(0.4, 0.4, 0.4)</color>
+        <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+        <activeSound>BulletShield_Ambience</activeSound>
+        <hitPoints>12800</hitPoints>
+        <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+        <chargeDurationTicks>1800</chargeDurationTicks><!-- 30s -->
+        <rechargeHitPointsIntervalTicks>90</rechargeHitPointsIntervalTicks>
+        <minIdleAlpha>0.2</minIdleAlpha>
+        <drawWithNoSelection>True</drawWithNoSelection>
+        <disarmedByEmpForTicks>900</disarmedByEmpForTicks>
+        <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+      </li>
+    </comps>
+  </ThingDef>
+  <PawnKindDef Name="SRA_Mech_Tank_M_D_PawnKind" ParentName="SRAHeavyMechanoidKind">
+    <defName>SRA_Mech_Tank_M_D</defName> <!-- 修改了defName以避免冲突 -->
+    <label>星规-「合唱团」实验型火力平台</label>
+    <race>SRA_Mech_Tank_M_D</race>
+    <combatPower>1000</combatPower>
+    <maxPerGroup>0</maxPerGroup>
+    <allowInMechClusters>false</allowInMechClusters>
+    <forceNoDeathNotification>true</forceNoDeathNotification>
+    <forceDeathOnDowned>true</forceDeathOnDowned>
+    <startingHediffs>
+      <li>
+        <def>SRA_Barrier_Mech_WarUnit_M_D</def>
+      </li>
+    </startingHediffs>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>SRA/Pawn/Mechanoid/SRA_Mech_Tank_M_D</texPath>
+          <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>6</drawSize>
+          <shadowData>
+            <volume>(1.4, 1.8, 1.4)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponMoney>99999~99999</weaponMoney>
+
+    <controlGroupPortraitZoom>0.7</controlGroupPortraitZoom>  
+    <weaponTags>
+      <li>SRA_Mech_Tank_M_D_Main_Weapon</li>
+    </weaponTags>
+
+    <abilities>
+    </abilities>
+  </PawnKindDef>
+
+	<ThingDef ParentName="SRA_WeaponBase">
+		<defName>SRA_Mech_Tank_M_D_Main_Weapon</defName>
+		<label>星规-「三角铁」冲击能量束系统</label>
+		<description>一种多用途冲击性能量束武器，它在命中后会制造额外的爆炸效果。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<uiIconScale>1.0</uiIconScale>
+		<equippedAngleOffset>0</equippedAngleOffset>
+    	<smeltable>false</smeltable>
+		<statBases>
+			<MarketValue>1600</MarketValue>
+			<MaxHitPoints>640</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<relicChance>0</relicChance>
+		<weaponTags>
+			<li>SRA_Mech_Tank_M_D_Main_Weapon</li>
+		</weaponTags>
+		<verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_Mech_Tank_M_D_Main_Weapon</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0</warmupTime>
+        <range>24</range>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <aimingChargeMote>Mote_BeamRepeater_Charge</aimingChargeMote>
+        <aimingChargeMoteOffset>0</aimingChargeMoteOffset>
+      </li>
+		</verbs>
+		<tools>
+			<li>
+				<label>相位冲击</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>64</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_Mech_Tank_M_D_Main_Weapon</defName>
+    <label>SRABullet_Mech_Tank_M_D_Main_Weapon</label>
+    <thingClass>SRA.Projectile_MultiExplosive_Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+      <damageAmountBase>64</damageAmountBase>
+      <beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
+      <beamStartOffset>0</beamStartOffset>
+      <armorPenetrationBase>4</armorPenetrationBase>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosive_BeamExtension">
+        <MultiExplosive_Beams>
+          <li>
+            <radius>1</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>32</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile>
+          </li>
+          <li>
+            <radius>2</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>GiantExplosion</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </MultiExplosive_Beams>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_SRA_Mech_Tank_M_D</defName>
+    <label>星规-「节拍」多重轰炸炮塔</label>
+    <description>一种远距离能量团发射器，它发射相位能量团，在命中时产生破坏性的多重爆炸。</description>
+    <descriptionHyperlinks>
+      <HediffDef>SRA_Railgun_debuff</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>0.5</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>32</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <defaultCooldownTime>8</defaultCooldownTime>
+        <soundCast>AgonyPulse_Cast</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</defName>
+    <label>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</label>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+    <graphicData>
+      <texPath>SRA/Projectile/SRA_Bullet_Plasma</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>2</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>64</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>80</speed>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
+        <multiexplosions>
+          <li>
+            <radius>4</radius>
+            <damageDef>EMP</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile>
+          </li>
+          <li>
+            <radius>1</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile>
+          </li>
+          <li>
+            <radius>4</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>128</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>GiantExplosion</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </multiexplosions>
+      </li>
+    </modExtensions>
   </ThingDef>
 </Defs>

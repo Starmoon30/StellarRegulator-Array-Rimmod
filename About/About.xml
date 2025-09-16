@@ -80,10 +80,16 @@ CC BY-NC-ND 4.0，部分素材版权所有，请勿未经授权使用
       <displayName>Biotech</displayName>
       <steamWorkshopUrl>https://store.steampowered.com/app/1826140/RimWorld__Biotech/?curator_clanid=25160263</steamWorkshopUrl>
     </li>
+    <li>
+      <packageId>DiZhuan.SRALib</packageId>
+      <displayName>SRALib</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
     <li>Ludeon.RimWorld</li>
+    <li>DiZhuan.SRALib</li>
   </loadAfter>
   
 </ModMetaData>

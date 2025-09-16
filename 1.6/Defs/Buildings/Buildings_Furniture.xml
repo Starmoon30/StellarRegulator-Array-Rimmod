@@ -9,14 +9,15 @@
     <thingClass>Building_LifeSupportUnit</thingClass>
     <tickerType>Rare</tickerType>
     <rotatable>true</rotatable>
-    <uiIconPath>Things/Building/Furniture/WallLamp/WallLamp_MenuIcon</uiIconPath>
+    <uiIconPath>SRA/Building/Furniture/SRA_WallLamp_north</uiIconPath>
     <graphicData>
-      <texPath>Things/Building/Furniture/WallLamp/WallLamp</texPath>
+      <texPath>SRA/Building/Furniture/SRA_WallLamp</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
-      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
-      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
-      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <drawOffsetNorth>(0,0,0.8)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.7)</drawOffsetSouth>
+      <drawOffsetWest>(-0.8,0,0)</drawOffsetWest>
+      <drawOffsetEast>(0.8,0,0)</drawOffsetEast>
+      <drawSize>0.5</drawSize>
       <damageData>
         <enabled>false</enabled>
       </damageData>

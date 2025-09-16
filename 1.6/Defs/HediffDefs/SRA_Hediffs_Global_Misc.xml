@@ -392,6 +392,22 @@
       </li>
     </stages>
   </HediffDef>
-
-
+  
+  <HediffDef>
+    <defName>SRA_30000_CountdownDeath</defName>
+    <label>限时存在（500s）</label>
+    <hediffClass>SRA.Hediff_CountdownDeath</hediffClass>
+    <description>这个单位只能存在有限的时间。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_CountdownTimer">
+        <countdownDuration>30000</countdownDuration>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
 </Defs>

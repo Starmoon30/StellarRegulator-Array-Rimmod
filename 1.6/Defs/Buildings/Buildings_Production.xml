@@ -361,4 +361,80 @@
   </ThingDef>
 
 
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_Database</defName>
+    <label>星规-数据单元</label>
+    <description>星规-数据单元</description>
+    <graphicData>
+      <texPath>SRA/Building/SRA_Database</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <drawOffset>(0,0,0.4)</drawOffset>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconScale>0.75</uiIconScale>
+    <size>(1,1)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>0</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.8</fillPercent>
+    <statBases>
+      <MaxHitPoints>6400</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>1200</WorkToBuild>
+      <Beauty>32</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <building>
+      <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-3200</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>召唤战争单元集群</useLabel>
+        <useDuration>60</useDuration>
+        <floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
+      </li>
+      <li Class="CompProperties_Useable_CallBossgroup">
+        <bossgroupDef>SRA_Mech_Tank_M_D</bossgroupDef>
+        <effecterDef>MechbandDishUsed</effecterDef>
+        <prepareEffecterDef>MechBandDishPrepared</prepareEffecterDef>
+        <delayTicks>120</delayTicks>
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <!--<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>-->
+    <castEdgeShadows>false</castEdgeShadows>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>ConstructMetal</repairEffect>
+    <designationCategory>SRA_Building</designationCategory>
+    <costList>
+      <SRA_Core>50</SRA_Core>
+    </costList>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+  </ThingDef>
+
 </Defs>

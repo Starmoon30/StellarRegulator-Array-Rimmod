@@ -24,5 +24,6 @@ namespace SRA
 
         public static HediffDef SRAResurrectionBound;
         public static HediffDef SRAResurrectionAlready;
+        public static HediffDef SRA_30000_CountdownDeath;
     }
 }

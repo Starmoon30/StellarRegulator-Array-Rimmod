@@ -83,7 +83,11 @@ namespace SRA
                 Pawn newThing = PawnGenerator.GeneratePawn(request);
                 GenSpawn.Spawn(newThing, parent.Position, parent.Map, WipeMode.Vanish);
                 Powerint -= 1f;
-                
+
+                Hediff newHediff = HediffMaker.MakeHediff(SRA_DefOf.SRA_30000_CountdownDeath, newThing);
+                newHediff.Severity = 1f;
+                newThing.health.AddHediff(newHediff);
+
             }
             catch (Exception ex)
             {

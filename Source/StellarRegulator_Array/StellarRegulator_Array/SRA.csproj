@@ -49,6 +49,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\HarmonyMod.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SRALib, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\SRALib\Source\SRALib\SRALib\bin\Debug\SRALib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,48 +80,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Building_TempControler.cs" />
     <Compile Include="Communicator_EventWindow.cs" />
     <Compile Include="CompCommunicator.cs" />
-    <Compile Include="CompDamageFactors.cs" />
-    <Compile Include="CompProperties_DamageFactors.cs" />
     <Compile Include="EventWindow.cs" />
     <Compile Include="EventWindow_Rocivia.cs" />
-    <Compile Include="CompUseEffect_ActivateMech.cs" />
-    <Compile Include="CompProperties_UseEffect_ActivateMech.cs" />
     <Compile Include="Comp_SRAWarUnitSpawner.cs" />
     <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
-    <Compile Include="CompWeaponHediffGiver.cs" />
-    <Compile Include="CompAbilityEffect_ExcaliburBeam.cs" />
-    <Compile Include="CompGlobalMechCommand.cs" />
-    <Compile Include="Projectile_MultiExplosive.cs" />
-    <Compile Include="Thing_ExcaliburBeam.cs" />
-    <Compile Include="Verb_ShootArc.cs" />
-    <Compile Include="HediffComp_TopTurret.cs" />
-    <Compile Include="HediffComp_SRARegen.cs" />
     <Compile Include="SRAResurrectionBeacon_Patch.cs" />
     <Compile Include="SRABuilding_ResurrectionBeacon.cs" />
     <Compile Include="WorkGiver_EmptySRA_CoreContainer.cs" />
-    <Compile Include="HediffWithSeverityLabel.cs" />
-    <Compile Include="Projectile_SRA_Railgun.cs" />
-    <Compile Include="SRABarrierHarmonyPatches.cs" />
-    <Compile Include="SRABarrierGizmo.cs" />
-    <Compile Include="HediffComp_SRABarrier.cs" />
     <Compile Include="PredefinedCharacterParmDef.cs" />
     <Compile Include="HediffComp_StatusFlag.cs" />
     <Compile Include="GameComponent_SRA_SRUtilTracker.cs" />
     <Compile Include="SectionLayer_SRAWall.cs" />
     <Compile Include="ThingDefOf.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Mortar_Patch.cs" />
     <Compile Include="GraphicWindow.cs" />
     <Compile Include="MissionComponent.cs" />
     <Compile Include="MissionWindow.cs" />
     <Compile Include="EventButton.cs" />
     <Compile Include="EventTree.cs" />
-    <Compile Include="SRARepair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SRA_SRPawnMaker.cs" />
     <Compile Include="TradeWindow_Rocivia.cs" />
