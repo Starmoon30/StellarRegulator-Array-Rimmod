@@ -42,7 +42,7 @@
     <statBases>
       <MoveSpeed>4</MoveSpeed>
       <MarketValue>32000</MarketValue>
-      <ControlTakingTime>30</ControlTakingTime>
+      <ControlTakingTime>4</ControlTakingTime>
       <BandwidthCost>5</BandwidthCost>
       <ArmorRating_Blunt>4</ArmorRating_Blunt>
       <ArmorRating_Sharp>4</ArmorRating_Sharp>
@@ -51,7 +51,9 @@
       <ComfyTemperatureMax>2000</ComfyTemperatureMax>
       <StaggerDurationFactor>-1</StaggerDurationFactor>
       <PsychicSensitivity>0</PsychicSensitivity>
-      <MechEnergyLossPerHP>0.01</MechEnergyLossPerHP>
+      <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
+      <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
+      <WastepacksPerRecharge>0</WastepacksPerRecharge>
     </statBases>
     <race>
       <hasCorpse>false</hasCorpse>
@@ -197,9 +199,6 @@
       <RangedCooldownFactor>0.5</RangedCooldownFactor>
       <FoodPoisonChance>0</FoodPoisonChance>
       <IncomingDamageFactor>0.1</IncomingDamageFactor>
-      <MechEnergyUsageFactor>0</MechEnergyUsageFactor>
-      <MechEnergyLossPerHP>0</MechEnergyLossPerHP>
-      <WastepacksPerRecharge>0</WastepacksPerRecharge>
       <EnergyShieldRechargeRate>4</EnergyShieldRechargeRate>
       <EnergyShieldEnergyMax>64</EnergyShieldEnergyMax>
     </statBases>
@@ -834,16 +833,15 @@
   
   <ThingDef Name="SRA_Mech_Tank_M_D" ParentName="SRASuperHeavyMechanoid">
     <defName>SRA_Mech_Tank_M_D</defName> <!-- 修改了defName以避免冲突 -->
-    <label>星规-「合唱团」实验型火力平台</label>
+    <label>星规-「打击乐」实验型火力平台</label>
     <description>一种概念性的中型作战平台，装备了多个炮塔来提供不同类型的压制性火力。由于缺乏具体的应用场合，这一设计停留在了原型阶段。\n\n这是一种相对较大的作战平台，装备了护盾场发生器和爆炸性光束武器，以及数个炮塔用于大范围轰炸。设计上用于提供战场支点，其武器系统擅长制造大量的范围伤害和削弱对手。</description>
     <statBases>
-      <BandwidthCost>14</BandwidthCost>
-      <MoveSpeed>1.5</MoveSpeed>
-      <EnergyShieldEnergyMax>5</EnergyShieldEnergyMax>
+      <BandwidthCost>8</BandwidthCost>
+      <MoveSpeed>2</MoveSpeed>
     </statBases>
     <race>
       <body>Mech_Warqueen</body>
-      <baseBodySize>30</baseBodySize>
+      <baseBodySize>10</baseBodySize>
       <lifeStageAges>
         <li>
           <def>MechanoidFullyFormed</def>
@@ -853,21 +851,31 @@
           <soundCall>Pawn_Mech_Warqueen_Call</soundCall>
         </li>
       </lifeStageAges>
-      <baseHealthScale>25</baseHealthScale>
+      <baseHealthScale>10</baseHealthScale>
       <!-- <thinkTreeConstant>WarUrchinConstant</thinkTreeConstant> -->
     </race>
     <tools>
       <li>
-        <label>碾压</label>
+        <label>crush</label>
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>64</power>
+        <power>320</power>
         <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>Torso</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
       </li>
     </tools>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>EMP</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
     <comps>
       <!--加上这个组件的机械体会直接跳过原版指挥范围判定-->
       <li Class="SRA.CompProperties_GlobalMechCommand" />
@@ -878,7 +886,7 @@
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
       <li Class="CompProperties_TurretGun">
-        <turretDef>SRATurretGun_Mech_WarUnit_M_D</turretDef>
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Minipulser</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
           <li>
@@ -913,7 +921,7 @@
         </renderNodeProperties>
       </li>
       <li Class="CompProperties_TurretGun">
-        <turretDef>SRATurretGun_Mech_WarUnit_M_D</turretDef>
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Minipulser</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
           <li>
@@ -947,7 +955,7 @@
         </renderNodeProperties>
       </li>
       <li Class="CompProperties_TurretGun">
-        <turretDef>SRATurretGun_Mech_WarUnit_M_A</turretDef>
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Railgun</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
           <li>
@@ -982,7 +990,7 @@
         </renderNodeProperties>
       </li>
       <li Class="CompProperties_TurretGun">
-        <turretDef>SRATurretGun_Mech_WarUnit_M_A</turretDef>
+        <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Railgun</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
           <li>
@@ -1105,7 +1113,7 @@
   </ThingDef>
   <PawnKindDef Name="SRA_Mech_Tank_M_D_PawnKind" ParentName="SRAHeavyMechanoidKind">
     <defName>SRA_Mech_Tank_M_D</defName> <!-- 修改了defName以避免冲突 -->
-    <label>星规-「合唱团」实验型火力平台</label>
+    <label>星规-「打击乐」实验型火力平台</label>
     <race>SRA_Mech_Tank_M_D</race>
     <combatPower>1000</combatPower>
     <maxPerGroup>0</maxPerGroup>
@@ -1114,7 +1122,7 @@
     <forceDeathOnDowned>true</forceDeathOnDowned>
     <startingHediffs>
       <li>
-        <def>SRA_Barrier_Mech_WarUnit_M_D</def>
+        <def>SRA_Barrier_Mech_Tank_M_D</def>
       </li>
     </startingHediffs>
     <lifeStages>
@@ -1241,10 +1249,76 @@
       </li>
     </modExtensions>
   </ThingDef>
-
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_SRA_Mech_Tank_M_D_Minipulser</defName>
+    <label>星规-「军鼓」近防炮塔</label>
+    <description>一种由风雪骤灭改装而来的近防炮塔。</description>
+    <descriptionHyperlinks>
+      <HediffDef>SRA_Retardant</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABullet_Minipulser</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>16</range>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<burstShotCount>16</burstShotCount>
+        <defaultCooldownTime>2</defaultCooldownTime>
+				<soundCast>SRA_Minipulser</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_SRA_Mech_Tank_M_D_Railgun</defName>
+    <label>星规-「大鼓」歼灭炮塔</label>
+    <description>一种由呼啸雷霆改装而来的歼灭炮塔。</description>
+    <descriptionHyperlinks>
+      <HediffDef>SRA_Railgun_debuff</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+			<AccuracyLong>1</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>SRABulle_Railgun</defaultProjectile>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>32</range>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+        <defaultCooldownTime>4</defaultCooldownTime>
+				<soundCast>SRA_SML_Mass_Drivers</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>SRATurretGun_SRA_Mech_Tank_M_D</defName>
-    <label>星规-「节拍」多重轰炸炮塔</label>
+    <label>星规-「定音鼓」多重轰炸炮塔</label>
     <description>一种远距离能量团发射器，它发射相位能量团，在命中时产生破坏性的多重爆炸。</description>
     <descriptionHyperlinks>
       <HediffDef>SRA_Railgun_debuff</HediffDef>
@@ -1274,8 +1348,6 @@
       </li>
     </verbs>
   </ThingDef>
-
-  
   <ThingDef ParentName="BaseBullet">
     <defName>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</defName>
     <label>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</label>

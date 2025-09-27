@@ -561,7 +561,7 @@
 			<extraDamages>
 				<li>
 					<def>SRA_Retardant</def>
-					<amount>100</amount>
+					<amount>24</amount>
 				</li>
 				<li>
 					<def>EMP</def>
@@ -601,10 +601,17 @@
 			<texPath>SRA/Weapon/SRA_Double_Blade</texPath>
 			<drawSize>2</drawSize>
 		</graphicData>
+    	<uiIconPath>SRA/Weapon/SRA_Double_Blade_UI</uiIconPath>
+		<uiIconScale>1.5</uiIconScale>
 		<comps>
     		<li Class="SRA.CompProperties_WeaponHediffGiver">
          		<hediff>SRA_Double_Blade_Hediff</hediff>
         	</li>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Double_Blade_LightDy</TexturePath>
+				<totalFrames>5</totalFrames>
+				<ticksPerFrame>2</ticksPerFrame>
+	   		</li>
     	</comps>
 		<tools>
 			<li>
