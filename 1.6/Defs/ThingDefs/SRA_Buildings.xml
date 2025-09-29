@@ -46,9 +46,17 @@
         <!--<glowColor>(105,204,204,0)</glowColor>-->
         <glowColor>(0, 255, 255, 0)</glowColor>
       </li>
-      <li>
-	      <compClass>SRA_SRA_RepairTower</compClass>
-	    </li>
+      <li Class="SRA.CompProperties_RepairTower">
+        <!-- 修复半径：0=无限，>0=以建筑为中心的圆形范围 -->
+        <repairRadius>0</repairRadius>
+        <!-- 修复区域：HomeArea=仅居住区，EntireArea=指定范围内全部-->
+        <repairArea>HomeArea</repairArea>
+        <!-- 修复速率：每秒修复的百分比 (0.02 = 2%) -->
+        <repairRatePerSecond>0.02</repairRatePerSecond>
+        <!-- 修复上限：耐久度 * multiplier + offset -->
+        <maxRepairMultiplier>2</maxRepairMultiplier>
+        <maxRepairOffset>800</maxRepairOffset>
+      </li>
       <li Class="CompProperties_SubstructureFootprint" MayRequire="Ludeon.RimWorld.Odyssey">
         <radius>48</radius>
       </li>
