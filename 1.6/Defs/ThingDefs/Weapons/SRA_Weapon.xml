@@ -393,7 +393,15 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>2</drawSize>
 		</graphicData>
-		<uiIconScale>1.0</uiIconScale>
+		<uiIconScale>1.5</uiIconScale>
+    	<uiIconPath>SRA/Weapon/SRA_Railgun_UI</uiIconPath>
+		<comps>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Railgun_LightDy</TexturePath>
+				<totalFrames>15</totalFrames>
+				<ticksPerFrame>4</ticksPerFrame>
+	   		</li>
+    	</comps>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
 			<MarketValue>3200</MarketValue>
@@ -493,7 +501,15 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>2</drawSize>
 		</graphicData>
-		<uiIconScale>1.0</uiIconScale>
+		<uiIconScale>1.5</uiIconScale>
+    	<uiIconPath>SRA/Weapon/SRA_Minipulser_UI</uiIconPath>
+		<comps>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Minipulser_LightDy</TexturePath>
+				<totalFrames>15</totalFrames>
+				<ticksPerFrame>4</ticksPerFrame>
+	   		</li>
+    	</comps>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
 			<MarketValue>3200</MarketValue>
@@ -570,6 +586,120 @@
 			</extraDamages>
 		</projectile>
 	</ThingDef>
+	<ThingDef ParentName="SRA_WeaponBase_Spacer">
+		<defName>SRA_BlastingLaser</defName>
+		<label>星规-瞬灭华光</label>
+		<description>瞬灭华光原本是一种定向能量导弹，通过特化的激发装置，它的相位能量射流能越过极远的距离攻击目标，在有效提升小型舰船火力投射能力的同时，免于遭受点防御系统的压制。然而，随着能量鱼雷技术的突破，瞬灭华光在对抗点防御上的优势不再独特，由于其输出转化率上的劣势，它最终被能量鱼雷取代。\n这一陆军改装版本基于其导弹内部的激发装置，大刀阔斧地改造而成，通过控制输出功率，这件武器得以反复使用，并通过破坏性能量射流的连射造成大范围的破坏。</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_Minipulser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<uiIconScale>1.5</uiIconScale>
+    	<uiIconPath>SRA/Weapon/SRA_Minipulser_UI</uiIconPath>
+		<comps>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Minipulser_LightDy</TexturePath>
+				<totalFrames>15</totalFrames>
+				<ticksPerFrame>4</ticksPerFrame>
+	   		</li>
+    	</comps>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<statBases>
+			<MarketValue>3200</MarketValue>
+			<WorkToMake>32000</WorkToMake>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
+			<RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<weaponTags>
+			<li>SRA_BlastingLaser</li>
+		</weaponTags>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>SRABullet_BlastingLaser</defaultProjectile>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>0.1</warmupTime>
+				<range>48</range>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+				<burstShotCount>4</burstShotCount>
+				<soundCast>Shot_BeamRepeater</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>5</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>抵近射击</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>64</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_BlastingLaser</defName>
+    <label>SRABullet_BlastingLaser</label>
+    <thingClass>SRA.Projectile_MultiExplosive_Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+      <damageAmountBase>32</damageAmountBase>
+      <beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
+      <beamStartOffset>0</beamStartOffset>
+      <armorPenetrationBase>4</armorPenetrationBase>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosive_BeamExtension">
+        <MultiExplosive_Beams>
+          <li>
+            <radius>1</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>32</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile>
+          </li>
+          <li>
+            <radius>4</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>32</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>GiantExplosion</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </MultiExplosive_Beams>
+      </li>
+    </modExtensions>
+  </ThingDef>
 
 	<ThingDef ParentName="SRA_WeaponMelee_Ultra">
 		<defName>SRA_Double_Blade</defName>

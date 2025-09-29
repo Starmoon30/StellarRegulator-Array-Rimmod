@@ -36,6 +36,11 @@
   <SRA_Minipulser.description>风雪骤灭原本是一种小规模舰载护盾压制速射火炮，它的每次开火均发射大量轻型射弹以压迫护盾容量，并且配置了特化的充能机制，能够在交战开始时就立刻倾泻出巨量火力，甚至能直接过载小型舰船的护盾。除此之外，它也可以对轻装甲目标造成可观伤害乃至直接将其摧毁。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其高投射量压制的定位，它的微型弹头尽管设计用于对抗护盾，但也具有较高的泛用性。\n\n&lt;color=#FFFF44&gt;-这件武器的射弹带有EMP效果。\n-这件武器的射弹会施加迅速衰减的减速状态。&lt;/color&gt;</SRA_Minipulser.description>
   <SRABullet_Minipulser.label>星规-风雪骤灭能量束</SRABullet_Minipulser.label>
 
+  <SRA_BlastingLaser.label>星规-瞬灭华光</SRA_BlastingLaser.label>
+  <SRA_BlastingLaser.description>瞬灭华光原本是一种定向能量导弹，通过特化的激发装置，它的相位能量射流能越过极远的距离攻击目标，在有效提升小型舰船火力投射能力的同时，免于遭受点防御系统的压制。然而，随着能量鱼雷技术的突破，瞬灭华光在对抗点防御上的优势不再独特，由于其输出转化率上的劣势，这一项目最终无限期中止。\n这一陆军改装版本基于其导弹内部的激发装置，大刀阔斧地改造而成，通过控制输出功率，这件武器得以反复使用，并通过破坏性能量射流的连射造成大范围的破坏。\n\n&lt;color=#FFFF44&gt;\n-这件武器的攻击可以穿透护盾。\n-这件武器的攻击会造成两次不同的爆炸，造成多种伤害，爆炸不会伤害友方目标。&lt;/color&gt;</SRA_BlastingLaser.description>
+  <SRABullet_BlastingLaser.label>星规-瞬灭华光能量射流</SRABullet_BlastingLaser.label>
+
+
   <SRA_Double_Blade.label>星规-寒渊惜别</SRA_Double_Blade.label>
   <SRA_Double_Blade.description>一柄精巧的双刃，包含复杂的星辉水晶质能控制系统，它既能控制相位能量切割攻击到的目标，也能构建星辉分形来格挡攻击。\n\n&lt;color=#FFFF44&gt;-这件武器能够持续地抵挡伤害，除非被足够高伤害的攻击突破防御。\n-这件武器的攻击会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRA_Double_Blade.description>
   <SRA_Double_Blade.tools.edge.label>刃</SRA_Double_Blade.tools.edge.label>
