@@ -1356,10 +1356,10 @@
       <texPath>SRA/Projectile/SRA_Bullet_Plasma</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>TransparentPostLight</shaderType>
-	    <drawSize>2</drawSize>
+	    <drawSize>1.5</drawSize>
     </graphicData>
     <projectile>
-			<damageDef>EMP</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>64</damageAmountBase>
 			<armorPenetrationBase>4</armorPenetrationBase>
 			<stoppingPower>8</stoppingPower>
@@ -1403,6 +1403,17 @@
             <!-- 现阶段就支持这么多参数 -->
           </li>
         </multiexplosions>
+        <bulletLaunches>
+          <li>
+            <projectileDef>SRABullet_L_Particle_Launcher_EMP</projectileDef>
+            <bulletCount>1</bulletCount>
+            <angleRange>1</angleRange>
+            <distanceRange>
+              <min>4</min>
+              <max>4</max>
+            </distanceRange>
+          </li>
+        </bulletLaunches>
       </li>
     </modExtensions>
   </ThingDef>

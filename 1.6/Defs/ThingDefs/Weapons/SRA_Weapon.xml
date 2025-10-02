@@ -508,6 +508,8 @@
 				<TexturePath>SRA/Weapon/SRA_Minipulser_LightDy</TexturePath>
 				<totalFrames>15</totalFrames>
 				<ticksPerFrame>4</ticksPerFrame>
+				<DrawSize>(2,10)</DrawSize>
+				<Offset>(4,4,4)</Offset>
 	   		</li>
     	</comps>
 		<equippedAngleOffset>0</equippedAngleOffset>
@@ -594,15 +596,15 @@
 			<HediffDef>SRA_Railgun_debuff</HediffDef>
 		</descriptionHyperlinks>
 		<graphicData>
-			<texPath>SRA/Weapon/SRA_Minipulser</texPath>
+			<texPath>SRA/Weapon/SRA_BlastingLaser</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>2</drawSize>
 		</graphicData>
 		<uiIconScale>1.5</uiIconScale>
-    	<uiIconPath>SRA/Weapon/SRA_Minipulser_UI</uiIconPath>
+    	<uiIconPath>SRA/Weapon/SRA_BlastingLaser_UI</uiIconPath>
 		<comps>
 			<li Class="SRA.CompProperties_WeaponRenderDynamic">
-				<TexturePath>SRA/Weapon/SRA_Minipulser_LightDy</TexturePath>
+				<TexturePath>SRA/Weapon/SRA_BlastingLaser_LightDy</TexturePath>
 				<totalFrames>15</totalFrames>
 				<ticksPerFrame>4</ticksPerFrame>
 	   		</li>

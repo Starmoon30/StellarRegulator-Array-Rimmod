@@ -61,6 +61,7 @@
     </damageMultipliers>
     <tickerType>Normal</tickerType>
     <comps>
+      <li Class="SRA.CompProperties_ForceTargetable" />
       <li Class="CompProperties_CanBeDormant" />
       <li Class="CompProperties_Initiatable" />
       <li Class="CompProperties_WakeUpDormant">
@@ -91,7 +92,7 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
     </placeWorkers>
   </ThingDef>
 
@@ -115,7 +116,7 @@
     </statBases>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>SRA.Verb_ShootWithOffset</verbClass>
         <defaultProjectile>SRABullet_SML_Mass_Drivers</defaultProjectile>
         <warmupTime>0.1</warmupTime>
         <range>120</range>
@@ -128,6 +129,16 @@
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
       </li>
     </verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正东负西，正南负北（炮塔朝北） -->
+                <li>(0.38, -1.8)</li>   <!-- 第一次射击偏移 -->
+                <li>(-0.38, -1.8)</li>  <!-- 第四次射击偏移 -->
+                <!-- 更多偏移... -->
+            </offsets>
+        </li>
+    </modExtensions>
   </ThingDef>
 
 
@@ -139,12 +150,17 @@
     <defName>SRATurret_L_Particle_Launcher</defName>
     <label>星规-虚空撕裂炮塔</label>
     <description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。</description>
-    <thingClass>Building_TurretGun</thingClass>
+		<thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>1</speed>
+	  	</li>
+  	</modExtensions>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3, 3)</drawSize>
+      <drawSize>(5, 5)</drawSize>
       <drawOffset>(0,0,-0.16)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
@@ -156,7 +172,7 @@
     <uiIconScale>1.0</uiIconScale>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
-    <size>(3,3)</size>
+    <size>(5,5)</size>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <fillPercent>0.4</fillPercent>
@@ -193,8 +209,8 @@
     <building>
       <combatPower>1280</combatPower>
       <turretGunDef>SRATurretGun_L_Particle_Launcher</turretGunDef>
-	  	<turretTopDrawSize>3.5</turretTopDrawSize>
-      <turretTopOffset>(0.08, 0)</turretTopOffset>
+	  	<turretTopDrawSize>5.5</turretTopDrawSize>
+      <turretTopOffset>(0.12, 0)</turretTopOffset>
       <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
       <turretBurstCooldownTime>2.0</turretBurstCooldownTime>
     </building>
@@ -205,6 +221,7 @@
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
 	  <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
     </placeWorkers>
     <designationHotKey>Misc2</designationHotKey>
     <researchPrerequisites>
@@ -222,7 +239,7 @@
     <uiIconScale>1.25</uiIconScale>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>SRA.Verb_ShootWithOffset</verbClass>
         <defaultProjectile>SRABullet_L_Particle_Launcher</defaultProjectile>
         <ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
         <warmupTime>2</warmupTime>
@@ -238,6 +255,14 @@
         </targetParams>
       </li>
     </verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正东负西，正南负北（炮塔朝北） -->
+                <li>(0, -3.2)</li>   <!-- 第一次射击偏移 -->
+            </offsets>
+        </li>
+    </modExtensions>
   </ThingDef>
 
   
@@ -252,7 +277,7 @@
 	    <drawSize>3.5</drawSize>
     </graphicData>
     <projectile>
-			<damageDef>EMP</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>640</damageAmountBase>
 			<armorPenetrationBase>4</armorPenetrationBase>
 			<stoppingPower>8</stoppingPower>
@@ -294,6 +319,44 @@
             <!-- 现阶段就支持这么多参数 -->
           </li>
         </multiexplosions>
+        <bulletLaunches>
+          <li>
+            <projectileDef>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</projectileDef>
+            <bulletCount>16</bulletCount>
+            <angleRange>120</angleRange>
+            <distanceRange>
+              <min>4</min>
+              <max>16</max>
+            </distanceRange>
+          </li>
+        </bulletLaunches>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Particle_Launcher_EMP</defName>
+    <label>SRABullet_L_Particle_Launcher_EMP</label>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+    <graphicData>
+      <texPath>SRA/Projectile/SRA_Bullet_Plasma</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>0.5</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>640</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>240</speed>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
       </li>
     </modExtensions>
   </ThingDef>
@@ -378,6 +441,7 @@
     </damageMultipliers>
     <tickerType>Normal</tickerType>
     <comps>
+      <li Class="SRA.CompProperties_ForceTargetable" />
       <li Class="CompProperties_CanBeDormant" />
       <li Class="CompProperties_Initiatable" />
       <li Class="CompProperties_WakeUpDormant">
@@ -408,7 +472,7 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
     </placeWorkers>
   </ThingDef>
 
@@ -429,7 +493,7 @@
     </statBases>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>SRA.Verb_ShootWithOffset</verbClass>
         <defaultProjectile>SRABullet_Weapon_P</defaultProjectile>
         <warmupTime>0.1</warmupTime>
         <range>48</range>
@@ -442,6 +506,18 @@
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
       </li>
     </verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正东负西，正南负北（炮塔朝北） -->
+                <li>(0.24, -1.6)</li>   <!-- 第一次射击偏移 -->
+                <li>(0.16, -1.6)</li>  <!-- 第二次射击偏移 -->
+                <li>(-0.16, -1.6)</li>  <!-- 第三次射击偏移 -->
+                <li>(-0.24, -1.6)</li>  <!-- 第四次射击偏移 -->
+                <!-- 更多偏移... -->
+            </offsets>
+        </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">

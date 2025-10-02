@@ -5,10 +5,11 @@
   <SRA_Spear_of_SRA.description>路希维亚所使用的武器的仿制品，能释放庞大的能量束，也能作为长枪使用。</SRA_Spear_of_SRA.description>
 
   <SRATurret_L_Particle_Launcher.label>星规-虚空撕裂炮塔</SRATurret_L_Particle_Launcher.label>
-  <SRATurret_L_Particle_Launcher.description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。\n\n&lt;color=#FFFF44&gt;这座炮塔的攻击方式类似迫击炮，可以越过障碍物，但需要在无天花板遮挡的地方才能使用。\n-这座炮塔的射弹可以停用护盾。\n-这座炮塔的射弹会造成三次不同的爆炸，造成多种伤害和EMP效果。&lt;/color&gt;</SRATurret_L_Particle_Launcher.description>
+  <SRATurret_L_Particle_Launcher.description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。\n\n&lt;color=#FFFF44&gt;这座炮塔的攻击方式类似迫击炮，可以越过障碍物，但需要在无天花板遮挡的地方才能使用。\n-这座炮塔的射弹可以停用护盾。\n-这座炮塔的射弹会造成三次不同的爆炸，造成多种伤害和EMP效果。\n-这座炮塔的射弹会在240°范围内射出16发破坏性相位能量团，造成额外的不会伤害友方目标的爆炸。&lt;/color&gt;</SRATurret_L_Particle_Launcher.description>
   <SRA_L_Particle_Launcher.label>星规-虚空撕裂</SRA_L_Particle_Launcher.label>
-  <SRA_L_Particle_Launcher.description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。\n\n&lt;color=#FFFF44&gt;这座炮塔的攻击方式类似迫击炮，可以越过障碍物，但需要在无天花板遮挡的地方才能使用。\n-这座炮塔的射弹可以停用护盾。\n-这座炮塔的射弹会造成三次不同的爆炸，造成多种伤害和EMP效果。&lt;/color&gt;</SRA_L_Particle_Launcher.description>
+  <SRA_L_Particle_Launcher.description>这一型重型粒子团火炮势大力沉，其射弹能造成拥有卓越贯彻力的物质抹除效果并引发威力庞大的二次毁伤，甚至会短暂影响空间结构本身的稳定性。\n\n&lt;color=#FFFF44&gt;这座炮塔的攻击方式类似迫击炮，可以越过障碍物，但需要在无天花板遮挡的地方才能使用。\n-这座炮塔的射弹可以停用护盾。\n-这座炮塔的射弹会造成三次不同的爆炸，造成多种伤害和EMP效果。\n-这座炮塔的射弹会在240°范围内射出16发破坏性相位能量团，造成额外的不会伤害友方目标的爆炸。&lt;/color&gt;</SRA_L_Particle_Launcher.description>
   <SRABullet_L_Particle_Launcher.label>星规-虚空撕裂粒子团</SRABullet_L_Particle_Launcher.label>
+  <SRABullet_L_Particle_Launcher_EMP.label>星规-反护盾粒子团</SRABullet_L_Particle_Launcher_EMP.label>
 
   <SRATurret_SML_Mass_Drivers.label>星规-星弧破碎炮塔</SRATurret_SML_Mass_Drivers.label>
   <SRATurret_SML_Mass_Drivers.description>星弧破碎原本是一种拥有高度泛用性的双联装速射炮，其发射的短促能量束灵活而精准，拥有强大的贯彻力，难以被阻挡，能够胜任几乎所有用途。\n这一陆军改装版本继承了这一理念，在极大削减了体积的情况下维持了其通用长程武器的定位。\n\n-&lt;color=#FFFF44&gt;这件武器的射弹可以穿透一个目标，并在命中位置产生小规模的爆炸，爆炸的伤害和穿透与射弹相同，爆炸还会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRATurret_SML_Mass_Drivers.description>
