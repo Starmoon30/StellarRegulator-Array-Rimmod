@@ -471,7 +471,7 @@
 				<damageDef>Bullet</damageDef>
 				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
 				<explosionHediff>SRA_Railgun_debuff</explosionHediff>
-				<explosionHediffSeverity>0.05</explosionHediffSeverity>
+				<explosionHediffSeverity>0.2</explosionHediffSeverity>
 			</li>
 		</modExtensions>
 		<projectile>
@@ -680,6 +680,15 @@
           <li>
             <radius>1</radius>
             <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>32</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile>
+          </li>
+          <li>
+            <radius>4</radius>
+            <damageDef>EMP</damageDef>
             <damageAmount>32</damageAmount>
             <armorPenetration>8</armorPenetration>
             <explosionSound>Explosion_EMP</explosionSound>

@@ -885,7 +885,8 @@
         <wakeUpCheckRadius>30</wakeUpCheckRadius>
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>0</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Minipulser</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -920,7 +921,8 @@
           </li>
         </renderNodeProperties>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>1</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Minipulser</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -954,7 +956,8 @@
           </li>
         </renderNodeProperties>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>2</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Railgun</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -989,7 +992,8 @@
           </li>
         </renderNodeProperties>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>3</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D_Railgun</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -1024,7 +1028,8 @@
           </li>
         </renderNodeProperties>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>4</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -1059,7 +1064,8 @@
           </li>
         </renderNodeProperties>
       </li>
-      <li Class="CompProperties_TurretGun">
+      <li Class="SRA.CompProperties_MultiTurretGun">
+		    <ID>5</ID>
         <turretDef>SRATurretGun_SRA_Mech_Tank_M_D</turretDef>
         <!-- <angleOffset>-90</angleOffset> -->
         <renderNodeProperties>
@@ -1100,7 +1106,7 @@
         <color>(0.4, 0.4, 0.4)</color>
         <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
         <activeSound>BulletShield_Ambience</activeSound>
-        <hitPoints>12800</hitPoints>
+        <hitPoints>6400</hitPoints>
         <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
         <chargeDurationTicks>1800</chargeDurationTicks><!-- 30s -->
         <rechargeHitPointsIntervalTicks>90</rechargeHitPointsIntervalTicks>

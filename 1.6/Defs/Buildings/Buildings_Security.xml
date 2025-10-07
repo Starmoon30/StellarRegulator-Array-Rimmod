@@ -132,7 +132,7 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正东负西，正南负北（炮塔朝北） -->
+              <!-- 正西负东，正南负北（炮塔朝北） -->
                 <li>(0.38, -1.8)</li>   <!-- 第一次射击偏移 -->
                 <li>(-0.38, -1.8)</li>  <!-- 第四次射击偏移 -->
                 <!-- 更多偏移... -->
@@ -258,7 +258,7 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正东负西，正南负北（炮塔朝北） -->
+              <!-- 正西负东，正南负北（炮塔朝北） -->
                 <li>(0, -3.2)</li>   <!-- 第一次射击偏移 -->
             </offsets>
         </li>
@@ -509,7 +509,7 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正东负西，正南负北（炮塔朝北） -->
+              <!-- 正西负东，正南负北（炮塔朝北） -->
                 <li>(0.24, -1.6)</li>   <!-- 第一次射击偏移 -->
                 <li>(0.16, -1.6)</li>  <!-- 第二次射击偏移 -->
                 <li>(-0.16, -1.6)</li>  <!-- 第三次射击偏移 -->

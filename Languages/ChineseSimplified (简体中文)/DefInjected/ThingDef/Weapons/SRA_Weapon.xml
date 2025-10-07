@@ -38,7 +38,7 @@
   <SRABullet_Minipulser.label>星规-风雪骤灭能量束</SRABullet_Minipulser.label>
 
   <SRA_BlastingLaser.label>星规-瞬灭华光</SRA_BlastingLaser.label>
-  <SRA_BlastingLaser.description>瞬灭华光原本是一种定向能量导弹，通过特化的激发装置，它的相位能量射流能越过极远的距离攻击目标，在有效提升小型舰船火力投射能力的同时，免于遭受点防御系统的压制。然而，随着能量鱼雷技术的突破，瞬灭华光在对抗点防御上的优势不再独特，由于其输出转化率上的劣势，这一项目最终无限期中止。\n这一陆军改装版本基于其导弹内部的激发装置，大刀阔斧地改造而成，通过控制输出功率，这件武器得以反复使用，并通过破坏性能量射流的连射造成大范围的破坏。\n\n&lt;color=#FFFF44&gt;\n-这件武器的攻击可以穿透护盾。\n-这件武器的攻击会造成两次不同的爆炸，造成多种伤害，爆炸不会伤害友方目标。&lt;/color&gt;</SRA_BlastingLaser.description>
+  <SRA_BlastingLaser.description>瞬灭华光原本是一种定向能量导弹，通过特化的激发装置，它的相位能量射流能越过极远的距离攻击目标，在有效提升小型舰船火力投射能力的同时，免于遭受点防御系统的压制。然而，随着能量鱼雷技术的突破，瞬灭华光在对抗点防御上的优势不再独特，由于其输出转化率上的劣势，这一项目最终无限期中止。\n这一陆军改装版本基于其导弹内部的激发装置，大刀阔斧地改造而成，通过控制输出功率，这件武器得以反复使用，并通过破坏性能量射流的连射造成大范围的破坏。\n\n&lt;color=#FFFF44&gt;\n-这件武器的攻击可以穿透护盾。\n-这件武器的攻击会造成三次不同的爆炸，造成多种伤害和EMP效果，爆炸不会伤害友方目标。&lt;/color&gt;</SRA_BlastingLaser.description>
   <SRABullet_BlastingLaser.label>星规-瞬灭华光能量射流</SRABullet_BlastingLaser.label>
 
 
