@@ -547,6 +547,8 @@
         <explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
         <damageDef>Bullet</damageDef>
         <explosionSound>AgonyPulse_Cast</explosionSound>
+        <explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+        <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
         <explosionHediff>SRA_Railgun_debuff</explosionHediff>
         <explosionHediffSeverity>0.05</explosionHediffSeverity>
       </li>
@@ -718,7 +720,7 @@
   <ThingDef ParentName="BaseBullet">
     <defName>SRABullet_Pulse_Beam_Weapon</defName>
     <label>SRABullet_Pulse_Beam_Weapon</label>
-    <thingClass>Beam</thingClass>
+    <thingClass>SRA.Projectile_BeamWithEffect</thingClass>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -730,6 +732,11 @@
       <beamStartOffset>0</beamStartOffset>
       <armorPenetrationBase>4</armorPenetrationBase>
     </projectile>
+    <modExtensions>
+    	<li Class="SRA.Projectile_BeamWithEffect_Extension">
+    		<impactEffecter>SRABulle_Railgun_Hit</impactEffecter>
+      </li>
+    </modExtensions>
   </ThingDef>
   <ThingDef ParentName="MoteBase">
     <defName>SRAMote_Pulse_Beam_Weapon</defName>
@@ -811,6 +818,8 @@
         <explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
         <damageDef>Bullet</damageDef>
         <explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+        <explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+        <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
         <explosionHediff>SRA_Railgun_debuff</explosionHediff>
         <explosionHediffSeverity>0.05</explosionHediffSeverity>
       </li>
@@ -1245,9 +1254,9 @@
             <damageAmount>64</damageAmount>
             <armorPenetration>4</armorPenetration>
             <explosionSound>Explosion_Bomb</explosionSound>
+           	<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
             <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
-            <explosionEffect>GiantExplosion</explosionEffect>
-            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
             <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
             <!-- 现阶段就支持这么多参数 -->
           </li>
@@ -1402,9 +1411,9 @@
             <damageAmount>128</damageAmount>
             <armorPenetration>4</armorPenetration>
             <explosionSound>Explosion_Bomb</explosionSound>
+           	<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
             <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
-            <explosionEffect>GiantExplosion</explosionEffect>
-            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
             <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
             <!-- 现阶段就支持这么多参数 -->
           </li>

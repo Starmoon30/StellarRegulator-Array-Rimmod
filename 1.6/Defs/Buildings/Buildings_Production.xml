@@ -173,9 +173,10 @@
     <label>铸星神械-树突</label>
     <description>铸星神械-树突</description>
     <graphicData>
-      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <texPath>SRA/Building/SRA_Astronomical_Fabrications_Sub</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3,3)</drawSize>
+      <drawSize>(3,6)</drawSize>
+      <drawOffset>(0,0,1.5)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>

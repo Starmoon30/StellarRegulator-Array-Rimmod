@@ -313,7 +313,7 @@
             <armorPenetration>4</armorPenetration>
             <explosionSound>Explosion_Bomb</explosionSound>
             <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
-            <explosionEffect>GiantExplosion</explosionEffect>
+            <explosionEffect>SRA_GiantExplosion</explosionEffect>
             <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
             <onlyAntiHostile>false</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
             <!-- 现阶段就支持这么多参数 -->
@@ -360,32 +360,6 @@
       </li>
     </modExtensions>
   </ThingDef>
-  <!-- <ThingDef ParentName="BaseBullet">
-    <defName>SRABullet_L_Particle_Launcher</defName>
-    <label>星规-虚空撕裂粒子团</label>
-    <graphicData>
-      <texPath>SRA/Projectile/SRA_Bullet_Plasma</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-	    <drawSize>3.5</drawSize>
-    </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <damageDef>Bomb</damageDef>
-      <speed>240</speed>
-      <damageAmountBase>640</damageAmountBase>
-      <explosionRadius>8</explosionRadius>
-      <explosionChanceToStartFire>0</explosionChanceToStartFire>
-      <explosionDamageFalloff>true</explosionDamageFalloff>
-      <explosionEffect>GiantExplosion</explosionEffect>
-      <explosionEffectLifetimeTicks>60</explosionEffectLifetimeTicks>
-      <flyOverhead>true</flyOverhead>
-      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-      <soundExplode>Explosion_GiantBomb</soundExplode>
-      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-      <soundAmbient>MortarRound_Ambient</soundAmbient>
-    </projectile>
-  </ThingDef> -->
   <!--光辉之冠炮塔======================================================================================-->
   <ThingDef ParentName="BuildingBase">
     <defName>SRATurret_Weapon_P</defName>

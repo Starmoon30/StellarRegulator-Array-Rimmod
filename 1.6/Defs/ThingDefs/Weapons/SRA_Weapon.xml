@@ -25,6 +25,7 @@
 			<workSkill>Crafting</workSkill>
 			<effectWorking>Smith</effectWorking>
 			<soundWorking>Recipe_Machining</soundWorking>
+			<researchPrerequisite>SRA_BaseWeapon</researchPrerequisite>
 			<recipeUsers>
 				<li>SRA_WorkTable</li>
 			</recipeUsers>
@@ -287,8 +288,10 @@
 				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
 				<damageDef>Bullet</damageDef>
 				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+           		<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            	<explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
 				<explosionHediff>SRA_Railgun_debuff</explosionHediff>
-				<explosionHediffSeverity>0.05</explosionHediffSeverity>
+				<explosionHediffSeverity>0.2</explosionHediffSeverity>
 			</li>
 		</modExtensions>
 		<projectile>
@@ -366,7 +369,7 @@
 	<ThingDef ParentName="BaseBullet">
 		<defName>SRABullet_Weapon_P</defName>
 		<label>星规-光辉之冠脉冲束</label>
-		<thingClass>Bullet</thingClass>
+		<thingClass>SRA.Projectile_BulletWithEffect</thingClass>
 		<graphicData>
 			<texPath>Things/Projectile/ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -379,6 +382,11 @@
 			<armorPenetrationBase>0.5</armorPenetrationBase>
 			<speed>240</speed>
 		</projectile>
+    	<modExtensions>
+      		<li Class="SRA.Projectile_BulletWithEffect_Extension">
+        		<impactEffecter>SRABullet_Weapon_P_Hit</impactEffecter>
+    		</li>
+    	</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="SRA_WeaponBase_Spacer">
@@ -470,6 +478,8 @@
 				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
 				<damageDef>Bullet</damageDef>
 				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+           		<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            	<explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
 				<explosionHediff>SRA_Railgun_debuff</explosionHediff>
 				<explosionHediffSeverity>0.2</explosionHediffSeverity>
 			</li>
@@ -559,11 +569,10 @@
 			</li>
 		</tools>
 	</ThingDef>
-
 	<ThingDef ParentName="BaseBullet">
 		<defName>SRABullet_Minipulser</defName>
 		<label>星规-风雪骤灭能量束</label>
-		<thingClass>Bullet</thingClass>
+		<thingClass>SRA.Projectile_BulletWithEffect</thingClass>
 		<graphicData>
 			<texPath>Things/Projectile/ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -587,6 +596,11 @@
 				</li>
 			</extraDamages>
 		</projectile>
+    	<modExtensions>
+      		<li Class="SRA.Projectile_BulletWithEffect_Extension">
+        		<impactEffecter>SRABullet_Weapon_P_Hit</impactEffecter>
+    		</li>
+    	</modExtensions>
 	</ThingDef>
 	<ThingDef ParentName="SRA_WeaponBase_Spacer">
 		<defName>SRA_BlastingLaser</defName>
@@ -701,9 +715,9 @@
             <damageAmount>32</damageAmount>
             <armorPenetration>4</armorPenetration>
             <explosionSound>Explosion_Bomb</explosionSound>
+           	<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
             <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
-            <explosionEffect>GiantExplosion</explosionEffect>
-            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
             <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
             <!-- 现阶段就支持这么多参数 -->
           </li>
