@@ -673,59 +673,58 @@
 			</li>
 		</tools>
 	</ThingDef>
-  <ThingDef ParentName="BaseBullet">
-    <defName>SRABullet_BlastingLaser</defName>
-    <label>SRABullet_BlastingLaser</label>
-    <thingClass>SRA.Projectile_MultiExplosive_Beam</thingClass>
-    <graphicData>
-      <texPath>Things/Projectile/Bullet_Small</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <projectile>
-      <damageDef>SRA_Spear_of_SRA_burn</damageDef>
-      <damageAmountBase>32</damageAmountBase>
-      <beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
-      <beamStartOffset>0</beamStartOffset>
-      <armorPenetrationBase>4</armorPenetrationBase>
-    </projectile>
-    <modExtensions>
-      <li Class="SRA.MultiExplosive_BeamExtension">
-        <MultiExplosive_Beams>
-          <li>
-            <radius>1</radius>
-            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
-            <damageAmount>32</damageAmount>
-            <armorPenetration>8</armorPenetration>
-            <explosionSound>Explosion_EMP</explosionSound>
-            <explosionDamageFalloff>true</explosionDamageFalloff>
-            <onlyAntiHostile>true</onlyAntiHostile>
-          </li>
-          <li>
-            <radius>4</radius>
-            <damageDef>EMP</damageDef>
-            <damageAmount>32</damageAmount>
-            <armorPenetration>8</armorPenetration>
-            <explosionSound>Explosion_EMP</explosionSound>
-            <explosionDamageFalloff>true</explosionDamageFalloff>
-            <onlyAntiHostile>true</onlyAntiHostile>
-          </li>
-          <li>
-            <radius>4</radius>
-            <damageDef>Bomb</damageDef>
-            <damageAmount>32</damageAmount>
-            <armorPenetration>4</armorPenetration>
-            <explosionSound>Explosion_Bomb</explosionSound>
-           	<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
-            <explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
-            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
-            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
-            <!-- 现阶段就支持这么多参数 -->
-          </li>
-        </MultiExplosive_Beams>
-      </li>
-    </modExtensions>
-  </ThingDef>
-
+	<ThingDef ParentName="BaseBullet">
+		<defName>SRABullet_BlastingLaser</defName>
+		<label>SRABullet_BlastingLaser</label>
+		<thingClass>SRA.Projectile_MultiExplosive_Beam</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>SRA_Spear_of_SRA_burn</damageDef>
+			<damageAmountBase>32</damageAmountBase>
+			<beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
+			<beamStartOffset>0</beamStartOffset>
+			<armorPenetrationBase>4</armorPenetrationBase>
+		</projectile>
+		<modExtensions>
+			<li Class="SRA.MultiExplosive_BeamExtension">
+				<MultiExplosive_Beams>
+					<li>
+						<radius>1</radius>
+						<damageDef>SRA_Spear_of_SRA_burn</damageDef>
+						<damageAmount>32</damageAmount>
+						<armorPenetration>8</armorPenetration>
+						<explosionSound>Explosion_EMP</explosionSound>
+						<explosionDamageFalloff>true</explosionDamageFalloff>
+						<onlyAntiHostile>true</onlyAntiHostile>
+					</li>
+					<li>
+						<radius>4</radius>
+						<damageDef>EMP</damageDef>
+						<damageAmount>32</damageAmount>
+						<armorPenetration>8</armorPenetration>
+						<explosionSound>Explosion_EMP</explosionSound>
+						<explosionDamageFalloff>true</explosionDamageFalloff>
+						<onlyAntiHostile>true</onlyAntiHostile>
+					</li>
+					<li>
+						<radius>4</radius>
+						<damageDef>Bomb</damageDef>
+						<damageAmount>32</damageAmount>
+						<armorPenetration>4</armorPenetration>
+						<explosionSound>Explosion_Bomb</explosionSound>
+						<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+						<explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks>
+						<explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+						<onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+						<!-- 现阶段就支持这么多参数 -->
+					</li>
+				</MultiExplosive_Beams>
+			</li>
+		</modExtensions>
+	</ThingDef>
 	<ThingDef ParentName="SRA_WeaponMelee_Ultra">
 		<defName>SRA_Double_Blade</defName>
 		<label>SRA_Double_Blade</label>
@@ -772,18 +771,97 @@
 			<li>
 				<label>edge</label>
 				<capacities>
-					<li>Cut</li>
+					<li>SRA_Double_BladeAOE</li>
 				</capacities>
 				<power>40</power>
 				<cooldownTime>1</cooldownTime>
 				<extraMeleeDamages>
 					<li>
 						<def>SRA_Spear_of_SRA_burn</def>
-						<amount>40</amount>
+						<amount>20</amount>
 					</li>
           			<li>
             			<def>Stun</def>
-        				<amount>16</amount>
+        				<amount>10</amount>
+        			</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="SRA_WeaponMelee_Ultra">
+		<defName>SRA_Long_Lance</defName>
+		<label>SRA_Long_Lance</label>
+		<description>SRA_Long_Lance</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Long_Lance_Hediff</HediffDef>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<tradeability>None</tradeability>
+		<statBases>
+			<MarketValue>32000</MarketValue>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<soundInteract>Interact_BladelinkPlasmaSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkPlasmaSword</meleeHitSound>
+		<smeltable>false</smeltable>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>SRA/Weapon/SRA_Long_Lance</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+    	<uiIconPath>SRA/Weapon/SRA_Long_Lance_UI</uiIconPath>
+		<uiIconScale>1.5</uiIconScale>
+		<!-- Can't inherit comps because we need to override CompEquippable with CompEquippableAbility -->
+    	<!-- If changes are made to the comps of BaseHumanMakeableGun or parents then they will need to be replicated here -->
+    	<comps Inherit="False">
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Long_Lance_Hediff</hediff>
+        	</li>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Long_Lance_LightDy</TexturePath>
+				<totalFrames>5</totalFrames>
+				<ticksPerFrame>2</ticksPerFrame>
+	   		</li>
+      		<li Class="CompProperties_EquippableAbility">
+        		<abilityDef>SRA_Long_Lance_Ability</abilityDef>
+      		</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+			<li Class="CompProperties_Biocodable" />
+      		<li Class="CompProperties_Forbiddable"/>
+      		<li Class="CompProperties_Styleable"/>
+    	</comps>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>SRA_Long_LanceAOE</li>
+				</capacities>
+				<power>160</power>
+				<cooldownTime>4</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>160</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>40</amount>
         			</li>
 				</extraMeleeDamages>
 			</li>

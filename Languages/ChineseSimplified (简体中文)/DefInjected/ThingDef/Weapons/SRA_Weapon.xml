@@ -43,8 +43,12 @@
 
 
   <SRA_Double_Blade.label>星规-寒渊惜别</SRA_Double_Blade.label>
-  <SRA_Double_Blade.description>一柄精巧的双刃，包含复杂的星辉水晶质能控制系统，它既能控制相位能量切割攻击到的目标，也能构建星辉分形来格挡攻击。\n\n&lt;color=#FFFF44&gt;-这件武器能够持续地抵挡伤害，除非被足够高伤害的攻击突破防御。\n-这件武器的攻击会削弱敌人，降低其战斗能力。&lt;/color&gt;</SRA_Double_Blade.description>
+  <SRA_Double_Blade.description>一柄精巧的双刃，包含复杂的星辉水晶质能控制系统，它既能控制相位能量切割攻击到的目标，也能构建星辉分形来格挡攻击。\n\n&lt;color=#FFFF44&gt;-这件武器能够持续地抵挡伤害，除非被足够高伤害的攻击突破防御。\n-这件武器可以同时攻击多个目标。\n-这件武器的攻击会削弱敌人，降低其战斗能力。\n-这件武器的攻击会击晕敌人。&lt;/color&gt;</SRA_Double_Blade.description>
   <SRA_Double_Blade.tools.edge.label>刃</SRA_Double_Blade.tools.edge.label>
+
+  <SRA_Long_Lance.label>星规-征洋戮海</SRA_Long_Lance.label>
+  <SRA_Long_Lance.description>一柄强大的剑枪，包含复杂的星辉水晶质能控制系统，它既能控制相位能量切割攻击到的目标，也能构建星辉分形来格挡攻击。\n\n&lt;color=#FFFF44&gt;-这件武器能够能够持续快速恢复格挡能力。\n-这件武器可以同时攻击多个目标。\n-这件武器的攻击会削弱敌人，降低其战斗能力。\n-这件武器的攻击会击晕敌人。&lt;/color&gt;</SRA_Long_Lance.description>
+  <SRA_Long_Lance.tools.edge.label>刃</SRA_Long_Lance.tools.edge.label>
   
   <SRA_Sword_of_Hidra.label>「息声」</SRA_Sword_of_Hidra.label>
   <SRA_Sword_of_Hidra.description>这件武器由大小不一的红黑色细长晶体组成，这些悬浮着而互相保持着一定距离的晶体组成了类似于剑的外形。当注视着这柄剑时，你会感觉到一种难以描述的模糊感和不协调感，似乎那些晶体不应该那样排列。\n\n&lt;color=#FFFF44&gt;这件可怖之物的攻击会造成诡异的眩晕，冻伤与烧伤。&lt;/color&gt;</SRA_Sword_of_Hidra.description>

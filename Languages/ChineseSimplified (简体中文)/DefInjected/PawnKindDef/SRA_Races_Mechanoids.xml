@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <SRA_SR_Mech.label>星规</SRA_SR_Mech.label>
+  <SRA_SR_Mech.labelPlural>星规</SRA_SR_Mech.labelPlural>
   <SRA_Mech_WarUnit_S.label>星规-「尖蜂」微型战争单元</SRA_Mech_WarUnit_S.label>
   <SRA_Mech_WarUnit_S.labelPlural>星规-「尖蜂」微型战争单元</SRA_Mech_WarUnit_S.labelPlural>
+  <SRA_Mech_WarUnit_M_D.label>星规-「哨卫」战地压制单元</SRA_Mech_WarUnit_M_D.label>
+  <SRA_Mech_WarUnit_M_D.labelPlural>星规-「哨卫」战地压制单元</SRA_Mech_WarUnit_M_D.labelPlural>=
+  <SRA_Mech_WarUnit_M_A.label>星规-「屠猎」火力歼灭单元</SRA_Mech_WarUnit_M_A.label>
+  <SRA_Mech_WarUnit_M_A.labelPlural>星规-「屠猎」火力歼灭单元</SRA_Mech_WarUnit_M_A.labelPlural>
+  <SRA_Mech_Tank_M_D.label>星规-「打击乐」实验型火力平台</SRA_Mech_Tank_M_D.label>
+  <SRA_Mech_Tank_M_D.labelPlural>星规-「打击乐」实验型火力平台</SRA_Mech_Tank_M_D.labelPlural>
 </LanguageData>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ToolCapacityDef>
+    <defName>SRA_Double_BladeAOE</defName>
+    <label>Cut</label>
+  </ToolCapacityDef>
+	<ManeuverDef>
+    <defName>SRA_Double_BladeAOE</defName>
+    <requiredCapacity>SRA_Double_BladeAOE</requiredCapacity>
+    <verb>
+      <verbClass>SRA.Verb_MeleeAttackDamage_AOE</verbClass>
+      <meleeDamageDef>Cut</meleeDamageDef>
+    </verb>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>Maneuver_Slash_MeleeHit</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Slash_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Slash_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Slash_MeleeDodge</combatLogRulesDodge>
+		<modExtensions>
+      <li Class="SRA.MeleeAttackAOE_Extension">
+        <angle>240</angle>
+        <radius>1.5</radius>
+        <maxHitTarget>4</maxHitTarget>
+      </li>
+			<li Class="SRA.Effecter_Extension">
+        <effcterDef>SRA_SlashArc</effcterDef>
+      </li>
+    </modExtensions>
+  </ManeuverDef>
+
+  
+	<ToolCapacityDef>
+    <defName>SRA_Long_LanceAOE</defName>
+    <label>Cut</label>
+  </ToolCapacityDef>
+	<ManeuverDef>
+    <defName>SRA_Long_LanceAOE</defName>
+    <requiredCapacity>SRA_Long_LanceAOE</requiredCapacity>
+    <verb>
+      <verbClass>SRA.Verb_MeleeAttackDamage_AOE</verbClass>
+      <meleeDamageDef>Cut</meleeDamageDef>
+    </verb>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>Maneuver_Slash_MeleeHit</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Slash_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Slash_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Slash_MeleeDodge</combatLogRulesDodge>
+		<modExtensions>
+      <li Class="SRA.MeleeAttackAOE_Extension">
+        <angle>120</angle>
+        <radius>2.5</radius>
+        <maxHitTarget>8</maxHitTarget>
+      </li>
+			<li Class="SRA.Effecter_Extension">
+        <effcterDef>SRA_SlashArc_Big</effcterDef>
+      </li>
+    </modExtensions>
+  </ManeuverDef>
+</Defs>

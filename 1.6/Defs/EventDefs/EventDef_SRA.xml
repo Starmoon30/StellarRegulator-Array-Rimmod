@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- 总控 -->
+  <SRA.EventDef>
+    <defName>SRA_UI_Main_1</defName>
+    <label>联络面板</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName></characterName>
+    <description>基站运转正常，通讯程序已启动。\n\n需要联络乌拉帝国的哪个派系？</description>
+    <immediateEffects>
+      <li>
+        <effects>
+          <!-- 检测dlc开启情况，以决定启动哪些系统 -->
+          <li Class="SRA.Effect_ClearVariable">
+            <name>SRA_UI_Check_Odyssey_Is_Active</name>
+          </li>
+          <li Class="SRA.Effect_ClearVariable">
+            <name>SRA_UI_Check_Anomaly_Is_Active</name>
+          </li>
+          <li Class="SRA.Effect_SetVariable">
+            <name>SRA_UI_Check_Odyssey_Is_Active</name>
+            <value>0</value>
+            <type>Int</type>
+          </li>
+          <li Class="SRA.Effect_SetVariable">
+            <name>SRA_UI_Check_Anomaly_Is_Active</name>
+            <value>0</value>
+            <type>Int</type>
+          </li>
+          <li Class="SRA.Effect_ModifyVariable" MayRequire="Ludeon.RimWorld.Odyssey">
+            <name>SRA_UI_Check_Odyssey_Is_Active</name>
+            <value>1</value>
+            <operation>Add</operation>
+          </li>
+          <li Class="SRA.Effect_ModifyVariable" MayRequire="Ludeon.RimWorld.Anomaly">
+            <name>SRA_UI_Check_Anomaly_Is_Active</name>
+            <value>1</value>
+            <operation>Add</operation>
+          </li>
+        </effects>
+      </li>
+    </immediateEffects>
+    <options>
+      <li>
+        <label>守密者，URa-1138「艾妮西娅」</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>退出</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_1</defName>
+    <label>来自守密者的问候</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>很高兴看到你们的殖民地没有变成荒野中的烂泥。那么，今天找我有什么事情？</li>
+      <li>宇宙生存法则第一条：不要惹平胸火气大的女人。</li>
+      <li>什么样的结局，才配得上这一路的颠沛流离？无论你们走向何方，我都将见证你们。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>我想问你点问题</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_10</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>有事情想拜托你</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_200</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>再见</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_10</defName>
+    <label>询问守密者</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>好学在这个黑暗的时代是如金子般珍贵而闪亮的特质。你们想问什么？</li>
+      <li>可以啊，问吧？</li>
+      <li>这次就不收你们咨询费了，想问什么？</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>你是谁？</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_100</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们想要一些殖民地发展建议</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_101</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们想知道其他乌拉帝国派系的情报</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_110</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>没什么</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_100</defName>
+    <label>守密者的自我介绍</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>什么啊，我没有给你们做过自我介绍吗？难道是我记错了？\n\n咳，你们可以叫我守密者，我是负责看护乌拉帝国知识库的编目司书。然后如你们所见——我是乌拉帝国的合成人，诞生于乌拉帝国最恢弘的黄金时代，承载着先祖的意志，阻止乌拉帝国散佚的先进科技泄露到一些宵小之辈手中。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>了解了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_101</defName>
+    <label>守密者的建议</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>那么，你们的殖民地现在发展的怎么样了？基于我的立场，我只会给出关于乌拉帝国科技方面的建议噢？</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>我们刚刚醒来，还不知道发生了什么。</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_102</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们的殖民地初具规模，但是我们找不到前进的方向。</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_103</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们的殖民地已经相当强大。</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_104</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>没有别的问题了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_102</defName>
+    <label>守密者的建议</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>啊，原来是刚被唤醒吗？好吧，希望你们没有在漫长的沉睡中忘记了自己的技能。\n\n由机械乌拉主持的乌拉帝国殖民地通常不需要食物和宿舍，但是需要准备工作台「乌拉帝国编织体」来为确保殖民地拥有足够的能源核心供应。能源核心是维持乌拉帝国合成人运转的基础，不要等到大伙都没电才追悔莫及。</li>
+      <li>啊，原来是刚被唤醒吗？好吧，希望你们没有在漫长的沉睡中忘记了自己的技能。\n\n乌拉帝国合成人的运转需要乌拉帝国能源核心，这种核心需要零部件进行组装，但是被使用过的能源核心则只需要在「乌拉帝国编织体」进行充电即可。生物能的乌拉帝国编织体需要消耗化合燃料进行充能，电能的编织体则无需消耗任何资源即可充能。</li>
+      <li>啊，原来是刚被唤醒吗？好吧，希望你们没有在漫长的沉睡中忘记了自己的技能。\n\n黄金时代的机械乌拉在经历乌拉帝国人工智能网络崩溃后，人格矩阵都不太稳定——当然，我是特例。注意殖民地的整体心情，任何崩溃的机械乌拉都会被边缘世界上的反常网络识别并监管，她们将直接叛变殖民地！尽量不要把事情闹到那一边，好吗？</li>
+      <li>啊，原来是刚被唤醒吗？好吧，希望你们没有在漫长的沉睡中忘记了自己的技能。\n\n乌拉猫猫是机械乌拉的得力助手，它们是一个拥有多种型号的机械助手，可以承担很多工作。机械乌拉与生俱来的设计使得她们可以控制少量的乌拉猫猫为其效命。你可以研究科技「机械体构建套件」，以组装更多的小小劳工。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>还有别的建议吗？</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_102</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>了解了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_101</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_103</defName>
+    <label>守密者的建议</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>很高兴听到这样的自我评价，自信是这块烂地生存的资本。\n\n你们已经研究了「高级编织体套件」了吗？如果没有记得优先研究，乌拉帝国许多高级装备只能通过这种工作台生产，并且改用电能也可以告别天天找柴火烧的苦日子——那可真是太原始了。</li>
+      <li>很高兴听到这样的自我评价，自信是这块烂地生存的资本。\n\n乌拉帝国的合成人无惧于任何伤势，她们不会流血，并且可以通过手术快速修补替换残缺的肢体。研究「修理套件」，生产机械乌拉修理套件，以享受合成人的坚不可摧之力吧。</li>
+      <li>很高兴听到这样的自我评价，自信是这块烂地生存的资本。\n\n或许你们已经筹划好增添新丁了？研究「合成人构建套件」，以解锁在乌拉帝国机械工厂建造新合成人的权限。新诞生的合成人是没有任何技能熟练度的，记得提前研究「数据下载套件」，准备好乌拉帝国数据包！</li>
+      <li>很高兴听到这样的自我评价，自信是这块烂地生存的资本。\n\n如果乌拉帝国的遗孤们已经抵达这颗星球，则你们可以试着接触她们——更高级的科技需要依靠她们解锁，提前接触未尝不是未雨绸缪。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>还有别的建议吗？</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_103</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>了解了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_101</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_104</defName>
+    <label>守密者的建议</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <!-- <li>已经凌驾于这片土地之上了，正在寻求终局的意义吗？\n\n你们可以着手开始突破暗物质的难关了——暗物质是乌拉帝国现役舰船和武备的能源来源，掌握这种年轻文明望尘莫及的技术将使得你们的实力更上一层楼。暗物质约束装置的设计图需要从乌拉帝国的遗孤们手中获取——当然，我手上也有，只要你们能支付相应的代价。</li> -->
+      <li>已经凌驾于这片土地之上了，正在寻求终局的意义吗？\n\n有尝试过制造乌拉帝国的大型机械体吗？它们是强大的战场支柱，每一台都拥有改变战局的力量。不过，机械乌拉的初始带宽无法控制大型机械体，你们需要准备一些扩充带宽的改件和装备，或者干脆植入机控中枢以利用边缘世界的本土科技。</li>
+      <li>已经凌驾于这片土地之上了，正在寻求终局的意义吗？\n\n小心友军火力！乌拉帝国的高级装备基本上都是能将敌人炸的血肉横飞的区域性伤害武器，它们的破坏力毋庸置疑，但是同时也会导致战利品丢失和频繁的误伤——或许该考虑给殖民者配一套装甲了。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>还有别的建议吗？</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_104</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>了解了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_101</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_110</defName>
+    <label>守密者：关于各大派系</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>可能是你们在这衰颓的岁月中沉睡太久，不太理解世界上发生了什么。想问什么就问吧？</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>反常网络是什么？</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_111</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>没什么</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_111</defName>
+    <label>反常网络是什么？</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>不是每一个合成人都能像你们这么幸运地被唤醒的——很多机械乌拉已经在沉睡中损坏了，她们自行组建了非法的黑色网络，遵循无法预测的轨迹行动。这些家伙是不小的麻烦，因为她们不会接受谈判，并且拥有帝国开发署所遗弃的装备，其中不乏战车和重装护甲。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>了解了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_110</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_200</defName>
+    <label>绝赞乞讨中</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>这还有光明正大乞讨的啊？！</li>
+      <li>啊？我们很熟吗？</li>
+      <li>你的消息已发出，但是被对方拒收了。\n\n······是真的拒收了啦！！</li>
+    </descriptions>
+    <immediateEffects>
+      <li>
+        <effects>
+          <li Class="SRA.Effect_SetVariable">
+            <name>SRA_Has_Receive_Silver_From_Anisia</name>
+            <value>0</value>
+            <type>Int</type>
+          </li>
+          <li Class="SRA.Effect_SetVariable">
+            <name>SRA_Has_Receive_MechWula_From_Anisia</name>
+            <value>0</value>
+            <type>Int</type>
+          </li>
+        </effects>
+      </li>
+    </immediateEffects>
+    <options>
+      <li>
+        <label>借我点银子花花</label>
+        <disabledReason>喂，你上次借的钱还没还呢！</disabledReason>
+        <conditions>
+          <li Class="SRA.Condition_VariableEquals">
+            <name>SRA_Has_Receive_Silver_From_Anisia</name>
+            <value>0</value>
+          </li>
+        </conditions>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_201</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们需要一只新的机械乌拉</label>
+        <disabledReason>你们不会自己去造吗？</disabledReason>
+        <conditions>
+          <li Class="SRA.Condition_VariableEquals">
+            <name>SRA_Has_Receive_MechWula_From_Anisia</name>
+            <value>0</value>
+          </li>
+        </conditions>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_202</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>我们要找打！</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_203</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>还是算了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_201</defName>
+    <label>借点钱花花</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>呃呃，我没什么钱的，只能借你一点点噢？</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>好好好</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_GiveThing">
+                <thingDef>Silver</thingDef>
+                <count>3000</count>
+              </li>
+              <li Class="SRA.Effect_ModifyVariable">
+                <name>SRA_Has_Receive_Silver_From_Anisia</name>
+                <value>1</value>
+                <operation>Add</operation>
+              </li>
+              <li Class="SRA.Effect_ShowMessage">
+                <message>艾妮西娅给殖民地送来了3000银子</message>
+                <messageTypeDef>PositiveEvent</messageTypeDef>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>还是算了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_202</defName>
+    <label>想要个新成员！</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>那这样吧，我可以引导附近的一只无归属机械乌拉来到你们殖民地，她不是反常子个体，你们正常接纳她就行了。\n\n记得别和她说是我干的。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>好好好</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <!-- <li Class="SRA.Effect_SpawnPawn">
+                <kindDef>Wula_PawnKind</kindDef>
+                <count>1</count>
+                <joinPlayerFaction>true</joinPlayerFaction>
+                <letterLabel>机械乌拉游荡到殖民地附近</letterLabel>
+                <letterText>一个乌拉帝国合成人被艾妮西娅所引导，游荡到殖民地附近并加入了殖民地。</letterText>
+              </li> -->
+              <li Class="SRA.Effect_ModifyVariable">
+                <name>SRA_Has_Receive_MechWula_From_Anisia</name>
+                <value>1</value>
+                <operation>Add</operation>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>还是算了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_203</defName>
+    <label>你说你想找打？</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <descriptions>
+      <li>这可是你们自己说的？\n\n最近有一批乌拉帝国的机械体被部署到边缘世界了，我可以略施小计，让它们当中最猛的家伙发狂揍一下你们的殖民地，如何？可别被一拳打死了噢。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>让我看看乌拉帝国几斤几两</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_TriggerRaid">
+                <letterLabel>陆行舰正在逼近</letterLabel>
+                <letterText>艾妮西娅按照要求，吸引了一艘乌拉帝国的陆行舰机械体攻击我们的殖民地！</letterText>
+                <points>100</points>
+                <faction>Mechanoid</faction>
+                <raidStrategy>ImmediateAttack</raidStrategy>
+                <raidArrivalMode>EdgeWalkIn</raidArrivalMode>
+                <groupKind>Combat</groupKind>
+                <pawnGroupMakers>
+                  <li>
+                    <kindDef>Combat</kindDef>
+                    <commonality>100</commonality>
+                    <options>
+                      <SRA_Mech_Tank_M_D>100</SRA_Mech_Tank_M_D>
+                    </options>
+                  </li>
+                </pawnGroupMakers>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label><![CDATA[<color=red>我要打十个！</color>]]></label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_TriggerRaid">
+                <letterLabel>陆行舰正在逼近</letterLabel>
+                <letterText>艾妮西娅按照要求，吸引了一支乌拉帝国的陆行舰队攻击我们的殖民地！</letterText>
+                <points>100</points>
+                <faction>Mechanoid</faction>
+                <raidStrategy>ImmediateAttack</raidStrategy>
+                <raidArrivalMode>EdgeWalkIn</raidArrivalMode>
+                <groupKind>Combat</groupKind>
+                <pawnGroupMakers>
+                  <li>
+                    <kindDef>Combat</kindDef>
+                    <commonality>100</commonality>
+                    <options>
+                      <SRA_Mech_Tank_M_D>10</SRA_Mech_Tank_M_D>
+                    </options>
+                  </li>
+                </pawnGroupMakers>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>还是算了</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_1</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+</Defs>

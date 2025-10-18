@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_Debug_StoreAllStats</defName>
+    <label>Debug: Store All Stats</label>
+    <description>一个用于将各种游戏统计数据存储到变量中的调试事件。</description>
+    <hiddenWindow>true</hiddenWindow>
+
+    <dismissEffects>
+      <li>
+        <effects>
+
+          <!-- 1. 存储派系好感度 (int) -->
+          <li Class="SRA.Effect_CheckFactionGoodwill">
+            <factionDef>Mechanoid</factionDef>
+            <variableName>Debug_MechanoidGoodwill</variableName>
+          </li>
+
+          <!-- 2. 存储殖民地财富 (float) -->
+          <li Class="SRA.Effect_StoreColonyWealth">
+            <variableName>Debug_ColonyWealth</variableName>
+          </li>
+
+          <!-- 3. 存储真实游戏时间 (float, 秒) -->
+          <li Class="SRA.Effect_StoreRealPlayTime">
+            <variableName>Debug_RealPlayTimeSeconds</variableName>
+          </li>
+
+          <!-- 4. 存储已过去的游戏天数 (int) -->
+          <li Class="SRA.Effect_StoreDaysPassed">
+            <variableName>Debug_DaysPassed</variableName>
+          </li>
+
+        </effects>
+      </li>
+    </dismissEffects>
+  </SRA.EventDef>
+
+</Defs>

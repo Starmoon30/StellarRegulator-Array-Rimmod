@@ -421,6 +421,31 @@
       </li>
     </stages>
   </HediffDef>
+  <HediffDef>
+    <defName>SRA_Long_Lance_Hediff</defName>
+    <label>星规-征洋戮海</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位因为装备了征洋戮海，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的格挡能力。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>64</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>64</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>32</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1500</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
   
   <HediffDef>
     <defName>SRA_30000_CountdownDeath</defName>

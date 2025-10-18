@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_UI_Anisia_1_NewWindow</defName>
+    <label>来自守密者的问候</label>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    <characterName>路希维亚</characterName>
+    <windowType>SRA.Dialog_NewLayoutDisplay</windowType>
+    <descriptions>
+      <li>很高兴看到你们的殖民地没有变成荒野中的烂泥。那么，今天找我有什么事情？</li>
+      <li>宇宙生存法则第一条：不要惹平胸火气大的女人。</li>
+      <li>什么样的结局，才配得上这一路的颠沛流离？无论你们走向何方，我都将见证你们。</li>
+    </descriptions>
+    <options>
+      <li>
+        <label>我想问你点问题</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_10</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>有事情想拜托你</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_UI_Anisia_200</defName>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>再见</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+  <SRA.EventDef>
+    <defName>SRA_Test_Raid_Event</defName>
+    <label>测试袭击事件</label>
+    <description>这是一个测试，用于触发一个带有自定义 pawn 组的袭击。</description>
+    <dismissEffects>
+      <li>
+        <conditions>
+          <li Class="SRA.Condition_FactionExists">
+            <!-- 
+            这会设置 Condition_FactionExists 类中的 'factionDef' 字段。
+            游戏会检查 defName 为 "Mechanoid" 的派系当前是否存在于世界地图上。
+            -->
+            <factionDef>Mechanoid</factionDef>
+          </li>
+        </conditions>
+        <effects>
+          <li Class="SRA.Effect_TriggerRaid">
+            <letterLabel>来自乌拉帝国 大教堂的进攻</letterLabel>
+            <letterText>我们的传感器侦测到一伙来自乌拉帝国 大教堂的袭击者！他们看起来充满敌意，正朝着我们的殖民地前进。</letterText>
+            <points>10000</points>
+            <faction>Mechanoid</faction>
+            <raidStrategy>ImmediateAttack</raidStrategy>
+            <raidArrivalMode>EdgeDrop</raidArrivalMode>
+            <groupKind>Combat</groupKind>
+            <pawnGroupMakers>
+              <li>
+                <kindDef>Combat</kindDef>
+                <commonality>100</commonality>
+                <options>
+                  <Mech_Lancer>10</Mech_Lancer>
+                </options>
+              </li>
+            </pawnGroupMakers>
+          </li>
+        </effects>
+      </li>
+    </dismissEffects>
+    <options>
+      <li>
+        <label>触发袭击</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>关闭</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+  <!-- 隐藏事件：触发一次袭击 -->
+  <SRA.EventDef>
+    <defName>SRA_HiddenEvent_TriggerRaid</defName>
+    <hiddenWindow>true</hiddenWindow>
+    <dismissEffects>
+      <li>
+        <effects>
+          <li Class="SRA.Effect_TriggerRaid">
+            <points>500</points>
+            <faction>Pirate</faction>
+            <raidStrategy>ImmediateAttack</raidStrategy>
+            <raidArrivalMode>EdgeWalkIn</raidArrivalMode>
+            <letterLabel>警报！</letterLabel>
+            <letterText>一个隐藏的信号被触发，吸引了一群海盗前来！</letterText>
+          </li>
+        </effects>
+      </li>
+    </dismissEffects>
+  </SRA.EventDef>
+
+</Defs>
