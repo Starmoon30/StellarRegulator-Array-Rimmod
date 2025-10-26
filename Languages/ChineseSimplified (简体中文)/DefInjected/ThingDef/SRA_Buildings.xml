@@ -45,5 +45,8 @@
   <SRA_Beacon_SRA_SR.label>星规-部署信标-星规阵列五类行动单元</SRA_Beacon_SRA_SR.label>
   <SRA_Beacon_SRA_SR.description>一个用于折跃机械体的部署信标。这个信标折跃一个星规阵列五类行动单元的类人素体。\n\n需要机械师来启动</SRA_Beacon_SRA_SR.description>
   <SRA_Beacon_SRA_SR.comps.CompUsable.useLabel>启动该信标</SRA_Beacon_SRA_SR.comps.CompUsable.useLabel>
-  
+  <SRA_Beacon_SRA_Mech_Tank_M_D.label>星规-部署信标-「打击乐」实验型火力平台</SRA_Beacon_SRA_Mech_Tank_M_D.label>
+  <SRA_Beacon_SRA_Mech_Tank_M_D.description>一个用于折跃机械体的部署信标。这个信标折跃一个「打击乐」实验型火力平台。\n\n需要机械师来启动</SRA_Beacon_SRA_Mech_Tank_M_D.description>
+  <SRA_Beacon_SRA_Mech_Tank_M_D.comps.CompUsable.useLabel>启动该信标</SRA_Beacon_SRA_Mech_Tank_M_D.comps.CompUsable.useLabel>
+
 </LanguageData>

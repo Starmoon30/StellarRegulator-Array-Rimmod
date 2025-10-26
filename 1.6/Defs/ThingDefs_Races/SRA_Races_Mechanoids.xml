@@ -134,6 +134,11 @@
     <allowInMechClusters>false</allowInMechClusters>
     <forceNoDeathNotification>true</forceNoDeathNotification>
     <forceDeathOnDowned>true</forceDeathOnDowned>
+    <startingHediffs>
+      <li>
+        <def>SRA_Barrier_WarUnit_S</def>
+      </li>
+    </startingHediffs>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -194,7 +199,7 @@
       <WorkSpeedGlobal>4</WorkSpeedGlobal>
       <CarryingCapacity>800</CarryingCapacity>
       <AimingDelayFactor>0.5</AimingDelayFactor>
-      <ShootingAccuracyPawn>20</ShootingAccuracyPawn>
+      <ShootingAccuracyPawn>4</ShootingAccuracyPawn>
       <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
       <RangedCooldownFactor>0.5</RangedCooldownFactor>
       <FoodPoisonChance>0</FoodPoisonChance>
@@ -577,7 +582,7 @@
 				<AimingDelayFactor>0.5</AimingDelayFactor>
         <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
 				<RangedCooldownFactor>0.5</RangedCooldownFactor>
-        <ShootingAccuracyPawn>32</ShootingAccuracyPawn>
+        <ShootingAccuracyPawn>4</ShootingAccuracyPawn>
     </statBases>
     <race>
       <body>Lancer</body>
@@ -847,6 +852,11 @@
     <statBases>
       <BandwidthCost>8</BandwidthCost>
       <MoveSpeed>2</MoveSpeed>
+      <IncomingDamageFactor>0.5</IncomingDamageFactor>
+			<AimingDelayFactor>0.5</AimingDelayFactor>
+      <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+			<RangedCooldownFactor>0.5</RangedCooldownFactor>
+      <ShootingAccuracyPawn>4</ShootingAccuracyPawn>
     </statBases>
     <race>
       <body>Mech_Warqueen</body>
@@ -893,6 +903,31 @@
         <wakeUpOnDamage>true</wakeUpOnDamage>
         <wakeUpCheckRadius>30</wakeUpCheckRadius>
         <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="SRA.CompProperties_PawnRenderExtra">
+        <path>SRA/Pawn/Mechanoid/SRA_Mech_Tank_M_D_light</path>
+        <size>(6,0,6)</size>
+        <colorAlly>(255,255,255)</colorAlly>
+        <colorEnemy>(255,255,255)</colorEnemy>
+        <shader>MoteGlow</shader>
+        <drawData>
+          <dataEast>
+            <offset>(0,0,0)</offset>
+            <layer>1</layer>
+          </dataEast>
+          <dataWest>
+            <offset>(0,0,0)</offset>
+            <layer>1</layer>
+          </dataWest>
+          <dataSouth>
+            <offset>(0,0,0)</offset>
+            <layer>1</layer>
+          </dataSouth>
+          <dataNorth>
+            <offset>(0,0,0)</offset>
+            <layer>1</layer>
+          </dataNorth>
+        </drawData>
       </li>
       <li Class="SRA.CompProperties_MultiTurretGun">
 		    <ID>0</ID>
@@ -1208,6 +1243,9 @@
         <muzzleFlashScale>9</muzzleFlashScale>
         <aimingChargeMote>Mote_BeamRepeater_Charge</aimingChargeMote>
         <aimingChargeMoteOffset>0</aimingChargeMoteOffset>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
 		</verbs>
 		<tools>

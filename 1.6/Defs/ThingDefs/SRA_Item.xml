@@ -59,4 +59,25 @@
 		<researchPrerequisite>SRA_tech_30_7411</researchPrerequisite>
 	</recipeMaker>
   </ThingDef>
+
+<!-- 
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SRA_Beacon_SRA_SR_Incoming</defName>
+    <label>SRA_Beacon_SRA_SR (incoming)</label>
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>SRA/Building/SRA_Beacon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(3, 3)</shadowSize>
+      <spawnThing>SRA_Beacon_SRA_SR</spawnThing>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>0.5</speed>
+    </skyfaller>
+  </ThingDef> -->
+
 </Defs>

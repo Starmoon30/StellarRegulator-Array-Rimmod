@@ -49,6 +49,7 @@
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
     </comps>
     <stages>
       <li>
@@ -56,6 +57,32 @@
     </stages>
   </HediffDef>
 
+  <HediffDef>
+    <defName>SRA_Barrier_WarUnit_S</defName>
+    <label>星规-尖蜂构造</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>组成这个单位的星辉分形维系着一道一体化的防御场。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>64</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>32</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
   <HediffDef>
     <defName>SRA_Barrier_Mech_WarUnit_M_D</defName>
     <label>星规-强固结构</label>
@@ -79,6 +106,7 @@
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
     </comps>
     <stages>
       <li>
@@ -108,6 +136,7 @@
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
     </comps>
     <stages>
       <li>
