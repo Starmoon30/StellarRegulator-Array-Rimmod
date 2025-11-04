@@ -227,4 +227,63 @@
       </li>
     </comps>
   </AbilityDef>
+
+
+
+  
+  <AbilityDef>
+    <defName>SRA_Spawn_SRA_Executor_Attack</defName>
+    <label>星规执行单元：星弧破碎轰炸</label>
+    <description>命令一艘星规执行单元进行轨道打击，扫射目标区域，并对敌方单位开火。</description>
+    <iconPath>SRA/UI/Abilities/SRA_Long_Lance_Ability</iconPath>
+    <cooldownTicksRange>1</cooldownTicksRange>
+    <hotKey>Misc12</hotKey>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <warmupTime>1</warmupTime>
+      <range>120</range>
+      <targetable>true</targetable>
+      <targetParams>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <!-- <li Class="SRA.CompProperties_AircraftStrike">
+        <requiredAircraftType>ARA_HiveCorvette_Entity</requiredAircraftType>
+        <aircraftCooldownTicks>5000</aircraftCooldownTicks>
+        <aircraftsPerUse>1</aircraftsPerUse>
+      </li> -->
+      <li Class="SRA.CompProperties_AbilitySpawnFlyOver">
+        <flyOverDef>SRA_FlyOver_Executor</flyOverDef>
+        <flyOverType>GroundStrafing</flyOverType>
+        <flightSpeed>4</flightSpeed>
+        <altitude>20</altitude>
+        <playFlyOverSound>true</playFlyOverSound>
+        <approachType>Perpendicular</approachType>
+
+        <!-- 扫射参数 -->
+        <enableGroundStrafing>true</enableGroundStrafing>
+        <strafeWidth>8</strafeWidth>
+        <strafeLength>64</strafeLength>
+        <strafeFireChance>0.05</strafeFireChance>
+        <minStrafeProjectiles>32</minStrafeProjectiles>
+        <maxStrafeProjectiles>32</maxStrafeProjectiles>
+
+        <!-- 只传递信号，不传递具体参数 -->
+        <enableSectorSurveillance>true</enableSectorSurveillance>
+
+        <!-- 可视化 -->
+        <showStrafePreview>true</showStrafePreview>
+        <strafePreviewColor>(1.0,0.3,0.1,0.2)</strafePreviewColor>
+
+        <!-- 预览配置 -->
+        <showSectorPreview>true</showSectorPreview>
+        <sectorPreviewColor>(0.3,0.7,1.0,0.3)</sectorPreviewColor>
+      </li>
+    </comps>
+  </AbilityDef>
 </Defs>

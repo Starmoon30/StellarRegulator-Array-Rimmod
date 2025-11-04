@@ -284,7 +284,7 @@
           <maskPath>SRA/Pawn/Mechanoid/AllegianceOverlays/None</maskPath>
           <shaderType>CutoutWithOverlay</shaderType>
           <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>1.5</drawSize>
+          <drawSize>1.8</drawSize>
         </bodyGraphicData>
       </li>
     </lifeStages>
