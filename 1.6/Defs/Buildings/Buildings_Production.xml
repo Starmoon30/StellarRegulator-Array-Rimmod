@@ -80,9 +80,10 @@
     <label>铸星神械-轴突</label>
     <description>铸星神械-轴突</description>
     <graphicData>
-      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <texPath>SRA/Building/SRA_Astronomical_Fabrications_Main</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(6,6)</drawSize>
+      <drawSize>(7,7.4)</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -91,7 +92,7 @@
       </damageData>
     </graphicData>
     <size>(5,5)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>0</pathCost>
     <canOverlapZones>false</canOverlapZones>
@@ -145,6 +146,14 @@
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
       </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
     </damageMultipliers>
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -185,7 +194,7 @@
       </damageData>
     </graphicData>
     <size>(3,3)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>0</pathCost>
     <canOverlapZones>false</canOverlapZones>
@@ -214,6 +223,14 @@
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
       </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
     </damageMultipliers>
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -234,6 +251,60 @@
     </placeWorkers>
   </ThingDef>
 
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRA_2X1HydroponicsBasin</defName>
+    <label>SRA_2X1HydroponicsBasin</label>
+    <description>SRA_2X1HydroponicsBasin</description>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <thingClass>Building_PlantGrower</thingClass>
+    <graphicData>
+      <texPath>SRA/Building/SRA_2X1HydroponicsBasin</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>0</pathCost>
+    <constructEffect>ConstructMetal</constructEffect>
+    <fillPercent>0.30</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <statBases>
+      <WorkToBuild>1600</WorkToBuild>
+      <MaxHitPoints>1600</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Cleanliness>4</Cleanliness>
+    </statBases>
+    <size>(2,1)</size>
+    <costList>
+      <SRA_Core>2</SRA_Core>
+    </costList>
+    <fertility>8</fertility>
+    <building>
+      <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+      <sowTag>Ground</sowTag>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>40</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
+  </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
     <defName>SRA_HydroponicsBasin</defName>
@@ -345,6 +416,14 @@
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
       </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
     </damageMultipliers>
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -421,6 +500,14 @@
       <li>
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
       </li>
     </damageMultipliers>
     <rotatable>false</rotatable>

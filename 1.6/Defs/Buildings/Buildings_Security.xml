@@ -52,11 +52,11 @@
       </li>
       <li>
         <damageDef>Bomb</damageDef>
-        <multiplier>0.5</multiplier>
+        <multiplier>0.01</multiplier>
       </li>
       <li>
-        <damageDef>EMP</damageDef>
-        <multiplier>0.5</multiplier>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
       </li>
     </damageMultipliers>
     <tickerType>Normal</tickerType>
@@ -191,11 +191,11 @@
       </li>
       <li>
         <damageDef>Bomb</damageDef>
-        <multiplier>0.5</multiplier>
+        <multiplier>0.01</multiplier>
       </li>
       <li>
-        <damageDef>EMP</damageDef>
-        <multiplier>0.5</multiplier>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
       </li>
     </damageMultipliers>
     <statBases>
@@ -301,7 +301,7 @@
           <li>
             <radius>3</radius>
             <damageDef>SRA_Spear_of_SRA_burn</damageDef>
-            <damageAmount>80</damageAmount>
+            <damageAmount>640</damageAmount>
             <armorPenetration>8</armorPenetration>
             <explosionSound>Explosion_EMP</explosionSound>
             <explosionDamageFalloff>true</explosionDamageFalloff>
@@ -406,11 +406,11 @@
       </li>
       <li>
         <damageDef>Bomb</damageDef>
-        <multiplier>0.5</multiplier>
+        <multiplier>0.01</multiplier>
       </li>
       <li>
-        <damageDef>EMP</damageDef>
-        <multiplier>0.5</multiplier>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
       </li>
     </damageMultipliers>
     <tickerType>Normal</tickerType>
@@ -510,7 +510,7 @@
       </damageData>
     </graphicData>
     <size>(2,2)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <canOverlapZones>false</canOverlapZones>
@@ -546,6 +546,14 @@
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
       </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
     </damageMultipliers>
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -579,7 +587,7 @@
       </damageData>
     </graphicData>
     <size>(2,2)</size>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <canOverlapZones>false</canOverlapZones>
@@ -615,6 +623,14 @@
       <li>
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
       </li>
     </damageMultipliers>
     <rotatable>false</rotatable>

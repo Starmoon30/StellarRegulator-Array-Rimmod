@@ -616,7 +616,9 @@
 		</graphicData>
 		<uiIconScale>1.5</uiIconScale>
     	<uiIconPath>SRA/Weapon/SRA_BlastingLaser_UI</uiIconPath>
+		<tickerType>Normal</tickerType>
 		<comps>
+      		<li Class="SRA.CompProperties_SustainedShoot" /> <!--扫射转移，需要<tickerType>和<verbClass>支持-->
 			<li Class="SRA.CompProperties_WeaponRenderDynamic">
 				<TexturePath>SRA/Weapon/SRA_BlastingLaser_LightDy</TexturePath>
 				<totalFrames>15</totalFrames>
@@ -633,7 +635,7 @@
 			<AccuracyShort>0.4</AccuracyShort>
 			<AccuracyMedium>0.35</AccuracyMedium>
 			<AccuracyLong>0.3</AccuracyLong>
-			<RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
 			<Flammability>0</Flammability>
 		</statBases>
 		<tradeability>None</tradeability>
@@ -647,10 +649,10 @@
 		</costList>
 		<verbs>
 			<li>
-				<verbClass>Verb_Shoot</verbClass>
+				<verbClass>SRA.Verb_ShootSustained</verbClass>
 				<defaultProjectile>SRABullet_BlastingLaser</defaultProjectile>
 				<hasStandardCommand>true</hasStandardCommand>
-				<warmupTime>0.1</warmupTime>
+				<warmupTime>2</warmupTime>
 				<range>48</range>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<burstShotCount>4</burstShotCount>

@@ -76,6 +76,14 @@
         <damageDef>Flame</damageDef>
         <multiplier>0</multiplier>
       </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
     </damageMultipliers>
     <rotatable>false</rotatable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>

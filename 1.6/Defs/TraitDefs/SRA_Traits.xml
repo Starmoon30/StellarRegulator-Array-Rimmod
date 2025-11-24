@@ -13,9 +13,9 @@
           <SocialImpact>0.2</SocialImpact>
           <MoveSpeed>2</MoveSpeed>
           <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+          <PainShockThreshold>2</PainShockThreshold>
         </statOffsets>
         <statFactors>
-          <PainShockThreshold>0</PainShockThreshold>
           <MentalBreakThreshold>0</MentalBreakThreshold>
           <RestFallRateFactor>0</RestFallRateFactor>
           <IncomingDamageFactor>0.1</IncomingDamageFactor>

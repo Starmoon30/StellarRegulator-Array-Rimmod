@@ -22,6 +22,8 @@
   <SRA_Astronomical_Fabrications_Sub.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械-树突是相对较小的工业集群，它在深层与轴突相连并扩展它的规模，得益于轴突提供的一系列支持，树突的成本相对较小，效率也更高。\n\n&lt;color=#FFFF44&gt;铸星神械-轴突每链接一个树突，每天就能多生产2个星规-分形演化核心&lt;/color&gt;</SRA_Astronomical_Fabrications_Sub.description>
   <SRA_HydroponicsBasin.label>星规-定向催化农业</SRA_HydroponicsBasin.label>
   <SRA_HydroponicsBasin.description>经由自适应的植物管理系统，通过对作物生理过程的编辑来优化其产出效率。运行时需要消耗电力，断电后作物会死亡。</SRA_HydroponicsBasin.description>
+  <SRA_2X1HydroponicsBasin.label>星规-微型催化农业</SRA_2X1HydroponicsBasin.label>
+  <SRA_2X1HydroponicsBasin.description>经由自适应的植物管理系统，通过对作物生理过程的编辑来优化其产出效率。运行时需要消耗电力，断电后作物会死亡。\n这个版本的设施占地面积更小，且没有安装太阳灯。</SRA_2X1HydroponicsBasin.description>
   <SRA_Battery.label>星规-储能水晶</SRA_Battery.label>
   <SRA_Battery.description>一颗专为储存能量制作的星辉水晶被保存在这个基座内，尽管这个建筑更多时候扮演场景装饰的角色，但也能很好的完成它的本职工作。\n星规阵列受到科尔先驱的影响，在高密度储能方向上发展良多。许多星规阵列舰船不搭载反应堆而是直接携带储能阵列来满足全部能源需要。</SRA_Battery.description>
   
