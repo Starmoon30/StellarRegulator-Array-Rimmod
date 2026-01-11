@@ -974,6 +974,12 @@
 		<uiIconScale>1.5</uiIconScale>
     	<uiIconPath>SRA/Weapon/SRA_ScytheB</uiIconPath>
 		<tickerType>Normal</tickerType>
+		<recipeMaker Inherit="False">
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+		</recipeMaker>
 		<comps>
       		<li Class="SRA.CompProperties_SustainedShoot" /> <!--扫射转移，需要<tickerType>和<verbClass>支持-->
     		<li Class="SRA.CompProperties_WeaponHediffGiver">
@@ -1109,6 +1115,12 @@
 		</graphicData>
 		<uiIconScale>1.5</uiIconScale>
     	<uiIconPath>SRA/Weapon/SRA_ScytheC</uiIconPath>
+		<recipeMaker Inherit="False">
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+		</recipeMaker>
 		<comps>
     		<li Class="SRA.CompProperties_WeaponHediffGiver">
          		<hediff>SRA_Scythe_Hediff</hediff>
