@@ -196,13 +196,22 @@
 		</equippedStatOffsets>
 		<tools>
 			<li>
-				<label>星辉律揽之锋</label>
+				<label>edge</label>
 				<capacities>
-					<li>Cut</li>
-					<li>Stab</li>
+					<li>SRA_Long_LanceAOE</li>
 				</capacities>
 				<power>160</power>
 				<cooldownTime>0.5</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>160</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>40</amount>
+        			</li>
+				</extraMeleeDamages>
 			</li>
 		</tools>
 	</ThingDef>
@@ -271,7 +280,7 @@
 		<defName>SRABullet_SML_Mass_Drivers</defName>
 		<label>星规-星弧破碎能量束</label>
 		<graphicData>
-			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2.4</drawSize>
@@ -371,7 +380,7 @@
 		<label>星规-光辉之冠脉冲束</label>
 		<thingClass>SRA.Projectile_BulletWithEffect</thingClass>
 		<graphicData>
-			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2.4</drawSize>
@@ -461,7 +470,7 @@
 		<defName>SRABulle_Railgun</defName>
 		<label>星规-呼啸雷霆能量束</label>
 		<graphicData>
-			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>2.4</drawSize>
@@ -574,7 +583,7 @@
 		<label>星规-风雪骤灭能量束</label>
 		<thingClass>SRA.Projectile_BulletWithEffect</thingClass>
 		<graphicData>
-			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 			<drawSize>1.2</drawSize>
@@ -870,6 +879,341 @@
 		</tools>
 	</ThingDef>
 
+	<ThingDef ParentName="SRA_WeaponMelee_Ultra">
+		<defName>SRA_Scythe</defName>
+		<label>SRA_Scythe</label>
+		<description>SRA_Scythe</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Scythe_Hediff</HediffDef>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<tradeability>None</tradeability>
+		<statBases>
+			<MarketValue>32000</MarketValue>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<soundInteract>Interact_BladelinkPlasmaSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkPlasmaSword</meleeHitSound>
+		<smeltable>false</smeltable>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>SRA/Weapon/SRA_Scythe</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+    	<uiIconPath>SRA/Weapon/SRA_Scythe_UI</uiIconPath>
+		<uiIconScale>1.5</uiIconScale>
+		<!-- Can't inherit comps because we need to override CompEquippable with CompEquippableAbility -->
+    	<!-- If changes are made to the comps of BaseHumanMakeableGun or parents then they will need to be replicated here -->
+    	<comps Inherit="False">
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Scythe_Hediff</hediff>
+        	</li>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_Scythe_LightDy</TexturePath>
+				<totalFrames>1</totalFrames>
+				<ticksPerFrame>2</ticksPerFrame>
+	   		</li>
+      		<li Class="CompProperties_EquippableAbility">
+        		<abilityDef>SRA_Long_Lance_Ability</abilityDef>
+      		</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+			<li Class="CompProperties_Biocodable" />
+      		<li Class="CompProperties_Forbiddable"/>
+      		<li Class="CompProperties_Styleable"/>
+    	</comps>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>SRA_ScytheAOE</li>
+				</capacities>
+				<power>80</power>
+				<cooldownTime>2</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>80</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>20</amount>
+        			</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="SRA_WeaponBase_Spacer">
+		<defName>SRA_ScytheB</defName>
+		<label>SRA_ScytheB</label>
+		<description>SRA_ScytheB</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Scythe_Hediff</HediffDef>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_ScytheB</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<uiIconScale>1.5</uiIconScale>
+    	<uiIconPath>SRA/Weapon/SRA_ScytheB</uiIconPath>
+		<tickerType>Normal</tickerType>
+		<comps>
+      		<li Class="SRA.CompProperties_SustainedShoot" /> <!--扫射转移，需要<tickerType>和<verbClass>支持-->
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Scythe_Hediff</hediff>
+        	</li>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_ScytheB_LightDy</TexturePath>
+				<totalFrames>1</totalFrames>
+				<ticksPerFrame>2</ticksPerFrame>
+	   		</li>
+    	</comps>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<statBases>
+			<MarketValue>3200</MarketValue>
+			<WorkToMake>32000</WorkToMake>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>0.4</AccuracyShort>
+			<AccuracyMedium>0.35</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
+			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>SRA.Verb_ShootSustained</verbClass>
+				<defaultProjectile>SRABullet_ScytheB</defaultProjectile>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>1</warmupTime>
+				<range>48</range>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<burstShotCount>4</burstShotCount>
+				<soundCast>Shot_BeamRepeater</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>5</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>SRA_ScytheAOE</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>2</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>40</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>10</amount>
+        			</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>SRABullet_ScytheB</defName>
+		<label>SRABullet_ScytheB</label>
+		<thingClass>SRA.Projectile_MultiExplosive_Beam</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>SRA_Spear_of_SRA_burn</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<beamMoteDef>SRAMote_Pulse_Beam_Weapon</beamMoteDef>
+			<beamStartOffset>0</beamStartOffset>
+			<armorPenetrationBase>8</armorPenetrationBase>
+		</projectile>
+		<modExtensions>
+			<li Class="SRA.MultiExplosive_BeamExtension">
+				<MultiExplosive_Beams>
+					<li>
+						<radius>1</radius>
+						<damageDef>SRA_Spear_of_SRA_burn</damageDef>
+						<damageAmount>32</damageAmount>
+						<armorPenetration>8</armorPenetration>
+						<explosionSound>Explosion_EMP</explosionSound>
+						<explosionDamageFalloff>true</explosionDamageFalloff>
+						<onlyAntiHostile>true</onlyAntiHostile>
+					</li>
+					<li>
+						<radius>2</radius>
+						<damageDef>EMP</damageDef>
+						<damageAmount>32</damageAmount>
+						<armorPenetration>8</armorPenetration>
+						<explosionSound>Explosion_EMP</explosionSound>
+						<explosionDamageFalloff>true</explosionDamageFalloff>
+						<onlyAntiHostile>true</onlyAntiHostile>
+					</li>
+					<li>
+						<radius>2</radius>
+						<damageDef>Bomb</damageDef>
+						<damageAmount>16</damageAmount>
+						<armorPenetration>4</armorPenetration>
+						<explosionSound>Explosion_Bomb</explosionSound>
+						<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+						<explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks>
+						<explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+						<onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+						<!-- 现阶段就支持这么多参数 -->
+					</li>
+				</MultiExplosive_Beams>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	<ThingDef ParentName="SRA_WeaponBase_Spacer">
+		<defName>SRA_ScytheC</defName>
+		<label>SRA_ScytheC</label>
+		<description>SRA_ScytheC</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Scythe_Hediff</HediffDef>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>SRA/Weapon/SRA_ScytheC</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<uiIconScale>1.5</uiIconScale>
+    	<uiIconPath>SRA/Weapon/SRA_ScytheC</uiIconPath>
+		<comps>
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Scythe_Hediff</hediff>
+        	</li>
+			<li Class="SRA.CompProperties_WeaponRenderDynamic">
+				<TexturePath>SRA/Weapon/SRA_ScytheC_LightDy</TexturePath>
+				<totalFrames>1</totalFrames>
+				<ticksPerFrame>2</ticksPerFrame>
+	   		</li>
+    	</comps>
+		<equippedAngleOffset>300</equippedAngleOffset>
+		<statBases>
+			<MarketValue>3200</MarketValue>
+			<WorkToMake>32000</WorkToMake>
+			<MaxHitPoints>6400</MaxHitPoints>
+			<Mass>1</Mass>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>1</AccuracyShort>
+			<AccuracyMedium>1</AccuracyMedium>
+			<AccuracyLong>1</AccuracyLong>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tradeability>None</tradeability>
+		<generateAllowChance>0</generateAllowChance>
+		<generateCommonality>0</generateCommonality>
+		<costList>
+			<SRA_Core>40</SRA_Core>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>SRABulle_ScytheC</defaultProjectile>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>1</warmupTime>
+				<range>32</range>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Interact_BladelinkPlasmaSword</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>5</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>SRA_ScytheAOE</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>2</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>SRA_Spear_of_SRA_burn</def>
+						<amount>40</amount>
+					</li>
+          			<li>
+            			<def>Stun</def>
+        				<amount>10</amount>
+        			</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>SRABulle_ScytheC</defName>
+		<label>SRABulle_ScytheC</label>
+		<graphicData>
+			<texPath>SRA/Projectile/SRA_Bullet_FlashSlash_A</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2.4</drawSize>
+		</graphicData>
+		<thingClass>SRA.Projectile_SRA_Railgun</thingClass>
+		<modExtensions>
+			<li Class="SRA.SRA_RailgunProjectileExtension">
+				<!-- 穿透设置 -->
+				<maxPenetrations>99</maxPenetrations>
+				<penetrationDelayTicks>1</penetrationDelayTicks>
+				<!-- 爆炸设置 -->
+				<explosionRadius>1.5</explosionRadius>
+				<explosionDamage>0</explosionDamage><!-- 小于等于0则使用子弹的伤害数值 -->
+				<explosionArmorPenetration>0</explosionArmorPenetration><!-- 小于等于0则使用子弹的穿透数值 -->
+				<damageDef>Bullet</damageDef>
+				<explosionSound>SRABulle_Railgun_Explosion</explosionSound>
+           		<explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            	<explosionEffectLifetimeTicks>360</explosionEffectLifetimeTicks> 
+				<explosionHediff>SRA_Railgun_debuff</explosionHediff>
+				<explosionHediffSeverity>0.05</explosionHediffSeverity>
+			</li>
+		</modExtensions>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>120</speed>
+			<extraDamages>
+				<li>
+					<def>EMP</def>
+					<amount>8</amount>
+				</li>
+			</extraDamages>
+		</projectile>
+	</ThingDef>
 
 	<ThingDef ParentName="SRA_WeaponMelee_Abyss">
 		<defName>SRA_Sword_of_Hidra</defName>
@@ -883,6 +1227,11 @@
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
 		</statBases>
+		<comps>
+    		<li Class="SRA.CompProperties_WeaponHediffGiver">
+         		<hediff>SRA_Sword_of_Hidra_Hediff</hediff>
+        	</li>
+    	</comps>
 		<generateAllowChance>0</generateAllowChance>
 		<generateCommonality>0</generateCommonality>
 		<costList>
@@ -914,8 +1263,8 @@
 						<amount>16</amount>
 					</li>
 					<li>
-						<def>SRA_Spear_of_SRA_burn</def>
-						<amount>32</amount>
+						<def>SRA_Metabyss_burn</def>
+						<amount>160</amount>
 					</li>
 				</extraMeleeDamages>
 			</li>

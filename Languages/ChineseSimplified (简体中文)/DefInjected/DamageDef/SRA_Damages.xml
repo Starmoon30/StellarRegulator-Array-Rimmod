@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
+  <SRA_Frostbite.label>热能抽离</SRA_Frostbite.label>
+  <SRA_Frostbite.deathMessage>{0} 的热量被抽干了。</SRA_Frostbite.deathMessage>
+
+  <SRA_Metabyss_burn.label>完型崩解</SRA_Metabyss_burn.label>
+  <SRA_Metabyss_burn.deathMessage>{0}归于混沌。</SRA_Metabyss_burn.deathMessage>
+  
   <SRA_Spear_of_SRA_burn.label>相位崩解</SRA_Spear_of_SRA_burn.label>
   <SRA_Spear_of_SRA_burn.deathMessage>{0}湮灭了。</SRA_Spear_of_SRA_burn.deathMessage>
   

@@ -83,7 +83,7 @@
       <texPath>SRA/Building/SRA_Astronomical_Fabrications_Main</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(7,7.4)</drawSize>
-      <drawOffset>(0,0,0.5)</drawOffset>
+      <drawOffset>(0,0,0.6)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>

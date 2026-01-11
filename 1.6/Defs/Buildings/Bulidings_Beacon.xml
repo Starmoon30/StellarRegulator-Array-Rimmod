@@ -147,6 +147,7 @@
 		<uiIconScale>1.25</uiIconScale>
 		<castEdgeShadows>false</castEdgeShadows>
 		<size>(2,2)</size>
+    	<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<costList>
 			<SRA_Core>2000</SRA_Core>
 		</costList>

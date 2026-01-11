@@ -36,7 +36,7 @@
   <ThingDef ParentName="MoteBase">
     <defName>SRA_Mote_ChargeLanceShot</defName>
     <graphicData>
-      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
       <shaderType>MoteGlow</shaderType>
     </graphicData>
     <altitudeLayer>Projectile</altitudeLayer>

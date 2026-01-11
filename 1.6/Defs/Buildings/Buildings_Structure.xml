@@ -122,7 +122,7 @@
     <defName>SRA_SRAAutodoor</defName>
     <label>星规-星辉分形自动门</label>
     <description>星辉分形组成的自动门，坚固耐用。抵抗爆炸和破墙伤害。</description>
-    <thingClass>Building_Door</thingClass>
+    <thingClass>SRA.Building_VacDoor</thingClass>
     <category>Building</category>
     <altitudeLayer>DoorMoveable</altitudeLayer>
     <fillPercent>1</fillPercent>

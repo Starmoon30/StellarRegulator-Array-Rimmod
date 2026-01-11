@@ -8,6 +8,12 @@
     <iconPath>SRA/Icons/Genes/SRA_Gene_Neversleep</iconPath>
     <displayCategory>Archite</displayCategory>
     <marketValueFactor>1.25</marketValueFactor>
+    
+    <forcedTraits MayRequire="Ludeon.RimWorld.Anomaly">
+      <li>
+        <def>PerfectMemory</def>
+      </li>
+    </forcedTraits>
     <statFactors>
       <RestFallRateFactor>0</RestFallRateFactor>
       <Flammability>0</Flammability>

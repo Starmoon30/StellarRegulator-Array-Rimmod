@@ -32,4 +32,13 @@
   <SRAResurrectionAlready.label>星规-守护之壳</SRAResurrectionAlready.label>
   <SRAResurrectionAlready.description>这个单位刚刚遭遇了足以致命的打击，眼下被保护场所笼罩，正在迅速恢复身上的损伤。</SRAResurrectionAlready.description>
 
+  <SRA_Double_Blade_Hediff.label>星规-寒渊惜别</SRA_Double_Blade_Hediff.label>
+  <SRA_Double_Blade_Hediff.description>这个单位因为装备了寒渊惜别，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色格挡低于32点的伤害，并在遭到高额伤害时被迅速击破，然而，它也可以快速恢复并重新开始格挡。</SRA_Double_Blade_Hediff.description>
+
+  <SRA_Long_Lance_Hediff.label>星规-征洋戮海</SRA_Long_Lance_Hediff.label>
+  <SRA_Long_Lance_Hediff.description>这个单位因为装备了征洋戮海，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的格挡能力。</SRA_Long_Lance_Hediff.description>
+
+  <SRA_Scythe_Hediff.label>星规-收割悲鸣</SRA_Scythe_Hediff.label>
+  <SRA_Scythe_Hediff.description>这个单位因为装备了收割悲鸣，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的次数格挡能力，它只能被高于16点的伤害消耗，它的损伤上限则使得它只会被大量的攻击次数击破。</SRA_Scythe_Hediff.description>
+
 </LanguageData>

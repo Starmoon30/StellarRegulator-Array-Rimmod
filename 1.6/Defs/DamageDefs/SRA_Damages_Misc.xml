@@ -14,14 +14,39 @@
       </additionalHediffs>
       <impactSoundType>Electric</impactSoundType>
     </DamageDef>
-	
+
+  <DamageDef>
+    <defName>SRA_Metabyss_burn</defName>
+    <label>完型崩解</label>
+    <workerClass>SRA.DamageWorker_AddInjury_NoDamageFactor</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} 湮灭了</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Electric</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <overkillPctToDestroyPart>0.9~1</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <defaultDamage>160</defaultDamage>
+    <defaultArmorPenetration>4</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
+    <ignoreShields>true</ignoreShields>
+    <modExtensions>
+      <li Class="SRA.DamageWorker_NoDamageFactor_Extension">
+        <penetrationFactor>1</penetrationFactor>
+      </li>
+    </modExtensions>
+  </DamageDef>
+
   <DamageDef>
     <defName>SRA_Spear_of_SRA_burn</defName>
     <label>相位崩解</label>
     <workerClass>DamageWorker_AddInjury</workerClass>
     <externalViolence>true</externalViolence>
     <deathMessage>{0} 湮灭了</deathMessage>
-    <hediff>BeamWound</hediff>
+    <hediff>Burn</hediff>
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Bullet</impactSoundType>
     <armorCategory>Heat</armorCategory>

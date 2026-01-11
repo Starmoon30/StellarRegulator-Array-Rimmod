@@ -535,7 +535,7 @@
     <defName>SRABulle_Mech_WarUnit_M_D</defName>
     <label>星规-「哨卫」压制脉冲束</label>
     <graphicData>
-      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>TransparentPostLight</shaderType>
       <drawSize>2.4</drawSize>
@@ -806,7 +806,7 @@
     <defName>SRABulle_Mech_WarUnit_M_A</defName>
     <label>星规-「屠猎」轰炸脉冲束</label>
     <graphicData>
-      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>TransparentPostLight</shaderType>
       <drawSize>2.4</drawSize>
@@ -1147,6 +1147,7 @@
       <li Class="CompProperties_ProjectileInterceptor">
         <radius>6</radius>
         <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <interceptAirProjectiles>true</interceptAirProjectiles>
         <color>(0.4, 0.4, 0.4)</color>
         <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
         <activeSound>BulletShield_Ambience</activeSound>
@@ -1156,7 +1157,7 @@
         <rechargeHitPointsIntervalTicks>90</rechargeHitPointsIntervalTicks>
         <minIdleAlpha>0.2</minIdleAlpha>
         <drawWithNoSelection>True</drawWithNoSelection>
-        <disarmedByEmpForTicks>900</disarmedByEmpForTicks>
+        <disarmedByEmpForTicks>0</disarmedByEmpForTicks>
         <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
       </li>
     </comps>
