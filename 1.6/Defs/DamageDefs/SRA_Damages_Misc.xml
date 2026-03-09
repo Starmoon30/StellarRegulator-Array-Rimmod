@@ -33,6 +33,14 @@
     <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
     <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
     <ignoreShields>true</ignoreShields>
+    <additionalHediffs>
+      <li>
+        <hediff>SRA_Metabyss_debuff</hediff>
+        <severityPerDamageDealt>0.005</severityPerDamageDealt>
+        <inverseStatScaling>true</inverseStatScaling>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
     <modExtensions>
       <li Class="SRA.DamageWorker_NoDamageFactor_Extension">
         <penetrationFactor>1</penetrationFactor>

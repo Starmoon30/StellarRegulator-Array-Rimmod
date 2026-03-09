@@ -41,4 +41,10 @@
   <SRA_Scythe_Hediff.label>星规-收割悲鸣</SRA_Scythe_Hediff.label>
   <SRA_Scythe_Hediff.description>这个单位因为装备了收割悲鸣，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的次数格挡能力，它只能被高于16点的伤害消耗，它的损伤上限则使得它只会被大量的攻击次数击破。</SRA_Scythe_Hediff.description>
 
+  <SRA_Sword_of_Hidra_Hediff.label>「息声」</SRA_Sword_of_Hidra_Hediff.label>
+  <SRA_Sword_of_Hidra_Hediff.description>&lt;color=#FF0000&gt;悚骇之物。&lt;/color&gt;</SRA_Sword_of_Hidra_Hediff.description>
+  <SRA_Metabyss_debuff.label>完型崩解</SRA_Metabyss_debuff.label>
+  <SRA_Metabyss_debuff.description>&lt;color=#FF0000&gt;失却差别，回归深渊。&lt;/color&gt;\n\n&lt;color=#FFFF44&gt;-这一效果会严重削弱战斗能力并增加受到的伤害。&lt;/color&gt;</SRA_Metabyss_debuff.description>
+
+
 </LanguageData>

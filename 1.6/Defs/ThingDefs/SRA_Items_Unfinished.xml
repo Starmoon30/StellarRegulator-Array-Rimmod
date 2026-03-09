@@ -6,7 +6,7 @@
     <label>未完成的星规物品</label>
     <description>未完成的星规物品</description>
     <statBases>
-      <Flammability>0.5</Flammability>
+      <Flammability>0</Flammability>
     </statBases>
     <graphicData>
       <texPath>Things/Item/Unfinished/UnfinishedHealthItem</texPath>

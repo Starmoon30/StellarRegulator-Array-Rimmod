@@ -87,4 +87,36 @@
       </li>
     </modExtensions>
   </ManeuverDef>
+
+	<ToolCapacityDef>
+    <defName>SRA_Sword_of_HidraAOE</defName>
+    <label>Cut</label>
+  </ToolCapacityDef>
+	<ManeuverDef>
+    <defName>SRA_Sword_of_HidraAOE</defName>
+    <requiredCapacity>SRA_Sword_of_HidraAOE</requiredCapacity>
+    <verb>
+      <verbClass>SRA.Verb_MeleeAttackDamage_AOE</verbClass>
+      <meleeDamageDef>SRA_Metabyss_burn</meleeDamageDef>
+    </verb>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>Maneuver_Slash_MeleeHit</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Slash_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Slash_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Slash_MeleeDodge</combatLogRulesDodge>
+		<modExtensions>
+      <li Class="SRA.MeleeAttackAOE_Extension">
+        <angle>240</angle>
+        <radius>1.5</radius>
+        <maxHitTarget>8</maxHitTarget>
+        <extraAccuracy>1</extraAccuracy>
+        <extraTracking>1</extraTracking>
+      </li>
+			<li Class="SRA.Effecter_Extension">
+        <effcterDef>SRA_SlashArc_Big_Red</effcterDef>
+      </li>
+    </modExtensions>
+  </ManeuverDef>
+
+  
 </Defs>

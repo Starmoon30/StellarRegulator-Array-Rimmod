@@ -56,16 +56,16 @@
 			</capMods>
 			<statFactors>
 				<StaggerDurationFactor>0</StaggerDurationFactor>
+				<AimingDelayFactor>0.5</AimingDelayFactor>
+          		<MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+				<RangedCooldownFactor>0.5</RangedCooldownFactor>
 			</statFactors>
 			<statOffsets>
 				<ArmorRating_Sharp>2</ArmorRating_Sharp>
 				<ArmorRating_Blunt>2</ArmorRating_Blunt>
 				<ArmorRating_Heat>2</ArmorRating_Heat>
-				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
-				<ComfyTemperatureMax>200</ComfyTemperatureMax>
-				<AimingDelayFactor>-0.5</AimingDelayFactor>
-          		<MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
-				<RangedCooldownFactor>-0.5</RangedCooldownFactor>
+				<ComfyTemperatureMin>-400</ComfyTemperatureMin>
+				<ComfyTemperatureMax>2000</ComfyTemperatureMax>
 				<MoveSpeed>4</MoveSpeed>
 				<DecompressionResistance MayRequire="kentington.saveourship2">1</DecompressionResistance>
 				<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">10</VacuumSpeedMultiplier>
@@ -121,6 +121,9 @@
 	<incompatibleWithHediffTags>
 		<li>ArmorGland</li>
 	</incompatibleWithHediffTags>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
 	</RecipeDef>
 
 	<!-- 手术 -->
@@ -154,6 +157,9 @@
     <incompatibleWithHediffTags>
 		<li>SRA_Little_Regeneration</li>
 	</incompatibleWithHediffTags>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
 	</RecipeDef>
 
 	<!-- 手术 -->
@@ -187,6 +193,9 @@
     <incompatibleWithHediffTags>
 		<li>SRA_MechBandwidth</li>
 	</incompatibleWithHediffTags>
+    <researchPrerequisites>
+      <li>SRA_tech_30_7411</li>
+    </researchPrerequisites>
 	</RecipeDef>
 
 	

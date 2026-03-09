@@ -162,6 +162,46 @@
   </EffecterDef>
 
   
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>SRABullet_L_Missle_Tail</defName>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>.1</solidTime>
+    <fadeOutTime>.25</fadeOutTime>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <growthRate>4</growthRate>
+    <graphicData>
+      <texPath>SRA/Mote/SRA_small_particle</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>1</drawSize>
+      <color>(0,1,1,1)</color>
+    </graphicData>
+  </FleckDef>
+  
+  
+  <!-- 导弹锁定 -->
+  <ThingDef ParentName="MoteBase">
+	<defName>SRA_Mote_MissileLocked</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+	<!--thingClass>MoteAttached</thingClass-->
+	<thingClass>SRA.Mote_ScaleAndRotate</thingClass>
+	<tickerType>Normal</tickerType>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <fadeOutTime>0</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+	  <fadeOutUnmaintained>True</fadeOutUnmaintained>
+	  <growthRate>0.4</growthRate>
+    </mote>
+	<graphicData>
+	  <drawSize>4.5</drawSize>
+      <texPath>SRA/Mote/SRA_Mote_MissileLocked</texPath>
+      <color>(0, 1, 1, 1)</color>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </ThingDef>
+
+  
   <ThingDef ParentName="MoteBase">
     <defName>SRA_Mote_halo_giant</defName>
     <graphicData>
@@ -257,6 +297,43 @@
         <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
         <moteDef>SRA_Mote_glow_giant</moteDef>
         <scale>1~1</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <color>(0.60,0.90,0.90)</color>
+      </li>
+    </children>
+  </EffecterDef>
+  <EffecterDef>
+    <defName>SRA_GiantExplosion_Large</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>SRA_Mote_halo_giant</moteDef>
+        <scale>2</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <color>(0.60,0.90,0.90)</color>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>SRA_Mote_cloud</moteDef>
+        <burstCount>4</burstCount>
+        <speed>0.4~0.8</speed>
+        <scale>2</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <color>(0.60,0.90,0.90)</color>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>SRA_Mote_03polar_swirl</moteDef>
+        <burstCount>8</burstCount>
+        <speed>0.4~0.8</speed>
+        <scale>2~4</scale>
+        <spawnLocType>OnSource</spawnLocType>
+        <color>(0.60,0.90,0.90)</color>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>SRA_Mote_glow_giant</moteDef>
+        <scale>2</scale>
         <spawnLocType>OnSource</spawnLocType>
         <color>(0.60,0.90,0.90)</color>
       </li>
@@ -423,6 +500,40 @@
             <fleckDef>SRA_FlashSlash_Big</fleckDef>
             <burstCount>1</burstCount>
             <color>(0.5,1,1,0.8)</color>
+            <scale>5.5~6.5</scale>
+            <speed>0.5</speed>
+            <angle>-15~15</angle>
+            <spawnLocType>OnSource</spawnLocType>
+            <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+          </li>
+        </children>
+      </li>
+    </children>
+    <positionRadius>0.1</positionRadius>
+  </EffecterDef>
+  
+  <EffecterDef>
+    <defName>SRA_SlashArc_Big_Red</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_Random</subEffecterClass>
+        <children>
+          <li>
+            <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+            <fleckDef>SRA_FlashSlash_Big</fleckDef>
+            <burstCount>1</burstCount>
+            <color>(1,0,0,0.5)</color>
+            <scale>6.5~7.5</scale>
+            <speed>0.5</speed>
+            <angle>-35~35</angle>
+            <spawnLocType>OnSource</spawnLocType>
+            <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+          </li>
+          <li>
+            <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+            <fleckDef>SRA_FlashSlash_Big</fleckDef>
+            <burstCount>1</burstCount>
+            <color>(1,0,0,0.8)</color>
             <scale>5.5~6.5</scale>
             <speed>0.5</speed>
             <angle>-15~15</angle>

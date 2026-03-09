@@ -494,6 +494,360 @@
     </modExtensions>
   </ThingDef>
 
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_L_Missle</defName>
+    <label>SRATurret_L_Missle</label>
+    <description>SRATurret_L_Missle</description>
+		<thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>0.5</speed>
+	  	</li>
+  	</modExtensions>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_L_Missle_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(5, 5)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Missle_UI</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <size>(5,5)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
+      <li Class="SRA.CompProperties_ForceTargetable" />
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+    </damageMultipliers>
+    <statBases>
+      <MaxHitPoints>12800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>30</Mass>
+      <ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+      <Beauty>20</Beauty>
+    </statBases>
+    <building>
+      <combatPower>1280</combatPower>
+      <turretGunDef>SRATurretGun_L_Missle</turretGunDef>
+	  	<turretTopDrawSize>8</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
+      <turretBurstWarmupTime>0.5</turretBurstWarmupTime>
+      <turretBurstCooldownTime>32</turretBurstCooldownTime>
+    </building>
+	  <costList>
+      <SRA_Core>800</SRA_Core>
+    </costList>
+    <designationCategory>SRA_Building</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	  <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>SRA_BaseTurret</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>SRATurretGun_L_Missle</defName>
+    <label>SRATurretGun_L_Missle</label>
+    <description>SRATurretGun_L_Missle</description>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_L_Missle_Top</texPath>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <verbs>
+      <li>
+        <verbClass>SRA.Verb_ShootWithOffset</verbClass>
+        <defaultProjectile>SRABullet_L_Missle</defaultProjectile>
+        <ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
+        <warmupTime>0</warmupTime>
+        <minRange>8</minRange>
+        <range>500</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>SRA_SML_Mass_Drivers</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <requireLineOfSight>false</requireLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正西负东，正南负北（炮塔朝北） -->
+                <li>(0, -3.2)</li>   <!-- 第一次射击偏移 -->
+            </offsets>
+        </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Missle</defName>
+    <label>SRABullet_L_Missle</label>
+    <thingClass>SRA.Projectile_MultiExplosive_NorthArcTrail</thingClass>
+    <graphicData>
+      <texPath>SRA/Projectile/SRABullet_L_Missle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>3.5</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>6400</damageAmountBase>
+			<armorPenetrationBase>8</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>30</speed>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
+        <multiexplosions>
+          <li>
+            <radius>8</radius>
+            <damageDef>EMP</damageDef>
+            <damageAmount>80</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>16</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>16</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>SRA_GiantExplosion_Large</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>false</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </multiexplosions>
+        <bulletLaunches>
+          <li>
+            <projectileDef>SRABullet_L_Missle_SubA</projectileDef>
+            <bulletCount>4</bulletCount>
+            <angleRange>360</angleRange>
+            <distanceRange>
+              <min>0</min>
+              <max>0</max>
+            </distanceRange>
+          </li>
+        </bulletLaunches>
+      </li>
+      <li Class="SRA.TailBulletDef">
+        <tailFleckDef>SRABullet_L_Missle_Tail</tailFleckDef>  <!-- 尾迹 -->
+      </li>
+      <li Class="SRA.NorthArcModExtension">
+        <northOffsetDistance>0</northOffsetDistance> <!-- 弹道曲线高度 -->
+        <curveSteepness>1</curveSteepness> <!-- 控制曲线的形状，值越大曲线越陡峭 -->
+        <useArcTrajectory>true</useArcTrajectory> <!-- 是否使用弧形轨迹（默认为true，如果为false则使用直线轨迹） -->
+        <trajectoryHeightPoints>
+          <li>
+            <progress>0.0</progress>
+            <height>0</height>
+          </li>
+          <li>
+            <progress>0.2</progress>
+            <height>10</height>
+          </li>
+          <li>
+            <progress>0.4</progress>
+            <height>5</height>
+          </li>
+          <li>
+            <progress>0.8</progress>
+            <height>4</height>
+          </li>
+          <li>
+            <progress>0.9</progress>
+            <height>2</height>
+          </li>
+          <li>
+            <progress>1</progress>
+            <height>0</height>
+          </li>
+        </trajectoryHeightPoints> <!-- 弹道高度曲线控制点列表，如果为 null 或空则使用默认抛物线 -->
+        <enableTracking>true</enableTracking> <!-- 是否启用目标追踪功能（默认为false） -->
+        <targetSearchRadius>1</targetSearchRadius> <!-- 目标搜索半径（格数） -->
+        <fallbackSearchRadius>1</fallbackSearchRadius> <!-- 未找到目标时的随机位置搜索半径（格数） -->
+        <maxTargetLostDistance>16</maxTargetLostDistance> <!-- 目标移动超过此距离时视为丢失（格数） -->
+        <lockIndicatorMoteDef>SRA_Mote_MissileLocked</lockIndicatorMoteDef> <!--  锁定指示器的 ThingDef 名称 -->
+        <lockIndicatorScale>2</lockIndicatorScale>  <!-- 锁定指示器的缩放比例，0 表示使用默认值（射弹尺寸 * 2） -->
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Missle_SubA</defName>
+    <label>SRABullet_L_Missle_SubA</label>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>0</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>640</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>240</speed>
+			<explosionDelay>60</explosionDelay>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
+        <multiexplosions>
+          <li>
+            <radius>8</radius>
+            <damageDef>EMP</damageDef>
+            <damageAmount>80</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>8</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>8</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>SRA_GiantExplosion</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>false</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </multiexplosions>
+        <bulletLaunches>
+          <li>
+            <projectileDef>SRABullet_L_Missle_SubB</projectileDef>
+            <bulletCount>4</bulletCount>
+            <angleRange>360</angleRange>
+            <distanceRange>
+              <min>8</min>
+              <max>8</max>
+            </distanceRange>
+          </li>
+        </bulletLaunches>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Missle_SubB</defName>
+    <label>SRABullet_L_Missle_SubB</label>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+    <graphicData>
+      <texPath>SRA/Weapon/SRA_Weapon_Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>0</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>640</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>240</speed>
+			<explosionDelay>120</explosionDelay>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
+        <multiexplosions>
+          <li>
+            <radius>8</radius>
+            <damageDef>EMP</damageDef>
+            <damageAmount>80</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>3</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+          </li>
+          <li>
+            <radius>8</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>640</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>SRA_GiantExplosion</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>false</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </multiexplosions>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  
+
   <ThingDef ParentName="BuildingBase">
     <defName>SRA_DefenseDroneTower</defName>
     <label>星规-哨戒尖塔</label>

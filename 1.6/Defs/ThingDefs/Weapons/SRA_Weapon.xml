@@ -751,6 +751,9 @@
 			<Mass>1</Mass>
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>240</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>1.5</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>4</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
 		</statBases>
 		<generateAllowChance>0</generateAllowChance>
 		<generateCommonality>0</generateCommonality>
@@ -814,6 +817,9 @@
 			<Mass>1</Mass>
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>120</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>2.5</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>8</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
 		</statBases>
 		<generateAllowChance>0</generateAllowChance>
 		<generateCommonality>0</generateCommonality>
@@ -894,6 +900,9 @@
 			<Mass>1</Mass>
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>240</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>2</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>8</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
 		</statBases>
 		<generateAllowChance>0</generateAllowChance>
 		<generateCommonality>0</generateCommonality>
@@ -1003,6 +1012,9 @@
 			<AccuracyLong>0.3</AccuracyLong>
 			<RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
 			<Flammability>0</Flammability>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>240</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>2</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>8</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
 		</statBases>
 		<tradeability>None</tradeability>
 		<generateAllowChance>0</generateAllowChance>
@@ -1143,6 +1155,9 @@
 			<AccuracyLong>1</AccuracyLong>
 			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 			<Flammability>0</Flammability>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>240</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>2</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>8</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
 		</statBases>
 		<tradeability>None</tradeability>
 		<generateAllowChance>0</generateAllowChance>
@@ -1231,6 +1246,9 @@
 		<defName>SRA_Sword_of_Hidra</defName>
 		<label>Sacrilence</label>
 		<description>Mercy Ancient Nefera</description>
+		<descriptionHyperlinks>
+			<HediffDef>SRA_Metabyss_debuff</HediffDef>
+		</descriptionHyperlinks>
 		<useHitPoints>false</useHitPoints>
 		<tradeability>None</tradeability>
 		<statBases>
@@ -1238,6 +1256,11 @@
 			<Mass>1</Mass>
 			<Flammability>0</Flammability>
 			<DeteriorationRate>0</DeteriorationRate>
+      		<SRA_Stats_MeleeAttackDamage_AOE_angle>240</SRA_Stats_MeleeAttackDamage_AOE_angle>
+      		<SRA_Stats_MeleeAttackDamage_AOE_radius>1.5</SRA_Stats_MeleeAttackDamage_AOE_radius>
+      		<SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>8</SRA_Stats_MeleeAttackDamage_AOE_maxHitTarget>
+      		<SRA_Stats_MeleeAttackDamage_AOE_extraAccuracy>1</SRA_Stats_MeleeAttackDamage_AOE_extraAccuracy>
+      		<SRA_Stats_MeleeAttackDamage_AOE_extraTracking>1</SRA_Stats_MeleeAttackDamage_AOE_extraTracking>
 		</statBases>
 		<comps>
     		<li Class="SRA.CompProperties_WeaponHediffGiver">
@@ -1261,7 +1284,7 @@
 			<li>
 				<label>edge</label>
 				<capacities>
-					<li>Cut</li>
+					<li>SRA_Sword_of_HidraAOE</li>
 				</capacities>
 				<power>160</power>
 				<cooldownTime>0.5</cooldownTime>
@@ -1273,10 +1296,6 @@
 					<li>
 						<def>SRA_Frostbite</def>
 						<amount>16</amount>
-					</li>
-					<li>
-						<def>SRA_Metabyss_burn</def>
-						<amount>160</amount>
 					</li>
 				</extraMeleeDamages>
 			</li>

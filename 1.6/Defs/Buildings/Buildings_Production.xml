@@ -275,7 +275,7 @@
     <statBases>
       <WorkToBuild>1600</WorkToBuild>
       <MaxHitPoints>1600</MaxHitPoints>
-      <Flammability>0.5</Flammability>
+      <Flammability>0</Flammability>
       <Cleanliness>4</Cleanliness>
     </statBases>
     <size>(2,1)</size>
@@ -329,7 +329,7 @@
     <statBases>
       <WorkToBuild>3200</WorkToBuild>
       <MaxHitPoints>3200</MaxHitPoints>
-      <Flammability>0.5</Flammability>
+      <Flammability>0</Flammability>
       <Cleanliness>4</Cleanliness>
     </statBases>
     <size>(5,5)</size>

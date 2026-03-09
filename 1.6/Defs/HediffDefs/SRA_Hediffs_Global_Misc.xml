@@ -486,11 +486,11 @@
       <li Class="SRA.HediffCompProperties_SRABarrier">
         <maxBarrier>32</maxBarrier>
         <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
-        <DamageTakenMax>18</DamageTakenMax><!-- 小于等于0则不工作 -->
-        <DamageTakenReduce>16</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <DamageTakenMax>10</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
         <regenRate>8</regenRate>
         <regenDelay>0</regenDelay>
-        <rechargeCooldown>0</rechargeCooldown>
+        <rechargeCooldown>16</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
         <priority>1500</priority><!-- 承伤优先级，越大越先，int -->
       </li>
@@ -530,6 +530,101 @@
     </comps>
     <stages>
       <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="DiseaseBase">
+    <defName>SRA_Metabyss_debuff</defName>
+    <label>SRA_Metabyss_debuff</label>
+    <description>SRA_Metabyss_debuff_description</description>
+    <hediffClass>SRA.HediffWithSeverityLabel</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(255, 0, 0)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerSecond">
+        <severityPerSecond>-0.01</severityPerSecond>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsetsBySeverity>
+          <li>
+            <stat>IncomingDamageFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>AimingDelayFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>RangedCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>MeleeCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statOffsetsBySeverity>
+        <statFactorsBySeverity>
+          <li>
+            <stat>MoveSpeed</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Sharp</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Blunt</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Heat</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statFactorsBySeverity>
       </li>
     </stages>
   </HediffDef>

@@ -31,6 +31,7 @@
       <MaxHitPoints>1600</MaxHitPoints>
       <Mass>2</Mass>
       <Beauty>32</Beauty>
+      <Flammability>0</Flammability>
     </statBases>
     <uiOrder>2991</uiOrder>
     <passability>Standable</passability>
@@ -81,6 +82,7 @@
       <MaxHitPoints>1600</MaxHitPoints>
       <Mass>2</Mass>
       <Beauty>32</Beauty>
+      <Flammability>0</Flammability>
     </statBases>
     <costList>
       <SRA_Core>5</SRA_Core>
@@ -123,7 +125,7 @@
       <MaxHitPoints>640</MaxHitPoints>
       <WorkToBuild>1600</WorkToBuild>
       <Mass>2</Mass>
-      <Flammability>1.0</Flammability>
+      <Flammability>0</Flammability>
       <Beauty>16</Beauty>
       <Comfort>1.2</Comfort>
     </statBases>
@@ -168,7 +170,7 @@
       <MaxHitPoints>640</MaxHitPoints>
       <WorkToBuild>1600</WorkToBuild>
       <Mass>2</Mass>
-      <Flammability>1.0</Flammability>
+      <Flammability>0</Flammability>
       <Beauty>16</Beauty>
       <Comfort>1.2</Comfort>
     </statBases>
