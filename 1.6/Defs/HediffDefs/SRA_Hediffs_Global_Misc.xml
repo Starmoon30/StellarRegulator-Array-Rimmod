@@ -47,6 +47,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>0</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
       <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
@@ -104,6 +105,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
       <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
@@ -134,6 +136,7 @@
         <regenDelay>0</regenDelay>
         <rechargeCooldown>32</rechargeCooldown>
         <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
         <priority>100</priority><!-- 承伤优先级，越大越先，int -->
       </li>
       <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
