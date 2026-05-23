@@ -395,7 +395,6 @@
     </children>
   </EffecterDef>
 
-
   <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
     <defName>SRA_FlashSlash</defName>
     <growthRate>1.0</growthRate>

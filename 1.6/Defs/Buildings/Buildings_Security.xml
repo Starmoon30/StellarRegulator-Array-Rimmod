@@ -212,7 +212,7 @@
 	  	<turretTopDrawSize>5.5</turretTopDrawSize>
       <turretTopOffset>(0.12, 0)</turretTopOffset>
       <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
-      <turretBurstCooldownTime>2.0</turretBurstCooldownTime>
+      <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
     </building>
 	  <costList>
       <SRA_Core>800</SRA_Core>
@@ -680,7 +680,13 @@
         </bulletLaunches>
       </li>
       <li Class="SRA.TailBulletDef">
-        <tailFleckDef>SRABullet_L_Missle_Tail</tailFleckDef>  <!-- 尾迹 -->
+        <tailFlecks>
+          <li>
+            <tailFleckDef>SRABullet_L_Missle_Tail</tailFleckDef>  <!-- 尾迹 -->
+            <fleckMakeFleckTickMax>2</fleckMakeFleckTickMax>
+            <fleckDelayTicks>0</fleckDelayTicks>
+          </li>
+        </tailFlecks>
       </li>
       <li Class="SRA.NorthArcModExtension">
         <northOffsetDistance>0</northOffsetDistance> <!-- 弹道曲线高度 -->

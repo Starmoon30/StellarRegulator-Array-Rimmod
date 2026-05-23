@@ -93,9 +93,6 @@
     <Compile Include="SRAResurrectionBeacon_Patch.cs" />
     <Compile Include="SRABuilding_ResurrectionBeacon.cs" />
     <Compile Include="WorkGiver_EmptySRA_CoreContainer.cs" />
-    <Compile Include="PredefinedCharacterParmDef.cs" />
-    <Compile Include="HediffComp_StatusFlag.cs" />
-    <Compile Include="GameComponent_SRA_SRUtilTracker.cs" />
     <Compile Include="SectionLayer_SRAWall.cs" />
     <Compile Include="ThingDefOf.cs" />
     <Compile Include="Settings.cs" />
@@ -105,7 +102,6 @@
     <Compile Include="EventButton.cs" />
     <Compile Include="EventTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SRA_SRPawnMaker.cs" />
     <Compile Include="TradeWindow_Rocivia.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

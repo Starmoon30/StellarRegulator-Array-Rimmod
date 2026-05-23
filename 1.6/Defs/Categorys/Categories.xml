@@ -3,7 +3,7 @@
 
 	<ThingCategoryDef>
 		<defName>SRA_Weapon</defName>
-		<label>星规远程武器</label>
+		<label>星规武器</label>
 		<parent>WeaponsRanged</parent>
     </ThingCategoryDef>
   

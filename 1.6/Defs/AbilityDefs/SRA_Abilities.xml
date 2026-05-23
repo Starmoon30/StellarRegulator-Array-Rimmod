@@ -228,9 +228,6 @@
     </comps>
   </AbilityDef>
 
-
-
-  
   <AbilityDef>
     <defName>SRA_Spawn_SRA_Executor_Attack</defName>
     <label>星规执行单元：星弧破碎轰炸</label>

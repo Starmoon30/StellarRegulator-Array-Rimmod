@@ -195,7 +195,7 @@
     <statBases>
       <BandwidthCost>1</BandwidthCost>
       <EMPResistance>4</EMPResistance>
-      <MoveSpeed>4</MoveSpeed>
+      <MoveSpeed>8</MoveSpeed>
       <WorkSpeedGlobal>4</WorkSpeedGlobal>
       <CarryingCapacity>800</CarryingCapacity>
       <AimingDelayFactor>0.5</AimingDelayFactor>
