@@ -61,6 +61,10 @@
     </damageMultipliers>
     <tickerType>Normal</tickerType>
     <comps>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
       <li Class="SRA.CompProperties_ForceTargetable" />
       <li Class="CompProperties_CanBeDormant" />
       <li Class="CompProperties_Initiatable" />
@@ -181,6 +185,10 @@
     <comps>
       <li Class="CompProperties_AmbientSound">
         <sound>MechTurretBig_Call</sound>
+      </li>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
       </li>
       <li Class="SRA.CompProperties_ForceTargetable" />
     </comps>
@@ -415,6 +423,10 @@
     </damageMultipliers>
     <tickerType>Normal</tickerType>
     <comps>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
       <li Class="SRA.CompProperties_ForceTargetable" />
       <li Class="CompProperties_CanBeDormant" />
       <li Class="CompProperties_Initiatable" />
@@ -531,6 +543,10 @@
     <comps>
       <li Class="CompProperties_AmbientSound">
         <sound>MechTurretBig_Call</sound>
+      </li>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
       </li>
       <li Class="SRA.CompProperties_ForceTargetable" />
     </comps>

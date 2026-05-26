@@ -69,6 +69,7 @@
         <requiresLOS>false</requiresLOS>
         <maxSimultaneous>1</maxSimultaneous>
         <maxDistance>48</maxDistance>
+        <onlyRequiresLooseConnection>true</onlyRequiresLooseConnection> <!-- Extends the support so may support itself -->
       </li>
     </comps>
     <damageMultipliers>

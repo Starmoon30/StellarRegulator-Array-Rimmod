@@ -85,6 +85,10 @@
     </building>
     <uiOrder>3000</uiOrder>
     <comps>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
       <li Class="CompProperties_MeditationFocus">
         <statDef>MeditationFocusStrength</statDef>
         <focusTypes>
@@ -160,6 +164,10 @@
     <blockLight>true</blockLight>
     <drawerType>RealtimeOnly</drawerType>
     <comps>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>0</basePowerConsumption>
