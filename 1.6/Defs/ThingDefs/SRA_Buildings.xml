@@ -58,17 +58,17 @@
         <maxRepairOffset>800</maxRepairOffset>
       </li>
       <li Class="CompProperties_SubstructureFootprint" MayRequire="Ludeon.RimWorld.Odyssey">
-        <radius>48</radius>
+        <radius>78</radius>
       </li>
       <li Class="CompProperties_GravshipFacility" MayRequire="Ludeon.RimWorld.Odyssey">
         <statOffsets>
-          <SubstructureSupport>6400</SubstructureSupport>
-          <GravshipRange>6400</GravshipRange>
+          <SubstructureSupport>64000</SubstructureSupport>
+          <GravshipRange>64000</GravshipRange>
         </statOffsets>
         <fuelSavingsPercent>1</fuelSavingsPercent>
         <requiresLOS>false</requiresLOS>
         <maxSimultaneous>1</maxSimultaneous>
-        <maxDistance>48</maxDistance>
+        <maxDistance>78</maxDistance>
         <onlyRequiresLooseConnection>true</onlyRequiresLooseConnection> <!-- Extends the support so may support itself -->
       </li>
     </comps>
