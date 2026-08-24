@@ -7,99 +7,148 @@ using Verse.AI;
 
 namespace SRA
 {
-    // Token: 0x02000121 RID: 289
+    // The station has both a transporter and a hidden output cache. Use a dedicated job driver so
+    // extraction always reads the output cache rather than whichever container vanilla resolves first.
     public class WorkGiver_EmptySRA_CoreContainer : WorkGiver_Scanner
     {
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
-            return (from t in pawn.Map.listerThings.AllThings
-                    where t.def.defName == "SRA_Astronomical_Fabrications_Main"
-                    select t).ToList<Thing>();
+            if (pawn?.Map == null)
+            {
+                yield break;
+            }
+
+            List<Thing> stations = pawn.Map.listerThings.ThingsOfDef(SRA_DefOf.SRA_Astronomical_Fabrications_Main);
+            for (int i = 0; i < stations.Count; i++)
+            {
+                Thing station = stations[i];
+                if (station.TryGetComp<CompGenerator_SRA_Core>()?.OutputItem != null)
+                {
+                    yield return station;
+                }
+            }
         }
 
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return (from t in pawn.Map.listerThings.AllThings
-                    where t.def.defName == "SRA_Astronomical_Fabrications_Main"
-                    select t).ToList<Thing>().NullOrEmpty<Thing>();
+            return pawn?.Map == null || !pawn.Map.listerThings
+                .ThingsOfDef(SRA_DefOf.SRA_Astronomical_Fabrications_Main)
+                .Any(station => station.TryGetComp<CompGenerator_SRA_Core>()?.OutputItem != null);
         }
 
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            bool flag = t.IsForbidden(pawn);
-            bool result;
-            if (flag)
+            if (t == null || t.IsForbidden(pawn) ||
+                !pawn.CanReserve(t, 1, -1, GetReservationLayer(pawn, t), forced))
             {
-                result = false;
+                return false;
             }
-            else
+
+            CompGenerator_SRA_Core core = t.TryGetComp<CompGenerator_SRA_Core>();
+            Thing outputItem = core?.OutputItem;
+            if (outputItem == null)
             {
-                LocalTargetInfo target = t;
-                bool flag2 = !pawn.CanReserve(target, 1, -1, this.GetReservationLayer(pawn, t), forced);
-                if (flag2)
-                {
-                    result = false;
-                }
-                else
-                {
-                    CompGenerator_SRA_Core compGenerator_SRA_Core = t.TryGetComp<CompGenerator_SRA_Core>();
-                    bool flag3 = compGenerator_SRA_Core == null || !compGenerator_SRA_Core.CanEmptyNow;
-                    if (flag3)
-                    {
-                        result = false;
-                    }
-                    else
-                    {
-                        IntVec3 intVec;
-                        IHaulDestination haulDestination;
-                        bool flag4 = !StoreUtility.TryFindBestBetterStorageFor(compGenerator_SRA_Core.CoreItem, pawn, pawn.Map, StoragePriority.Unstored, pawn.Faction, out intVec, out haulDestination, false);
-                        if (flag4)
-                        {
-                            JobFailReason.Is(HaulAIUtility.NoEmptyPlaceLowerTrans, null);
-                            result = false;
-                        }
-                        else
-                        {
-                            result = true;
-                        }
-                    }
-                }
+                return false;
             }
-            return result;
+
+            if (!StoreUtility.TryFindBestBetterStorageFor(
+                    outputItem,
+                    pawn,
+                    pawn.Map,
+                    StoragePriority.Unstored,
+                    pawn.Faction,
+                    out _,
+                    out _,
+                    false))
+            {
+                JobFailReason.Is(HaulAIUtility.NoEmptyPlaceLowerTrans, null);
+                return false;
+            }
+
+            return true;
         }
 
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            CompGenerator_SRA_Core compGenerator_SRA_Core = t.TryGetComp<CompGenerator_SRA_Core>();
-            bool flag = compGenerator_SRA_Core == null || !compGenerator_SRA_Core.CanEmptyNow;
-            Job result;
-            if (flag)
+            Thing outputItem = t.TryGetComp<CompGenerator_SRA_Core>()?.OutputItem;
+            if (outputItem == null)
             {
-                result = null;
+                return null;
             }
-            else
+
+            if (!StoreUtility.TryFindBestBetterStorageFor(
+                    outputItem,
+                    pawn,
+                    pawn.Map,
+                    StoragePriority.Unstored,
+                    pawn.Faction,
+                    out IntVec3 cell,
+                    out _,
+                    true))
             {
-                IntVec3 c;
-                IHaulDestination haulDestination;
-                bool flag2 = !StoreUtility.TryFindBestBetterStorageFor(compGenerator_SRA_Core.CoreItem, pawn, pawn.Map, StoragePriority.Unstored, pawn.Faction, out c, out haulDestination, true);
-                if (flag2)
-                {
-                    JobFailReason.Is(HaulAIUtility.NoEmptyPlaceLowerTrans, null);
-                    result = null;
-                }
-                else
-                {
-                    Job job = JobMaker.MakeJob(SRA_DefOf.SRA_EmptySRA_CoreContainer, t, compGenerator_SRA_Core.CoreItem, c);
-                    job.count = compGenerator_SRA_Core.CoreItem.stackCount;
-                    result = job;
-                }
+                JobFailReason.Is(HaulAIUtility.NoEmptyPlaceLowerTrans, null);
+                return null;
             }
-            return result;
+
+            Job job = JobMaker.MakeJob(SRA_DefOf.SRA_EmptySRA_CoreContainer, t, outputItem, cell);
+            job.count = outputItem.stackCount;
+            return job;
         }
 
         public override ReservationLayerDef GetReservationLayer(Pawn pawn, LocalTargetInfo t)
         {
             return ReservationLayerDefOf.Empty;
+        }
+    }
+
+    public class JobDriver_ExtractSRAOrbitalOutput : JobDriver
+    {
+        private Thing Station => job.targetA.Thing;
+        private Thing OutputItem => job.targetB.Thing;
+        private CompSRAHiddenThingContainer OutputContainer => Station?.TryGetComp<CompSRAHiddenThingContainer>();
+
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return pawn.Reserve(job.targetA, job, 1, -1, ReservationLayerDefOf.Empty, errorOnFailed);
+        }
+
+        protected override IEnumerable<Toil> MakeNewToils()
+        {
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
+            yield return Toils_General.WaitWith(TargetIndex.A, 60, true, true, false, TargetIndex.A, PathEndMode.InteractionCell);
+
+            Toil takeFromOutput = new Toil
+            {
+                initAction = delegate
+                {
+                    Thing item = OutputItem;
+                    CompSRAHiddenThingContainer output = OutputContainer;
+                    if (item == null || output?.innerContainer == null || !output.innerContainer.Contains(item))
+                    {
+                        EndJobWith(JobCondition.Incompletable);
+                        return;
+                    }
+
+                    Thing taken = output.innerContainer.Take(item, Math.Max(1, Math.Min(job.count, item.stackCount)));
+                    if (taken == null)
+                    {
+                        EndJobWith(JobCondition.Incompletable);
+                        return;
+                    }
+
+                    if (pawn.carryTracker.TryStartCarry(taken, taken.stackCount, false) > 0)
+                    {
+                        return;
+                    }
+
+                    output.innerContainer.TryAdd(taken);
+                    EndJobWith(JobCondition.Incompletable);
+                },
+                defaultCompleteMode = ToilCompleteMode.Instant
+            };
+            yield return takeFromOutput;
+            yield return Toils_Haul.CarryHauledThingToCell(TargetIndex.C, PathEndMode.ClosestTouch);
+            yield return Toils_Haul.PlaceHauledThingInCell(TargetIndex.C, null, false);
         }
     }
 }

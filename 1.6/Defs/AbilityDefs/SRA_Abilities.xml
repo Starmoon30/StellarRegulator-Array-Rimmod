@@ -196,20 +196,21 @@
   <AbilityDef>
     <defName>SRA_Long_Lance_Ability</defName>
     <label>征洋戮海</label>
-    <description>释放一道毁灭性的相位能量流，摧毁路径上的一切。</description>
+    <description>释放一道毁灭性的相位能量流，贯穿并灼烧路径上的一切。</description>
     <iconPath>SRA/UI/Abilities/SRA_Long_Lance_Ability</iconPath>
     <cooldownTicksRange>60000</cooldownTicksRange> <!-- 1 day per -->
     <charges>6</charges>
     <cooldownPerCharge>true</cooldownPerCharge>
-	  <aiCanUse>true</aiCanUse>
+    <aiCanUse>true</aiCanUse>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <!-- 保留原版 Ability 的施放链：前摇结束后由 Verb_CastAbility 调用效果组件。 -->
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <warmupTime>1</warmupTime>
-      <requireLineOfSight>false</requireLineOfSight>
-      <warmupEffecter>SRA_Mote_sun_flairs_out</warmupEffecter>
-      <range>64</range>
-      <drawAimPie>false</drawAimPie>
+      <warmupTime>1</warmupTime> <!-- 施法前摇，单位：秒。 -->
+      <requireLineOfSight>false</requireLineOfSight> <!-- 相位束可越过遮挡物锁定目标位置。 -->
+      <warmupEffecter>SRA_Mote_sun_flairs_out</warmupEffecter> <!-- 前摇阶段的蓄能视觉。 -->
+      <range>64</range> <!-- 最大施法距离，单位：格。 -->
+      <drawAimPie>false</drawAimPie> <!-- 不绘制原版扇形瞄准提示。 -->
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
         <canTargetPawns>true</canTargetPawns>
@@ -217,13 +218,28 @@
       </targetParams>
     </verbProperties>
     <comps>
+      <!-- 技能效果组件会在原版 Ability.Activate 后创建一次独立的光束控制器。 -->
       <li Class="SRA.CompProperties_AbilityExcaliburBeam">
-        <beamDefName>SRA_ExcaliburBeam</beamDefName>
-        <damageAmount>640</damageAmount>
-        <armorPenetration>8</armorPenetration>
-        <pathWidth>2</pathWidth>
-        <damageDef>SRA_Spear_of_SRA_burn</damageDef>
-        <soundDef>SRA_star_eater_weapon_hit_01</soundDef>
+        <beamDefName>SRA_ExcaliburBeam</beamDefName> <!-- 承担短时渲染与伤害时序的不可见控制器 Def。 -->
+        <damageAmount>160</damageAmount> <!-- 光束每个游戏 tick 对束路内目标造成的直接伤害。 -->
+        <armorPenetration>8</armorPenetration> <!-- 每 tick 直接伤害的护甲穿透。 -->
+        <pathWidth>4</pathWidth> <!-- 移动光束中心线两侧的覆盖宽度，单位：格。 -->
+        <damageDef>SRA_Spear_of_SRA_burn</damageDef> <!-- 相位束造成的伤害类型。 -->
+        <targetignore>ignoreFriendly</targetignore> <!-- 忽略施法者同阵营与盟友，仍可伤害敌对和无阵营目标。 -->
+        <visualDurationTicks>60</visualDurationTicks> <!-- 光束从近端扫至目标位置的总时长，单位：游戏 tick。 -->
+        <sweepStartDistance>2.5</sweepStartDistance> <!-- 扫掠前沿距离施法者的初始距离，单位：格。 -->
+        <beamStartOffset>0.75</beamStartOffset> <!-- 光束从施法者前方略微偏移，避免遮住施法者。 -->
+        <beamMoteDef>Mote_SRA_Long_Lance</beamMoteDef> <!-- 征洋戮海专用的宽主束。 -->
+        <extraBeamMoteDefs>
+          <li>Mote_SRA_Long_Lance_SparkSheath</li> <!-- 沿束平铺并等比扩散的外层泛光。 -->
+        </extraBeamMoteDefs>
+        <beamGroundFleckDef>Fleck_SRA_M_Laser_GroundBurn</beamGroundFleckDef> <!-- 命中区域持续出现的地面灼烧。 -->
+        <beamFleckChancePerTick>0.18</beamFleckChancePerTick> <!-- 每 tick 生成地面灼烧的概率。 -->
+        <beamEndEffecterDef>SRA_M_Laser_End</beamEndEffecterDef> <!-- 命中端的冲击、飞溅与余烬效果。 -->
+        <beamLineFleckDef>Fleck_SRA_M_Laser_LineSpark</beamLineFleckDef> <!-- 沿束稀疏生成的大尺寸电离火花。 -->
+        <beamLineFleckChancePerCell>0.018</beamLineFleckChancePerCell> <!-- 每格每 tick 的沿束火花概率。 -->
+        <beamSoundDef>SRA_M_Laser</beamSoundDef> <!-- 光束维持期间使用的持续音效。 -->
+        <soundDef>SRA_star_eater_weapon_hit_01</soundDef> <!-- 光束发射瞬间播放一次的高能脉冲音。 -->
       </li>
     </comps>
   </AbilityDef>

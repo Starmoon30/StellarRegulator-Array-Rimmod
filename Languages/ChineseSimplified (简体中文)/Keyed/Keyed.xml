@@ -2,10 +2,6 @@
 <LanguageData>
 
 	<SRA_Setting>星规阵列-设置</SRA_Setting>
-	<SRA_SRParm.firstName>星规</SRA_SRParm.firstName>
-	<SRA_SRParm.lastname>星规</SRA_SRParm.lastname>
-	<SRA_SRParm.nickname>星规</SRA_SRParm.nickname>
-	<SRA_SRParm.title>星规</SRA_SRParm.title>
 
 
 	<SRA_AngledSRAWall_Title>渲染斜角墙</SRA_AngledSRAWall_Title>
@@ -26,20 +22,140 @@
 	<SRA_SRNotTracked>目前模组没有追踪任何人。\n\n如果模组应该追踪某人，请使用"redesignate SRA_SR"来指定人物。</SRA_SRNotTracked>
 
   
-	<SRAWarUnitSpawnerAutoMode>自动迎击模式</SRAWarUnitSpawnerAutoMode>
-	<ChangeSRAWarUnit>切换战争单元</ChangeSRAWarUnit>
-	<SRAWarUnitSpawnerAutoModeDesc>哨戒尖塔在检测到敌对目标时会自动部署微型战争单元。</SRAWarUnitSpawnerAutoModeDesc>
-	<SRAWarUnitSpawnerNoAuto>部署战争单元</SRAWarUnitSpawnerNoAuto>
-	<SRAWarUnitSpawnerNoAutoDesc>立即部署一只储备的战争单元。</SRAWarUnitSpawnerNoAutoDesc>
-	<SRAWarUnitSpawnerHaveSRAWarUnit>当前可用战争单元:{0}/{1}</SRAWarUnitSpawnerHaveSRAWarUnit>
-	
-	<SRA_ProductionProgress>每轮生产{0}个{1}\n当前进度{2}%</SRA_ProductionProgress>
 	<MustNotGenerator_SRA_Core>不能放置1个以上的铸星神械-轴突。</MustNotGenerator_SRA_Core>
 
+	<!-- 轨道构造 -->
+	<SRA_OrbitalMissingBlueprint>缺失构造蓝图</SRA_OrbitalMissingBlueprint>
+	<SRA_OrbitalScanInvalid>无法解析上传物品。</SRA_OrbitalScanInvalid>
+	<SRA_OrbitalScanUnsupported>不支持扫描{0}。</SRA_OrbitalScanUnsupported>
+	<SRA_OrbitalBatchSize>每批构造数量</SRA_OrbitalBatchSize>
+	<SRA_OrbitalRepeatMode>构造模式</SRA_OrbitalRepeatMode>
+	<SRA_OrbitalRepeatForever>持续构造</SRA_OrbitalRepeatForever>
+	<SRA_OrbitalRepeatCount>构造指定批次</SRA_OrbitalRepeatCount>
+	<SRA_OrbitalRepeatTarget>维持库存</SRA_OrbitalRepeatTarget>
+	<SRA_OrbitalRepeatTimes>剩余批次数</SRA_OrbitalRepeatTimes>
+	<SRA_OrbitalTargetCount>目标库存</SRA_OrbitalTargetCount>
+	<SRA_OrbitalCountEquipped>计入已装备物品</SRA_OrbitalCountEquipped>
+	<SRA_OrbitalConsoleCommand>打开轨道构造控制台</SRA_OrbitalConsoleCommand>
+	<SRA_OrbitalConsoleCommandDesc>管理物资上传、构造订单及远轨工业单元。</SRA_OrbitalConsoleCommandDesc>
+	<SRA_OrbitalInspectUploadBuffer>本地上行缓存：{0} / {1}</SRA_OrbitalInspectUploadBuffer>
+	<SRA_OrbitalInspectOrbitalEnergy>轨道产业价值：{0} / {1}</SRA_OrbitalInspectOrbitalEnergy>
+	<SRA_OrbitalInspectNextLink>下次链路：{0}</SRA_OrbitalInspectNextLink>
+	<SRA_OrbitalInspectOutput>下载缓存：{0} / {1}</SRA_OrbitalInspectOutput>
+	<SRA_OrbitalInspectDownload>下行进度：{0}</SRA_OrbitalInspectDownload>
+	<SRA_OrbitalInspectUnits>远轨工业单元：{0}</SRA_OrbitalInspectUnits>
+	<SRA_OrbitalNotOperational>基站当前未能正常运行。</SRA_OrbitalNotOperational>
+	<SRA_OrbitalScannerEmpty>上传舱中没有物品。</SRA_OrbitalScannerEmpty>
+	<SRA_OrbitalScannerLoading>上传清单尚未完成搬运。</SRA_OrbitalScannerLoading>
+	<SRA_OrbitalStorageInsufficient>上传将获得{0}产业价值，但本地上行缓存仅剩{1}容量。</SRA_OrbitalStorageInsufficient>
+	<SRA_OrbitalCannotLaunch>无法部署远轨工业单元，请检查轨道产业价值、冷却和基站状态。</SRA_OrbitalCannotLaunch>
+	<SRA_OrbitalIndustrialLimit>远轨工业单元已达到系统上限。</SRA_OrbitalIndustrialLimit>
+	<SRA_OrbitalScanCompleted>上传扫描完成：获得{0}产业价值，新增{1}项构造蓝图。</SRA_OrbitalScanCompleted>
+	<SRA_OrbitalLaunchCompleted>远轨工业单元部署完成。当前节点总数：{0}</SRA_OrbitalLaunchCompleted>
+	<SRA_OrbitalHologramReadout>远轨工业单元节点 {0} 轨道产业价值 {1} / {2}</SRA_OrbitalHologramReadout>
+	<SRA_OrbitalColonyInventory>殖民地库存</SRA_OrbitalColonyInventory>
+	<SRA_OrbitalUploadManifest>上传清单</SRA_OrbitalUploadManifest>
+	<SRA_OrbitalAvailableCount>可用</SRA_OrbitalAvailableCount>
+	<SRA_OrbitalConsoleTitle>铸星神械轨道构造控制台</SRA_OrbitalConsoleTitle>
+	<SRA_OrbitalHeaderOrbitEnergy>轨道产业价值 {0} / {1}</SRA_OrbitalHeaderOrbitEnergy>
+	<SRA_OrbitalHeaderUploadEnergy>本地上行缓存 {0} / {1}</SRA_OrbitalHeaderUploadEnergy>
+	<SRA_OrbitalHeaderUnits>远轨工业单元 {0}</SRA_OrbitalHeaderUnits>
+	<SRA_OrbitalHeaderDownload>下行 {0}</SRA_OrbitalHeaderDownload>
+	<SRA_OrbitalHeaderOnline>链路在线</SRA_OrbitalHeaderOnline>
+	<SRA_OrbitalHeaderOffline>链路离线</SRA_OrbitalHeaderOffline>
+	<SRA_OrbitalTabScan>扫描与构造订单</SRA_OrbitalTabScan>
+	<SRA_OrbitalTabIndustry>远轨工业单元管理</SRA_OrbitalTabIndustry>
+	<SRA_OrbitalUploadBay>物资上传与解析</SRA_OrbitalUploadBay>
+	<SRA_OrbitalScannerMissing>扫描上传舱不可用</SRA_OrbitalScannerMissing>
+	<SRA_OrbitalScannerManifestRemaining>正在搬运上传清单，剩余条目：{0}</SRA_OrbitalScannerManifestRemaining>
+	<SRA_OrbitalScannerReady>上传舱就绪，已装载{0}组物品</SRA_OrbitalScannerReady>
+	<SRA_OrbitalScannerEmptyStatus>上传舱为空</SRA_OrbitalScannerEmptyStatus>
+	<SRA_OrbitalProjectedYield>预计获得产业价值：{0}</SRA_OrbitalProjectedYield>
+	<SRA_OrbitalLoadedContents>已装载物品</SRA_OrbitalLoadedContents>
+	<SRA_OrbitalManageManifest>管理上传清单</SRA_OrbitalManageManifest>
+	<SRA_OrbitalUploadNow>立即上传</SRA_OrbitalUploadNow>
+	<SRA_OrbitalUploadBufferFree>上行缓存可用：{0}</SRA_OrbitalUploadBufferFree>
+	<SRA_OrbitalScanEfficiency>扫描产业价值转化率：{0}</SRA_OrbitalScanEfficiency>
+	<SRA_OrbitalFabricationCostFactor>构造产业价值成本系数：{0}</SRA_OrbitalFabricationCostFactor>
+	<SRA_OrbitalBlueprintLibrary>构造蓝图库</SRA_OrbitalBlueprintLibrary>
+	<SRA_OrbitalBlueprintFilter>筛选构造蓝图</SRA_OrbitalBlueprintFilter>
+	<SRA_OrbitalBlueprintFilterSummary>当前筛选：{0}</SRA_OrbitalBlueprintFilterSummary>
+	<SRA_OrbitalBlueprintFilterTitle>蓝图库物品筛选</SRA_OrbitalBlueprintFilterTitle>
+	<SRA_OrbitalBlueprintFilterReset>允许全部物品</SRA_OrbitalBlueprintFilterReset>
+	<SRA_OrbitalAddOrder>创建订单</SRA_OrbitalAddOrder>
+	<SRA_OrbitalOrderQueue>构造订单队列</SRA_OrbitalOrderQueue>
+	<SRA_OrbitalOrderQueueEmpty>尚未创建构造订单。可从右侧构造蓝图库直接创建。</SRA_OrbitalOrderQueueEmpty>
+	<SRA_OrbitalOrderBatchDetails>每批 {0} 单件产业价值 {1} 单批产业价值 {2}</SRA_OrbitalOrderBatchDetails>
+	<SRA_OrbitalOrderForeverSummary>模式：持续构造</SRA_OrbitalOrderForeverSummary>
+	<SRA_OrbitalOrderRepeatSummary>模式：指定批次，剩余 {0} 批</SRA_OrbitalOrderRepeatSummary>
+	<SRA_OrbitalOrderTargetSummary>模式：维持库存，目标 {0}</SRA_OrbitalOrderTargetSummary>
+	<SRA_OrbitalOrderInventoryDetails>计入库存：{0} {1}</SRA_OrbitalOrderInventoryDetails>
+	<SRA_OrbitalOrderNoQuality>品质：不适用</SRA_OrbitalOrderNoQuality>
+	<SRA_OrbitalOrderQualityRange>品质：{0} 至 {1}</SRA_OrbitalOrderQualityRange>
+	<SRA_OrbitalOrderStatusDetails>状态：{0} {1}</SRA_OrbitalOrderStatusDetails>
+	<SRA_OrbitalOrderNotChecked>尚未检查</SRA_OrbitalOrderNotChecked>
+	<SRA_OrbitalOrderLastChecked>上次检查：{0}前</SRA_OrbitalOrderLastChecked>
+	<SRA_OrbitalEdit>编辑</SRA_OrbitalEdit>
+	<SRA_OrbitalMoveUp>上移</SRA_OrbitalMoveUp>
+	<SRA_OrbitalMoveDown>下移</SRA_OrbitalMoveDown>
+	<SRA_OrbitalSuspendOrder>暂停</SRA_OrbitalSuspendOrder>
+	<SRA_OrbitalResumeOrder>恢复</SRA_OrbitalResumeOrder>
+	<SRA_OrbitalDeleteShort>删除</SRA_OrbitalDeleteShort>
+	<SRA_OrbitalRemoveOrderConfirm>删除 {0} 的构造订单？</SRA_OrbitalRemoveOrderConfirm>
+	<SRA_OrbitalOutputBuffer>下载缓存</SRA_OrbitalOutputBuffer>
+	<SRA_OrbitalOutputStored>已存入：{0} / {1}</SRA_OrbitalOutputStored>
+	<SRA_OrbitalOutputEmpty>没有待搬运的下载物品。</SRA_OrbitalOutputEmpty>
+	<SRA_OrbitalDeleteBlueprint>删除</SRA_OrbitalDeleteBlueprint>
+	<SRA_OrbitalRemoveBlueprintConfirm>从构造蓝图库移除{0}？其构造订单也会被删除。</SRA_OrbitalRemoveBlueprintConfirm>
+	<SRA_OrbitalOrderDraftTitle>构造订单样例</SRA_OrbitalOrderDraftTitle>
+	<SRA_OrbitalOrderUnitPrice>单件产业价值：{0}</SRA_OrbitalOrderUnitPrice>
+	<SRA_OrbitalOrderTotalPrice>单批产业价值：{0}</SRA_OrbitalOrderTotalPrice>
+	<SRA_OrbitalCreateOrder>创建订单</SRA_OrbitalCreateOrder>
+	<SRA_OrbitalSaveOrder>保存订单</SRA_OrbitalSaveOrder>
+	<SRA_OrbitalEditOrderTitle>编辑构造订单</SRA_OrbitalEditOrderTitle>
+	<SRA_OrbitalQualityRange>产物品质范围</SRA_OrbitalQualityRange>
+	<SRA_OrbitalIndustryControl>远轨工业单元</SRA_OrbitalIndustryControl>
+	<SRA_OrbitalMetricUnits>远轨工业单元</SRA_OrbitalMetricUnits>
+	<SRA_OrbitalMetricGeneration>每{0}产出</SRA_OrbitalMetricGeneration>
+	<SRA_OrbitalMetricUnitGeneration>单节点每{0}产出</SRA_OrbitalMetricUnitGeneration>
+	<SRA_OrbitalMetricOrbitalEnergy>轨道产业价值</SRA_OrbitalMetricOrbitalEnergy>
+	<SRA_OrbitalMetricUnitCapacity>单节点轨道产业价值容量</SRA_OrbitalMetricUnitCapacity>
+	<SRA_OrbitalMetricUploadBuffer>本地上行缓存</SRA_OrbitalMetricUploadBuffer>
+	<SRA_OrbitalMetricBandwidth>单次链路带宽</SRA_OrbitalMetricBandwidth>
+	<SRA_OrbitalMetricNextLink>下次链路</SRA_OrbitalMetricNextLink>
+	<SRA_OrbitalTransferProgress>下行传输</SRA_OrbitalTransferProgress>
+	<SRA_OrbitalIdle>待机</SRA_OrbitalIdle>
+	<SRA_OrbitalLinkInterval>链路周期（秒）</SRA_OrbitalLinkInterval>
+	<SRA_OrbitalDownloadAnimation>下载时播放光柱动画</SRA_OrbitalDownloadAnimation>
+	<SRA_OrbitalDownloadSound>下载时播放光柱音效</SRA_OrbitalDownloadSound>
+	<SRA_OrbitalLaunchUnit>部署远轨工业单元 轨道产业价值 {0}</SRA_OrbitalLaunchUnit>
+	<SRA_OrbitalLaunchCooldown>部署冷却：{0}</SRA_OrbitalLaunchCooldown>
+	<SRA_OrbitalAutoLaunch>自动扩展远轨工业单元</SRA_OrbitalAutoLaunch>
+	<SRA_OrbitalAutoLaunchTarget>自动部署目标节点数</SRA_OrbitalAutoLaunchTarget>
+	<SRA_OrbitalReserveThreshold>自动扩展后至少保留轨道产业价值</SRA_OrbitalReserveThreshold>
+	<SRA_OrbitalDevFillEnergy>填满轨道产业价值</SRA_OrbitalDevFillEnergy>
+	<SRA_OrbitalDevFillEnergyDesc>立刻将当前地图的轨道产业价值填至远轨工业单元提供的总容量。</SRA_OrbitalDevFillEnergyDesc>
+	<SRA_OrbitalDevFillUploadBuffer>填满本地上行缓存</SRA_OrbitalDevFillUploadBuffer>
+	<SRA_OrbitalDevFillUploadBufferDesc>立刻将本基站的待上传产业价值填至上限。</SRA_OrbitalDevFillUploadBufferDesc>
+	<SRA_OrbitalDevAddIndustrialUnit>直接部署 1 个远轨工业单元</SRA_OrbitalDevAddIndustrialUnit>
+	<SRA_OrbitalDevAddIndustrialUnitDesc>不消耗轨道产业价值，直接向当前地图的远轨工业单元加入 1 个节点。</SRA_OrbitalDevAddIndustrialUnitDesc>
+	<SRA_OrbitalDevCompleteTransfer>完成当前传输</SRA_OrbitalDevCompleteTransfer>
+	<SRA_OrbitalDevRunLink>立即执行链路事件</SRA_OrbitalDevRunLink>
+	<SRA_OrbitalDevRunLinkDesc>立刻检查构造订单、尝试一次完整下载，并将剩余带宽用于上传。</SRA_OrbitalDevRunLinkDesc>
+	<SRA_OrbitalDevCompleteTransferDesc>在下一 tick 完成当前物品下载。</SRA_OrbitalDevCompleteTransferDesc>
+	<SRA_OrbitalOrderUnchecked>尚未在链路中检查</SRA_OrbitalOrderUnchecked>
+	<SRA_OrbitalOrderReady>等待下行</SRA_OrbitalOrderReady>
+	<SRA_OrbitalOrderSuspended>订单已暂停</SRA_OrbitalOrderSuspended>
+	<SRA_OrbitalOrderComplete>指定批次已完成</SRA_OrbitalOrderComplete>
+	<SRA_OrbitalOrderTargetSatisfied>库存目标已满足</SRA_OrbitalOrderTargetSatisfied>
+	<SRA_OrbitalOrderWaitingBandwidth>等待更大的单次带宽</SRA_OrbitalOrderWaitingBandwidth>
+	<SRA_OrbitalOrderWaitingEnergy>等待轨道产业价值</SRA_OrbitalOrderWaitingEnergy>
+	<SRA_OrbitalOrderWaitingOutput>等待下载缓存腾出空间</SRA_OrbitalOrderWaitingOutput>
+	<SRA_OrbitalOrderDownloading>正在下行</SRA_OrbitalOrderDownloading>
+	<SRA_OrbitalDownloadOutputLost>下载缓存已满或不可用，无法继续下载。</SRA_OrbitalDownloadOutputLost>
 
-	<SRABuilding_ResurrectionBeaconActionLabel>绑定单位</SRABuilding_ResurrectionBeaconActionLabel>
-	<SRABuilding_ResurrectionBeaconActionDesc>选择要绑定到永生协议信标的单位</SRABuilding_ResurrectionBeaconActionDesc>
-	<SRABuilding_ResurrectionBeaconTitle>选择你要绑定的单位</SRABuilding_ResurrectionBeaconTitle>
+	<SRA_HediffDetector_ToggleLabel>析象扫描</SRA_HediffDetector_ToggleLabel>
+	<SRA_HediffDetector_ToggleDesc>扫描区域内的隐形与金属怪形感染。</SRA_HediffDetector_ToggleDesc>
 
 
 </LanguageData>

@@ -17,9 +17,13 @@ namespace SRA
         public static SoundDef EnergyShield_Broken;
         public static SoundDef EnergyShield_Reset;
         public static SoundDef SRA_star_eater_weapon_hit_01;
+        public static SoundDef SRA_Windup;
+        public static SoundDef SRA_OrbitalWindup;
+        public static SoundDef SRA_titan_laser_hit_01;
 
         public static JobDef SRA_EmptySRA_CoreContainer;
 
+        public static ThingDef SRA_Astronomical_Fabrications_Main;
 
         public static HediffDef SRAResurrectionBound;
         public static HediffDef SRAResurrectionAlready;

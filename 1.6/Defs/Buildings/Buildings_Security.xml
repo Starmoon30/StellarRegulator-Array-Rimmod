@@ -11,21 +11,26 @@
     <descriptionHyperlinks>
 			<HediffDef>SRA_Railgun_debuff</HediffDef>
 		</descriptionHyperlinks>
-    <thingClass>Building_TurretGun</thingClass>
+    <thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>4</speed>
+	  	</li>
+  	</modExtensions>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
-      <drawOffset>(0,0,-0.16)</drawOffset>
+      <drawOffset>(0,0,0)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
       </damageData>
     </graphicData>
     <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
-    <uiIconPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_Top</uiIconPath>
-    <uiIconScale>1.0</uiIconScale>
+    <uiIconPath>SRA/Building/Security/SRATurret_SML_Mass_Drivers_UI</uiIconPath>
+    <uiIconScale>1.5</uiIconScale>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
@@ -91,8 +96,8 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_SML_Mass_Drivers</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0.08, 0)</turretTopOffset>
-      <turretTopDrawSize>3.0</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
+      <turretTopDrawSize>7</turretTopDrawSize>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -122,23 +127,24 @@
       <li>
         <verbClass>SRA.Verb_ShootWithOffset</verbClass>
         <defaultProjectile>SRABullet_SML_Mass_Drivers</defaultProjectile>
-        <warmupTime>0.1</warmupTime>
+        <warmupTime>0</warmupTime>
         <range>120</range>
-        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
         <burstShotCount>2</burstShotCount>
         <soundCast>SRA_SML_Mass_Drivers</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <stopBurstWithoutLos>false</stopBurstWithoutLos>
         <muzzleFlashScale>9</muzzleFlashScale>
+        <requireLineOfSight>false</requireLineOfSight>
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
       </li>
     </verbs>
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正西负东，正南负北（炮塔朝北） -->
-                <li>(0.38, -1.8)</li>   <!-- 第一次射击偏移 -->
-                <li>(-0.38, -1.8)</li>  <!-- 第四次射击偏移 -->
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(0.62, 2.5)</li>   <!-- 第一次射击偏移 -->
+                <li>(-0.62, 2.5)</li>  <!-- 第二次射击偏移 -->
                 <!-- 更多偏移... -->
             </offsets>
         </li>
@@ -147,9 +153,225 @@
 
 
 
-  <!-- 迫击炮（迫真） -->
+  <!--命运之枪======================================================================================-->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_M_Laser</defName>
+    <label>星规-命运之枪</label>
+    <description>星规-命运之枪</description>
+    <descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+    <thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>4</speed>
+	  	</li>
+  	</modExtensions>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRATurret_M_Laser_UI</uiIconPath>
+    <uiIconScale>1.5</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>6400</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>80</Mass>
+      <Beauty>0</Beauty>
+      <ShootingAccuracyTurret>1.00</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <SRA_Core>200</SRA_Core>
+    </costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <researchPrerequisites>
+      <li>SRA_BaseTurret</li>
+    </researchPrerequisites>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+    </damageMultipliers>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
+      <li Class="SRA.CompProperties_ForceTargetable" />
+      <li Class="CompProperties_CanBeDormant" />
+      <li Class="CompProperties_Initiatable" />
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>SRA_Building</designationCategory>
+    <building>
+      <combatPower>640</combatPower>
+      <!--<buildingTags>
+        <li>SRAClusterMember</li>
+        <li>SRAClusterCombatThreat</li>
+        <li>SRA_SmallCluster_SingleTurret</li>
+      </buildingTags>-->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SRATurretGun_M_Laser</turretGunDef>
+      <turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0)</turretTopOffset>
+      <turretTopDrawSize>7</turretTopDrawSize>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SRATurretGun_M_Laser</defName>
+    <label>星规-命运之枪</label>
+    <description>星规-命运之枪</description>
+    <descriptionHyperlinks>
+			<HediffDef>SRA_Railgun_debuff</HediffDef>
+		</descriptionHyperlinks>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_M_Laser_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>1</AccuracyLong>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>48</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+		<verbs>
+			<li Class="SRA.VerbProperties_SRAShootBeam">
+				<verbClass>SRA.Verb_SRAShootBeam</verbClass>
+        <forceCompleteBurst>true</forceCompleteBurst>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>0.0</warmupTime>
+				<range>72</range>
+				<minRange>0</minRange>
+				<requireLineOfSight>false</requireLineOfSight>
+				<muzzleFlashScale>20</muzzleFlashScale>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<soundCastBeam>SRA_M_Laser</soundCastBeam>
+
+				<beamStartOffset>1.75</beamStartOffset><!--枪口处偏移
+				0.75-->
+				<beamFullWidthRange>3</beamFullWidthRange><!--原版
+				6.9-->
+				<beamWidth>2</beamWidth><!--原版
+				6-->
+				<beamMaxDeviation>0.1</beamMaxDeviation><!--原版
+				1.5-->
+				<beamCurvature>0.1</beamCurvature><!--原版
+				0.6-->
+				<burstShotCount>45</burstShotCount><!--攻击判定次数-->
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots><!--原版
+				22-->
+				<beamFleckChancePerTick>1</beamFleckChancePerTick><!--原版
+				0.32-->
+				<beamDamageDef>SRA_Spear_of_SRA_burn</beamDamageDef><!--伤害类型-->
+				<beamDamageAmount>16</beamDamageAmount><!--伤害数值-->
+				<beamArmorPenetration>8</beamArmorPenetration><!--穿甲，小于0则使用伤害Def默认值-->
+				<beamGroundFleckDef>Fleck_SRA_M_Laser_GroundBurn</beamGroundFleckDef><!--地面灼烧特效-->
+				<beamMoteDef>Mote_SRA_M_Laser</beamMoteDef><!--n-->
+				<extraBeamMoteDefs>
+					<li>Mote_SRA_M_Laser_SparkSheath</li>
+				</extraBeamMoteDefs>
+				<beamEndEffecterDef>SRA_M_Laser_End</beamEndEffecterDef><!--目标点冲击特效-->
+				<beamLineFleckDef>Fleck_SRA_M_Laser_LineSpark</beamLineFleckDef><!--少量沿线电离火花点缀-->
+				<hitRadius>0.5</hitRadius><!--落点判定半径-->
+				<targetignore>ignoreNonLOSBlockingNonHostile</targetignore><!--伤害所有敌对目标和阻挡视线的中立目标，忽略友方与不挡视线的中立目标-->
+				<damageBeamPath>true</damageBeamPath><!--路径伤害-->
+				<pathHitRadius>0.5</pathHitRadius><!--路径伤害粗细-->
+				<pathDamageFactor>1</pathDamageFactor><!--路径伤害倍率-->
+				<penetrateObstacles>true</penetrateObstacles><!--穿透障碍-->
+				<mining>true</mining><!--采矿伤害正常产出-->
+        
+        <extraDamages>
+          <li>
+            <def>SRA_Retardant</def>
+            <amount>64</amount>
+          </li>
+        </extraDamages>
+				
+				<beamChanceToStartFire>0.85</beamChanceToStartFire>
+				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+
+				<beamLineFleckChanceCurve>
+					<points>
+						<li>(0, 0.01)</li><!--原版
+						(0, 0)-->
+						<li>(0.15, 0.025)</li><!--原版
+						(0.65, 0.4)-->
+						<li>(0.4, 0.045)</li><!--原版
+						(1, 0.75)-->
+						<li>(1, 0.065)</li>
+					</points>
+				</beamLineFleckChanceCurve>
+
+				<customTrajectory>
+					<li>
+						<offset>(0, -4)</offset>
+						<arrivalTick>0</arrivalTick>
+					</li>
+					<li>
+						<offset>(0, 8)</offset>
+						<arrivalTick>45</arrivalTick>
+					</li>
+				</customTrajectory>
+
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(0.62, 2.5)</li>   <!-- 第一次射击偏移 -->
+                <li>(-0.62, 2.5)</li>  <!-- 第二次射击偏移 -->
+                <!-- 更多偏移... -->
+            </offsets>
+        </li>
+    </modExtensions>
+  </ThingDef>
 
 
+
+  <!-- 虚空撕裂 -->
   <ThingDef ParentName="BuildingBase">
     <defName>SRATurret_L_Particle_Launcher</defName>
     <label>星规-虚空撕裂炮塔</label>
@@ -172,7 +394,7 @@
     </graphicData>
     <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
-    <uiIconPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top</uiIconPath>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_UI</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
@@ -217,8 +439,8 @@
     <building>
       <combatPower>1280</combatPower>
       <turretGunDef>SRATurretGun_L_Particle_Launcher</turretGunDef>
-	  	<turretTopDrawSize>5.5</turretTopDrawSize>
-      <turretTopOffset>(0.12, 0)</turretTopOffset>
+	  	<turretTopDrawSize>13</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
       <turretBurstWarmupTime>2.0</turretBurstWarmupTime>
       <turretBurstCooldownTime>8.0</turretBurstCooldownTime>
     </building>
@@ -244,6 +466,7 @@
     <graphicData>
       <texPath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top</texPath>
     </graphicData>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Particle_Launcher</uiIconPath>
     <uiIconScale>1.25</uiIconScale>
     <verbs>
       <li>
@@ -266,9 +489,22 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正西负东，正南负北（炮塔朝北） -->
-                <li>(0, -3.2)</li>   <!-- 第一次射击偏移 -->
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(0, 5.47)</li>   <!-- 第一次射击偏移 -->
             </offsets>
+        <barrelTexturePath>SRA/Building/Security/SRATurret_L_Particle_Launcher_Top_Barrel</barrelTexturePath>
+        <barrelTextureSize>(13,13)</barrelTextureSize>
+        <barrelAltitudeOffset>0</barrelAltitudeOffset>
+
+        <recoilAmount>1.0</recoilAmount>
+        <recoilKickTicks>3</recoilKickTicks>
+        <recoilDurationTicks>135</recoilDurationTicks>
+        <muzzleFlashTexturePath>SRA/Mote/SRA_MainGun</muzzleFlashTexturePath>
+        <muzzleFlashDrawSize>(2.5,2.5)</muzzleFlashDrawSize>
+        <muzzleFlashOffset>(0,0)</muzzleFlashOffset>
+        <muzzleFlashFrameCount>10</muzzleFlashFrameCount>
+        <muzzleFlashFrameColumns>0</muzzleFlashFrameColumns>
+        <muzzleFlashTicksPerFrame>1</muzzleFlashTicksPerFrame>
         </li>
     </modExtensions>
   </ThingDef>
@@ -368,17 +604,25 @@
       </li>
     </modExtensions>
   </ThingDef>
-  <!--光辉之冠炮塔======================================================================================-->
+
+  
+
+  <!-- 风暴迫临 -->
   <ThingDef ParentName="BuildingBase">
-    <defName>SRATurret_Weapon_P</defName>
-    <label>星规-光辉之冠炮塔</label>
-    <description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。</description>
-    <thingClass>Building_TurretGun</thingClass>
+    <defName>SRATurret_L_Devastator</defName>
+    <label>星规-风暴迫临炮塔</label>
+    <description>星规-风暴迫临</description>
+		<thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>2</speed>
+	  	</li>
+  	</modExtensions>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
       <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1,1)</drawSize>
+      <drawSize>(5, 5)</drawSize>
       <drawOffset>(0,0,-0.16)</drawOffset>
       <damageData>
         <rect>(0.3,0.3,1.4,1.4)</rect>
@@ -386,7 +630,212 @@
     </graphicData>
     <castEdgeShadows>false</castEdgeShadows>
     <receivesSignals>true</receivesSignals>
-    <uiIconPath>SRA/Building/Security/SRA_Weapon_P</uiIconPath>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Devastator_UI</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <size>(5,5)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_AmbientSound">
+        <sound>MechTurretBig_Call</sound>
+      </li>
+      <li Class="SRA.CompProperties_BuildingDamageAdjuster">
+        <damageTakenMax>32</damageTakenMax>
+        <damageTakenReduce>16</damageTakenReduce>
+      </li>
+      <li Class="SRA.CompProperties_ForceTargetable" />
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0.01</multiplier>
+      </li>
+    </damageMultipliers>
+    <statBases>
+      <MaxHitPoints>12800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>30</Mass>
+      <ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+      <Beauty>20</Beauty>
+    </statBases>
+    <building>
+      <combatPower>1280</combatPower>
+      <turretGunDef>SRATurretGun_L_Devastator</turretGunDef>
+	  	<turretTopDrawSize>13</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
+      <turretBurstWarmupTime>0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>1</turretBurstCooldownTime>
+    </building>
+	  <costList>
+      <SRA_Core>800</SRA_Core>
+    </costList>
+    <designationCategory>SRA_Building</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	  <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>SRA.PlaceWorker_ShowTurretWithOffsetRadius</li><!--专有的范围指示器-->
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>SRA_BaseTurret</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>SRATurretGun_L_Devastator</defName>
+    <label>星规-风暴迫临</label>
+    <description>星规-风暴迫临</description>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRATurret_L_Devastator_Top</texPath>
+    </graphicData>
+    <uiIconPath>SRA/Building/Security/SRATurret_L_Devastator_UI</uiIconPath>
+    <uiIconScale>1.25</uiIconScale>
+    <verbs>
+      <li>
+        <verbClass>SRA.Verb_ShootWithOffset</verbClass>
+        <defaultProjectile>SRABullet_L_Devastator</defaultProjectile>
+        <ai_AvoidFriendlyFireRadius>0</ai_AvoidFriendlyFireRadius>
+			  <forcedMissRadius>8</forcedMissRadius>
+        <warmupTime>0</warmupTime>
+        <minRange>0</minRange>
+        <range>500</range>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <burstShotCount>30</burstShotCount>
+        <soundCast>SRA_Minipulser</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <requireLineOfSight>false</requireLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <modExtensions>
+        <li Class="SRA.ModExtension_ShootWithOffset">
+            <offsets>
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(-0.2, 6)</li>   <!-- 第一次射击偏移 -->
+                <li>(0, 6)</li>   <!-- 第二次射击偏移 -->
+                <li>(0.2, 6)</li>   <!-- 第三次射击偏移 -->
+            </offsets>
+        <muzzleFlashTexturePath>SRA/Mote/SRA_MainGun</muzzleFlashTexturePath>
+        <muzzleFlashDrawSize>(2.5,2.5)</muzzleFlashDrawSize>
+        <muzzleFlashOffset>(0,0)</muzzleFlashOffset>
+        <muzzleFlashFrameCount>10</muzzleFlashFrameCount>
+        <muzzleFlashFrameColumns>0</muzzleFlashFrameColumns>
+        <muzzleFlashTicksPerFrame>1</muzzleFlashTicksPerFrame>
+        </li>
+    </modExtensions>
+  </ThingDef>
+
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>SRABullet_L_Devastator</defName>
+    <label>SRABullet_L_Devastator</label>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+    <graphicData>
+      <texPath>SRA/Projectile/SRA_Bullet_Plasma</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	    <drawSize>1</drawSize>
+    </graphicData>
+    <projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>64</damageAmountBase>
+			<armorPenetrationBase>4</armorPenetrationBase>
+			<stoppingPower>8</stoppingPower>
+			<speed>240</speed>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+			<extraDamages>
+				<li>
+					<def>EMP</def>
+					<amount>64</amount>
+				</li>
+			</extraDamages>
+    </projectile>
+<comps>
+  <li Class="SRA.CompProperties_ForcedMissExplosionMarker" />
+</comps>
+
+    <modExtensions>
+      <li Class="SRA.MultiExplosiveExtension">
+        <multiexplosions>
+          <li>
+            <radius>2</radius>
+            <damageDef>EMP</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+          </li>
+          <li>
+            <radius>1</radius>
+            <damageDef>SRA_Spear_of_SRA_burn</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>8</armorPenetration>
+            <explosionSound>Explosion_EMP</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff>
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+          </li>
+          <li>
+            <radius>2</radius>
+            <damageDef>Bomb</damageDef>
+            <damageAmount>64</damageAmount>
+            <armorPenetration>4</armorPenetration>
+            <explosionSound>Explosion_Bomb</explosionSound>
+            <explosionDamageFalloff>true</explosionDamageFalloff><!-- 默认true -->
+            <explosionEffect>SRABulle_Railgun_Hit</explosionEffect>
+            <explosionEffectLifetimeTicks>180</explosionEffectLifetimeTicks> 
+            <onlyAntiHostile>true</onlyAntiHostile> <!-- 智能弹药：这个爆炸只伤害敌对目标，默认false -->
+            <!-- 现阶段就支持这么多参数 -->
+          </li>
+        </multiexplosions>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  
+  <!--光辉之冠炮塔======================================================================================-->
+  <ThingDef ParentName="BuildingBase">
+    <defName>SRATurret_Weapon_P</defName>
+    <label>星规-光辉之冠炮塔</label>
+    <description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。</description>
+    <thingClass>SRA.Building_TurretGunHasSpeed</thingClass>
+	  <modExtensions>
+		  <li Class="SRA.ModExt_HasSpeedTurret">
+		  	<speed>8</speed>
+	  	</li>
+  	</modExtensions>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+      <damageData>
+        <rect>(0.3,0.3,1.4,1.4)</rect>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
+    <receivesSignals>true</receivesSignals>
+    <uiIconPath>SRA/Building/Security/SRA_Weapon_P_UI</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
@@ -453,8 +902,8 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SRATurretGun_Weapon_P</turretGunDef>
       <turretBurstCooldownTime>0.5</turretBurstCooldownTime>
-      <turretTopOffset>(0, 0.05)</turretTopOffset>
-      <turretTopDrawSize>2.0</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
+      <turretTopDrawSize>3</turretTopDrawSize>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -467,7 +916,7 @@
     <label>星规-光辉之冠</label>
     <description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。</description>
     <graphicData>
-      <texPath>SRA/Building/Security/SRA_Weapon_P</texPath>
+      <texPath>SRA/Building/Security/SRA_Weapon_P_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -495,11 +944,11 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正西负东，正南负北（炮塔朝北） -->
-                <li>(0.24, -1.6)</li>   <!-- 第一次射击偏移 -->
-                <li>(0.16, -1.6)</li>  <!-- 第二次射击偏移 -->
-                <li>(-0.16, -1.6)</li>  <!-- 第三次射击偏移 -->
-                <li>(-0.24, -1.6)</li>  <!-- 第四次射击偏移 -->
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(0.24, 1.6)</li>   <!-- 第一次射击偏移 -->
+                <li>(-0.24, 1.6)</li>  <!-- 第二次射击偏移 -->
+                <li>(0.24, 1.6)</li>  <!-- 第三次射击偏移 -->
+                <li>(-0.24, 1.6)</li>  <!-- 第四次射击偏移 -->
                 <!-- 更多偏移... -->
             </offsets>
         </li>
@@ -520,7 +969,7 @@
   	</modExtensions>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>SRA/Building/Security/SRATurret_L_Missle_Base</texPath>
+      <texPath>SRA/Building/Security/SRAHeavyTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(5, 5)</drawSize>
       <drawOffset>(0,0,0)</drawOffset>
@@ -549,6 +998,17 @@
         <damageTakenReduce>16</damageTakenReduce>
       </li>
       <li Class="SRA.CompProperties_ForceTargetable" />
+			<!--洲际弹道打击工作组件-->
+			<li Class="SRA.CompProperties_HNGT_GlobalBallisticAttack">
+				<!--冷却时间-->
+				<cooldownSeconds>30</cooldownSeconds>
+				<!--末段打击效果-->
+				<payloadThingDef>Bombardment_SRABullet_L_Missle</payloadThingDef>
+				<!--世界地图飞行物定义-->
+				<worldObjectDef>SRAWorldObject_L_Missle</worldObjectDef>
+				<!--洲际弹道打击按钮材质数据-->
+				<iconPath>SRA/UI/Actions/SRA_GlobalAttack</iconPath>
+			</li>
     </comps>
     <damageMultipliers>
       <li>
@@ -575,7 +1035,7 @@
     <building>
       <combatPower>1280</combatPower>
       <turretGunDef>SRATurretGun_L_Missle</turretGunDef>
-	  	<turretTopDrawSize>8</turretTopDrawSize>
+	  	<turretTopDrawSize>13</turretTopDrawSize>
       <turretTopOffset>(0, 0)</turretTopOffset>
       <turretBurstWarmupTime>0.5</turretBurstWarmupTime>
       <turretBurstCooldownTime>32</turretBurstCooldownTime>
@@ -624,13 +1084,13 @@
     <modExtensions>
         <li Class="SRA.ModExtension_ShootWithOffset">
             <offsets>
-              <!-- 正西负东，正南负北（炮塔朝北） -->
-                <li>(0, -3.2)</li>   <!-- 第一次射击偏移 -->
+              <!-- 正西负东，正北负南（炮塔朝北） -->
+                <li>(0, 5)</li>   <!-- 第一次射击偏移 -->
             </offsets>
         </li>
     </modExtensions>
   </ThingDef>
-  <ThingDef ParentName="BaseBullet">
+  <ThingDef Name="SRABullet_L_Missle" ParentName="BaseBullet">
     <defName>SRABullet_L_Missle</defName>
     <label>SRABullet_L_Missle</label>
     <thingClass>SRA.Projectile_MultiExplosive_NorthArcTrail</thingClass>
@@ -869,15 +1329,85 @@
     </modExtensions>
   </ThingDef>
   
-
+	<!--洲际飞行中的射弹-->
+	<WorldObjectDef>
+		<defName>SRAWorldObject_L_Missle</defName>
+		<label>SRAWorldObject_L_Missle</label>
+		<description>SRAWorldObject_L_Missle</description>
+		<texture>SRA/Projectile/SRABullet_L_Missle</texture>
+		<!--世界地图属性设置-->
+		<expandMore>true</expandMore>
+		<expandingIcon>true</expandingIcon>
+		<useDynamicDrawer>true</useDynamicDrawer>
+		<allowCaravanIncidentsWhichGenerateMap>false</allowCaravanIncidentsWhichGenerateMap>
+		<!--洲际飞行参数设置-->
+		<worldObjectClass>SRA.WorldObject_GlobalAttackDevice</worldObjectClass>
+		<modExtensions>
+			<li Class="SRA.DefModExtension_GlobalAttackDeviceParams">
+				<!--洲际飞行速度-->
+				<flightSpeed>0.00025</flightSpeed>
+				<!--远程炮击这一轮 fake burst 的发数，不影响普通射击 burstShotCount-->
+				<remoteBurstShotCount>1</remoteBurstShotCount>
+			</li>
+		</modExtensions>
+	</WorldObjectDef>
+	<!--射弹末段打击效果-->
+	<ThingDef ParentName="OrbitalStrikeBase">
+		<defName>Bombardment_SRABullet_L_Missle</defName>
+		<label>Bombardment_SRABullet_L_Missle</label>
+		<!--打击中心控制器透明材质-->
+		<graphicData>
+			<texPath>Things/Mote/Transparent</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<!--打击中心瞄准激光效果-->
+		<comps>
+			<li Class="CompProperties_OrbitalBeam">
+				<width>0</width>
+				<color>(255, 255, 255, 0)</color>
+			</li>
+		</comps>
+		<!--射弹末段打击效果-->
+		<thingClass>SRA.HighOrbitAttack</thingClass>
+		<modExtensions>
+			<li Class="SRA.ModExtension_HighOrbitAttack">
+				<!--总打击次数-->
+				<explosionCount>1</explosionCount>
+				<!--打击偏移半径-->
+				<impactAreaRadius>1</impactAreaRadius>
+				<!--打击时间间隔-->
+				<bombIntervalTicks>30</bombIntervalTicks>
+				<!--打击战斗部锁定时间-->
+				<warmupTicks>30</warmupTicks>
+				<!--打击战斗部再入段声音倍率-->
+				<preImpactSoundVolume>50</preImpactSoundVolume>
+				<!--打击战斗部末段再入速度-->
+				<projectileFlyTimeTicks>10</projectileFlyTimeTicks>
+				<!--打击战斗部种类-->
+				<projectileDef>SRABullet_L_Missle_II</projectileDef>
+				<!--打击战斗部材质资源-->
+				<projectileTexturePath>SRA/Projectile/SRABullet_L_Missle</projectileTexturePath>
+				<!--打击战斗部视觉使用的 ShaderTypeDef；能量/发光贴图推荐 MoteGlow-->
+				<shaderType>TransparentPostLight</shaderType>
+				<!--打击战斗部视觉尺寸-->
+				<drawSize>(3.5, 3.5)</drawSize>
+			</li>
+		</modExtensions>
+	</ThingDef>
+  <ThingDef ParentName="SRABullet_L_Missle">
+    <defName>SRABullet_L_Missle_II</defName>
+    <thingClass>SRA.Projectile_MultiExplosive</thingClass>
+  </ThingDef>
+  
   <ThingDef ParentName="BuildingBase">
     <defName>SRA_DefenseDroneTower</defName>
     <label>星规-哨戒尖塔</label>
     <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署「尖蜂」微型战争单元来作为防卫手段，这些小型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每50秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
     <graphicData>
-      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <texPath>SRA/Building/SRA_DefenseDroneTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(2,4)</drawSize>
+      <drawOffset>(0,0,1)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -910,11 +1440,17 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Flickable"/>
       <li Class="SRA.CompProperties_SRAWarUnitSpawner">
-        <pawnKindDef>
-          <li>SRA_Mech_WarUnit_S</li>
-        </pawnKindDef>
-        <maxWarUnits>20</maxWarUnits> <!-- 自定义最大单位数 -->
-        <perCyclePowerint>0.1</perCyclePowerint> <!-- 自定义每5秒生成的单位数 -->
+        <units>
+          <li>
+            <pawnKindDef>SRA_Mech_WarUnit_S</pawnKindDef>
+            <generationTicks>3000</generationTicks>
+            <maxStored>20</maxStored>
+          </li>
+        </units>
+        <deathCountdownHediffDef>SRA_30000_CountdownDeath</deathCountdownHediffDef>
+        <requirePower>true</requirePower>
+        <productionCheckIntervalTicks>300</productionCheckIntervalTicks>
+        <threatCheckIntervalTicks>300</threatCheckIntervalTicks>
       </li>
     </comps>
     <damageMultipliers>
@@ -952,9 +1488,10 @@
     <label>星规-戍卫尖塔</label>
     <description>特殊的星规地面防御设施，它可以在检测到敌对目标时自动部署中型战争单元来作为防卫手段，这些中型机械单位会主动出击寻找敌对目标并与其交战。设计上来说，这一建筑每500秒能储备一个防御单元，而每个防御单元能持续运行500秒。</description>
     <graphicData>
-      <texPath>SRA/Building/SRA_RepairTower</texPath>
+      <texPath>SRA/Building/SRA_DefenseDroneTower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(2,4)</drawSize>
+      <drawOffset>(0,0,1)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -987,12 +1524,22 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Flickable"/>
       <li Class="SRA.CompProperties_SRAWarUnitSpawner">
-        <pawnKindDef>
-          <li>SRA_Mech_WarUnit_M_D</li>
-          <li>SRA_Mech_WarUnit_M_A</li>
-        </pawnKindDef>
-        <maxWarUnits>2</maxWarUnits> <!-- 自定义最大单位数 -->
-        <perCyclePowerint>0.01</perCyclePowerint> <!-- 自定义每5秒生成的单位数 -->
+        <units>
+          <li>
+            <pawnKindDef>SRA_Mech_WarUnit_M_D</pawnKindDef>
+            <generationTicks>30000</generationTicks>
+            <maxStored>2</maxStored>
+          </li>
+          <li>
+            <pawnKindDef>SRA_Mech_WarUnit_M_A</pawnKindDef>
+            <generationTicks>30000</generationTicks>
+            <maxStored>2</maxStored>
+          </li>
+        </units>
+        <deathCountdownHediffDef>SRA_30000_CountdownDeath</deathCountdownHediffDef>
+        <requirePower>true</requirePower>
+        <productionCheckIntervalTicks>300</productionCheckIntervalTicks>
+        <threatCheckIntervalTicks>300</threatCheckIntervalTicks>
       </li>
     </comps>
     <damageMultipliers>

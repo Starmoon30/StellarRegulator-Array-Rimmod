@@ -17,9 +17,9 @@
   
 
   <SRA_Astronomical_Fabrications_Main.label>铸星神械-轴突</SRA_Astronomical_Fabrications_Main.label>
-  <SRA_Astronomical_Fabrications_Main.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械是一系列自动化工业集群的总称，旨在开发天体并产出各类所需资源。作为星规阵列后期采用的主要工业手段，它从一系列拥有基本开采和加工能力的小型单元开始，逐步构建出遍布整个天体的星辉机械。\n此处使用的是一组受限的版本，它仅仅启用地幔层开采和构建的部分，而不改造地表环境。\n\n&lt;color=#FFFF44&gt;这个建筑每天能生产1个星规-分形演化核心，并且可以存储5000个以待提取。&lt;/color&gt;</SRA_Astronomical_Fabrications_Main.description>
+  <SRA_Astronomical_Fabrications_Main.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械-轴突是轨道工业集群的地面基站，用于管理和调度质能获取与产品合成工作。</SRA_Astronomical_Fabrications_Main.description>
   <SRA_Astronomical_Fabrications_Sub.label>铸星神械-树突</SRA_Astronomical_Fabrications_Sub.label>
-  <SRA_Astronomical_Fabrications_Sub.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械-树突是相对较小的工业集群，它在深层与轴突相连并扩展它的规模，得益于轴突提供的一系列支持，树突的成本相对较小，效率也更高。\n\n&lt;color=#FFFF44&gt;铸星神械-轴突每链接一个树突，每天就能多生产2个星规-分形演化核心&lt;/color&gt;</SRA_Astronomical_Fabrications_Sub.description>
+  <SRA_Astronomical_Fabrications_Sub.description>"我们用冰冷的分形铸就星海，将世界塑造成我们的镜像。"\n铸星神械-树突是轨道工业集群的地面基站额外处理系统，用于扩展质能传输带宽。</SRA_Astronomical_Fabrications_Sub.description>
   <SRA_HydroponicsBasin.label>星规-定向催化农业</SRA_HydroponicsBasin.label>
   <SRA_HydroponicsBasin.description>经由自适应的植物管理系统，通过对作物生理过程的编辑来优化其产出效率。运行时需要消耗电力，断电后作物会死亡。</SRA_HydroponicsBasin.description>
   <SRA_2X1HydroponicsBasin.label>星规-微型催化农业</SRA_2X1HydroponicsBasin.label>

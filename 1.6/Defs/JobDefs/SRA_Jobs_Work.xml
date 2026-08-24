@@ -3,7 +3,7 @@
 
   <JobDef>
     <defName>SRA_EmptySRA_CoreContainer</defName>
-    <driverClass>JobDriver_EmptyThingContainer</driverClass>
+    <driverClass>SRA.JobDriver_ExtractSRAOrbitalOutput</driverClass>
     <reportString>extracting TargetB from TargetA.</reportString>
     <containerReservationLayer>Empty</containerReservationLayer>
   </JobDef>

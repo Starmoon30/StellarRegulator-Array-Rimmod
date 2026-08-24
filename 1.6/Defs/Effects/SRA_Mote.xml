@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SRA_M_Laser</defName>
+    <label>Mote</label>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+
+    <drawOffscreen>true</drawOffscreen>
+
+    <graphicData>
+      <texPath>SRA/Mote/Mote_SRA_M_Laser</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+
+      <!-- 对 MoteDualAttached：x 影响光束横向宽度；y 参与连接长度缩放。 -->
+      <drawSize>(3.4, 1)</drawSize>
+      <color>(0.75, 1, 1, 1)</color>
+
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>-4</_ScrollSpeedA>
+        <_ScrollSpeedB>3</_ScrollSpeedB>
+        <_Intensity>4.2</_Intensity>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SRA_M_Laser_SparkSheath</defName>
+    <label>Mote</label>
+    <thingClass>SRA.Mote_TiledBeamSheath</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+
+    <mote>
+      <fadeInTime>0.06</fadeInTime>
+      <fadeOutTime>0.18</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+
+    <drawOffscreen>true</drawOffscreen>
+
+    <graphicData>
+      <texPath>SRA/Mote/05fire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(1, 1)</drawSize>
+      <color>(0.35, 1, 1, 1)</color>
+    </graphicData>
+
+    <modExtensions>
+      <li Class="SRA.MoteTiledBeamSheathExtension"> <!--用来平铺生成光束的-->
+        <segmentSpacing>1.05</segmentSpacing>
+        <baseSize>1.5</baseSize> <!--基础尺寸-->
+        <expandedSize>5</expandedSize> <!--最终尺寸-->
+        <minSizeFactor>0.55</minSizeFactor>
+        <scrollSpeed>0.9</scrollSpeed>
+        <phaseStride>0.37</phaseStride>
+        <alpha>0.95</alpha>
+        <alphaPower>0.95</alphaPower>
+        <outerAlpha>0.75</outerAlpha>
+        <outerSizeFactor>1</outerSizeFactor>
+        <drawInnerLayer>true</drawInnerLayer>
+        <innerAlpha>0.9</innerAlpha>
+        <innerSizeFactor>0.36</innerSizeFactor>
+        <innerWhiteBlend>0.85</innerWhiteBlend>
+        <sizeJitter>0.18</sizeJitter>
+        <perpendicularJitter>0.7</perpendicularJitter>
+        <altitudeOffset>0.02</altitudeOffset>
+        <maxSegments>96</maxSegments>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 征洋戮海专用主束；与中型激光共用纹理和 shader，但横向宽度更高。 -->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SRA_Long_Lance</defName>
+    <label>Mote</label>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+
+    <mote>
+      <fadeInTime>0.08</fadeInTime> <!-- 快速显现，避免技能前摇结束后出现空帧。 -->
+      <fadeOutTime>0.3</fadeOutTime> <!-- 结束后保留短暂余辉。 -->
+      <solidTime>999999</solidTime> <!-- 生命周期由 Verb 的 Maintain 调用维持。 -->
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+
+    <drawOffscreen>true</drawOffscreen>
+
+    <graphicData>
+      <texPath>SRA/Mote/Mote_SRA_M_Laser</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+      <drawSize>(19.2, 1)</drawSize> <!-- x 控制连接光束横向宽度；y 随连接距离伸缩。 -->
+      <color>(0.8, 1, 1, 1)</color>
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>-4.8</_ScrollSpeedA>
+        <_ScrollSpeedB>3.6</_ScrollSpeedB>
+        <_Intensity>4.6</_Intensity>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <!-- 征洋戮海专用外层泛光：每段贴图等比扩张，而非横向拉伸。 -->
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SRA_Long_Lance_SparkSheath</defName>
+    <label>Mote</label>
+    <thingClass>SRA.Mote_TiledBeamSheath</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+
+    <mote>
+      <fadeInTime>0.04</fadeInTime>
+      <fadeOutTime>0.2</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+
+    <drawOffscreen>true</drawOffscreen>
+
+    <graphicData>
+      <texPath>SRA/Mote/05fire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(1, 1)</drawSize>
+      <color>(0.34, 1, 1, 1)</color>
+    </graphicData>
+
+    <modExtensions>
+      <li Class="SRA.MoteTiledBeamSheathExtension">
+        <segmentSpacing>1.3</segmentSpacing> <!-- 低于中型激光的段密度，控制长距离技能的 draw call。 -->
+        <baseSize>4.8</baseSize> <!-- 每段初始等比尺寸。 -->
+        <expandedSize>16</expandedSize> <!-- 每段扩散到的最大等比尺寸。 -->
+        <minSizeFactor>0.52</minSizeFactor> <!-- 初始阶段保留可见核心，避免突然跳出。 -->
+        <scrollSpeed>0.82</scrollSpeed> <!-- 平铺段的扩散推进速度。 -->
+        <phaseStride>0.41</phaseStride> <!-- 相邻段错开扩散相位，避免整束同步闪烁。 -->
+        <alpha>0.78</alpha> <!-- 降低外层整体亮度，主束仍保持视觉焦点。 -->
+        <alphaPower>1.08</alphaPower> <!-- 扩散末期的衰减曲线。 -->
+        <outerAlpha>0.7</outerAlpha> <!-- 外层泛光透明度。 -->
+        <outerSizeFactor>1</outerSizeFactor> <!-- 外层保持贴图等比大小。 -->
+        <drawInnerLayer>true</drawInnerLayer>
+        <innerAlpha>0.82</innerAlpha> <!-- 较小内层补足火花核心。 -->
+        <innerSizeFactor>0.34</innerSizeFactor> <!-- 内层同样使用等比缩放。 -->
+        <innerWhiteBlend>0.86</innerWhiteBlend> <!-- 内层略偏白，增强相位能量感。 -->
+        <sizeJitter>0.14</sizeJitter> <!-- 仅做轻微尺寸随机，维持束体轮廓。 -->
+        <perpendicularJitter>2</perpendicularJitter> <!-- 扩散时向束体两侧小范围飞散。 -->
+        <altitudeOffset>0.02</altitudeOffset> <!-- 内层略高于外层，避免深度冲突。 -->
+        <maxSegments>56</maxSegments> <!-- 64 格满射程时限制平铺段数量。 -->
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+    <defName>Fleck_SRA_M_Laser_GroundBurn</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>10</solidTime>
+    <fadeOutTime>3</fadeOutTime>
+    <randomGraphics>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_A</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>1.05</drawSize>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_B</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>1.05</drawSize>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_C</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>1.05</drawSize>
+      </li>
+    </randomGraphics>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_SRA_M_Laser_ScorchGlow</defName>
+    <altitudeLayer>LightingOverlay</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.18</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <growthRate>0.4</growthRate>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>SRA/Mote/glow</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>2.4</drawSize>
+      <color>(0.35, 1, 1, 0.38)</color>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_SRA_M_Laser_ImpactGlow</defName>
+    <altitudeLayer>LightingOverlay</altitudeLayer>
+    <fadeInTime>0.01</fadeInTime>
+    <solidTime>0.12</solidTime>
+    <fadeOutTime>0.08</fadeOutTime>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>SRA/Mote/glow</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>8</drawSize>
+      <color>(0.45, 1, 1, 0.46)</color>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_SRA_M_Laser_ImpactHalo</defName>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.2</fadeOutTime>
+    <growthRate>4</growthRate>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>SRA/Mote/halo</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>0.75</drawSize>
+      <color>(0.55, 1, 1, 0.5)</color>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Fleck_SRA_M_Laser_ImpactShard</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <growthRate>-1.2</growthRate>
+    <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>0.45</drawSize>
+      <color>(0.55, 1, 1, 0.58)</color>
+    </graphicData>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+    <defName>Fleck_SRA_M_Laser_LineSpark</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>0.03</solidTime>
+    <fadeOutTime>0.36</fadeOutTime>
+    <growthRate>6.5</growthRate>
+    <acceleration>(0, 0, 1.2)</acceleration>
+    <speedPerTime>0.4~1.1</speedPerTime>
+    <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    <randomGraphics>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>SRA/Mote/04fire</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>1.25</drawSize>
+        <color>(0.3, 1, 1, 0.7)</color>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>SRA/Mote/04fire</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>1.75</drawSize>
+        <color>(0.55, 1, 1, 0.58)</color>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>SRA/Mote/sun_flairs</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>2.1</drawSize>
+        <color>(0.45, 1, 1, 0.36)</color>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>SRA/Mote/SRA_small_particle</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>0.85</drawSize>
+        <color>(0.35, 1, 1, 0.62)</color>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/LongSparkThrown</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>0.8</drawSize>
+        <color>(0.65, 1, 1, 0.7)</color>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/ElectricalSpark</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <drawSize>0.95</drawSize>
+        <color>(0.55, 1, 1, 0.62)</color>
+      </li>
+    </randomGraphics>
+  </FleckDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SRA_M_Laser_ImpactSplash</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>0.16</solidTime>
+      <fadeOutTime>0.48</fadeOutTime>
+      <growthRate>-0.35</growthRate>
+      <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    </mote>
+    <graphicData>
+      <texPath>SRA/Projectile/SRA_Bullet_ChargeLanceShot</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>1.45</drawSize>
+      <color>(0.55, 1, 1, 0.9)</color>
+    </graphicData>
+  </ThingDef>
+
+  <EffecterDef>
+    <defName>SRA_M_Laser_End</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Fleck_SRA_M_Laser_ImpactGlow</fleckDef>
+        <chancePerTick>0.45</chancePerTick>
+        <scale>0.65~0.9</scale>
+        <positionRadius>0.08</positionRadius>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Fleck_SRA_M_Laser_ImpactHalo</fleckDef>
+        <chancePerTick>0.25</chancePerTick>
+        <scale>0.45~0.75</scale>
+        <positionRadius>0.12</positionRadius>
+        <rotation>0~360</rotation>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Fleck_SRA_M_Laser_ScorchGlow</fleckDef>
+        <chancePerTick>0.22</chancePerTick>
+        <scale>0.55~0.85</scale>
+        <positionRadius>0.18</positionRadius>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <moteDef>Mote_SparkThrownFast</moteDef>
+        <chancePerTick>0.35</chancePerTick>
+        <speed>2.5~4.5</speed>
+        <scale>0.1~0.2</scale>
+        <positionRadius>0.18</positionRadius>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Fleck_SRA_M_Laser_ImpactShard</fleckDef>
+        <chancePerTick>0.25</chancePerTick>
+        <speed>3~6</speed>
+        <scale>0.35~0.65</scale>
+        <positionRadius>0.12</positionRadius>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <moteDef>Mote_SRA_M_Laser_ImpactSplash</moteDef>
+        <chancePerTick>0.8</chancePerTick>
+        <speed>18~30</speed>
+        <scale>0.7~1.05</scale>
+        <positionRadius>0.08</positionRadius>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <moteDef>Mote_SRA_M_Laser_ImpactSplash</moteDef>
+        <chancePerTick>0.4</chancePerTick>
+        <speed>30~44</speed>
+        <scale>0.5~0.8</scale>
+        <positionRadius>0.05</positionRadius>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <moteDef>Mote_SRA_M_Laser_ImpactSplash</moteDef>
+        <chancePerTick>0.4</chancePerTick>
+        <speed>12~22</speed>
+        <scale>1~1.4</scale>
+        <positionRadius>0.18</positionRadius>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <fleckDef>Smoke</fleckDef>
+        <chancePerTick>0.18</chancePerTick>
+        <speed>0.15~0.35</speed>
+        <scale>0.5~0.95</scale>
+        <positionRadius>0.2</positionRadius>
+        <absoluteAngle>true</absoluteAngle>
+        <angle>30~80</angle>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <!-- 征洋戮海的短生命周期控制器；真正的光束由它生成并维护的 Mote 绘制。 -->
+  <ThingDef ParentName="MoteBase">
+    <defName>SRA_ExcaliburBeam</defName>
+    <thingClass>SRA.Thing_ExcaliburBeam</thingClass>
+    <label>Excalibur beam controller</label>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+
+    <!-- 控制器本体不可见，避免与专用主束发生重复绘制。 -->
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(0.01, 0.01)</drawSize>
+      <color>(1, 1, 1, 0)</color>
+    </graphicData>
+
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>999999</solidTime> <!-- 生命周期由 Thing_ExcaliburBeam 的 tick 逻辑控制。 -->
+      <fadeOutTime>0</fadeOutTime>
+      <needsMaintenance>false</needsMaintenance>
+    </mote>
+  </ThingDef>
+</Defs>

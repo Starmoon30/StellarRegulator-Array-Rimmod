@@ -138,8 +138,9 @@
 			<SRA_Core>800</SRA_Core>
 		</costList>
 		<verbs>
-			<li>
-				<verbClass>Verb_ShootBeam</verbClass>
+			<li Class="SRA.VerbProperties_SRAShootBeam">
+				<verbClass>SRA.Verb_SRAShootBeam</verbClass>
+       			<forceCompleteBurst>true</forceCompleteBurst>
 				<hasStandardCommand>true</hasStandardCommand>
 				<warmupTime>0.0</warmupTime>
 				<range>120</range>
@@ -159,18 +160,28 @@
 				1.5-->
 				<beamCurvature>0.1</beamCurvature><!--原版
 				0.6-->
-				<burstShotCount>32</burstShotCount><!--攻击判定次数-->
-				<ticksBetweenBurstShots>3</ticksBetweenBurstShots><!--原版
+				<burstShotCount>64</burstShotCount><!--攻击判定次数-->
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots><!--原版
 				22-->
 				<beamFleckChancePerTick>1</beamFleckChancePerTick><!--原版
 				0.32-->
 
-				<beamDamageDef>SRA_Spear_of_SRA_burn</beamDamageDef><!--伤害-->
+				<beamDamageDef>SRA_Spear_of_SRA_burn</beamDamageDef><!--伤害类型-->
+				<beamDamageAmount>160</beamDamageAmount><!--伤害数值-->
+				<beamArmorPenetration>8</beamArmorPenetration><!--穿甲，小于0则使用伤害Def默认值-->
 				<beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef><!--地面特效-->
 				<beamMoteDef>Mote_GraserBeamBase</beamMoteDef><!--n-->
 				<beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef><!--n-->
 				<beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef><!--蓝色火花-->
 
+				<hitRadius>1</hitRadius><!--落点判定半径-->
+				<targetignore>ignoreNonLOSBlockingNonHostile</targetignore><!--伤害所有敌对目标和阻挡视线的中立目标，忽略友方与不挡视线的中立目标-->
+				<damageBeamPath>true</damageBeamPath><!--路径伤害-->
+				<pathHitRadius>0.5</pathHitRadius><!--路径伤害粗细-->
+				<pathDamageFactor>1</pathDamageFactor><!--路径伤害倍率-->
+				<penetrateObstacles>true</penetrateObstacles><!--穿透障碍-->
+				<mining>true</mining><!--采矿伤害正常产出-->
+				
 				<beamChanceToStartFire>0.85</beamChanceToStartFire>
 				<beamChanceToAttachFire>0.85</beamChanceToAttachFire>
 				<beamFireSizeRange>0.55~0.85</beamFireSizeRange>
@@ -185,6 +196,25 @@
 						(1, 0.75)-->
 					</points>
 				</beamLineFleckChanceCurve>
+
+				<customTrajectory>
+					<li>
+						<offset>(4, 3)</offset>
+						<arrivalTick>0</arrivalTick>
+					</li>
+					<li>
+						<offset>(-4, -1)</offset>
+						<arrivalTick>32</arrivalTick>
+					</li>
+					<li>
+						<offset>(-4, 3)</offset>
+						<arrivalTick>32</arrivalTick>
+					</li>
+					<li>
+						<offset>(4, -1)</offset>
+						<arrivalTick>64</arrivalTick>
+					</li>
+				</customTrajectory>
 
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
@@ -324,7 +354,7 @@
 		<label>星规-光辉之冠</label>
 		<description>这套先进的点防御系统警惕着任何来犯之敌，脉冲光束连射的威力不可小觑。手持版本极大幅度压缩了体积，并削减了各项性能以适配单兵承载能力。</description>
 		<graphicData>
-			<texPath>SRA/Building/Security/SRA_Weapon_P</texPath>
+			<texPath>SRA/Building/Security/SRA_Weapon_P_Top</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>0.5</drawSize>
 		</graphicData>
@@ -701,6 +731,9 @@
 		</projectile>
 		<modExtensions>
 			<li Class="SRA.MultiExplosive_BeamExtension">
+				<targetignore>ignoreNonHostile</targetignore>
+				<damageBeamPath>true</damageBeamPath>
+				<pathHitRadius>0.5</pathHitRadius>
 				<MultiExplosive_Beams>
 					<li>
 						<radius>1</radius>

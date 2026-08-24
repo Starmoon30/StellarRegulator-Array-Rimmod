@@ -57,7 +57,7 @@
     <tab>SRA</tab>
     <defName>SRA_Astronomical_Fabrications</defName>
     <label>星规-铸星神械</label>
-    <description>一些重塑了整片星海的事物的轻量化版本。\n用于提供稳定的分形演化核心产出。</description>
+    <description>一些重塑了整片星海的事物的轻量化版本。\n解锁物质扫描、轨道构造订单和可自我扩展的远轨工业网络。</description>
     <baseCost>6400</baseCost>
     <techLevel>Ultra</techLevel>
     <researchViewX>1</researchViewX>

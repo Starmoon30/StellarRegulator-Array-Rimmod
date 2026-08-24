@@ -79,10 +79,12 @@
     <defName>SRA_Astronomical_Fabrications_Main</defName>
     <label>铸星神械-轴突</label>
     <description>铸星神械-轴突</description>
+    <!-- 保持为普通建筑 Thing，轨道功能由下方各 Comp 提供。 -->
+    <thingClass>Building</thingClass>
     <graphicData>
       <texPath>SRA/Building/SRA_Astronomical_Fabrications_Main</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(7,7.4)</drawSize>
+      <drawSize>(7,7)</drawSize>
       <drawOffset>(0,0,0.6)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
@@ -103,6 +105,12 @@
       <WorkToBuild>12000</WorkToBuild>
     </statBases>
     <tickerType>Normal</tickerType>
+    <!-- 轨道下载光柱依赖实时绘制；移除后会触发 orbital beam requires realtime drawer 配置错误。 -->
+    <drawerType>RealtimeOnly</drawerType>
+    <!-- 下载缓存由殖民者在交互格提取，因此此建筑必须拥有交互格。 -->
+    <hasInteractionCell>true</hasInteractionCell>
+    <!-- 交互格相对建筑中心向南偏移 3 格。 -->
+    <interactionCellOffset>(0,0,-3)</interactionCellOffset>
     <building>
       <!--<soundAmbient>EMIDynamo_Ambience</soundAmbient>-->
       <destroySound>BuildingDestroyed_Metal_Big</destroySound>
@@ -113,33 +121,152 @@
     </building>
     <comps>
       <li Class="CompProperties_Forbiddable"/>
+      <!-- 轨道工业、产业价值缓存和构造订单的核心配置。 -->
       <li Class="SRA.CompProperties_Generator_SRA_Core">
+        <!-- 遗留的原始产物 Def；当前轨道订单不直接使用它，保留以兼容旧 Def 结构。 -->
         <product>SRA_Core</product>
-        <itemsPerCycle>10</itemsPerCycle>
-        <baseProgressPerCycle>0.01</baseProgressPerCycle>
-        <progressPerFacilityPerCycle>0.02</progressPerFacilityPerCycle>
+        <!-- 本地上行产业价值缓存的基础容量，单位：产业价值。 -->
+        <baseStorageCapacity>500000</baseStorageCapacity>
+        <!-- 每座已连接的附属轴突额外提供的本地上行产业价值容量，单位：产业价值。 -->
+        <storageCapacityPerFacility>500000</storageCapacityPerFacility>
+        <!-- 轨道戴森云的发电结算周期，单位：游戏 tick；60 tick = 1 秒。 -->
+        <orbitalGenerationIntervalTicks>60000</orbitalGenerationIntervalTicks>
+        <!-- 单个戴森云节点在每次发电结算时产出的轨道产业价值。 -->
+        <unitYieldPerInterval>1000</unitYieldPerInterval>
+        <!-- 单个戴森云节点提供的共享轨道产业价值上限；总上限 = 节点数 x 此值。 -->
+        <orbitalMassEnergyCapacityPerUnit>250000</orbitalMassEnergyCapacityPerUnit>
+        <!-- 上传与下载链路的默认周期，单位：游戏 tick；玩家可在控制台中调整。 -->
+        <defaultLinkIntervalTicks>60000</defaultLinkIntervalTicks>
+        <!-- 控制台允许设置的最短链路周期，单位：游戏 tick。周期过短时，单次带宽可能不足以下载高价值物品。 -->
+        <minimumLinkIntervalTicks>60</minimumLinkIntervalTicks>
+        <!-- 控制台允许设置的最长链路周期，单位：游戏 tick。 -->
+        <maximumLinkIntervalTicks>3600000</maximumLinkIntervalTicks>
+        <!-- 默认链路周期内的基础带宽，单位：产业价值；先下载订单，剩余部分才用于上传。 -->
+        <baseBandwidthPerDefaultInterval>100000</baseBandwidthPerDefaultInterval>
+        <!-- 每座已连接的附属轴突在默认链路周期内额外提供的带宽，单位：产业价值。 -->
+        <bandwidthPerFacilityPerDefaultInterval>100000</bandwidthPerFacilityPerDefaultInterval>
+        <!-- 下载缓存可存放的物品总数量上限；达到上限时订单会等待清空缓存。 -->
+        <outputItemCapacity>5000</outputItemCapacity>
+        <!-- 单次物品下载的完整动画时长，单位：游戏 tick；下载始终整批完成，不会分段传输。 -->
+        <downloadAnimationTicks>180</downloadAnimationTicks>
+        <!-- 打开轨道构造控制台的命令图标路径；填写 Textures 下的路径且不含扩展名。 -->
+        <controlPanelIconPath>SRA/UI/Commands/UI_SRA_Astronomical_Fabrications</controlPanelIconPath>
+        <!-- 部署一个新的戴森云节点所消耗的轨道产业价值。 -->
+        <industrialUnitLaunchCost>50000</industrialUnitLaunchCost>
+        <!-- 每次戴森云节点部署后施加的冷却时间，单位：游戏 tick。 -->
+        <industrialUnitLaunchCooldownTicks>6000</industrialUnitLaunchCooldownTicks>
+        <!-- 扫描上传时，物品市场价值转换为产业价值的倍率。 -->
+        <scanEfficiency>0.5</scanEfficiency>
+        <!-- 轨道打印时，物品市场价值转换为单件轨道产业价值成本的倍率。 -->
+        <fabricationCostFactor>1</fabricationCostFactor>
       </li>
+      <!-- 下载完成阶段使用的垂直轨道光柱。 -->
+      <li Class="CompProperties_OrbitalBeam">
+        <!-- 光柱的世界宽度，单位：格。 -->
+        <width>3.2</width>
+        <!-- 光柱颜色，格式为 RGBA（每个通道 0 至 255）。 -->
+        <color>(38, 218, 255, 235)</color>
+      </li>
+      <!-- 复用原版运输舱的装载清单和殖民者搬运逻辑，作为扫描上传舱。 -->
+      <li Class="SRA.CompProperties_OrbitalScannerTransporter">
+        <!-- 上传舱可装载的总质量。设为极大值，使实际限制由产业价值缓存而非质量决定。 -->
+        <massCapacity>2000000000</massCapacity>
+        <!-- 防止相邻运输舱自动并入同一装载组。 -->
+        <max1PerGroup>true</max1PerGroup>
+        <!-- 装载过程中允许重新编辑上传清单。 -->
+        <canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting>
+        <!-- 不在原版检查字符串中显示上传舱质量，相关状态改由专属控制台展示。 -->
+        <showMassInInspectString>false</showMassInInspectString>
+        <!-- 不显示原版运输舱的汇总统计，避免与轨道控制台信息重复。 -->
+        <showOverallStats>false</showOverallStats>
+      </li>
+      <!-- 建筑本体的常驻青色光照。 -->
       <li Class="CompProperties_Glower">
+        <!-- 光照半径，单位：格。 -->
         <glowRadius>8</glowRadius>
         <!--<glowColor>(105,204,204,0)</glowColor>-->
+        <!-- 光照颜色，格式为 RGBA（每个通道 0 至 255）。 -->
         <glowColor>(0, 255, 255, 128)</glowColor>
       </li>
+      <!-- 下载物品的隐藏内部缓存；殖民者会通过交互格将其中物品搬入普通库存。 -->
       <li Class="CompProperties_ThingContainer">
-        <compClass>CompThingContainer</compClass>
+        <!-- 使用专用容器类，避免默认检查文本与上传舱信息重复。 -->
+        <compClass>SRA.CompSRAHiddenThingContainer</compClass>
+        <!-- 容器底层单堆叠上限；应不低于 outputItemCapacity。 -->
         <stackLimit>5000</stackLimit>
+        <!-- 下载产物不会直接绘制在建筑模型上。 -->
         <drawContainedThing>false</drawContainedThing>
+        <!-- 容器内容被移出时使用的视觉效果。 -->
         <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
       </li>
+      <!-- 允许附属轴突为本体增加本地产业价值容量和链路带宽。 -->
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
+          <!-- 可连接的附属轴突 Def。 -->
           <li>SRA_Astronomical_Fabrications_Sub</li>
         </linkableFacilities>
       </li>
+      <!-- 基站供电配置。 -->
       <li Class="CompProperties_Power">
+        <!-- 使用发电机式供电 Comp，以维持原建筑的电网连接行为。 -->
         <compClass>CompPowerPlant</compClass>
+        <!-- 运行时电力消耗，单位：W；负数表示消耗。 -->
         <basePowerConsumption>-3200</basePowerConsumption>
+        <!-- 允许建筑将电力继续传递至相邻电网。 -->
         <transmitsPower>true</transmitsPower>
       </li>
+      <li Class="SRA.CompProperties_ClearTimedGameConditions">
+        <requirePower>false</requirePower>
+        <gameConditionWhitelist>
+          <li>PsychicSoothe</li>
+          <li>Aurora</li>
+        </gameConditionWhitelist>
+        <weatherWhitelist>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+          <li>Clear</li>
+        </weatherWhitelist>
+      </li>
+      <li Class="SRA.CompProperties_RemoteMapMonitor">
+      </li>
+      <li Class="SRA.CompProperties_HediffDetector">
+        <!-- 半径，填 0 则扫描整张地图。 -->
+        <detectRadius>0</detectRadius>
+        <scanIntervalTicks>120</scanIntervalTicks>
+        <revealFog>true</revealFog>
+
+        <!-- 缺少的 HediffDef 会自动跳过，可安全引用可选 DLC 内容。 -->
+        <detectionList>
+          <li>
+            <matchAllInvisibilityHediffs>true</matchAllInvisibilityHediffs>
+            <iconPath>SRA/UI/Actions/SRA_Invisibility</iconPath>
+          </li>
+          <li>
+            <hediffDef>MetalhorrorImplant</hediffDef>
+            <iconPath>SRA/UI/Actions/SRA_Metalhorror</iconPath>
+          </li>
+        </detectionList>
+
+        <disruptEnemyInvisibility>true</disruptEnemyInvisibility>
+        <disruptionDurationTicks>180</disruptionDurationTicks>
+        <requirePower>true</requirePower>
+        <startEnabled>false</startEnabled>
+        <gizmoLabelKey>SRA_HediffDetector_ToggleLabel</gizmoLabelKey>
+        <gizmoDescKey>SRA_HediffDetector_ToggleDesc</gizmoDescKey>
+        <uiIconPathEnabled>SRA/UI/Actions/SRA_DetectorOn</uiIconPathEnabled>
+        <uiIconPathDisabled>SRA/UI/Actions/SRA_DetectorOff</uiIconPathDisabled>
+        <markScale>2.5</markScale>
+        <markHeightOffset>1.5</markHeightOffset>
+        <markBobbingFrequency>0.3</markBobbingFrequency>
+        <markBobbingAmplitude>0.3</markBobbingAmplitude>
+      </li>
+			<li Class="SRA.CompProperties_BuildingDrawExtraFourRot">
+				<graphicDataExtra>
+					<texPath>SRA/Building/SRA_Astronomical_Fabrications_Main_light</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(7,7)</drawSize>
+          <drawOffset>(0,0,0.6)</drawOffset>
+				</graphicDataExtra>
+			</li>
     </comps>
     <damageMultipliers>
       <li>
@@ -184,8 +311,8 @@
     <graphicData>
       <texPath>SRA/Building/SRA_Astronomical_Fabrications_Sub</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3,6)</drawSize>
-      <drawOffset>(0,0,1.5)</drawOffset>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,0,0.2)</drawOffset>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -211,6 +338,14 @@
       <ai_chillDestination>false</ai_chillDestination>
     </building>
     <comps>
+			<li Class="SRA.CompProperties_BuildingDrawExtraFourRot">
+				<graphicDataExtra>
+					<texPath>SRA/Building/SRA_Astronomical_Fabrications_Sub_light</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(4,4)</drawSize>
+          <drawOffset>(0,0,0.2)</drawOffset>
+				</graphicDataExtra>
+			</li>
       <li Class="CompProperties_Facility">
         <showMaxSimultaneous>false</showMaxSimultaneous>
         <requiresLOS>false</requiresLOS>

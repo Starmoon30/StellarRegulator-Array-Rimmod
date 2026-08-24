@@ -86,12 +86,11 @@
     <Compile Include="CompCommunicator.cs" />
     <Compile Include="EventWindow.cs" />
     <Compile Include="EventWindow_Rocivia.cs" />
-    <Compile Include="Comp_SRAWarUnitSpawner.cs" />
-    <Compile Include="CompProperties_SRAWarUnitSpawner.cs" />
+    <Compile Include="AstronomicalFabricationNetwork.cs" />
+    <Compile Include="AstronomicalFabricationVisuals.cs" />
     <Compile Include="CompGenerator_SRA_Core.cs" />
     <Compile Include="CompProperties_Generator_SRA_Core.cs" />
-    <Compile Include="SRAResurrectionBeacon_Patch.cs" />
-    <Compile Include="SRABuilding_ResurrectionBeacon.cs" />
+    <Compile Include="Dialog_SRAAstronomicalFabrications.cs" />
     <Compile Include="WorkGiver_EmptySRA_CoreContainer.cs" />
     <Compile Include="SectionLayer_SRAWall.cs" />
     <Compile Include="ThingDefOf.cs" />
