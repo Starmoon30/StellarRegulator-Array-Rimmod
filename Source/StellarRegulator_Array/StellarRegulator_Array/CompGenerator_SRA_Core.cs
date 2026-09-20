@@ -23,17 +23,19 @@ namespace SRA
 
         public bool ClearPendingLoadPreservingContents(Map map)
         {
-            bool hadPendingLoad = leftToLoad != null && leftToLoad.Count > 0;
-            if (!hadPendingLoad && !LoadingInProgressOrReadyToLaunch)
+            bool hadLoadingState = (leftToLoad != null && leftToLoad.Count > 0) ||
+                                   LoadingInProgressOrReadyToLaunch;
+            if (!hadLoadingState)
             {
                 return false;
             }
 
-            // The stock cancel path also drops loaded contents. Keep the scan bay intact and only clear its hauling assignment.
+            // CompTransporter.CleanUpLoadingVars drops innerContainer contents. End only the
+            // hauling lord and assignment here; the caller decides what to do with loaded items.
             TryRemoveLord(map);
             leftToLoad?.Clear();
             GroupIdField?.SetValue(this, -1);
-            return hadPendingLoad;
+            return true;
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -54,7 +56,8 @@ namespace SRA
     // Orbital production is fully self-managed by this component and never creates colonist work orders.
     public class CompGenerator_SRA_Core : ThingComp
     {
-        // This is the local, finite upload buffer. The orbital balance is stored by OrbitalIndustryNetworkState.
+        // The world component owns the station-local cache. This field remains a serialized
+        // fallback for saves written before that cache was moved out of the building Comp.
         private long massEnergy;
         private bool autoLaunch;
         private long autoLaunchReserve;
@@ -71,7 +74,10 @@ namespace SRA
         private long lastUploadAmount;
         private long lastDownloadCost;
         private int lastDownloadOrderId = -1;
+        private string stationId;
 
+        // Order settlement is synchronous. The transfer state exists solely for the one visual
+        // presentation that follows a completed scheduled downlink.
         private int transferTicksLeft;
         private int transferTicksTotal;
         private OrbitalTransferKind transferKind;
@@ -80,14 +86,6 @@ namespace SRA
         private bool windupSoundPlayed;
         private string cachedControlPanelIconPath;
         private Texture2D cachedControlPanelIcon;
-
-        // A selected batch is reserved before its animation begins, so save/load cannot duplicate a downlink.
-        private int pendingDownloadOrderId = -1;
-        private ThingDef pendingDownloadProductDef;
-        private ThingDef pendingDownloadStuffDef;
-        private int pendingDownloadCount;
-        private int pendingDownloadQualityMin = (int)QualityCategory.Awful;
-        private int pendingDownloadQualityMax = (int)QualityCategory.Legendary;
 
         public CompProperties_Generator_SRA_Core Props => (CompProperties_Generator_SRA_Core)props;
 
@@ -113,7 +111,7 @@ namespace SRA
 
         public Map Map => parent.Map;
 
-        public long MassEnergy => massEnergy;
+        public long MassEnergy => GetLocalMassEnergy();
         public long StorageCapacity => OrbitalFabricationUtility.SaturatingAdd(
             Props.baseStorageCapacity,
             OrbitalFabricationUtility.SaturatingMultiply(Props.storageCapacityPerFacility, FacilitiesNum));
@@ -194,6 +192,46 @@ namespace SRA
 
         public Thing OutputItem => OutputContainer?.innerContainer?.FirstOrDefault();
 
+        private string EnsureStationId()
+        {
+            if (String.IsNullOrEmpty(stationId) && parent != null && !String.IsNullOrEmpty(parent.ThingID))
+            {
+                stationId = "SRA_Astronomical_Fabrications_" + parent.ThingID;
+            }
+
+            return stationId;
+        }
+
+        private WorldComponent_SRAOrbitalIndustry IndustryWorld => Find.World?
+            .GetComponent<WorldComponent_SRAOrbitalIndustry>();
+
+        private long GetLocalMassEnergy()
+        {
+            WorldComponent_SRAOrbitalIndustry world = IndustryWorld;
+            string currentStationId = EnsureStationId();
+            if (world == null || String.IsNullOrEmpty(currentStationId))
+            {
+                return OrbitalFabricationUtility.ClampMassEnergy(massEnergy);
+            }
+
+            massEnergy = world.GetLocalMassEnergy(currentStationId, massEnergy);
+            return massEnergy;
+        }
+
+        private void SetLocalMassEnergy(long amount)
+        {
+            WorldComponent_SRAOrbitalIndustry world = IndustryWorld;
+            string currentStationId = EnsureStationId();
+            if (world == null || String.IsNullOrEmpty(currentStationId))
+            {
+                massEnergy = OrbitalFabricationUtility.ClampMassEnergy(amount);
+                return;
+            }
+
+            world.SetLocalMassEnergy(currentStationId, amount, StorageCapacity);
+            massEnergy = world.GetLocalMassEnergy(currentStationId, 0L);
+        }
+
         private CompAffectedByFacilities FacilityComp => parent.GetComp<CompAffectedByFacilities>();
         private CompPowerTrader PowerComp => parent.GetComp<CompPowerTrader>();
         private CompBreakdownable BreakdownComp => parent.GetComp<CompBreakdownable>();
@@ -203,12 +241,17 @@ namespace SRA
         {
             get
             {
-                if (Find.World == null || parent.Map == null)
+                string currentStationId = EnsureStationId();
+                if (Find.World == null || String.IsNullOrEmpty(currentStationId))
                 {
                     return null;
                 }
 
-                return Find.World.GetComponent<WorldComponent_SRAOrbitalIndustry>()?.GetOrCreateNetwork(parent.Map.uniqueID);
+                int legacyNetworkId = parent.Map?.uniqueID ?? -1;
+                OrbitalIndustryNetworkState network = Find.World
+                    .GetComponent<WorldComponent_SRAOrbitalIndustry>()
+                    ?.GetOrCreateNetwork(currentStationId, legacyNetworkId);
+                return network;
             }
         }
 
@@ -220,11 +263,14 @@ namespace SRA
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
+            EnsureStationId();
+            GetLocalMassEnergy();
             EnsureLinkSchedule();
         }
 
         public override void PostExposeData()
         {
+            EnsureStationId();
             Scribe_Values.Look(ref massEnergy, "massEnergy", 0L);
             Scribe_Values.Look(ref autoLaunch, "autoLaunch", false);
             Scribe_Values.Look(ref autoLaunchReserve, "autoLaunchReserve", 0L);
@@ -240,23 +286,17 @@ namespace SRA
             Scribe_Values.Look(ref lastUploadAmount, "lastUploadAmount", 0L);
             Scribe_Values.Look(ref lastDownloadCost, "lastDownloadCost", 0L);
             Scribe_Values.Look(ref lastDownloadOrderId, "lastDownloadOrderId", -1);
-
+            Scribe_Values.Look(ref stationId, "stationId");
             Scribe_Values.Look(ref transferTicksLeft, "transferTicksLeft", 0);
             Scribe_Values.Look(ref transferTicksTotal, "transferTicksTotal", 0);
             Scribe_Values.Look(ref transferKind, "transferKind", OrbitalTransferKind.None);
             Scribe_Values.Look(ref orbitalBeamAnimationStarted, "orbitalBeamAnimationStarted", false);
             Scribe_Values.Look(ref beamSoundPlayed, "beamSoundPlayed", false);
             Scribe_Values.Look(ref windupSoundPlayed, "windupSoundPlayed", false);
-            Scribe_Values.Look(ref pendingDownloadOrderId, "pendingDownloadOrderId", -1);
-            Scribe_Defs.Look(ref pendingDownloadProductDef, "pendingDownloadProductDef");
-            Scribe_Defs.Look(ref pendingDownloadStuffDef, "pendingDownloadStuffDef");
-            Scribe_Values.Look(ref pendingDownloadCount, "pendingDownloadCount", 0);
-            Scribe_Values.Look(ref pendingDownloadQualityMin, "pendingDownloadQualityMin", (int)QualityCategory.Awful);
-            Scribe_Values.Look(ref pendingDownloadQualityMax, "pendingDownloadQualityMax", (int)QualityCategory.Legendary);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                massEnergy = Math.Min(OrbitalFabricationUtility.ClampMassEnergy(massEnergy), StorageCapacity);
+                massEnergy = OrbitalFabricationUtility.ClampMassEnergy(massEnergy);
                 autoLaunchReserve = OrbitalFabricationUtility.ClampMassEnergy(autoLaunchReserve);
                 autoLaunchTargetUnits = Math.Max(0, Math.Min(autoLaunchTargetUnits, OrbitalFabricationUtility.MaximumIndustrialUnits));
                 launchCooldownTicks = Math.Max(0, launchCooldownTicks);
@@ -273,10 +313,12 @@ namespace SRA
                 int firstUnusedAfterLoadedOrders = highestOrderId >= int.MaxValue ? 1 : highestOrderId + 1;
                 nextOrderId = Math.Max(1, Math.Max(firstUnusedAfterLoadedOrders, nextOrderId));
                 linkIntervalTicks = NormalizeLinkInterval(linkIntervalTicks > 0 ? linkIntervalTicks : Props.defaultLinkIntervalTicks);
-                NormalizePendingDownloadQuality();
+                EnsureStationId();
+                transferTicksTotal = Math.Max(0, transferTicksTotal);
+                transferTicksLeft = Math.Max(0, Math.Min(transferTicksLeft, transferTicksTotal));
 
                 // Old transfer kinds were visual upload/launch operations. They are intentionally retired.
-                if (transferKind != OrbitalTransferKind.ItemDownload || pendingDownloadProductDef == null || pendingDownloadCount <= 0)
+                if (transferKind != OrbitalTransferKind.ItemDownload || transferTicksTotal <= 0 || transferTicksLeft <= 0)
                 {
                     ClearTransferState();
                 }
@@ -384,7 +426,7 @@ namespace SRA
         {
             OrbitalIndustryNetworkState network = Network;
             string result = "SRA_OrbitalInspectUploadBuffer".Translate(
-                OrbitalFabricationUtility.FormatMassEnergy(massEnergy),
+                OrbitalFabricationUtility.FormatMassEnergy(GetLocalMassEnergy()),
                 OrbitalFabricationUtility.FormatMassEnergy(StorageCapacity));
             if (network != null)
             {
@@ -431,10 +473,12 @@ namespace SRA
                 return false;
             }
 
-            if (scanner.AnythingLeftToLoad)
+            // Upload is an explicit command. If the player presses it while some of the
+            // selected list is still being hauled, keep what is already in the bay and cancel
+            // only the remaining hauling assignment.
+            if (scanner.AnythingLeftToLoad || scanner.LoadingInProgressOrReadyToLaunch)
             {
-                reason = "SRA_OrbitalScannerLoading".Translate();
-                return false;
+                scanner.ClearPendingLoadPreservingContents(parent.Map);
             }
 
             return FinishScanUpload(out reason);
@@ -442,7 +486,6 @@ namespace SRA
 
         public bool TryStopLoadingAndUpload(bool allowOverflow, out string reason)
         {
-            CancelPendingManifest();
             return TryBeginScanUpload(allowOverflow, out reason);
         }
 
@@ -498,7 +541,7 @@ namespace SRA
 
         public void DebugFillUploadBuffer()
         {
-            massEnergy = StorageCapacity;
+            SetLocalMassEnergy(StorageCapacity);
         }
 
         public void DebugAddIndustrialUnit()
@@ -779,7 +822,8 @@ namespace SRA
             reason = null;
             CompOrbitalScannerTransporter scanner = ScannerComp;
             OrbitalIndustryNetworkState network = Network;
-            if (scanner?.innerContainer == null || network == null)
+            WorldComponent_SRAOrbitalIndustry world = IndustryWorld;
+            if (scanner?.innerContainer == null || network == null || world == null)
             {
                 reason = "SRA_OrbitalScannerMissing".Translate();
                 return false;
@@ -797,7 +841,8 @@ namespace SRA
                 totalYield = OrbitalFabricationUtility.SaturatingAdd(totalYield, OrbitalFabricationUtility.ScanYield(things[i], Props));
             }
 
-            long freeStorage = Math.Max(0L, StorageCapacity - massEnergy);
+            long currentMassEnergy = GetLocalMassEnergy();
+            long freeStorage = Math.Max(0L, StorageCapacity - currentMassEnergy);
             if (totalYield > freeStorage)
             {
                 reason = "SRA_OrbitalStorageInsufficient".Translate(
@@ -819,7 +864,8 @@ namespace SRA
                 thing.Destroy(DestroyMode.Vanish);
             }
 
-            massEnergy = Math.Min(StorageCapacity, OrbitalFabricationUtility.SaturatingAdd(massEnergy, totalYield));
+            world.AddLocalMassEnergy(EnsureStationId(), totalYield, StorageCapacity);
+            massEnergy = world.GetLocalMassEnergy(EnsureStationId(), 0L);
             scanner.TryRemoveLord(parent.Map);
             scanner.CleanUpLoadingVars(parent.Map);
             Messages.Message(
@@ -832,6 +878,11 @@ namespace SRA
 
         private void RunLinkEvent()
         {
+            if (TransferActive)
+            {
+                return;
+            }
+
             lastLinkTick = Find.TickManager?.TicksGame ?? -1;
             lastUploadAmount = 0L;
             lastDownloadCost = 0L;
@@ -849,124 +900,154 @@ namespace SRA
             }
 
             network.GenerateUntil(Find.TickManager.TicksGame, Props.orbitalGenerationIntervalTicks, Props.unitYieldPerInterval, OrbitalMassEnergyCapacity);
-            if (TransferActive)
+            if (ResolveLinkDownloads(network, LinkBandwidthPerEvent))
             {
-                return;
-            }
-
-            long remainingBandwidth = LinkBandwidthPerEvent;
-            long batchCost;
-            OrbitalFabricationOrder order = FindNextDownloadOrder(network, remainingBandwidth, out batchCost);
-            if (order != null && network.TrySpendOrbitalMassEnergy(batchCost, OrbitalMassEnergyCapacity))
-            {
-                ReserveDownload(order);
-                order.lastStatus = OrbitalOrderStatus.Downloading;
-                remainingBandwidth -= batchCost;
-                lastDownloadCost = batchCost;
-                lastDownloadOrderId = order.id;
-
                 if (downloadAnimationEnabled)
                 {
                     BeginDownloadTransfer();
                 }
-                else
+                else if (downloadSoundEnabled && parent.Map != null)
                 {
-                    if (downloadSoundEnabled && parent.Map != null)
+                    SRA_DefOf.SRA_titan_laser_hit_01?.PlayOneShot(new TargetInfo(parent.Position, parent.Map, false));
+                }
+            }
+        }
+
+        // A scheduled link is one atomic settlement. The first pass preserves queue priority;
+        // each following pass only evaluates orders that fully completed during the prior pass.
+        private bool ResolveLinkDownloads(OrbitalIndustryNetworkState network, long bandwidth)
+        {
+            long remainingBandwidth = Math.Max(0L, bandwidth);
+            bool anyDownloadCompleted = false;
+            HashSet<int> priorPassSuccessfulOrderIds = null;
+
+            while (remainingBandwidth > 0L && orbitalOrders != null && orbitalOrders.Count > 0)
+            {
+                HashSet<int> successfulOrderIds = new HashSet<int>();
+                for (int i = 0; i < orbitalOrders.Count; i++)
+                {
+                    OrbitalFabricationOrder order = orbitalOrders[i];
+                    if (priorPassSuccessfulOrderIds != null &&
+                        (order == null || !priorPassSuccessfulOrderIds.Contains(order.id)))
                     {
-                        SRA_DefOf.SRA_titan_laser_hit_01?.PlayOneShot(new TargetInfo(parent.Position, parent.Map, false));
+                        continue;
                     }
 
-                    DeliverPendingDownload();
+                    long batchCost;
+                    if (!TryPrepareDownloadOrder(order, network, remainingBandwidth, out batchCost))
+                    {
+                        continue;
+                    }
+
+                    if (!network.TrySpendOrbitalMassEnergy(batchCost, OrbitalMassEnergyCapacity))
+                    {
+                        order.lastStatus = OrbitalOrderStatus.WaitingOrbitalEnergy;
+                        continue;
+                    }
+
+                    remainingBandwidth -= batchCost;
+                    lastDownloadCost = OrbitalFabricationUtility.SaturatingAdd(lastDownloadCost, batchCost);
+                    lastDownloadOrderId = order.id;
+                    order.lastStatus = OrbitalOrderStatus.Downloading;
+
+                    if (TryDeliverDownload(order))
+                    {
+                        successfulOrderIds.Add(order.id);
+                        anyDownloadCompleted = true;
+                    }
                 }
+
+                if (successfulOrderIds.Count == 0)
+                {
+                    break;
+                }
+
+                priorPassSuccessfulOrderIds = successfulOrderIds;
             }
 
             if (remainingBandwidth > 0L)
             {
                 lastUploadAmount = UploadLocalMassEnergy(network, remainingBandwidth);
             }
+
+            return anyDownloadCompleted;
         }
 
-        // Queue ordering is strict: the first unsatisfied order is the active order. If it is too
-        // expensive for this cadence, the player can lower its priority instead of silently bypassing it.
-        private OrbitalFabricationOrder FindNextDownloadOrder(OrbitalIndustryNetworkState network, long bandwidth, out long batchCost)
+        private bool TryPrepareDownloadOrder(OrbitalFabricationOrder order, OrbitalIndustryNetworkState network, long bandwidth, out long batchCost)
         {
             batchCost = 0L;
-            if (orbitalOrders == null)
+            if (order == null || order.productDef == null)
             {
-                return null;
+                return false;
             }
 
-            for (int i = 0; i < orbitalOrders.Count; i++)
+            if (order.suspended)
             {
-                OrbitalFabricationOrder order = orbitalOrders[i];
-                if (order == null || order.productDef == null)
-                {
-                    continue;
-                }
-
-                if (order.suspended)
-                {
-                    order.lastStatus = OrbitalOrderStatus.Suspended;
-                    continue;
-                }
-
-                if (order.mode == OrbitalOrderMode.RepeatCount && order.remainingBatches <= 0)
-                {
-                    order.lastStatus = OrbitalOrderStatus.Complete;
-                    continue;
-                }
-
-                int stock = OrbitalFabricationInventory.CountProducts(Map, OutputContainer, order);
-                order.lastStockCount = stock;
-                order.lastEvaluationTick = Find.TickManager.TicksGame;
-                if (!order.NeedsDownload(stock))
-                {
-                    order.lastStatus = OrbitalOrderStatus.TargetSatisfied;
-                    continue;
-                }
-
-                batchCost = GetOrderBatchCost(order);
-                if (batchCost > bandwidth)
-                {
-                    order.lastStatus = OrbitalOrderStatus.WaitingBandwidth;
-                    return null;
-                }
-
-                if (network.OrbitalMassEnergy < batchCost)
-                {
-                    order.lastStatus = OrbitalOrderStatus.WaitingOrbitalEnergy;
-                    return null;
-                }
-
-                if (!CanStoreOutput(order.batchSize))
-                {
-                    order.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
-                    return null;
-                }
-
-                order.lastStatus = OrbitalOrderStatus.Ready;
-                return order;
+                order.lastStatus = OrbitalOrderStatus.Suspended;
+                return false;
             }
 
-            return null;
+            if (order.mode == OrbitalOrderMode.RepeatCount && order.remainingBatches <= 0)
+            {
+                order.lastStatus = OrbitalOrderStatus.Complete;
+                return false;
+            }
+
+            int stock = OrbitalFabricationInventory.CountProducts(Map, OutputContainer, order);
+            order.lastStockCount = stock;
+            order.lastEvaluationTick = Find.TickManager.TicksGame;
+            if (!order.NeedsDownload(stock))
+            {
+                order.lastStatus = OrbitalOrderStatus.TargetSatisfied;
+                return false;
+            }
+
+            batchCost = GetOrderBatchCost(order);
+            if (batchCost > bandwidth)
+            {
+                order.lastStatus = OrbitalOrderStatus.WaitingBandwidth;
+                return false;
+            }
+
+            if (network.OrbitalMassEnergy < batchCost)
+            {
+                order.lastStatus = OrbitalOrderStatus.WaitingOrbitalEnergy;
+                return false;
+            }
+
+            if (!CanStoreOutput(order.batchSize))
+            {
+                order.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
+                return false;
+            }
+
+            order.lastStatus = OrbitalOrderStatus.Ready;
+            return true;
         }
 
         private long UploadLocalMassEnergy(OrbitalIndustryNetworkState network, long availableBandwidth)
         {
-            if (network == null || massEnergy <= 0L || availableBandwidth <= 0L)
+            long currentMassEnergy = GetLocalMassEnergy();
+            WorldComponent_SRAOrbitalIndustry world = IndustryWorld;
+            if (network == null || world == null || currentMassEnergy <= 0L || availableBandwidth <= 0L)
             {
                 return 0L;
             }
 
             long orbitalCapacity = OrbitalMassEnergyCapacity;
             long orbitalSpace = orbitalCapacity - network.OrbitalMassEnergy;
-            long uploaded = Math.Min(massEnergy, Math.Min(availableBandwidth, Math.Max(0L, orbitalSpace)));
+            long uploaded = Math.Min(currentMassEnergy, Math.Min(availableBandwidth, Math.Max(0L, orbitalSpace)));
             if (uploaded <= 0L)
             {
                 return 0L;
             }
 
-            massEnergy -= uploaded;
+            if (!world.TrySpendLocalMassEnergy(EnsureStationId(), uploaded))
+            {
+                return 0L;
+            }
+
+            massEnergy = world.GetLocalMassEnergy(EnsureStationId(), 0L);
             network.AddOrbitalMassEnergy(uploaded, orbitalCapacity);
             return uploaded;
         }
@@ -977,15 +1058,65 @@ namespace SRA
                    amount <= Math.Max(0L, (long)OutputItemCapacity - OutputItemCount);
         }
 
-        private void ReserveDownload(OrbitalFabricationOrder order)
+        private bool TryDeliverDownload(OrbitalFabricationOrder order)
         {
-            pendingDownloadOrderId = order.id;
-            pendingDownloadProductDef = order.productDef;
-            pendingDownloadStuffDef = order.stuffDef;
-            pendingDownloadCount = order.batchSize;
-            pendingDownloadQualityMin = order.qualityMin;
-            pendingDownloadQualityMax = order.qualityMax;
-            NormalizePendingDownloadQuality();
+            if (order == null || order.productDef == null || order.batchSize <= 0 || !CanStoreOutput(order.batchSize))
+            {
+                if (order != null)
+                {
+                    order.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
+                }
+
+                return false;
+            }
+
+            int delivered = 0;
+            int remaining = order.batchSize;
+            int qualityMin = Math.Max((int)QualityCategory.Awful, Math.Min(order.qualityMin, (int)QualityCategory.Legendary));
+            int qualityMax = Math.Max((int)QualityCategory.Awful, Math.Min(order.qualityMax, (int)QualityCategory.Legendary));
+            int normalizedQualityMin = Math.Min(qualityMin, qualityMax);
+            int normalizedQualityMax = Math.Max(qualityMin, qualityMax);
+            qualityMin = normalizedQualityMin;
+            qualityMax = normalizedQualityMax;
+            var output = OutputContainer.innerContainer;
+
+            while (remaining > 0)
+            {
+                Thing product = ThingMaker.MakeThing(order.productDef, order.stuffDef);
+                product.stackCount = Math.Min(remaining, product.def.stackLimit);
+                remaining -= product.stackCount;
+
+                if (order.ProductSupportsQuality)
+                {
+                    CompQuality quality = product.TryGetComp<CompQuality>();
+                    if (quality != null)
+                    {
+                        quality.SetQuality(
+                            (QualityCategory)Rand.RangeInclusive(qualityMin, qualityMax),
+                            ArtGenerationContext.Colony);
+                    }
+                }
+
+                if (!output.TryAdd(product))
+                {
+                    product.Destroy(DestroyMode.Vanish);
+                    order.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
+                    return false;
+                }
+
+                delivered += product.stackCount;
+            }
+
+            order.NotifyBatchCompleted();
+            if (order.lastStockCount >= 0)
+            {
+                order.lastStockCount = (int)Math.Min(int.MaxValue, (long)order.lastStockCount + delivered);
+            }
+
+            order.lastStatus = order.mode == OrbitalOrderMode.RepeatCount && order.remainingBatches <= 0
+                ? OrbitalOrderStatus.Complete
+                : OrbitalOrderStatus.Ready;
+            return true;
         }
 
         private float BeamPhaseStart
@@ -1025,7 +1156,6 @@ namespace SRA
             }
 
             ClearTransferState();
-            DeliverPendingDownload();
         }
 
         private void TryStartOrbitalBeamAnimation()
@@ -1075,74 +1205,6 @@ namespace SRA
             beamSoundPlayed = true;
         }
 
-        private void DeliverPendingDownload()
-        {
-            int delivered = 0;
-            int requested = pendingDownloadCount;
-            CompThingContainer output = OutputContainer;
-            if (output?.innerContainer != null && pendingDownloadProductDef != null && pendingDownloadCount > 0 &&
-                CanStoreOutput(pendingDownloadCount))
-            {
-                int remaining = pendingDownloadCount;
-                while (remaining > 0)
-                {
-                    Thing product = ThingMaker.MakeThing(pendingDownloadProductDef, pendingDownloadStuffDef);
-                    product.stackCount = Math.Min(remaining, product.def.stackLimit);
-                    remaining -= product.stackCount;
-
-                    if (OrbitalFabricationUtility.ProductSupportsQuality(pendingDownloadProductDef))
-                    {
-                        CompQuality quality = product.TryGetComp<CompQuality>();
-                        if (quality != null)
-                        {
-                            quality.SetQuality(
-                                (QualityCategory)Rand.RangeInclusive(pendingDownloadQualityMin, pendingDownloadQualityMax),
-                                ArtGenerationContext.Colony);
-                        }
-                    }
-
-                    if (!output.innerContainer.TryAdd(product))
-                    {
-                        product.Destroy(DestroyMode.Vanish);
-                        break;
-                    }
-
-                    delivered += product.stackCount;
-                }
-            }
-
-            int completedOrderId = pendingDownloadOrderId;
-            if (delivered <= 0 && pendingDownloadProductDef != null)
-            {
-                Messages.Message("SRA_OrbitalDownloadOutputLost".Translate(), parent, MessageTypeDefOf.RejectInput, false);
-            }
-
-            OrbitalFabricationOrder completedOrder = orbitalOrders?.FirstOrDefault(order => order != null && order.id == completedOrderId);
-            if (completedOrder != null && completedOrder.lastStatus == OrbitalOrderStatus.Downloading)
-            {
-                if (delivered == requested && requested > 0)
-                {
-                    completedOrder.NotifyBatchCompleted();
-                    if (completedOrder.lastStockCount >= 0)
-                    {
-                        completedOrder.lastStockCount = (int)Math.Min(
-                            int.MaxValue,
-                            (long)completedOrder.lastStockCount + delivered);
-                    }
-
-                    completedOrder.lastStatus = completedOrder.mode == OrbitalOrderMode.RepeatCount && completedOrder.remainingBatches <= 0
-                        ? OrbitalOrderStatus.Complete
-                        : OrbitalOrderStatus.Ready;
-                }
-                else
-                {
-                    completedOrder.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
-                }
-            }
-
-            ClearPendingDownload();
-        }
-
         private void ClearTransferState()
         {
             transferKind = OrbitalTransferKind.None;
@@ -1151,24 +1213,6 @@ namespace SRA
             orbitalBeamAnimationStarted = false;
             beamSoundPlayed = false;
             windupSoundPlayed = false;
-        }
-
-        private void ClearPendingDownload()
-        {
-            pendingDownloadOrderId = -1;
-            pendingDownloadProductDef = null;
-            pendingDownloadStuffDef = null;
-            pendingDownloadCount = 0;
-            pendingDownloadQualityMin = (int)QualityCategory.Awful;
-            pendingDownloadQualityMax = (int)QualityCategory.Legendary;
-        }
-
-        private void NormalizePendingDownloadQuality()
-        {
-            int min = Math.Max((int)QualityCategory.Awful, Math.Min(pendingDownloadQualityMin, (int)QualityCategory.Legendary));
-            int max = Math.Max((int)QualityCategory.Awful, Math.Min(pendingDownloadQualityMax, (int)QualityCategory.Legendary));
-            pendingDownloadQualityMin = Math.Min(min, max);
-            pendingDownloadQualityMax = Math.Max(min, max);
         }
 
     }

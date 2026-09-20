@@ -180,10 +180,14 @@ namespace SRA
     public sealed class OrbitalIndustryNetworkState : IExposable
     {
         public int networkId = -1;
-        // pendingMassEnergy is retained as the save key used by the earlier implementation.
-        // It now represents the authoritative orbital-side mass-energy balance.
+        // Retained only so saves written by the earlier station-scoped implementation can be
+        // folded into the world-wide state during load.
+        public string stationId;
+        // The orbital balance, blueprint library and industrial unit count are world-wide.
         public int industrialUnits = 1;
         public long pendingMassEnergy;
+        // Legacy station-local value. New saves use OrbitalStationLocalState instead.
+        public long localMassEnergy;
         public int lastGenerationTick = -1;
         public List<OrbitalFabricationBlueprint> blueprints = new List<OrbitalFabricationBlueprint>();
 
@@ -309,8 +313,10 @@ namespace SRA
         public void ExposeData()
         {
             Scribe_Values.Look(ref networkId, "networkId", -1);
+            Scribe_Values.Look(ref stationId, "stationId");
             Scribe_Values.Look(ref industrialUnits, "industrialUnits", 0);
             Scribe_Values.Look(ref pendingMassEnergy, "pendingMassEnergy", 0L);
+            Scribe_Values.Look(ref localMassEnergy, "localMassEnergy", 0L);
             Scribe_Values.Look(ref lastGenerationTick, "lastGenerationTick", -1);
             Scribe_Collections.Look(ref blueprints, "blueprints", LookMode.Deep);
 
@@ -328,6 +334,27 @@ namespace SRA
                     .ToList();
                 industrialUnits = Math.Max(1, Math.Min(industrialUnits, OrbitalFabricationUtility.MaximumIndustrialUnits));
                 pendingMassEnergy = OrbitalFabricationUtility.ClampMassEnergy(pendingMassEnergy);
+                localMassEnergy = OrbitalFabricationUtility.ClampMassEnergy(localMassEnergy);
+            }
+        }
+    }
+
+    public sealed class OrbitalStationLocalState : IExposable
+    {
+        public string stationId;
+        public long massEnergy;
+        public bool initialized;
+
+        public void ExposeData()
+        {
+            Scribe_Values.Look(ref stationId, "stationId");
+            Scribe_Values.Look(ref massEnergy, "massEnergy", 0L);
+            Scribe_Values.Look(ref initialized, "initialized", false);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                massEnergy = OrbitalFabricationUtility.ClampMassEnergy(massEnergy);
+                initialized = initialized || massEnergy > 0L;
             }
         }
     }
@@ -335,6 +362,7 @@ namespace SRA
     public sealed class WorldComponent_SRAOrbitalIndustry : WorldComponent
     {
         private List<OrbitalIndustryNetworkState> networks = new List<OrbitalIndustryNetworkState>();
+        private List<OrbitalStationLocalState> stationLocalStates = new List<OrbitalStationLocalState>();
 
         public WorldComponent_SRAOrbitalIndustry(World world)
             : base(world)
@@ -343,33 +371,219 @@ namespace SRA
 
         public OrbitalIndustryNetworkState GetOrCreateNetwork(int networkId)
         {
+            return EnsureGlobalNetwork();
+        }
+
+        public OrbitalIndustryNetworkState GetOrCreateNetwork(string stationId, int legacyNetworkId)
+        {
+            return EnsureGlobalNetwork();
+        }
+
+        public long GetLocalMassEnergy(string stationId, long fallback)
+        {
+            OrbitalStationLocalState state = GetOrCreateStationLocalState(stationId);
+            if (state == null)
+            {
+                return OrbitalFabricationUtility.ClampMassEnergy(fallback);
+            }
+
+            if (!state.initialized)
+            {
+                state.massEnergy = OrbitalFabricationUtility.ClampMassEnergy(fallback);
+                state.initialized = true;
+            }
+
+            return state.massEnergy;
+        }
+
+        public void SetLocalMassEnergy(string stationId, long amount, long capacity)
+        {
+            OrbitalStationLocalState state = GetOrCreateStationLocalState(stationId);
+            if (state == null)
+            {
+                return;
+            }
+
+            state.massEnergy = Math.Max(0L, Math.Min(
+                OrbitalFabricationUtility.ClampMassEnergy(amount),
+                OrbitalFabricationUtility.ClampMassEnergy(capacity)));
+            state.initialized = true;
+        }
+
+        public void AddLocalMassEnergy(string stationId, long amount, long capacity)
+        {
+            long current = GetLocalMassEnergy(stationId, 0L);
+            SetLocalMassEnergy(
+                stationId,
+                OrbitalFabricationUtility.SaturatingAdd(current, amount),
+                capacity);
+        }
+
+        public bool TrySpendLocalMassEnergy(string stationId, long amount)
+        {
+            OrbitalStationLocalState state = GetOrCreateStationLocalState(stationId);
+            amount = OrbitalFabricationUtility.ClampMassEnergy(amount);
+            if (state == null || amount <= 0L || state.massEnergy < amount)
+            {
+                return false;
+            }
+
+            state.massEnergy -= amount;
+            state.initialized = true;
+            return true;
+        }
+
+        public void ClampLocalMassEnergy(string stationId, long capacity)
+        {
+            OrbitalStationLocalState state = GetOrCreateStationLocalState(stationId);
+            if (state == null)
+            {
+                return;
+            }
+
+            state.massEnergy = Math.Min(
+                OrbitalFabricationUtility.ClampMassEnergy(state.massEnergy),
+                OrbitalFabricationUtility.ClampMassEnergy(capacity));
+            state.initialized = true;
+        }
+
+        private OrbitalIndustryNetworkState EnsureGlobalNetwork()
+        {
             if (networks == null)
             {
                 networks = new List<OrbitalIndustryNetworkState>();
             }
 
-            OrbitalIndustryNetworkState network = networks.FirstOrDefault(state => state != null && state.networkId == networkId);
-            if (network == null)
+            if (networks.Count == 0)
             {
-                network = new OrbitalIndustryNetworkState(networkId);
-                networks.Add(network);
+                networks.Add(new OrbitalIndustryNetworkState(-1));
             }
 
-            return network;
+            if (networks[0] == null)
+            {
+                networks[0] = new OrbitalIndustryNetworkState(-1);
+            }
+
+            OrbitalIndustryNetworkState global = networks[0];
+            if (networks.Count > 1 || !String.IsNullOrEmpty(global.stationId) || global.localMassEnergy > 0L)
+            {
+                List<OrbitalIndustryNetworkState> legacyStates = networks
+                    .Where(state => state != null)
+                    .ToList();
+                for (int i = 0; i < legacyStates.Count; i++)
+                {
+                    OrbitalIndustryNetworkState state = legacyStates[i];
+                    if (!ReferenceEquals(state, global))
+                    {
+                        MergeGlobalNetworkState(global, state);
+                    }
+
+                    if (!String.IsNullOrEmpty(state.stationId) && state.localMassEnergy > 0L)
+                    {
+                        ImportLegacyLocalMassEnergy(state.stationId, state.localMassEnergy);
+                    }
+                }
+
+                global.stationId = null;
+                global.localMassEnergy = 0L;
+                networks = new List<OrbitalIndustryNetworkState> { global };
+            }
+
+            global.stationId = null;
+            global.localMassEnergy = 0L;
+            return global;
+        }
+
+        private OrbitalStationLocalState GetOrCreateStationLocalState(string stationId)
+        {
+            if (String.IsNullOrEmpty(stationId))
+            {
+                return null;
+            }
+
+            if (stationLocalStates == null)
+            {
+                stationLocalStates = new List<OrbitalStationLocalState>();
+            }
+
+            OrbitalStationLocalState state = stationLocalStates
+                .FirstOrDefault(item => item != null && item.stationId == stationId);
+            if (state == null)
+            {
+                state = new OrbitalStationLocalState
+                {
+                    stationId = stationId
+                };
+                stationLocalStates.Add(state);
+            }
+
+            return state;
+        }
+
+        private void ImportLegacyLocalMassEnergy(string stationId, long amount)
+        {
+            OrbitalStationLocalState state = GetOrCreateStationLocalState(stationId);
+            if (state == null)
+            {
+                return;
+            }
+
+            state.massEnergy = Math.Max(state.massEnergy, OrbitalFabricationUtility.ClampMassEnergy(amount));
+            state.initialized = true;
+        }
+
+        private static void MergeGlobalNetworkState(
+            OrbitalIndustryNetworkState target,
+            OrbitalIndustryNetworkState source)
+        {
+            if (target == null || source == null || ReferenceEquals(target, source))
+            {
+                return;
+            }
+
+            if (source.blueprints != null)
+            {
+                if (target.blueprints == null)
+                {
+                    target.blueprints = new List<OrbitalFabricationBlueprint>();
+                }
+
+                foreach (OrbitalFabricationBlueprint blueprint in source.blueprints)
+                {
+                    if (blueprint != null && blueprint.thingDef != null &&
+                        !target.blueprints.Any(item => item != null && item.Matches(blueprint.thingDef, blueprint.stuffDef)))
+                    {
+                        target.blueprints.Add(blueprint);
+                    }
+                }
+            }
+
+            target.industrialUnits = Math.Max(target.industrialUnits, source.industrialUnits);
+            target.pendingMassEnergy = Math.Max(target.pendingMassEnergy, source.pendingMassEnergy);
+            if (target.lastGenerationTick < 0 ||
+                (source.lastGenerationTick >= 0 && source.lastGenerationTick < target.lastGenerationTick))
+            {
+                target.lastGenerationTick = source.lastGenerationTick;
+            }
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Collections.Look(ref networks, "orbitalIndustryNetworks", LookMode.Deep);
+            Scribe_Collections.Look(ref stationLocalStates, "orbitalStationLocalStates", LookMode.Deep);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 networks = (networks ?? new List<OrbitalIndustryNetworkState>())
                     .Where(state => state != null)
-                    .GroupBy(state => state.networkId)
-                    .Select(group => group.First())
                     .ToList();
+                stationLocalStates = (stationLocalStates ?? new List<OrbitalStationLocalState>())
+                    .Where(state => state != null && !String.IsNullOrEmpty(state.stationId))
+                    .GroupBy(state => state.stationId)
+                    .Select(group => group.OrderByDescending(state => state.massEnergy).First())
+                    .ToList();
+                EnsureGlobalNetwork();
             }
         }
     }
