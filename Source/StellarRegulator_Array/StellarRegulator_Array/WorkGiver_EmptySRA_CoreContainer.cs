@@ -51,6 +51,12 @@ namespace SRA
                 return false;
             }
 
+            if (pawn.carryTracker == null || pawn.carryTracker.AvailableStackSpace(outputItem.def) <= 0)
+            {
+                JobFailReason.Is(HaulAIUtility.NoEmptyPlaceLowerTrans, null);
+                return false;
+            }
+
             if (!StoreUtility.TryFindBestBetterStorageFor(
                     outputItem,
                     pawn,
@@ -91,7 +97,15 @@ namespace SRA
             }
 
             Job job = JobMaker.MakeJob(SRA_DefOf.SRA_EmptySRA_CoreContainer, t, outputItem, cell);
-            job.count = outputItem.stackCount;
+            int availableStackSpace = pawn.carryTracker?.AvailableStackSpace(outputItem.def) ?? 0;
+            if (availableStackSpace <= 0)
+            {
+                return null;
+            }
+
+            // Take only what this pawn can carry. Taking a whole stack first and relying on
+            // TryStartCarry to split it leaves the uncarried remainder outside any ThingOwner.
+            job.count = Math.Min(outputItem.stackCount, availableStackSpace);
             return job;
         }
 
@@ -129,15 +143,31 @@ namespace SRA
                         return;
                     }
 
-                    Thing taken = output.innerContainer.Take(item, Math.Max(1, Math.Min(job.count, item.stackCount)));
+                    int availableStackSpace = pawn.carryTracker?.AvailableStackSpace(item.def) ?? 0;
+                    int countToTake = Math.Min(job.count, Math.Min(item.stackCount, availableStackSpace));
+                    if (countToTake <= 0)
+                    {
+                        EndJobWith(JobCondition.Incompletable);
+                        return;
+                    }
+
+                    Thing taken = output.innerContainer.Take(item, countToTake);
                     if (taken == null)
                     {
                         EndJobWith(JobCondition.Incompletable);
                         return;
                     }
 
-                    if (pawn.carryTracker.TryStartCarry(taken, taken.stackCount, false) > 0)
+                    int carriedCount = pawn.carryTracker.TryStartCarry(taken, taken.stackCount, false);
+                    if (carriedCount > 0)
                     {
+                        // TryStartCarry can still split if the carry state changes between
+                        // calculating capacity and starting the carry. Put that remainder back.
+                        if (taken != pawn.carryTracker.CarriedThing && !taken.Destroyed && taken.stackCount > 0)
+                        {
+                            output.innerContainer.TryAdd(taken);
+                        }
+
                         return;
                     }
 

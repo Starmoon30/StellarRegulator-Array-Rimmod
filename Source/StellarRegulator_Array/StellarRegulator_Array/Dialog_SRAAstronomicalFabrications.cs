@@ -334,11 +334,24 @@ namespace SRA
                 Find.WindowStack.Add(new Dialog_SRASelectScanItems(scanner));
             });
 
-            bool canUpload = scanner != null && scanner.HasLoadedItems && projectedYield <= freeStorage;
-            DrawActionButton(new Rect(buttons.x, buttons.y + 40f, buttons.width, 34f), "SRA_OrbitalUploadNow".Translate(), canUpload, delegate
+            Rect uploadButton = new Rect(buttons.x, buttons.y + 40f, buttons.width, 34f);
+            bool hasLoadedItems = scanner != null && scanner.HasLoadedItems;
+            bool uploadBlockedByCapacity = hasLoadedItems && projectedYield > freeStorage;
+            // Keep the command clickable when capacity is insufficient so the existing
+            // rejection message explains the block instead of silently disabling the button.
+            DrawActionButton(uploadButton, "SRA_OrbitalUploadNow".Translate(), hasLoadedItems, delegate
             {
                 TryUploadNow();
             });
+
+            if (uploadBlockedByCapacity)
+            {
+                TooltipHandler.TipRegion(
+                    uploadButton,
+                    "SRA_OrbitalStorageInsufficient".Translate(
+                        OrbitalFabricationUtility.FormatMassEnergy(projectedYield),
+                        OrbitalFabricationUtility.FormatMassEnergy(freeStorage)));
+            }
         }
 
         private void TryUploadNow()
