@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Parent="EtherealThingBase">
+    <defName>SRA_FlyOver_Executor</defName>
+    <label>星规执行单元：虚空撕裂轰炸</label>
+    <thingClass>SRA.FlyOver</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <graphicData>
+      <!-- <texPath>ArachnaeSwarm/Weapon/ARA_Weapon_Empty</texPath> -->
+      <texPath>SRA/FlyOverThing/SRA_Executor_Shadow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(32,64)</drawSize>
+      <color>(195,195,195,45)</color>
+    </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <skyfaller>
+      <shadow>SRA/Weapon/SRA_Weapon_Empty</shadow>
+      <shadowSize>(0, 0)</shadowSize>
+      <motesPerCell>0</motesPerCell>
+      <floatingSound>FlyOver/Flying</floatingSound>
+      <impactSound>FlyOver/Landing</impactSound>
+    </skyfaller>
+    <modExtensions>
+      <li Class="SRA.FlyOverShadowExtension">
+        <customShadowPath>SRA/Weapon/SRA_Weapon_Empty</customShadowPath>
+        <useCustomShadow>true</useCustomShadow>
+        <shadowIntensity>0.8</shadowIntensity>
+        <minShadowAlpha>0</minShadowAlpha>
+        <maxShadowAlpha>0</maxShadowAlpha>
+        <minShadowScale>0</minShadowScale>
+        <maxShadowScale>0</maxShadowScale>
+      </li>
+    </modExtensions>
+    <seeThroughFog>true</seeThroughFog>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <alwaysHaulable>false</alwaysHaulable>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <comps>
+      <li Class="SRA.CompProperties_GroundStrafing">
+        <projectileDef>SRABulle_SRATurretGun_SRA_Mech_Tank_M_D</projectileDef>
+        <range>64</range>
+    
+        <!-- 横向偏移配置（左右） -->
+        <lateralOffsetDistance>8</lateralOffsetDistance>
+        <lateralInitialOffsetAngle>0</lateralInitialOffsetAngle>
+        <lateralMaxOffsetAngle>0</lateralMaxOffsetAngle>
+        <lateralAngleIncrement>0</lateralAngleIncrement>
+        <lateralOffsetMode>Alternating</lateralOffsetMode>
+        
+        <!-- 纵向偏移配置（前后） -->
+        <longitudinalInitialOffset>-8</longitudinalInitialOffset>
+        <longitudinalMinOffset>-8</longitudinalMinOffset>
+        <longitudinalMaxOffset>-8</longitudinalMaxOffset>
+        <longitudinalOffsetMode>Fixed</longitudinalOffsetMode>
+
+        <!-- 视觉效果 -->
+        <spawnOffsetEffect>true</spawnOffsetEffect>
+        <offsetEffectDef>Mote_SparkSimple</offsetEffectDef>
+      </li>
+      <li Class="SRA.CompProperties_SectorSurveillance">
+        <projectileDef>SRABullet_SML_Mass_Drivers</projectileDef>
+        <sectorAngle>30</sectorAngle>      <!-- 扇形角度 -->
+        <sectorRange>64</sectorRange>      <!-- 射程 -->
+        <shotCount>4</shotCount>           <!-- 发射次数 -->
+        <shotInterval>2</shotInterval>   <!-- 发射间隔 -->
+        <maxProjectiles>-1</maxProjectiles><!-- 最大射弹数量限制-->
+    
+        <!-- 横向偏移配置（左右） -->
+        <lateralOffsetDistance>8</lateralOffsetDistance>
+        <lateralInitialOffsetAngle>0</lateralInitialOffsetAngle>
+        <lateralMaxOffsetAngle>0</lateralMaxOffsetAngle>
+        <lateralAngleIncrement>0</lateralAngleIncrement>
+        <lateralOffsetMode>Alternating</lateralOffsetMode>
+        
+        <!-- 纵向偏移配置（前后） -->
+        <longitudinalInitialOffset>8</longitudinalInitialOffset>
+        <longitudinalMinOffset>8</longitudinalMinOffset>
+        <longitudinalMaxOffset>8</longitudinalMaxOffset>
+        <longitudinalOffsetMode>Fixed</longitudinalOffsetMode>
+
+        <!-- 视觉效果 -->
+        <spawnOffsetEffect>true</spawnOffsetEffect>
+        <offsetEffectDef>Mote_SparkSimple</offsetEffectDef>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

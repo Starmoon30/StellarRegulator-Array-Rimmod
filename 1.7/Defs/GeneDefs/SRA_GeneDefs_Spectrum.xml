@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GeneDef ParentName="GeneSleepBase">
+    <defName>SRA_Neversleep</defName>
+    <label>树海-无限活力</label>
+    <description>流淌在这些生物体内的神秘力量几乎免除了睡眠需求，此外，还提供了一系列额外的加成。</description>
+    <iconPath>SRA/Icons/Genes/SRA_Gene_Neversleep</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <marketValueFactor>1.25</marketValueFactor>
+    
+    <forcedTraits MayRequire="Ludeon.RimWorld.Anomaly">
+      <li>
+        <def>PerfectMemory</def>
+      </li>
+    </forcedTraits>
+    <statFactors>
+      <RestFallRateFactor>0</RestFallRateFactor>
+      <Flammability>0</Flammability>
+      <StaggerDurationFactor>0</StaggerDurationFactor>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+      <ComfyTemperatureMax>200</ComfyTemperatureMax>
+    </statOffsets>
+    <damageFactors>
+      <Flame>0</Flame>
+    </damageFactors>
+    <biostatMet>666</biostatMet>
+    <biostatCpx>6</biostatCpx>
+    <biostatArc>6</biostatArc>
+  </GeneDef>
+
+</Defs>

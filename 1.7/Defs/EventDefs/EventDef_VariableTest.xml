@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_Test_VariableEvent</defName>
+    <label>变量测试事件</label>
+    <characterName>测试员</characterName>
+    <portraitPath>SRA/Events/Portraits/SRA_test</portraitPath>
+    
+    <immediateEffects>
+      <li>
+        <effects>
+          <li Class="SRA.Effect_SetVariable">
+            <name>testNumber</name>
+            <value>100</value>
+          </li>
+        </effects>
+      </li>
+    </immediateEffects>
+
+    <descriptions>
+      <li>变量 testNumber 的当前值为 {testNumber}。点击下面的按钮来改变它。</li>
+    </descriptions>
+
+    <options>
+      <li>
+        <label>将 testNumber 增加50并重新打开</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_ModifyVariable">
+                <name>testNumber</name>
+                <operation>Add</operation>
+                <value>50</value>
+              </li>
+              <li Class="SRA.Effect_CloseDialog" />
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_Test_VariableEvent</defName>
+                <delayTicks>180</delayTicks> <!-- 3 seconds -->
+              </li>
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>关闭</label>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+</Defs>

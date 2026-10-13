@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_Example_RandomList</defName>
+    <characterName>系统管理员</characterName>
+    <description>这是一个演示随机效果列表功能的事件。
+
+点击下面的选项，你会看到一条固定消息，然后会随机获得一件物品。</description>
+    <options>
+      <li>
+        <label>试一试！</label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <!-- 这个列表中的效果会全部执行 -->
+            <effects>
+              <li Class="SRA.Effect_ShowMessage">
+                <message>你总是会看到这条消息！</message>
+                <messageTypeDef>PositiveEvent</messageTypeDef>
+              </li>
+            </effects>
+            <!-- 系统会从这个列表中根据权重随机选择一个执行 -->
+            <randomlistEffects>
+              <li Class="SRA.Effect_GiveThing">
+                <thingDef>Silver</thingDef>
+                <count>100</count>
+                <weight>3.0</weight> <!-- 获得白银的权重更高 -->
+              </li>
+              <li Class="SRA.Effect_GiveThing">
+                <thingDef>Gold</thingDef>
+                <count>10</count>
+                <weight>1.0</weight> <!-- 获得黄金的权重较低 -->
+              </li>
+              <li Class="SRA.Effect_GiveThing">
+                <thingDef>ComponentIndustrial</thingDef>
+                <count>5</count>
+                <weight>1.5</weight> <!-- 获得零件的权重居中 -->
+              </li>
+            </randomlistEffects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>关闭</label>
+        <optionEffects>
+            <li Class="SRA.ConditionalEffects">
+                <effects>
+                    <li Class="SRA.Effect_CloseDialog" />
+                </effects>
+            </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+</Defs>

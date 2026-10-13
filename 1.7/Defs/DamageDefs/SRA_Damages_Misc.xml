@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <DamageDef ParentName="BluntBase">
+      <defName>SRA_Frostbite</defName>
+      <label>SRA_Frostbite</label>
+      <makesBlood>false</makesBlood>
+      <additionalHediffs>
+        <li>
+          <hediff>Hypothermia</hediff>
+          <severityPerDamageDealt>0.02</severityPerDamageDealt>
+          <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+        </li>
+      </additionalHediffs>
+      <impactSoundType>Electric</impactSoundType>
+    </DamageDef>
+
+  <DamageDef>
+    <defName>SRA_Metabyss_burn</defName>
+    <label>完型崩解</label>
+    <workerClass>SRA.DamageWorker_AddInjury_NoDamageFactor</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} 湮灭了</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Electric</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <overkillPctToDestroyPart>0.9~1</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <defaultDamage>160</defaultDamage>
+    <defaultArmorPenetration>4</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
+    <ignoreShields>true</ignoreShields>
+    <additionalHediffs>
+      <li>
+        <hediff>SRA_Metabyss_debuff</hediff>
+        <severityPerDamageDealt>0.005</severityPerDamageDealt>
+        <inverseStatScaling>true</inverseStatScaling>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
+    <modExtensions>
+      <li Class="SRA.DamageWorker_NoDamageFactor_Extension">
+        <penetrationFactor>1</penetrationFactor>
+      </li>
+    </modExtensions>
+  </DamageDef>
+
+  <DamageDef>
+    <defName>SRA_Spear_of_SRA_burn</defName>
+    <label>相位崩解</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} 湮灭了</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <overkillPctToDestroyPart>0.9~1</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <defaultDamage>160</defaultDamage>
+    <defaultArmorPenetration>4</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
+    <ignoreShields>true</ignoreShields>
+    <additionalHediffs>
+      <li>
+        <hediff>SRA_Railgun_debuff</hediff>
+        <severityPerDamageDealt>0.005</severityPerDamageDealt>
+        <inverseStatScaling>true</inverseStatScaling>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+  
+  <DamageDef>
+    <defName>SRA_Retardant</defName>
+    <label>SRA_Retardant</label>
+    <harmsHealth>false</harmsHealth>
+    <makesBlood>false</makesBlood>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been stunned to death.</deathMessage>
+    <defaultDamage>20</defaultDamage>
+    <defaultArmorPenetration>20</defaultArmorPenetration>
+    <additionalHediffs>
+      <li>
+        <hediff>SRA_Retardant</hediff>
+        <severityFixed>0.2</severityFixed>
+        <inverseStatScaling>true</inverseStatScaling>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
+    <impactSoundType>Electric</impactSoundType>
+    <modExtensions>
+      <li Class="SRA.Damage_SRABarrier_factor_Extension">
+        <damage_SRABarrier_factor>1</damage_SRABarrier_factor>
+      </li>
+    </modExtensions>
+    </DamageDef>
+</Defs>

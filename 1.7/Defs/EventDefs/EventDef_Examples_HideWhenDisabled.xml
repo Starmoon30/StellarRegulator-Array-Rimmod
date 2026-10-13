@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_TestEvent_HideWhenDisabled</defName>
+    <label><![CDATA[<color=cyan>测试事件</color>：<i><color=yellow>富文本</color></i>]]></label>
+    <characterName><![CDATA[<color=#ff8c00><b>测试者</b></color>]]></characterName>
+    <descriptions>
+      <li><![CDATA[这是一个用于演示<b>富文本</b>功能的测试事件。你可以看到<color=red>红色</color>、<color=green>绿色</color>和<color=blue>蓝色</color>的文本，以及<i>斜体</i>和<b>粗体</b>样式。当前机械族好感度: {MechanoidGoodwill}]]></li>
+    </descriptions>
+
+    <conditionalDescriptions>
+      <li>
+        <conditions>
+          <li Class="SRA.Condition_VariableEquals">
+            <name>TestVar</name>
+            <value>1</value>
+          </li>
+        </conditions>
+        <text><![CDATA[\n\n<color=magenta><b>变量 TestVar 的值现在是 1</b></color>，所以你看到了这段<color=yellow><i>额外</i></color>的描述。]]></text>
+      </li>
+    </conditionalDescriptions>
+
+    <options>
+      <!-- 选项 1: 设置 TestVar=1 并重新打开事件 -->
+      <li>
+        <label><![CDATA[选项一 (<color=green>设置 TestVar = 1</color>)]]></label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_SetVariable">
+                <name>TestVar</name>
+                <value>1</value>
+              </li>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_TestEvent_HideWhenDisabled</defName>
+              </li>
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+
+      <!-- 选项 2: 条件不满足时，显示为灰色禁用按钮 -->
+      <li>
+        <label><![CDATA[选项二 (需要 <color=orange>TestVar = 1</color>, 禁用但可见)]]></label>
+        <conditions>
+          <li Class="SRA.Condition_VariableEquals">
+            <name>TestVar</name>
+            <value>1</value>
+          </li>
+        </conditions>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+
+      <!-- 选项 3: 条件不满足时，完全隐藏 -->
+      <li>
+        <label><![CDATA[选项三 (需要 <color=orange>TestVar = 1</color>, 禁用时隐藏)]]></label>
+        <hideWhenDisabled>true</hideWhenDisabled>
+        <conditions>
+          <li Class="SRA.Condition_VariableEquals">
+            <name>TestVar</name>
+            <value>1</value>
+          </li>
+        </conditions>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+
+      <!-- 选项 4: 移除 TestVar 并重新打开事件 -->
+      <li>
+        <label><![CDATA[选项四 (<color=red>移除 TestVar</color>)]]></label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_ClearVariable">
+                <name>TestVar</name>
+              </li>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_TestEvent_HideWhenDisabled</defName>
+              </li>
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+
+      <!-- 选项 5: 检查机械族好感度 -->
+      <li>
+        <label><![CDATA[选项五 (检查<color=#add8e6>机械族</color>好感度)]]></label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_CheckFactionGoodwill">
+                <factionDef>Mechanoid</factionDef>
+                <variableName>MechanoidGoodwill</variableName>
+              </li>
+              <li Class="SRA.Effect_OpenCustomUI">
+                <defName>SRA_TestEvent_HideWhenDisabled</defName>
+              </li>
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+
+    </options>
+  </SRA.EventDef>
+
+</Defs>

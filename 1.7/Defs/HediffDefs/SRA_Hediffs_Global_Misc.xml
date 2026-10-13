@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <HediffDef>
+    <defName>SRA_Power_Overwhelming</defName>
+    <label>顷刻新生</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人显现出坚不可摧的身躯与不可思议的再生能力，一切损伤都无法在其身上驻留片刻。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <preventsDeath>true</preventsDeath>
+    <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+    <stages>
+      <li>
+        <totalBleedFactor>0</totalBleedFactor>
+        <statFactors>
+          <IncomingDamageFactor>0.1</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>100</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Barrier_SR_Mech</defName>
+    <label>星规-超然构造</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>星辉分形在精妙的构筑下流转，维系着一道一体化的防御场。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>640</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>16</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Barrier_WarUnit_S</defName>
+    <label>星规-尖蜂构造</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>组成这个单位的星辉分形维系着一道一体化的防御场。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>64</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>32</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>SRA_Barrier_Mech_WarUnit_M_D</defName>
+    <label>星规-强固结构</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>组成这个单位的星辉分形维系着一道一体化的防御场。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>0.1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>320</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>4</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>32</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>SRA_Barrier_Mech_Tank_M_D</defName>
+    <label>星规-「打击乐」之章</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>组成这个单位的星辉分形维系着一道一体化的防御场，它高度活跃，能迅速恢复。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>640</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>32</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>16</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>32</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>32</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <BlockStunAndMentalState>true</BlockStunAndMentalState><!-- 是否在屏障存在时免疫Stun和精神状态 -->
+        <priority>100</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_IgnoreTerrainCost"/>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Barrier_test</defName>
+    <label>护盾超载</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>为战士们提供护盾</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>1000</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>35</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>10</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>20</regenRate>
+        <regenDelay>30</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1000</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Barrier_test2</defName>
+    <label>护盾超载2</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>为战士们提供护盾</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>10</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>2</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>1</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>1</regenRate>
+        <regenDelay>1</regenDelay>
+        <rechargeCooldown>1</rechargeCooldown>
+        <RemoveWhenDestroy>true</RemoveWhenDestroy>
+        <priority>1000</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Little_Regeneration</defName>
+    <label>星规-顽强生机</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人显现出顽强的生命力，能逐渐愈合看似永久的损伤。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <stages>
+      <li>
+        <totalBleedFactor>0</totalBleedFactor>
+      </li>
+    </stages>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>0.1</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Chosen_One</defName>
+    <label>星规-深渊召选</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>此人被某种神秘的超凡力量选定，背离了自我。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <stages>
+      <li>
+        <disablesNeeds>
+          <li>Food</li>
+          <li>Rest</li>
+          <li>Comfort</li>
+          <li>Joy</li>
+          <li>Outdoors</li>
+        </disablesNeeds>
+      </li>
+    </stages>
+  </HediffDef>
+
+
+
+  <HediffDef ParentName="DiseaseBase">
+    <defName>SRA_Retardant</defName>
+    <label>SRA_Retardant</label>
+    <description>SRA_Retardant_description</description>
+    <hediffClass>SRA.HediffWithSeverityLabel</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(255, 0, 0)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerSecond">
+        <severityPerSecond>-0.2</severityPerSecond>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactorsBySeverity>
+          <li>
+            <stat>MoveSpeed</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statFactorsBySeverity>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="DiseaseBase">
+    <defName>SRA_Railgun_debuff</defName>
+    <label>SRA_Railgun_debuff</label>
+    <description>SRA_Railgun_debuff_description</description>
+    <hediffClass>SRA.HediffWithSeverityLabel</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(255, 0, 0)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerSecond">
+        <severityPerSecond>-0.01</severityPerSecond>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsetsBySeverity>
+          <li>
+            <stat>IncomingDamageFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>AimingDelayFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>RangedCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>MeleeCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 1)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statOffsetsBySeverity>
+        <statFactorsBySeverity>
+          <li>
+            <stat>MoveSpeed</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0.5)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Sharp</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Blunt</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Heat</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statFactorsBySeverity>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRAResurrectionBound</defName>
+    <label>星规-永生协议</label>
+    <description>这个单位已经与一座永生协议信标绑定，会在受到致命伤害时被传送回去并保护起来。</description>
+    <isBad>false</isBad>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0,1,1)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRAResurrectionAlready</defName>
+    <label>星规-守护之壳</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位刚刚遭遇了足以致命的打击，眼下被保护场所笼罩，正在迅速恢复身上的损伤。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <preventsDeath>true</preventsDeath>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+        <totalBleedFactor>0</totalBleedFactor>
+        <statFactors>
+          <IncomingDamageFactor>0</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="SRA.HediffCompProperties_SRARegen">
+        <healPerSecond>10000</healPerSecond>
+        <checkInterval>60</checkInterval>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef Parent="HediffBase">
+    <defName>SRATurretTest</defName>
+    <label>星规-防卫炮塔</label>
+    <description>这个单位携带了一台自动开火的风雪骤灭，太可怕了。</description>
+    <isBad>false</isBad>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0,1,1)</defaultLabelColor>
+    <comps>
+      <li Class="SRA.HediffCompProperties_TopTurret">
+        <turretDef>SRATurretGun_SRATurretTest</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>SRA_Double_Blade_Hediff</defName>
+    <label>星规-寒渊惜别</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位因为装备了寒渊惜别，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色格挡低于32点的伤害，并在遭到高额伤害时被迅速击破，然而，它也可以快速恢复并重新开始格挡。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>8</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>40</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>32</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>8</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>2000</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>SRA_Long_Lance_Hediff</defName>
+    <label>星规-征洋戮海</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位因为装备了征洋戮海，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的格挡能力。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>64</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>64</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>32</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1500</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>SRA_Scythe_Hediff</defName>
+    <label>星规-收割悲鸣</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>这个单位因为装备了收割悲鸣，所以可以格挡来袭的伤害。\n-设计上这个状态可以使角色获得能够持续快速恢复的次数格挡能力，它只能被高于16点的伤害消耗，它的损伤上限则使得它只会被大量的攻击次数击破。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>32</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>10</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>8</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>8</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>16</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1500</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+      <li Class="SRA.HediffCompProperties_WeaponSwitcher">
+        <gizmoIconPath>SRA/UI/Actions/SRA_Scythe_WeaponSwitcher</gizmoIconPath>
+        <linkedWeapons>
+          <li>SRA_Scythe</li>
+          <li>SRA_ScytheB</li>
+          <li>SRA_ScytheC</li>
+        </linkedWeapons>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>SRA_Sword_of_Hidra_Hediff</defName>
+    <label>「息声」</label>
+    <hediffClass>HediffWithComps</hediffClass>
+    <description>悚骇之物。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_SRABarrier">
+        <maxBarrier>640</maxBarrier>
+        <DamageTakenMult>1</DamageTakenMult><!-- 小于等于0则无敌 -->
+        <DamageTakenMax>36</DamageTakenMax><!-- 小于等于0则不工作 -->
+        <DamageTakenReduce>32</DamageTakenReduce><!-- 小于等于0则不工作 -->
+        <regenRate>160</regenRate>
+        <regenDelay>0</regenDelay>
+        <rechargeCooldown>0</rechargeCooldown>
+        <RemoveWhenDestroy>false</RemoveWhenDestroy><!-- 是否在护盾被击毁时设状态程度为0 -->
+        <priority>1500</priority><!-- 承伤优先级，越大越先，int -->
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="DiseaseBase">
+    <defName>SRA_Metabyss_debuff</defName>
+    <label>SRA_Metabyss_debuff</label>
+    <description>SRA_Metabyss_debuff_description</description>
+    <hediffClass>SRA.HediffWithSeverityLabel</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(255, 0, 0)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerSecond">
+        <severityPerSecond>-0.01</severityPerSecond>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsetsBySeverity>
+          <li>
+            <stat>IncomingDamageFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>AimingDelayFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>RangedCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>MeleeCooldownFactor</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 0)</li>
+                <li>(1, 4)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statOffsetsBySeverity>
+        <statFactorsBySeverity>
+          <li>
+            <stat>MoveSpeed</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Sharp</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Blunt</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+          <li>
+            <stat>ArmorRating_Heat</stat>
+            <valueBySeverity>
+              <points>
+                <li>(0, 1)</li>
+                <li>(1, 0)</li>
+              </points>
+            </valueBySeverity>
+          </li>
+        </statFactorsBySeverity>
+      </li>
+    </stages>
+  </HediffDef>
+
+
+  <HediffDef>
+    <defName>SRA_30000_CountdownDeath</defName>
+    <label>限时存在（500s）</label>
+    <hediffClass>SRA.Hediff_CountdownDeath</hediffClass>
+    <description>这个单位只能存在有限的时间。</description>
+    <isBad>false</isBad>
+    <priceImpact>false</priceImpact>
+    <comps>
+      <li Class="SRA.HediffCompProperties_CountdownTimer">
+        <countdownDuration>30000</countdownDuration>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

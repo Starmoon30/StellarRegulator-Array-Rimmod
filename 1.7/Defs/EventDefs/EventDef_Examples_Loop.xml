@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SRA.EventDef>
+    <defName>SRA_Example_Loop</defName>
+    <characterName>循环大师</characterName>
+    <description>这是一个演示循环效果列表功能的事件。
+
+首先，设置一个循环次数，然后看看会发生什么！</description>
+    <options>
+      <li>
+        <label>设置循环次数为 3</label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <effects>
+              <li Class="SRA.Effect_SetVariable">
+                <name>LoopCount</name>
+                <value>3</value>
+              </li>
+              <li Class="SRA.Effect_ShowMessage">
+                <message>变量 'LoopCount' 已被设置为 3。</message>
+                <messageTypeDef>PositiveEvent</messageTypeDef>
+              </li>
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>执行循环（使用变量）</label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <loopEffects>
+              <li Class="SRA.LoopEffects">
+                <countVariableName>LoopCount</countVariableName>
+                <!-- 如果LoopCount变量不存在，将默认执行1次 -->
+                <count>1</count> 
+                <effects>
+                  <li Class="SRA.Effect_GiveThing">
+                    <thingDef>Silver</thingDef>
+                    <count>10</count>
+                  </li>
+                </effects>
+              </li>
+            </loopEffects>
+          </li>
+        </optionEffects>
+      </li>
+       <li>
+        <label>执行循环（固定次数）</label>
+        <optionEffects>
+          <li Class="SRA.ConditionalEffects">
+            <loopEffects>
+              <li Class="SRA.LoopEffects">
+                <count>5</count> 
+                <effects>
+                  <li Class="SRA.Effect_GiveThing">
+                    <thingDef>Steel</thingDef>
+                    <count>20</count>
+                  </li>
+                </effects>
+              </li>
+            </loopEffects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>关闭</label>
+        <optionEffects>
+            <li Class="SRA.ConditionalEffects">
+                <effects>
+                    <li Class="SRA.Effect_CloseDialog" />
+                </effects>
+            </li>
+        </optionEffects>
+      </li>
+    </options>
+  </SRA.EventDef>
+
+</Defs>

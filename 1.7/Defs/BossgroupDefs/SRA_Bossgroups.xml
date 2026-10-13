@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <BossDef>
+    <defName>SRA_Mech_Tank_M_D</defName>
+    <kindDef>SRA_Mech_Tank_M_D</kindDef>
+    <appearAfterTicks>21600000</appearAfterTicks><!-- 6 years -->
+  </BossDef>
+  <BossgroupDef>
+    <defName>SRA_Mech_Tank_M_D</defName>
+    <boss>SRA_Mech_Tank_M_D</boss>
+    <quest>Bossgroup</quest>
+    <repeatWaveStartIndex>4</repeatWaveStartIndex>
+    <waves>
+      <li> <!-- 0 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>6</SRA_Mech_WarUnit_S>
+        </escorts>
+      </li>
+      <li> <!-- 1 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>10</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>1</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>1</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+      <li> <!-- 2 - Repeat starts here -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>10</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>2</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>2</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+      <li> <!-- 3 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>20</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>2</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>2</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+      <li> <!-- 4 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>30</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>2</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>2</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+      <li> <!-- 5 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>10</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>3</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>3</SRA_Mech_WarUnit_M_A>
+        </escorts>
+        <bossApparel>
+        </bossApparel>
+      </li>
+      <li> <!-- 6 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>20</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>3</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>2</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+      <li> <!-- 7 -->
+        <bossCount>1</bossCount>
+        <escorts>
+          <SRA_Mech_WarUnit_S>20</SRA_Mech_WarUnit_S>
+          <SRA_Mech_WarUnit_M_D>4</SRA_Mech_WarUnit_M_D>
+          <SRA_Mech_WarUnit_M_A>3</SRA_Mech_WarUnit_M_A>
+        </escorts>
+      </li>
+    </waves>
+    <leaderDescription>{LEADERKIND_label}是一种凶猛的中型作战机械，使用能对单个目标造成大量伤害的空间撕裂武器。这一单位在正规战场上几乎没有出场空间，但在小规模防御上倒是可堪一用。\n\n这是一种中型通用平台武装改造下的产物，装备了火力协调器和脉冲束轰炸组件。设计上用于提供远距火力和单体歼灭，其武器系统擅长制造爆发伤害和破坏重型目标。</leaderDescription>
+    <rewardDef>SRA_Core</rewardDef>
+  </BossgroupDef>
+
+</Defs>
