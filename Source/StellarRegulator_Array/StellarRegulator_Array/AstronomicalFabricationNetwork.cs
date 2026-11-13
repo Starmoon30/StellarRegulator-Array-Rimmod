@@ -38,6 +38,61 @@ namespace SRA
         }
     }
 
+    // Downloaded items are regenerated only when they are actually handed to a pawn or
+    // placed in a stockpile. Keeping definitions and counts here avoids one Thing per item.
+    public sealed class OrbitalOutputRecord : IExposable
+    {
+        public ThingDef productDef;
+        public ThingDef stuffDef;
+        public int quality = -1;
+        public int count;
+
+        public OrbitalOutputRecord()
+        {
+        }
+
+        public OrbitalOutputRecord(ThingDef productDef, ThingDef stuffDef, int quality, int count)
+        {
+            this.productDef = productDef;
+            this.stuffDef = stuffDef;
+            this.quality = quality;
+            this.count = count;
+        }
+
+        public bool Matches(OrbitalFabricationOrder order)
+        {
+            if (order == null || productDef != order.productDef || stuffDef != order.stuffDef || count <= 0)
+            {
+                return false;
+            }
+
+            return !order.ProductSupportsQuality ||
+                   quality >= order.qualityMin && quality <= order.qualityMax;
+        }
+
+        public string Label
+        {
+            get
+            {
+                string label = GenLabel.ThingLabel(productDef, stuffDef, 1).CapitalizeFirst();
+                if (quality >= (int)QualityCategory.Awful && quality <= (int)QualityCategory.Legendary)
+                {
+                    label += " (" + QualityUtility.GetLabel((QualityCategory)quality) + ")";
+                }
+
+                return label;
+            }
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Defs.Look(ref productDef, "productDef");
+            Scribe_Defs.Look(ref stuffDef, "stuffDef");
+            Scribe_Values.Look(ref quality, "quality", -1);
+            Scribe_Values.Look(ref count, "count", 0);
+        }
+    }
+
     public enum OrbitalOrderMode
     {
         Forever,
@@ -597,9 +652,9 @@ namespace SRA
 
     public static class OrbitalFabricationInventory
     {
-        // This mirrors vanilla's normal map inventory source (listerThings) and supplements it
-        // with the base station's hidden output container, whose contents are not map-spawned.
-        public static int CountProducts(Map map, CompThingContainer outputContainer, OrbitalFabricationOrder order)
+        // This mirrors vanilla's normal map inventory source and supplements it with the
+        // station's virtual output records, including items that have not been taken out yet.
+        public static int CountProducts(Map map, IEnumerable<OrbitalOutputRecord> outputRecords, OrbitalFabricationOrder order)
         {
             if (map == null || order?.productDef == null)
             {
@@ -620,13 +675,13 @@ namespace SRA
                 }
             }
 
-            if (outputContainer?.innerContainer != null)
+            if (outputRecords != null)
             {
-                foreach (Thing thing in outputContainer.innerContainer)
+                foreach (OrbitalOutputRecord record in outputRecords)
                 {
-                    if (MatchesOrder(thing, order))
+                    if (record != null && record.Matches(order))
                     {
-                        count += thing.stackCount;
+                        count += record.count;
                         if (count >= int.MaxValue)
                         {
                             return int.MaxValue;

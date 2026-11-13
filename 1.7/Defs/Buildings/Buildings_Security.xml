@@ -770,10 +770,9 @@
 				</li>
 			</extraDamages>
     </projectile>
-<comps>
-  <li Class="SRA.CompProperties_ForcedMissExplosionMarker" />
-</comps>
-
+    <comps>
+      <li Class="SRA.CompProperties_ForcedMissExplosionMarker" />
+    </comps>
     <modExtensions>
       <li Class="SRA.MultiExplosiveExtension">
         <multiexplosions>

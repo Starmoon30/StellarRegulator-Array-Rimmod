@@ -44,15 +44,6 @@ namespace SRA
         }
     }
 
-    // The internal download cache stays hidden from the default inspect string; the console exposes it directly.
-    public class CompSRAHiddenThingContainer : CompThingContainer
-    {
-        public override string CompInspectStringExtra()
-        {
-            return string.Empty;
-        }
-    }
-
     // Orbital production is fully self-managed by this component and never creates colonist work orders.
     public class CompGenerator_SRA_Core : ThingComp
     {
@@ -75,6 +66,9 @@ namespace SRA
         private long lastDownloadCost;
         private int lastDownloadOrderId = -1;
         private string stationId;
+        private List<OrbitalOutputRecord> outputRecords = new List<OrbitalOutputRecord>();
+        private int outputItemCount;
+        private bool autoOutputEnabled;
 
         // Order settlement is synchronous. The transfer state exists solely for the one visual
         // presentation that follows a completed scheduled downlink.
@@ -153,30 +147,10 @@ namespace SRA
         }
 
         public int OutputItemCapacity => Math.Max(1, Props.outputItemCapacity);
-        public int OutputItemCount
-        {
-            get
-            {
-                long count = 0L;
-                if (OutputContainer?.innerContainer == null)
-                {
-                    return 0;
-                }
-
-                foreach (Thing thing in OutputContainer.innerContainer)
-                {
-                    count += Math.Max(0, thing.stackCount);
-                    if (count >= int.MaxValue)
-                    {
-                        return int.MaxValue;
-                    }
-                }
-
-                return (int)count;
-            }
-        }
-
-        public IEnumerable<Thing> OutputItems => OutputContainer?.innerContainer ?? Enumerable.Empty<Thing>();
+        public int OutputItemCount => outputItemCount;
+        public IReadOnlyList<OrbitalOutputRecord> OutputRecords => outputRecords;
+        public bool HasOutput => outputItemCount > 0;
+        public bool AutoOutputEnabled { get => autoOutputEnabled; set => autoOutputEnabled = value; }
         public IReadOnlyList<OrbitalFabricationOrder> OrbitalOrders => orbitalOrders;
         public int LastLinkTick => lastLinkTick;
         public long LastUploadAmount => lastUploadAmount;
@@ -188,10 +162,6 @@ namespace SRA
         public string GenerationPeriodLabel => Math.Max(1, Props.orbitalGenerationIntervalTicks).ToStringTicksToPeriod();
 
         public CompOrbitalScannerTransporter ScannerComp => parent.GetComp<CompOrbitalScannerTransporter>();
-        public CompSRAHiddenThingContainer OutputContainer => parent.GetComp<CompSRAHiddenThingContainer>();
-
-        public Thing OutputItem => OutputContainer?.innerContainer?.FirstOrDefault();
-
         private string EnsureStationId()
         {
             if (String.IsNullOrEmpty(stationId) && parent != null && !String.IsNullOrEmpty(parent.ThingID))
@@ -287,6 +257,9 @@ namespace SRA
             Scribe_Values.Look(ref lastDownloadCost, "lastDownloadCost", 0L);
             Scribe_Values.Look(ref lastDownloadOrderId, "lastDownloadOrderId", -1);
             Scribe_Values.Look(ref stationId, "stationId");
+            Scribe_Collections.Look(ref outputRecords, "orbitalOutputRecords", LookMode.Deep);
+            Scribe_Values.Look(ref outputItemCount, "outputItemCount", 0);
+            Scribe_Values.Look(ref autoOutputEnabled, "autoOutputEnabled", false);
             Scribe_Values.Look(ref transferTicksLeft, "transferTicksLeft", 0);
             Scribe_Values.Look(ref transferTicksTotal, "transferTicksTotal", 0);
             Scribe_Values.Look(ref transferKind, "transferKind", OrbitalTransferKind.None);
@@ -303,10 +276,12 @@ namespace SRA
                 orbitalOrders = (orbitalOrders ?? new List<OrbitalFabricationOrder>())
                     .Where(order => order != null && order.productDef != null)
                     .ToList();
+                NormalizeOutputRecords();
                 int highestOrderId = 0;
                 for (int i = 0; i < orbitalOrders.Count; i++)
                 {
                     orbitalOrders[i].Normalize();
+                    orbitalOrders[i].batchSize = Math.Min(orbitalOrders[i].batchSize, OutputItemCapacity);
                     highestOrderId = Math.Max(highestOrderId, orbitalOrders[i].id);
                 }
 
@@ -322,6 +297,57 @@ namespace SRA
                 {
                     ClearTransferState();
                 }
+            }
+        }
+
+        private void NormalizeOutputRecords()
+        {
+            outputRecords = (outputRecords ?? new List<OrbitalOutputRecord>())
+                .Where(record => record != null && record.productDef != null && record.count > 0)
+                .ToList();
+
+            Dictionary<string, OrbitalOutputRecord> merged = new Dictionary<string, OrbitalOutputRecord>();
+            for (int i = 0; i < outputRecords.Count; i++)
+            {
+                OrbitalOutputRecord record = outputRecords[i];
+                if (!OrbitalFabricationUtility.ProductSupportsQuality(record.productDef))
+                {
+                    record.quality = -1;
+                }
+
+                string key = (record.productDef.defName ?? string.Empty) + "|" +
+                             (record.stuffDef?.defName ?? string.Empty) + "|" + record.quality;
+                if (merged.TryGetValue(key, out OrbitalOutputRecord existing))
+                {
+                    existing.count = (int)Math.Min(int.MaxValue, (long)existing.count + record.count);
+                }
+                else
+                {
+                    merged.Add(key, record);
+                }
+            }
+
+            outputRecords = merged.Values
+                .Where(record => record.count > 0)
+                .ToList();
+            long total = 0L;
+            for (int i = 0; i < outputRecords.Count; i++)
+            {
+                total += Math.Max(0, outputRecords[i].count);
+            }
+
+            outputItemCount = (int)Math.Min(OutputItemCapacity, Math.Min(int.MaxValue, total));
+            if (total > outputItemCount)
+            {
+                int excess = (int)Math.Min(int.MaxValue, total - outputItemCount);
+                for (int i = outputRecords.Count - 1; i >= 0 && excess > 0; i--)
+                {
+                    int removed = Math.Min(excess, outputRecords[i].count);
+                    outputRecords[i].count -= removed;
+                    excess -= removed;
+                }
+
+                outputRecords.RemoveAll(record => record.count <= 0);
             }
         }
 
@@ -673,6 +699,7 @@ namespace SRA
             };
             order.QualityRange = qualityRange;
             order.Normalize();
+            order.batchSize = Math.Min(order.batchSize, OutputItemCapacity);
             orbitalOrders.Add(order);
             return true;
         }
@@ -698,6 +725,7 @@ namespace SRA
             order.targetCount = targetCount;
             order.includeEquipped = includeEquipped;
             order.Normalize();
+            order.batchSize = Math.Min(order.batchSize, OutputItemCapacity);
             return true;
         }
 
@@ -900,7 +928,14 @@ namespace SRA
             }
 
             network.GenerateUntil(Find.TickManager.TicksGame, Props.orbitalGenerationIntervalTicks, Props.unitYieldPerInterval, OrbitalMassEnergyCapacity);
-            if (ResolveLinkDownloads(network, LinkBandwidthPerEvent))
+            if (autoOutputEnabled)
+            {
+                // Retry output left behind by the previous contact before settling a new one.
+                TryAutoOutput();
+            }
+
+            bool downloaded = ResolveLinkDownloads(network, LinkBandwidthPerEvent);
+            if (downloaded)
             {
                 if (downloadAnimationEnabled)
                 {
@@ -909,6 +944,13 @@ namespace SRA
                 else if (downloadSoundEnabled && parent.Map != null)
                 {
                     SRA_DefOf.SRA_titan_laser_hit_01?.PlayOneShot(new TargetInfo(parent.Position, parent.Map, false));
+                }
+
+                if (autoOutputEnabled)
+                {
+                    // One contact settles all successful batches atomically; this is one retry,
+                    // rather than one animation or one storage scan per order.
+                    TryAutoOutput();
                 }
             }
         }
@@ -993,7 +1035,8 @@ namespace SRA
                 return false;
             }
 
-            int stock = OrbitalFabricationInventory.CountProducts(Map, OutputContainer, order);
+            order.batchSize = Math.Min(order.batchSize, OutputItemCapacity);
+            int stock = OrbitalFabricationInventory.CountProducts(Map, outputRecords, order);
             order.lastStockCount = stock;
             order.lastEvaluationTick = Find.TickManager.TicksGame;
             if (!order.NeedsDownload(stock))
@@ -1054,7 +1097,7 @@ namespace SRA
 
         private bool CanStoreOutput(int amount)
         {
-            return OutputContainer?.innerContainer != null && amount > 0 &&
+            return amount > 0 &&
                    amount <= Math.Max(0L, (long)OutputItemCapacity - OutputItemCount);
         }
 
@@ -1071,40 +1114,23 @@ namespace SRA
             }
 
             int delivered = 0;
-            int remaining = order.batchSize;
             int qualityMin = Math.Max((int)QualityCategory.Awful, Math.Min(order.qualityMin, (int)QualityCategory.Legendary));
             int qualityMax = Math.Max((int)QualityCategory.Awful, Math.Min(order.qualityMax, (int)QualityCategory.Legendary));
             int normalizedQualityMin = Math.Min(qualityMin, qualityMax);
             int normalizedQualityMax = Math.Max(qualityMin, qualityMax);
             qualityMin = normalizedQualityMin;
             qualityMax = normalizedQualityMax;
-            var output = OutputContainer.innerContainer;
 
+            int remaining = order.batchSize;
             while (remaining > 0)
             {
-                Thing product = ThingMaker.MakeThing(order.productDef, order.stuffDef);
-                product.stackCount = Math.Min(remaining, product.def.stackLimit);
-                remaining -= product.stackCount;
-
-                if (order.ProductSupportsQuality)
-                {
-                    CompQuality quality = product.TryGetComp<CompQuality>();
-                    if (quality != null)
-                    {
-                        quality.SetQuality(
-                            (QualityCategory)Rand.RangeInclusive(qualityMin, qualityMax),
-                            ArtGenerationContext.Colony);
-                    }
-                }
-
-                if (!output.TryAdd(product))
-                {
-                    product.Destroy(DestroyMode.Vanish);
-                    order.lastStatus = OrbitalOrderStatus.WaitingOutputSpace;
-                    return false;
-                }
-
-                delivered += product.stackCount;
+                int quality = order.ProductSupportsQuality
+                    ? Rand.RangeInclusive(qualityMin, qualityMax)
+                    : -1;
+                int amount = Math.Min(remaining, Math.Max(1, order.productDef.stackLimit));
+                AddOutputRecord(order.productDef, order.stuffDef, quality, amount);
+                remaining -= amount;
+                delivered += amount;
             }
 
             order.NotifyBatchCompleted();
@@ -1117,6 +1143,187 @@ namespace SRA
                 ? OrbitalOrderStatus.Complete
                 : OrbitalOrderStatus.Ready;
             return true;
+        }
+
+        private void AddOutputRecord(ThingDef productDef, ThingDef stuffDef, int quality, int count)
+        {
+            if (productDef == null || count <= 0)
+            {
+                return;
+            }
+
+            if (!OrbitalFabricationUtility.ProductSupportsQuality(productDef))
+            {
+                quality = -1;
+            }
+
+            OrbitalOutputRecord record = outputRecords.FirstOrDefault(item =>
+                item != null && item.productDef == productDef && item.stuffDef == stuffDef && item.quality == quality);
+            if (record == null)
+            {
+                record = new OrbitalOutputRecord(productDef, stuffDef, quality, 0);
+                outputRecords.Add(record);
+            }
+
+            int available = Math.Max(0, OutputItemCapacity - outputItemCount);
+            int accepted = Math.Min(count, available);
+            record.count = (int)Math.Min(int.MaxValue, (long)record.count + accepted);
+            outputItemCount += accepted;
+        }
+
+        public Thing MakeOutputPreview()
+        {
+            OrbitalOutputRecord record = outputRecords?.FirstOrDefault(item => item != null && item.count > 0);
+            return record == null ? null : MakeOutputThing(record, Math.Min(record.count, Math.Max(1, record.productDef.stackLimit)));
+        }
+
+        private Thing MakeOutputThing(OrbitalOutputRecord record, int count)
+        {
+            if (record?.productDef == null || count <= 0)
+            {
+                return null;
+            }
+
+            Thing product = ThingMaker.MakeThing(record.productDef, record.stuffDef);
+            product.stackCount = Math.Min(count, product.def.stackLimit);
+            if (record.quality >= (int)QualityCategory.Awful && record.quality <= (int)QualityCategory.Legendary)
+            {
+                CompQuality quality = product.TryGetComp<CompQuality>();
+                quality?.SetQuality((QualityCategory)record.quality, ArtGenerationContext.Colony);
+            }
+
+            return product;
+        }
+
+        private void RemoveOutput(OrbitalOutputRecord record, int count)
+        {
+            if (record == null || count <= 0)
+            {
+                return;
+            }
+
+            int removed = Math.Min(count, record.count);
+            record.count -= removed;
+            outputItemCount = Math.Max(0, outputItemCount - removed);
+            if (record.count <= 0)
+            {
+                outputRecords.Remove(record);
+            }
+        }
+
+        public bool TryTakeOutputToPawn(Pawn pawn, int requestedCount, out Thing taken)
+        {
+            taken = null;
+            if (pawn?.carryTracker == null || requestedCount <= 0 || outputRecords == null)
+            {
+                return false;
+            }
+
+            OrbitalOutputRecord record = outputRecords.FirstOrDefault(item => item != null && item.count > 0);
+            if (record == null)
+            {
+                return false;
+            }
+
+            int carrySpace = pawn.carryTracker.AvailableStackSpace(record.productDef);
+            int count = Math.Min(requestedCount, Math.Min(record.count, carrySpace));
+            if (count <= 0)
+            {
+                return false;
+            }
+
+            Thing product = MakeOutputThing(record, count);
+            int carried = product == null ? 0 : pawn.carryTracker.TryStartCarry(product, count, false);
+            if (carried <= 0)
+            {
+                if (product != null && !product.Destroyed)
+                {
+                    product.Destroy(DestroyMode.Vanish);
+                }
+
+                return false;
+            }
+
+            RemoveOutput(record, carried);
+            taken = pawn.carryTracker.CarriedThing ?? product;
+            if (product != taken && product != null && !product.Destroyed && !product.Spawned)
+            {
+                product.Destroy(DestroyMode.Vanish);
+            }
+
+            return true;
+        }
+
+        private bool TryFindOutputStorage(Thing preview, Pawn pawn, out IntVec3 cell)
+        {
+            cell = IntVec3.Invalid;
+            if (preview == null || Map == null)
+            {
+                return false;
+            }
+
+            Faction faction = pawn?.Faction ?? parent.Faction ?? Faction.OfPlayer;
+            return StoreUtility.TryFindBestBetterStorageFor(
+                preview,
+                pawn,
+                Map,
+                StoragePriority.Unstored,
+                faction,
+                out cell,
+                out _,
+                false);
+        }
+
+        private bool TryAutoOutput()
+        {
+            if (!HasOutput || Map == null)
+            {
+                return false;
+            }
+
+            Pawn storagePawn = Map.mapPawns?.FreeColonistsSpawned?.FirstOrDefault() ??
+                               Map.mapPawns?.AllPawnsSpawned?.FirstOrDefault(pawn => pawn.Faction == (parent.Faction ?? Faction.OfPlayer));
+            if (storagePawn == null)
+            {
+                return false;
+            }
+
+            bool placedAny = false;
+            while (HasOutput && outputRecords.Count > 0)
+            {
+                OrbitalOutputRecord record = outputRecords[0];
+                Thing product = MakeOutputThing(record, Math.Min(record.count, Math.Max(1, record.productDef.stackLimit)));
+                if (product == null)
+                {
+                    RemoveOutput(record, record.count);
+                    continue;
+                }
+
+                if (!TryFindOutputStorage(product, storagePawn, out IntVec3 cell))
+                {
+                    product.Destroy(DestroyMode.Vanish);
+                    break;
+                }
+
+                int amount = product.stackCount;
+                // Automatic output must stay inside the storage cell selected by vanilla.
+                // Near placement can fall back outside a stockpile when the target cell is
+                // occupied by a tree or another non-haulable thing.
+                if (!GenPlace.TryPlaceThing(product, cell, Map, ThingPlaceMode.Direct, out _))
+                {
+                    if (!product.Destroyed)
+                    {
+                        product.Destroy(DestroyMode.Vanish);
+                    }
+
+                    break;
+                }
+
+                RemoveOutput(record, amount);
+                placedAny = true;
+            }
+
+            return placedAny;
         }
 
         private float BeamPhaseStart

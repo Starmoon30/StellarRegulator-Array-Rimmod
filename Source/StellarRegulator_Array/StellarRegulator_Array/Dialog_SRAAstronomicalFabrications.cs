@@ -537,13 +537,21 @@ namespace SRA
             Text.Font = GameFont.Small;
             GUI.color = Accent;
             Widgets.Label(new Rect(rect.x + 6f, rect.y + 5f, rect.width - 12f, 20f), "SRA_OrbitalOutputBuffer".Translate());
+            Text.Font = GameFont.Tiny;
             GUI.color = new Color(0.73f, 1f, 0.93f);
-            Widgets.Label(new Rect(rect.x + 6f, rect.y + 25f, rect.width - 12f, 20f),
+            bool autoOutput = comp.AutoOutputEnabled;
+            Rect autoOutputRect = new Rect(rect.x + 6f, rect.y + 24f, rect.width - 12f, 24f);
+            Widgets.CheckboxLabeled(autoOutputRect, "SRA_OrbitalAutoOutput".Translate(), ref autoOutput);
+            comp.AutoOutputEnabled = autoOutput;
+            TooltipHandler.TipRegion(autoOutputRect, "SRA_OrbitalAutoOutputDesc".Translate());
+            Widgets.Label(new Rect(rect.x + 6f, rect.y + 49f, rect.width - 12f, 20f),
                 "SRA_OrbitalOutputStored".Translate(comp.OutputItemCount, comp.OutputItemCapacity));
             GUI.color = Color.white;
 
-            List<Thing> contents = comp.OutputItems.ToList();
-            Rect outRect = new Rect(rect.x + 6f, rect.y + 48f, rect.width - 12f, rect.height - 54f);
+            List<OrbitalOutputRecord> contents = (comp.OutputRecords ?? new List<OrbitalOutputRecord>())
+                .Where(record => record != null && record.count > 0)
+                .ToList();
+            Rect outRect = new Rect(rect.x + 6f, rect.y + 72f, rect.width - 12f, rect.height - 78f);
             Rect viewRect = new Rect(0f, 0f, outRect.width - 16f, Math.Max(outRect.height, contents.Count * 20f));
             Text.Font = GameFont.Tiny;
             Widgets.BeginScrollView(outRect, ref outputContentsScroll, viewRect);
@@ -558,7 +566,7 @@ namespace SRA
                 float y = 0f;
                 for (int i = 0; i < contents.Count; i++)
                 {
-                    Widgets.Label(new Rect(0f, y, viewRect.width, 19f), contents[i].LabelCap);
+                    Widgets.Label(new Rect(0f, y, viewRect.width, 19f), contents[i].Label + " x" + contents[i].count);
                     y += 20f;
                 }
             }
@@ -885,7 +893,7 @@ namespace SRA
 
             float y = iconRect.yMax + 14f;
             DrawNumericRow(new Rect(inRect.x, y, inRect.width, 30f), "SRA_OrbitalBatchSize".Translate(), ref batchSize, ref batchBuffer, 1,
-                OrbitalFabricationUtility.MaximumBatchSize);
+                comp.OutputItemCapacity);
             y += 38f;
 
             if (SupportsQuality)
@@ -920,7 +928,7 @@ namespace SRA
             y += 31f;
 
             long unitCost = OrbitalFabricationUtility.FabricationUnitCost(blueprint.thingDef, blueprint.stuffDef, comp.Props);
-            long totalCost = OrbitalFabricationUtility.SaturatingMultiply(unitCost, Math.Max(1, Math.Min(batchSize, OrbitalFabricationUtility.MaximumBatchSize)));
+            long totalCost = OrbitalFabricationUtility.SaturatingMultiply(unitCost, Math.Max(1, Math.Min(batchSize, comp.OutputItemCapacity)));
             GUI.color = new Color(0.48f, 1f, 0.9f);
             Widgets.Label(new Rect(inRect.x, y, inRect.width, 21f), "SRA_OrbitalOrderUnitPrice".Translate(OrbitalFabricationUtility.FormatMassEnergy(unitCost)));
             y += 23f;

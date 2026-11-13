@@ -25,7 +25,7 @@ namespace SRA
         public int maximumLinkIntervalTicks = 3600000;
         public long baseBandwidthPerDefaultInterval = 25000L;
         public long bandwidthPerFacilityPerDefaultInterval = 10000L;
-        public int outputItemCapacity = 5000;
+        public int outputItemCapacity = 40000;
         public int downloadAnimationTicks = 180;
         public string controlPanelIconPath;
 

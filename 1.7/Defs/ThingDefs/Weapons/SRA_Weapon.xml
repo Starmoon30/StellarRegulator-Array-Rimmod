@@ -344,6 +344,10 @@
 					<def>Stun</def>
 					<amount>8</amount>
 				</li>
+				<li>
+					<def>EMP</def>
+					<amount>8</amount>
+				</li>
 			</extraDamages>
 		</projectile>
 	</ThingDef>

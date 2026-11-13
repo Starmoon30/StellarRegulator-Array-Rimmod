@@ -105,6 +105,8 @@
 	<SRA_OrbitalOutputBuffer>下载缓存</SRA_OrbitalOutputBuffer>
 	<SRA_OrbitalOutputStored>已存入：{0} / {1}</SRA_OrbitalOutputStored>
 	<SRA_OrbitalOutputEmpty>没有待搬运的下载物品。</SRA_OrbitalOutputEmpty>
+	<SRA_OrbitalAutoOutput>将构造物品折跃至储存区</SRA_OrbitalAutoOutput>
+	<SRA_OrbitalAutoOutputDesc>每次构造物品前后尝试将下载物品直接折跃至可用储存区。</SRA_OrbitalAutoOutputDesc>
 	<SRA_OrbitalDeleteBlueprint>删除</SRA_OrbitalDeleteBlueprint>
 	<SRA_OrbitalRemoveBlueprintConfirm>从构造蓝图库移除{0}？其构造订单也会被删除。</SRA_OrbitalRemoveBlueprintConfirm>
 	<SRA_OrbitalOrderDraftTitle>构造订单样例</SRA_OrbitalOrderDraftTitle>

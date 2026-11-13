@@ -146,7 +146,7 @@
         <!-- 每座已连接的附属轴突在默认链路周期内额外提供的带宽，单位：产业价值。 -->
         <bandwidthPerFacilityPerDefaultInterval>100000</bandwidthPerFacilityPerDefaultInterval>
         <!-- 下载缓存可存放的物品总数量上限；达到上限时订单会等待清空缓存。 -->
-        <outputItemCapacity>5000</outputItemCapacity>
+        <outputItemCapacity>40000</outputItemCapacity>
         <!-- 单次物品下载的完整动画时长，单位：游戏 tick；下载始终整批完成，不会分段传输。 -->
         <downloadAnimationTicks>180</downloadAnimationTicks>
         <!-- 打开轨道构造控制台的命令图标路径；填写 Textures 下的路径且不含扩展名。 -->
@@ -187,17 +187,6 @@
         <!--<glowColor>(105,204,204,0)</glowColor>-->
         <!-- 光照颜色，格式为 RGBA（每个通道 0 至 255）。 -->
         <glowColor>(0, 255, 255, 128)</glowColor>
-      </li>
-      <!-- 下载物品的隐藏内部缓存；殖民者会通过交互格将其中物品搬入普通库存。 -->
-      <li Class="CompProperties_ThingContainer">
-        <!-- 使用专用容器类，避免默认检查文本与上传舱信息重复。 -->
-        <compClass>SRA.CompSRAHiddenThingContainer</compClass>
-        <!-- 容器底层单堆叠上限；应不低于 outputItemCapacity。 -->
-        <stackLimit>5000</stackLimit>
-        <!-- 下载产物不会直接绘制在建筑模型上。 -->
-        <drawContainedThing>false</drawContainedThing>
-        <!-- 容器内容被移出时使用的视觉效果。 -->
-        <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
       </li>
       <!-- 允许附属轴突为本体增加本地产业价值容量和链路带宽。 -->
       <li Class="CompProperties_AffectedByFacilities">
